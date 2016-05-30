@@ -1,0 +1,86 @@
+@CHARSET "UTF-8"; 
+      #body {
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+      #bodyleft {
+        float: left;
+        width: 173px;
+      }
+      #CorInf-sidebar {
+        overflow: hidden;
+        border: 1px solid #f9d682;
+      }
+      #CorInf-sidebar .hover {
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #CorInf-sidebar>ul>li {
+        margin-bottom: 1px;
+      }
+      #CorInf-sidebar>ul>li>a {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        color: #545454;
+        font-size: 15px;
+        text-align: center;
+        background-color: #fef9e1;
+      }
+      #CorInf-sidebar>ul>li>a:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #bodyright {
+        float: right;
+        width: 788px;
+        color: #555;
+      }
+      .bodyRightBorder {
+        border: 1px solid #f9d682;
+      }
+      .tit {
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        border-bottom: 1px solid #f9d682;
+        background-color: #fef9e1;
+      }
+      .con {
+        padding: 20px 25px;
+      }
+      .con p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 25px;
+        font-size: 14px;
+        text-indent: 2em;
+        text-align: justify;
+      }
+      .shuxian {
+        display: inline-block;
+        float: left;
+        position: relative;
+        top: 9px;
+        height: 20px;
+        width: 0;
+        border-left: 3px solid #ff5704;
+        margin-left: 11px;
+        margin-right: 11px;
+      }
+      .con dl {
+        margin-left: 10px;
+        margin-bottom: 20px;
+      }
+      .con dl dt {
+        font-size: 16px;
+        color: #ff5704;
+      }
+      .con dl dd {
+        font-size: 14px;
+        line-height: 25px;
+      }
+      .con dl dd img {
+        margin-top: 10px;
+      } 

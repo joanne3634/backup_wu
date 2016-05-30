@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TUser">
+	<resultMap id="user" type="com.deelon.loan.model.front.TUser">
+		<id property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="loginName" column="LoginName" jdbcType="VARCHAR" />
+		<result property="loginPwd" column="LoginPwd" jdbcType="VARCHAR" />
+		<result property="loginPwdErrCount" column="LoginPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="tradingPwd" column="TradingPwd" jdbcType="VARCHAR" />
+		<result property="tradingPwdErrCount" column="TradingPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="realName" column="RealName" jdbcType="VARCHAR" />
+		<result property="gender" column="Gender" jdbcType="VARCHAR" />
+		<result property="age" column="Age" jdbcType="NUMERIC"/>
+		<result property="edu" column="Edu" jdbcType="VARCHAR" />
+		<result property="groupId" column="GroupID" jdbcType="VARCHAR" />
+		<result property="isLock" column="IsLock" jdbcType="NUMERIC" />
+		<result property="isActive" column="IsActive" jdbcType="NUMERIC" />
+		<result property="lastLoginTime" column="LastLoginTime"
+			jdbcType="TIMESTAMP" />
+		<result property="school" column="School" jdbcType="VARCHAR"/>
+		<result property="isDel" column="IsDel" jdbcType="NUMERIC" />
+		<result property="loginCount" column="LoginCount" jdbcType="NUMERIC" />
+		<result property="remarks" column="Remarks"/>
+	</resultMap>
+	
+	<resultMap id="user_f_c_i" type="com.deelon.loan.model.front.TUser">
+		<id property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="loginName" column="LoginName" jdbcType="VARCHAR" />
+		<result property="loginPwd" column="LoginPwd" jdbcType="VARCHAR" />
+		<result property="loginPwdErrCount" column="LoginPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="tradingPwd" column="TradingPwd" jdbcType="VARCHAR" />
+		<result property="tradingPwdErrCount" column="TradingPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="realName" column="RealName" jdbcType="VARCHAR" />
+		<result property="gender" column="Gender" jdbcType="VARCHAR" />
+		<result property="age" column="Age" jdbcType="NUMERIC"/>
+		<result property="edu" column="Edu" jdbcType="VARCHAR" />
+		<result property="groupId" column="GroupID" jdbcType="VARCHAR" />
+		<result property="isLock" column="IsLock" jdbcType="NUMERIC" />
+		<result property="isActive" column="IsActive" jdbcType="NUMERIC" />
+		<result property="lastLoginTime" column="LastLoginTime"
+			jdbcType="TIMESTAMP" />
+		<result property="school" column="School" jdbcType="VARCHAR"/>
+		<result property="isDel" column="IsDel" jdbcType="NUMERIC" />
+		<result property="creditOut" column="CreditOut"  />
+		<result property="creditIn" column="CreditIn"  />
+		<result property="filedId" column="fileId"  />
+		<result property="FMarriage" column="F_Marriage"  />
+		<result property="FIsBuyCar" column="F_IsBuyCar"  />
+		<result property="FisCarLoan" column="F_IsCarLoan"  />
+		<result property="FHouse" column="F_House"  />
+		<result property="FisHouseLoan" column="F_IsHouseLoan"  />
+		<result property="CIndustry" column="C_Industry"  />
+		<result property="CSize" column="C_Size"  />
+		<result property="CDeptName" column="C_DeptName"  />
+		<result property="CAddress" column="C_Address"  />
+		<result property="CWorkYears" column="C_WorkYears"  />
+		<result property="CIncomeScope" column="C_IncomeScope"  />
+	
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TUser" id="user_1">
+		<id property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="realName" column="RealName"  />
+		<result property="loginName" column="LoginName"  />
+		<result property="gender" column="Gender"  />
+		<result property="isLock" column="IsLock"  />
+		<result property="isActive" column="IsActive"  />
+		<result property="creditOut" column="CreditOut"  />
+		<result property="creditIn" column="CreditIn"  />
+		 <result property="idCard" column="id_no"  /> 
+	</resultMap>
+	
+	<resultMap id="user_2" type="com.deelon.loan.model.front.TUser">
+		<id property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="loginName" column="LoginName" jdbcType="VARCHAR" />
+		<result property="loginPwd" column="LoginPwd" jdbcType="VARCHAR" />
+		<result property="loginPwdErrCount" column="LoginPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="tradingPwd" column="TradingPwd" jdbcType="VARCHAR" />
+		<result property="tradingPwdErrCount" column="TradingPwdErrCount"
+			jdbcType="NUMERIC" />
+		<result property="realName" column="RealName" jdbcType="VARCHAR" />
+		<result property="gender" column="Gender" jdbcType="VARCHAR" />
+		<result property="age" column="Age" jdbcType="NUMERIC"/>
+		<result property="edu" column="Edu" jdbcType="VARCHAR" />
+		<result property="groupId" column="GroupID" jdbcType="VARCHAR" />
+		<result property="isLock" column="IsLock" jdbcType="NUMERIC" />
+		<result property="isActive" column="IsActive" jdbcType="NUMERIC" />
+		<result property="lastLoginTime" column="LastLoginTime"
+			jdbcType="TIMESTAMP" />
+		<result property="school" column="School" jdbcType="VARCHAR"/>
+		<result property="isDel" column="IsDel" jdbcType="NUMERIC" />
+		<result property="filedId" column="FILEID"/>
+		<result property="idCard" column="id_no"/>
+		
+	</resultMap>
+	
+	<resultMap id="Tcuser" type="com.deelon.loan.model.front.TUser">	
+        <id property="userId" column="user_id" />
+        <result property="loginName" column="LoginName"/>
+        <result property="loginPwd" column="LoginPwd"/>
+        <result property="loginPwdErrCount" column="LoginPwdErrCount"/>
+        <result property="tradingPwd" column="TradingPwd"/>
+        <result property="tradingPwdErrCount" column="TradingPwdErrCount"/>
+        <result property="realName" column="RealName"/>
+        <result property="gender" column="Gender"/>
+        <result property="age" column="Age"/>
+        <result property="edu" column="Edu"/>
+        <result property="school" column="School"/>
+        <result property="groupId" column="GroupID"/>
+        <result property="isLock" column="IsLock"/>
+        <result property="isActive" column="IsActive"/>
+        <result property="registerTime" column="RegisterTime"/>
+        <result property="loginCount" column="LoginCount"/>
+        <result property="checker" column="Checker"/>
+        <result property="provincesId" column="ProvincesID"/>
+        <result property="cityId" column="CityID"/>
+        <result property="remarks" column="Remarks"/>
+        <result property="personalAddress" column="PersonalAddress"/>
+        <result property="isLeader" column="IsLeader"/>
+        <result property="isCompany" column="IsCompany"/>
+        <result property="contactName" column="ContactName"/>
+        <result property="businessLicense" column="BusinessLicense"/>
+        <result property="isAskPrice" column="IsAskPrice"/>
+        <result property="askTimes" column="AskTimes"/>
+        <result property="lastLoginTime" column="LastLoginTime"/>
+        <result property="isDel" column="IsDel"/>
+        <result property="idNo" column="id_no"/>
+        <result property="email" column="Email"/>
+        <result property="mobile" column="Mobile"/>
+        <result property="isCheck" column="IsCheck"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="fileId" column="fileId"/>
+        <result property="isRecommended" column="IsRecommended"/>
+        <result property="recommendedTime" column="RecommendedTime"/>
+        <result property="piInvest" column="PI_Invest"/>
+        <result property="piInvestTime" column="PI_InvestTime"/>
+        <result property="piTypeID" column="PI_TypeID"/>
+        <result property="myPhoto" column="MyPhoto"/>
+	</resultMap>
+	
+	<sql id="columns">
+		user_id,LoginName,LoginPwd,LoginPwdErrCount,TradingPwd,TradingPwdErrCount,RealName,Gender,Age,Edu,School,GroupID,IsLock,IsActive,RegisterTime,LoginCount,Checker,ProvincesID,CityID,Remarks,PersonalAddress,IsLeader,IsCompany,ContactName,BusinessLicense,IsAskPrice,AskTimes,LastLoginTime,IsDel,IsCheck,CheckTime,IsRecommended,RecommendedTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(loginName)">AND LoginName LIKE '%${loginName}%'</if>
+	       <if test="@Ognl@isNotEmpty(loginPwd)">AND LoginPwd = #{loginPwd}</if>
+	       <if test="@Ognl@isNotEmpty(loginPwdErrCount)">AND LoginPwdErrCount = #{loginPwdErrCount}</if>
+	       <if test="@Ognl@isNotEmpty(tradingPwd)">AND TradingPwd = #{tradingPwd}</if>
+	       <if test="@Ognl@isNotEmpty(tradingPwdErrCount)">AND TradingPwdErrCount = #{tradingPwdErrCount}</if>
+	       <if test="@Ognl@isNotEmpty(realName)">AND RealName LIKE '%${realName}%'</if>
+	       <if test="@Ognl@isNotEmpty(gender)">AND Gender = #{gender}</if>
+	       <if test="@Ognl@isNotEmpty(age)">AND Age = #{age}</if>
+	       <if test="@Ognl@isNotEmpty(edu)">AND Edu = #{edu}</if>
+	       <if test="@Ognl@isNotEmpty(school)">AND School = #{school}</if>
+	       <if test="@Ognl@isNotEmpty(groupId)">AND GroupID = #{groupId}</if>
+	       <if test="@Ognl@isNotEmpty(isLock)">AND IsLock = #{isLock}</if>
+	       <if test="@Ognl@isNotEmpty(isActive)">AND IsActive = #{isActive}</if>
+	       <if test="@Ognl@isNotEmpty(registerTimeBegin)">AND RegisterTime >= #{registerTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(registerTimeEnd)">AND RegisterTime &lt;= #{registerTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(loginCount)">AND LoginCount = #{loginCount}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(provincesId)">AND ProvincesID = #{provincesId}</if>
+	       <if test="@Ognl@isNotEmpty(cityId)">AND CityID = #{cityId}</if>
+	       <if test="@Ognl@isNotEmpty(remarks)">AND Remarks = #{remarks}</if>
+	       <if test="@Ognl@isNotEmpty(personalAddress)">AND PersonalAddress = #{personalAddress}</if>
+	       <if test="@Ognl@isNotEmpty(isLeader)">AND IsLeader = #{isLeader}</if>
+	       <if test="@Ognl@isNotEmpty(isCompany)">AND IsCompany = #{isCompany}</if>
+	       <if test="@Ognl@isNotEmpty(contactName)">AND ContactName = #{contactName}</if>
+	       <if test="@Ognl@isNotEmpty(businessLicense)">AND BusinessLicense = #{businessLicense}</if>
+	       <if test="@Ognl@isNotEmpty(isAskPrice)">AND IsAskPrice = #{isAskPrice}</if>
+	       <if test="@Ognl@isNotEmpty(askTimes)">AND AskTimes = #{askTimes}</if>
+	       <if test="@Ognl@isNotEmpty(lastLoginTimeBegin)">AND LastLoginTime >= #{lastLoginTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(lastLoginTimeEnd)">AND LastLoginTime &lt;= #{lastLoginTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	       <if test="@Ognl@isNotEmpty(idNo)">AND sa.id_no = #{idNo}</if>
+	       <if test="@Ognl@isNotEmpty(email)">AND sa.Emaile = #{email}</if>
+	       <if test="@Ognl@isNotEmpty(mobile)">AND sa.Mobile = #{mobile}</if>
+	       <if test="@Ognl@isNotEmpty(isCheck)">AND IsCheck = #{isCheck}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(isRecommended)">AND IsRecommended = #{isRecommended}</if>
+		   <if test="@Ognl@isNotEmpty(recommendedTime)">AND RecommendedTime = #{recommendedTime}</if>
+		   <if test="@Ognl@isNotEmpty(cityIds)">AND (us.ProvincesID = #{cityIds} or us.CityID = #{cityIds}) </if>
+	</sql>
+
+	<select id="getUsers" resultMap="user">
+		select
+		u.user_id,
+		u.LoginName,
+		u.LoginPwd,
+		u.TradingPwdErrCount,
+		u.TradingPwd,
+		u.TradingPwdErrCount,
+		u.Gender,
+		u.Edu,
+		u.GroupID,
+		u.IsLock,
+		u.IsActive,
+		u.LastLoginTime,
+		u.IsDel
+		from t_user u
+	</select>
+
+	<select id="getUserBycolumn" resultMap="user">
+		select
+		u.user_id,
+		u.LoginName,
+		u.LoginPwd,
+		u.School,
+		u.RealName,
+		u.TradingPwdErrCount,
+		u.TradingPwd,
+		u.TradingPwdErrCount,
+		u.Gender,
+		u.age,
+		u.Edu,
+		u.GroupID,
+		u.IsLock,
+		u.IsActive,
+		u.LastLoginTime,
+		u.IsDel
+		from
+		t_user u
+		where
+		${columnName} =
+		#{columnValue}
+	</select>
+	
+	<select id="getUserInfoForDetail" resultMap="user_f_c_i">
+		select u.*, s.fileId,ua.F_Marriage,ua.F_IsBuyCar,ua.F_IsCarLoan,ua.F_IsHouseLoan,ua.F_House,
+				uc.C_Industry,uc.C_Size,uc.C_DeptName,uc.C_Address,uc.C_WorkYears,uc.C_IncomeScope,
+	  	uf.CreditIn,uf.CreditOut from t_user u
+	LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+	on u.user_id=s.CREATORID  and s.delFlag=0 
+	left join t_user_funds uf  on u.user_id=uf.user_id
+	left join t_user_family ua on u.user_id=ua.user_id
+  left JOIN t_user_company uc on u.user_id=uc.user_id
+	where u.user_id=#{userId} 
+	</select>
+
+	<update id="updateUser">
+		UPDATE
+		t_user
+		SET
+		RealName=#{realName},
+	
+		LoginPwdErrCount=#{loginPwdErrCount}
+		<if test="@Ognl@isNotEmpty(loginPwd)">
+		,
+		LoginPwd=#{loginPwd}
+		</if>
+		WHERE
+		user_id = #{userId}
+	</update>
+
+	<insert id="insertUser">
+		insert into
+		t_user
+		(
+		<if test="@Ognl@isNotEmpty(loginName)">LoginName,</if>
+		<if test="@Ognl@isNotEmpty(loginPwd)">LoginPwd,</if>
+		<if test="@Ognl@isNotEmpty(loginPwdErrCount)">LoginPwdErrCount,</if>
+		<if test="@Ognl@isNotEmpty(tradingPwd)">TradingPwd,</if>
+		<if test="@Ognl@isNotEmpty(tradingPwdErrCount)">TradingPwdErrCount,</if>
+		<if test="@Ognl@isNotEmpty(realName)">RealName,</if>
+		<if test="@Ognl@isNotEmpty(gender)">Gender,</if>
+		<if test="@Ognl@isNotEmpty(edu)">Edu,</if>
+		<if test="@Ognl@isNotEmpty(groupId)">GroupID,</if>
+		<if test="@Ognl@isNotEmpty(isLock)">IsLock,</if>
+		<if test="@Ognl@isNotEmpty(isActive)">IsActive,</if>
+		<if test="@Ognl@isNotEmpty(lastLoginTime)">LastLoginTime,</if>
+		<if test="@Ognl@isNotEmpty(isDel)">IsDel,</if>
+		<if test="@Ognl@isNotEmpty(registerTime)">RegisterTime,</if>
+		<if test="@Ognl@isNotEmpty(loginCount)">LoginCount,</if>
+		<if test="@Ognl@isNotEmpty(school)">School,</if>
+		user_id
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(loginName)">#{loginName},</if>
+		<if test="@Ognl@isNotEmpty(loginPwd)">#{loginPwd},</if>
+		<if test="@Ognl@isNotEmpty(loginPwdErrCount)">#{loginPwdErrCount},</if>
+		<if test="@Ognl@isNotEmpty(tradingPwd)">#{tradingPwd},</if>
+		<if test="@Ognl@isNotEmpty(tradingPwdErrCount)">#{tradingPwdErrCount},</if>
+		<if test="@Ognl@isNotEmpty(realName)">#{realName},</if>
+		<if test="@Ognl@isNotEmpty(gender)">#{gender},</if>
+		<if test="@Ognl@isNotEmpty(edu)">#{edu},</if>
+		<if test="@Ognl@isNotEmpty(groupId)">#{groupId},</if>
+		<if test="@Ognl@isNotEmpty(isLock)">#{isLock},</if>
+		<if test="@Ognl@isNotEmpty(isActive)">#{isActive},</if>
+		<if test="@Ognl@isNotEmpty(lastLoginTime)">#{lastLoginTime},</if>
+		<if test="@Ognl@isNotEmpty(isDel)">#{isDel},</if>
+		<if test="@Ognl@isNotEmpty(registerTime)">#{registerTime},</if>
+		<if test="@Ognl@isNotEmpty(loginCount)">#{loginCount},</if>
+		<if test="@Ognl@isNotEmpty(school)">#{school},</if>
+		#{userId}
+		)
+	</insert>
+
+	<delete id="delUser">
+		DELETE FROM
+		t_user
+		WHERE
+		user_id = #{userId}
+	</delete>
+	
+	<select id="getById" parameterType="java.lang.Long" resultMap="Tcuser">
+		SELECT us.*,sa.id_no,sa.Email,sa.Mobile
+		FROM t_user us LEFT JOIN T_User_Safe sa on us.user_id=sa.user_id
+		WHERE 
+		us.user_id = #{userId} 
+	</select>
+	
+	<update id="updateT_user">
+		UPDATE
+		t_user
+		SET
+		<if test="@Ognl@isNotEmpty(loginName)">LoginName=#{loginName},</if>
+		<if test="@Ognl@isNotEmpty(loginPwd)">LoginPwd=#{loginPwd},</if>
+		<if test="@Ognl@isNotEmpty(loginPwdErrCount)">LoginPwdErrCount=#{loginPwdErrCount},</if>
+		<if test="@Ognl@isNotEmpty(tradingPwd)">TradingPwd=#{tradingPwd},</if>
+        <if test="@Ognl@isNotEmpty(tradingPwdErrCount)">TradingPwdErrCount=#{tradingPwdErrCount},</if>
+        <if test="@Ognl@isNotEmpty(realName)">RealName=#{realName},</if>
+        <if test="@Ognl@isNotEmpty(gender)">Gender=#{gender},</if>
+        <if test="@Ognl@isNotEmpty(edu)">Edu=#{edu},</if>
+        <if test="@Ognl@isNotEmpty(groupId)">GroupID=#{groupId},</if>
+        <if test="@Ognl@isNotEmpty(isLock)">IsLock=#{isLock},</if>
+        <if test="@Ognl@isNotEmpty(isActive)">IsActive=#{isActive},</if>
+        <if test="@Ognl@isNotEmpty(lastLoginTime)">LastLoginTime=#{lastLoginTime},</if>
+        <if test="@Ognl@isNotEmpty(isDel)">IsDel=#{isDel},</if>
+        <if test="@Ognl@isNotEmpty(checker)">Checker=#{checker},</if>
+        <if test="@Ognl@isNotEmpty(loginCount)">LoginCount=#{loginCount},</if>
+        <if test="@Ognl@isNotEmpty(school)">School=#{school},</if>
+        user_id = #{userId}
+		WHERE user_id = #{userId}
+	</update>
+	
+		<select id="getUserByUserId" resultMap="user">
+		select u.* from t_user u WHERE u.user_id = #{userId}
+	</select>
+	
+	
+	<!-- 查询用户基本信息 -->
+	<select id="getAllUserInfos" resultMap="user_1">
+		select u.user_id,u.RealName,u.LoginName,u.Gender,u.IsLock,u.IsActive,
+		uf.CreditOut,uf.CreditIn ,us.id_no
+		from t_user u left join t_user_funds uf on u.user_id=uf.user_id
+		left join t_user_safe us on u.user_id=us.user_id
+		where 1=1
+		<if test="@Ognl@isNotEmpty(realName)">
+		 and u.RealName like "%"#{realName}"%"
+		</if>
+		<if test="@Ognl@isNotEmpty(loginName)">
+		 and u.LoginName like "%"#{loginName}"%"
+		</if>
+		
+		<if test="@Ognl@isNotEmpty(idCard)">
+		 and us.id_no=#{idCard}
+		</if>
+		
+		
+	</select>
+	
+	<!-- 根据用户id查询用户的 一些资料-->
+	<select id="getuserInfoByUserId" resultMap="user_2">
+		select u.*,us.id_no,sysfile.FILEID from t_user u left join t_user_safe us on u.user_id=us.user_id
+		left join (SELECT * from (select * from sys_file sf ORDER BY sf.CREATETIME DESC ) syf
+					GROUP BY syf.CREATORID ) sysfile on u.user_id=sysfile.CREATORID	
+		where 1=1 and u.user_id=#{userId}
+	</select>   
+	
+	<select id="getAll" resultMap="Tcuser">
+		SELECT us.*,sa.id_no,sa.Email,sa.Mobile,sa.Bind_Id_no as bindIdno
+		FROM t_user us LEFT JOIN T_User_Safe sa on us.user_id=sa.user_id
+		WHERE 1=1 AND us.IsDel =0
+<!-- 	    <if test="@Ognl@isNotEmpty(groupId)">AND us.GroupID = #{groupId}</if> -->
+<!-- 		<if test="@Ognl@isNotEmpty(isCompany)">AND us.IsCompany = #{isCompany}</if> -->
+		<if test="@Ognl@isNotEmpty(likename)">AND us.LoginName like '%${likename}%' </if>
+		<include refid="dynamicWhere" />
+		GROUP BY us.user_id
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by us.RegisterTime  desc
+		</if>
+	</select>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.front.TUser">
+		INSERT INTO t_user
+		(<include refid="columns"/>)
+		VALUES
+		(#{userId} ,#{loginName} ,#{loginPwd} ,#{loginPwdErrCount} ,#{tradingPwd} ,#{tradingPwdErrCount} ,#{realName} ,#{gender} ,#{age} ,#{edu} ,#{school} ,#{groupId} ,#{isLock} ,#{isActive} ,#{registerTime} ,#{loginCount} ,#{checker} ,#{provincesId} ,#{cityId} ,#{remarks} ,#{personalAddress} ,#{isLeader} ,#{isCompany} ,#{contactName} ,#{businessLicense} ,#{isAskPrice} ,#{askTimes} ,#{lastLoginTime} ,#{isDel},#{isCheck},#{checkTime},#{isRecommended},#{recommendedTime}  )
+    </insert>
+    
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user 
+		WHERE
+        user_id = #{userId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TUser">
+		UPDATE t_user SET
+	        LoginName = #{loginName} ,
+	        LoginPwd = #{loginPwd} ,
+	        LoginPwdErrCount = #{loginPwdErrCount} ,
+	        TradingPwd = #{tradingPwd} ,
+	        TradingPwdErrCount = #{tradingPwdErrCount} ,
+	        RealName = #{realName} ,
+	        Gender = #{gender} ,
+	        Age = #{age} ,
+	        Edu = #{edu} ,
+	        School = #{school} ,
+	        GroupID = #{groupId} ,
+	        IsLock = #{isLock} ,
+	        IsActive = #{isActive} ,
+	        RegisterTime = #{registerTime} ,
+	        LoginCount = #{loginCount} ,
+	        Checker = #{checker} ,
+	        ProvincesID = #{provincesId} ,
+	        CityID = #{cityId} ,
+	        Remarks = #{remarks} ,
+	        PersonalAddress = #{personalAddress} ,
+	        IsLeader = #{isLeader} ,
+	        IsCompany = #{isCompany} ,
+	        ContactName = #{contactName} ,
+	        BusinessLicense = #{businessLicense} ,
+	        IsAskPrice = #{isAskPrice} ,
+	        AskTimes = #{askTimes} ,
+	        LastLoginTime = #{lastLoginTime} ,
+	        IsDel = #{isDel},
+	        IsCheck = #{isCheck},
+	        CheckTime = #{checkTime},
+	        IsRecommended = #{isRecommended},
+	        RecommendedTime = #{recommendedTime},
+	        MyPhoto = #{myPhoto}
+        WHERE 
+	        user_id = #{userId} 
+	</update>
+	
+	 <select id="count" resultType="long">
+        SELECT count(*) FROM t_user 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<update id="updateById">
+		UPDATE t_user SET
+	        <if test="@Ognl@isNotEmpty(isLock)"> IsLock = #{isLock}</if>
+	       	<if test="@Ognl@isNotEmpty(isActive)"> IsActive = #{isActive}</if>
+	       	<if test="@Ognl@isNotEmpty(isRecommended)"> IsRecommended = #{isRecommended},</if>
+	       	<if test="@Ognl@isNotEmpty(recommendedTime)"> RecommendedTime = #{recommendedTime}</if>
+        WHERE 
+	        user_id = #{userId} 
+	</update>
+	
+	<select id="getUserByLoginName" parameterType="java.lang.String"
+		resultMap="Tcuser">
+		select *
+		from t_user
+		where IsDel = 0 AND
+		LoginName = #{loginName}
+	</select>
+	
+	<select id="getUserByLeadProject" resultMap="Tcuser">
+		select tu.*,v.PI_Invest,v.PI_InvestTime,s.filepath fileId
+		from t_user tu
+		 join t_c_project_invest v on tu.user_id=v.user_id
+		 LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+		on tu.user_id=s.CREATORID and s.delFlag=0
+		where (v.PI_TypeID=1 or v.PI_TypeID=2)
+		and v.PI_IsCheck=1
+		and v.project_id=#{projectId}
+	</select>
+	<select id="getUserByFollowProject" resultMap="Tcuser">
+		select tu.*,v.PI_Invest,v.PI_InvestTime,s.filepath fileId
+		from t_user tu
+		 join t_c_project_invest v on tu.user_id=v.user_id
+		 LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+		on tu.user_id=s.CREATORID and s.delFlag=0
+		where tu.user_id=v.user_id and v.PI_TypeID=3 and v.PI_IsCheck=1
+		and v.project_id=#{projectId}
+	</select>
+	<select id="getAllInvestorByProjectId" resultMap="Tcuser">
+		select tu.*,v.PI_Invest,v.PI_TypeID,v.PI_InvestTime,s.filepath fileId
+		from t_user tu
+		 join t_c_project_invest v on tu.user_id=v.user_id
+		 LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+		on tu.user_id=s.CREATORID and s.delFlag=0
+		where tu.user_id=v.user_id 
+		and v.project_id=#{projectId}
+	</select>
+	<select id="getAllInvestorList" resultMap="Tcuser">
+		select tu.*,v.PI_Invest,v.PI_InvestTime,v.PI_TypeID,s.filepath fileId
+		from t_user tu
+		 join t_c_project_invest v on tu.user_id=v.user_id
+		 LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+		on tu.user_id=s.CREATORID and s.delFlag=0
+		where v.PI_IsCheck=1
+		 <if test="@Ognl@isNotEmpty(realName)">AND RealName LIKE '%${realName}%'</if>
+		 <if test="@Ognl@isNotEmpty(userId)">AND tu.user_id = #{userId}</if>
+		 ORDER BY v.PI_TypeID ASC
+	</select>
+	
+	
+	
+	
+</mapper>
+

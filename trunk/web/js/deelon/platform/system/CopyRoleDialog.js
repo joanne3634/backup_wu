@@ -1,0 +1,1 @@
+function CopyRoleDialog(d){if(!d){d={};}var c=d.roleId;var b=__ctx+"/platform/system/sysRole/copy.ht?roleId="+c;$.extend(d,{help:0,status:0,scroll:0,center:1});var a="dialogWidth=550px;dialogHeight=250px;help="+d.help+";status="+d.status+";scroll="+d.scroll+";center="+d.center;b=b.getNewUrl();var e=window.showModalDialog(b,"",a);if(d){location.reload();}}

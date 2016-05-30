@@ -1,0 +1,1 @@
+function ColumnDialog(c){if(!c){c={};}var b=__ctx+"/platform/form/bpmFormTable/columnDialog.ht?isAdd=";b+=c.isAdd?"1":"0";b+="&isMain="+c.isMain;var a="dialogWidth:700px;dialogHeight:540px;help:0;status:0;scroll:1;center:1";b=b.getNewUrl();var d=window.showModalDialog(b,c,a);}

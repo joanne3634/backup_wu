@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TUserSafe">
+
+	<resultMap id="TUserSafe" type="com.deelon.loan.model.front.TUserSafe">
+		<id property="safeId" column="Safe_id" jdbcType="NUMERIC" />
+		<result property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="mobile" column="Mobile" jdbcType="VARCHAR" />
+		<result property="bindMobile" column="Bind_Mobile" jdbcType="NUMERIC" />
+		<result property="email" column="EMail" jdbcType="VARCHAR" />
+		<result property="bindEmail" column="Bind_EMail" jdbcType="NUMERIC" />
+		<result property="idNo" column="id_no" jdbcType="VARCHAR" />
+		<result property="bindIdNo" column="Bind_Id_no" jdbcType="NUMERIC" />
+		<result property="qqNo" column="QQ_no" jdbcType="VARCHAR" />
+		<result property="q1" column="Q1" jdbcType="VARCHAR" />
+		<result property="a1" column="A1" jdbcType="VARCHAR" />
+		<result property="q2" column="Q2" jdbcType="VARCHAR" />
+		<result property="a2" column="A2" jdbcType="VARCHAR" />
+		<result property="q3" column="Q3" jdbcType="VARCHAR" />
+		<result property="a3" column="A3" jdbcType="VARCHAR" />
+		<result property="statusID" column="StatusID" jdbcType="VARCHAR" />
+		<result property="checkTime" column="CheckTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap id="TUser_UserSafe" type="com.deelon.loan.model.front.TUserSafe">
+		<id property="safeId" column="Safe_id" jdbcType="NUMERIC" />
+		<result property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="email" column="EMail" jdbcType="VARCHAR" />
+		<result property="bindEmail" column="Bind_EMail" jdbcType="NUMERIC" />
+		<result property="loginName" column="LoginName" jdbcType="VARCHAR" />
+		<result property="reallname" column="RealName" jdbcType="VARCHAR" />
+		
+		<result property="statusID" column="StatusID" jdbcType="VARCHAR" />
+		<result property="checkTime" column="CheckTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="columns">
+		Safe_id,user_id,Mobile,Bind_Mobile,EMail,Bind_EMail,id_no,Bind_Id_no,QQ_no,Q1,A1,Q2,A2,Q3,A3,outDate,validataKey,StatusID,CheckTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(safeId)">AND Safe_id = #{safeId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(mobile)">AND Mobile = #{mobile}</if>
+	       <if test="@Ognl@isNotEmpty(bindMobile)">AND Bind_Mobile = #{bindMobile}</if>
+	       <if test="@Ognl@isNotEmpty(email)">AND EMail = #{email}</if>
+	       <if test="@Ognl@isNotEmpty(bindEmail)">AND Bind_EMail = #{bindEmail}</if>
+	       <if test="@Ognl@isNotEmpty(idNo)">AND id_no = #{idNo}</if>
+	       <if test="@Ognl@isNotEmpty(bindIdNo)">AND Bind_Id_no = #{bindIdNo}</if>
+	       <if test="@Ognl@isNotEmpty(qqno)">AND QQ_no = #{qqno}</if>
+	       <if test="@Ognl@isNotEmpty(q1)">AND Q1 = #{q1}</if>
+	       <if test="@Ognl@isNotEmpty(a1)">AND A1 = #{a1}</if>
+	       <if test="@Ognl@isNotEmpty(q2)">AND Q2 = #{q2}</if>
+	       <if test="@Ognl@isNotEmpty(a2)">AND A2 = #{a2}</if>
+	       <if test="@Ognl@isNotEmpty(q3)">AND Q3 = #{q3}</if>
+	       <if test="@Ognl@isNotEmpty(a3)">AND A3 = #{a3}</if>
+	       <if test="@Ognl@isNotEmpty(outDateBegin)">AND outDate >= #{outDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(outDateEnd)">AND outDate &lt;= #{outDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(validataKey)">AND validataKey = #{validataKey}</if>
+	       <if test="@Ognl@isNotEmpty(statusId)">AND StatusID = #{statusId}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+	</sql>
+	<update id="updateUserSafeByUserId">
+		UPDATE T_User_Safe
+		SET
+		<if test="@Ognl@isNotEmpty(mobile)">Mobile=#{mobile},</if>
+		<if test="@Ognl@isNotEmpty(bindMobile)">Bind_Mobile=#{bindMobile},</if>
+		<if test="@Ognl@isNotEmpty(email)">EMail=#{email},</if>
+		<if test="@Ognl@isNotEmpty(bindEmail)">Bind_EMail=#{bindEmail},</if>
+		<if test="@Ognl@isNotEmpty(idNo)">id_no=#{idNo},</if>
+		<if test="@Ognl@isNotEmpty(bindIdNo)">Bind_Id_no=#{bindIdNo},</if>
+		<if test="@Ognl@isNotEmpty(qqNo)">QQ_no=#{qqNo},</if>
+		<if test="@Ognl@isNotEmpty(q1)">Q1=#{q1},</if>
+		<if test="@Ognl@isNotEmpty(a1)">A1=#{a1},</if>
+		<if test="@Ognl@isNotEmpty(q2)">Q2=#{q2},</if>
+		<if test="@Ognl@isNotEmpty(a2)">A2=#{a2},</if>
+		<if test="@Ognl@isNotEmpty(q3)">Q3=#{q3},</if>
+		<if test="@Ognl@isNotEmpty(a3)">A3=#{a3},</if>
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id=#{userId}
+		WHERE user_id=#{userId}
+	</update>
+	
+	<update id="updateUserSafeSecurityByUserId">
+		UPDATE T_User_Safe
+		SET
+		<if test="@Ognl@isNotEmpty(mobile)">Mobile=#{mobile},</if>
+		<if test="@Ognl@isNotEmpty(bindMobile)">Bind_Mobile=#{bindMobile},</if>
+		<if test="@Ognl@isNotEmpty(email)">EMail=#{email},</if>
+		<if test="@Ognl@isNotEmpty(bindEmail)">Bind_EMail=#{bindEmail},</if>
+		<if test="@Ognl@isNotEmpty(idNo)">id_no=#{idNo},</if>
+		<if test="@Ognl@isNotEmpty(bindIdNo)">Bind_Id_no=#{bindIdNo},</if>
+		<if test="@Ognl@isNotEmpty(qqNo)">QQ_no=#{qqNo},</if>
+		Q1=#{q1},A1=#{a1},Q2=#{q2},A2=#{a2},Q3=#{q3},A3=#{a3},
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id=#{userId}
+		WHERE user_id=#{userId}
+	</update>
+
+	<update id="updateUserSafe">
+		UPDATE T_User_Safe SET
+
+		Mobile=#{mobile},
+		EMail=#{email},
+
+
+
+		id_no=#{idNo}
+
+		<if test="@Ognl@isNotEmpty(outDate)">
+			,
+			outDate=#{outDate}
+		</if>
+		<if test="@Ognl@isNotEmpty(validataKey)">
+			,
+			validataKey=#{validataKey}
+		</if>
+		WHERE Safe_id = #{safeId}
+	</update>
+
+	<select id="getUserSafeByColumn" resultMap="TUserSafe">
+		SELECT
+		*
+		FROM
+		T_USER_SAFE us
+		WHERE
+		${columnName} = #{columnValue}
+	</select>
+	
+	
+	<select id="getValiUserSafeByColumn" resultMap="TUserSafe">
+		SELECT
+		*
+		FROM
+		T_USER_SAFE
+		WHERE ${statusName} = #{statusValue} and 
+		${columnName} = #{columnValue}		
+	</select>
+	
+	<select id="getValiUserSafeByQuesion" resultMap="TUserSafe">
+		SELECT
+		*
+		FROM
+		T_USER_SAFE
+		WHERE Q1 is not null and 
+		${columnName} = #{columnValue}
+	</select>
+
+	<insert id="insertUserSafe">
+		insert into
+		T_User_Safe
+		(
+		<if test="@Ognl@isNotEmpty(userId)">user_id,</if>
+		<if test="@Ognl@isNotEmpty(mobile)">Mobile,</if>
+		<if test="@Ognl@isNotEmpty(bindMobile)">Bind_Mobile,</if>
+		<if test="@Ognl@isNotEmpty(email)">EMail,</if>
+		<if test="@Ognl@isNotEmpty(bindEmail)">Bind_EMail,</if>
+		<if test="@Ognl@isNotEmpty(idNo)">id_no,</if>
+		<if test="@Ognl@isNotEmpty(bindIdNo)">Bind_Id_no,</if>
+		<if test="@Ognl@isNotEmpty(qqNo)">QQ_no,</if>
+		<if test="@Ognl@isNotEmpty(q1)">Q1,</if>
+		<if test="@Ognl@isNotEmpty(a1)">A1,</if>
+		<if test="@Ognl@isNotEmpty(q2)">Q2,</if>
+		<if test="@Ognl@isNotEmpty(a2)">A2,</if>
+		<if test="@Ognl@isNotEmpty(q3)">Q3,</if>
+		<if test="@Ognl@isNotEmpty(a3)">A3,</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID,</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime,</if>
+		Safe_id
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+		<if test="@Ognl@isNotEmpty(mobile)">#{mobile},</if>
+		<if test="@Ognl@isNotEmpty(bindMobile)">#{bindMobile},</if>
+		<if test="@Ognl@isNotEmpty(email)">#{email},</if>
+		<if test="@Ognl@isNotEmpty(bindEmail)">#{bindEmail},</if>
+		<if test="@Ognl@isNotEmpty(idNo)">#{idNo},</if>
+		<if test="@Ognl@isNotEmpty(bindIdNo)">#{bindIdNo},</if>
+		<if test="@Ognl@isNotEmpty(qqNo)">#{qqNo},</if>
+		<if test="@Ognl@isNotEmpty(q1)">#{q1},</if>
+		<if test="@Ognl@isNotEmpty(a1)">#{a1},</if>
+		<if test="@Ognl@isNotEmpty(q2)">#{q2},</if>
+		<if test="@Ognl@isNotEmpty(a2)">#{a2},</if>
+		<if test="@Ognl@isNotEmpty(q3)">#{q3},</if>
+		<if test="@Ognl@isNotEmpty(a3)">#{a3},</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">#{checkTime},</if>
+		#{safeId}
+		)
+	</insert>
+
+	<update id="">
+
+
+	</update>
+
+	<select id="queryEntityByEmail" resultMap="TUser_UserSafe">
+		SELECT
+		us.safe_id,us.user_id,us.EMail,us.Bind_EMail,u.RealName,u.LoginName
+		FROM T_USER_SAFE US,t_user u WHERE us.user_id=u.user_id and US.EMail
+		LIKE #{emailAdd}
+	</select>
+
+	<select id="queryEntityByValidateKey" resultMap="TUserSafe"
+		parameterType="com.deelon.loan.model.front.TUserSafe">
+		SELECT * FROM T_USER_SAFE US WHERE
+		US.validataKey=#{validataKey}
+	</select>
+
+	<select id="queryEntityByUserId" resultMap="TUserSafe">
+		SELECT * FROM
+		T_USER_SAFE US WHERE US.user_id=#{userId}
+	</select>
+	
+	<select id="getAll" resultMap="TUserSafe">
+		SELECT <include refid="columns"/>
+		FROM t_user_safe   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Safe_id  desc
+		</if>
+	</select>
+	
+	
+	<select id="getById" parameterType="java.lang.Long" resultMap="TUserSafe">
+		SELECT *
+		FROM t_user_safe 
+		WHERE 1=1 and
+		Safe_id = #{id} 
+	</select>
+	
+		<update id="update" >
+		UPDATE t_user_safe SET
+	        user_id = #{userId} ,
+	        Mobile = #{mobile} ,
+	        Bind_Mobile = #{bindMobile} ,
+	        EMail = #{email} ,
+	        Bind_EMail = #{bindEmail} ,
+	        id_no = #{idNo} ,
+	        Bind_Id_no = #{bindIdNo} ,
+	        QQ_no = #{qqNo} ,
+	        Q1 = #{q1} ,
+	        A1 = #{a1} ,
+	        Q2 = #{q2} ,
+	        A2 = #{a2} ,
+	        Q3 = #{q3} ,
+	        A3 = #{a3} ,
+	        outDate = #{outDate} ,
+	        validataKey = #{validataKey} ,
+	        StatusID = #{statusID} ,
+	        CheckTime = #{checkTime} 
+        WHERE 
+	        Safe_id = #{safeId} 
+	</update>
+</mapper>

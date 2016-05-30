@@ -1,0 +1,165 @@
+      /*以上是公用侧边栏样式*/
+
+      .con-tit {
+        height: 46px;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        line-height: 46px;
+        border: 1px solid #f9d785;
+        font-size: 22px;
+        background-color: #fffbe9;
+        color: #ff5704;
+      }
+      .tips {
+        width: 695px;
+        height: 30px;
+        margin: 20px auto;
+        padding-left: 15px;
+        background-color: #fffbe9;
+        border: 1px solid #f9d682;
+        line-height: 30px;
+        font-size: 14px;
+        color: #ff5704;
+      }
+      .con-box {
+        overflow: hidden;
+        padding-bottom: 20px;
+        text-align: left;
+      }
+      .con-box ul {
+
+      }
+      .con-box ul li {
+        margin-left: 25px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        height: 55px;
+        line-height: 55px;
+        padding-left: 20px;
+        padding-right: 30px;
+        background-color: #fffbe9;
+        font-size: 14px;
+        color: #909090;
+      }
+      .con-box ul li a {
+        float: right;
+        color: #ff5704;
+      }
+      .con-box .anquan-ite-tit {
+        margin-left: 20px;
+        margin-right: 40px;
+        font-size: 16px;
+        color: #555;
+        font-weight: bold;
+      }
+      .anquan-ite-bg {
+        float: left;
+        margin-top: 11px;
+        display: inline-block;
+        width: 33px;
+        height: 36px;
+        background-image: url(Skin/default/images/anquan_ite_bg.png);
+      }
+      .con-box .wenxintishi {
+        margin-left: 222px;
+        margin-bottom: 10px;
+        line-height: 24px;
+        font-size: 13px;
+        color: #555;
+        background-image: url(Skin/default/images/dengpao.png);
+        background-repeat: no-repeat;
+      }
+      .con-box .wenxintishi span {
+        display: inline-block;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      .con-box dl {
+        overflow: hidden;
+        width: 100%;
+        font-size: 15px;
+        line-height: 32px;
+      }
+      .con-box dt {
+        position: relative;
+        top: 2px;
+        float: left;
+        width: 33%;
+        height: 30px;
+        text-align: right;
+        line-height: 30px;
+        font-weight: bold;
+      }
+      .con-box dt span {
+        color: red;
+      }
+      .con-box dd {
+        float: left;
+        width: 65%;
+        height: 34px;
+        margin-left: 10px;
+      }
+      .con-box dd span {
+        margin-left: 5px;
+        font-size: 12px;
+        color: #aaa;
+      }
+      .con-box dd .text-input {
+        width: 234px;
+        height: 20px;
+        padding: 6px 5px;
+        line-height: 20px;
+        font-size: 14px;
+        color: #999;
+        border: 1px solid #a8a8a8;
+      }
+      .con-box .error-tips {
+        height: 20px;
+        margin-top: 10px;
+        line-height: 20px;
+        font-size: 12px;
+        color: #fff;
+      }
+      .con-box .sub-btn {
+        height: 34px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+        line-height: 34px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5200;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .con-box .yanzhengma-input input {
+        width: 75px;
+        float: left;
+        margin-right: 10px;
+      }
+      .con-box .yanzhengma-input img {
+        float: left;
+        margin-right: 10px;
+        padding-top: 7px;
+      }
+      .con-box .yanzhengma-input a {
+        font-size: 12px;
+        color: #ff5200;
+      }
+      .con-box .dongtai-yanzhengma input {
+        width: 75px;
+      }
+      .con-box .dongtai-yanzhengma a {
+        display: inline-block;
+        width: 137px;
+        margin-left: 10px;
+        text-align: center;
+        background-color: #ebebeb;
+        color: #555;
+      }
+      .con-box .dongtai-yanzhengma a:hover {
+        text-decoration: none;
+      }

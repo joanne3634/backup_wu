@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TTask">
+
+	<resultMap id="Ttask" type="com.deelon.loan.model.front.TTask">	
+        <id property="taskId" column="Task_id" />
+        <result property="groupId" column="GroupID"/>
+        <result property="taskDesc" column="TaskDesc"/>
+        <result property="imgSrc" column="ImgSrc"/>
+        <result property="creditAdd" column="CreditAdd"/>
+        <result property="linkUrl" column="LinkUrl"/>
+        <result property="targetType" column="TargetType"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Task_id,GroupID,TaskDesc,ImgSrc,CreditAdd,LinkUrl,TargetType
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(taskId)">AND Task_id = #{taskId}</if>
+	       <if test="@Ognl@isNotEmpty(groupId)">AND GroupID = #{groupId}</if>
+	       <if test="@Ognl@isNotEmpty(taskDesc)">AND TaskDesc = #{taskDesc}</if>
+	       <if test="@Ognl@isNotEmpty(imgSrc)">AND ImgSrc = #{imgSrc}</if>
+	       <if test="@Ognl@isNotEmpty(creditAdd)">AND CreditAdd = #{creditAdd}</if>
+	       <if test="@Ognl@isNotEmpty(linkUrl)">AND LinkUrl = #{linkUrl}</if>
+	       <if test="@Ognl@isNotEmpty(targetType)">AND TargetType = #{targetType}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TTask">
+		INSERT INTO t_task
+		(<include refid="columns"/>)
+		VALUES
+		(#{taskId} ,#{groupId} ,#{taskDesc} ,#{imgSrc} ,#{creditAdd} ,#{linkUrl} ,#{targetType}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_task 
+		WHERE
+        Task_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TTask">
+		UPDATE t_task SET
+	        GroupID = #{groupId} ,
+	        TaskDesc = #{taskDesc} ,
+	        ImgSrc = #{imgSrc} ,
+	        CreditAdd = #{creditAdd} ,
+	        LinkUrl = #{linkUrl} ,
+	        TargetType = #{targetType} 
+        WHERE 
+	        Task_id = #{taskId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Ttask">
+		SELECT <include refid="columns"/>
+		FROM t_task 
+		WHERE 1=1 and
+		Task_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Ttask">
+		SELECT <include refid="columns"/>
+		FROM t_task   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Task_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_task 
+		<include refid="dynamicWhere" />   
+    </select>   
+	<select id="getTaskByGroupId" resultMap="Ttask" parameterType="java.lang.Long">
+		select <include refid="columns"/> from t_task 
+		where GroupID = #{groupID}
+	</select>
+	
+</mapper>
+

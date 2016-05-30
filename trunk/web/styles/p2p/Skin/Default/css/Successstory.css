@@ -1,0 +1,120 @@
+#body {
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+      #bodyleft {
+        float: left;
+        width: 173px;
+      }
+      #CorInf-sidebar {
+        overflow: hidden;
+        border: 1px solid #f9d682;
+      }
+      #CorInf-sidebar .hover {
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #CorInf-sidebar>ul>li {
+        margin-bottom: 1px;
+      }
+      #CorInf-sidebar>ul>li>a {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        color: #545454;
+        font-size: 15px;
+        text-align: center;
+        background-color: #fef9e1;
+      }
+      #CorInf-sidebar>ul>li>a:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #bodyright {
+        float: right;
+        width: 788px;
+        color: #555;
+      }
+      .bodyRightBorder {
+        border: 1px solid #f9d682;
+      }
+      .tit {
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        border-bottom: 1px solid #f9d682;
+        background-color: #fef9e1;
+      }
+      .con {
+        padding: 20px 25px;
+      }
+      .con p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        line-height: 25px;
+        font-size: 14px;
+        text-indent: 2em;
+        text-align: justify;
+      }
+      .shuxian {
+        display: inline-block;
+        float: left;
+        position: relative;
+        top: 9px;
+        height: 20px;
+        width: 0;
+        border-left: 3px solid #ff5704;
+        margin-left: 11px;
+        margin-right: 11px;
+      }
+      .con ul li {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #ccc;
+      }
+      .con ul li>a {
+        display: block;
+        font-size: 25px;
+        color: #ff5704;
+      }
+      .con ul li p>span {
+        float: right;
+        color: #ff5704;
+      }
+      .con ul li .p1 .fs24 {
+        font-size: 24px;
+      }
+      .con ul li .p1 {
+        text-indent: 0;
+        font-size: 16px;
+      }
+
+
+          .paging-index-box {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            color: #555;
+            text-align: center;
+          }
+          .paging-index-box a {
+            display: inline-block;
+            height: 22px;
+            margin-left: 3px;
+            margin-right: 3px;
+            padding-left: 8px;
+            padding-right: 8px;
+            line-height: 22px;
+            color: #999;
+            border: 1px solid #999;
+          }
+          .paging-index-box a:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff5200;
+            border-color: #ff5200;
+          }
+          .paging-index-box .page-num {
+            color: #ff5200;
+          }

@@ -1,0 +1,97 @@
+@CHARSET "UTF-8"; 
+      #body {
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+      #bodyleft {
+        float: left;
+        width: 173px;
+      }
+      #CorInf-sidebar {
+        overflow: hidden;
+        border: 1px solid #f9d682;
+      }
+      #CorInf-sidebar .hover {
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #CorInf-sidebar>ul>li {
+        margin-bottom: 1px;
+      }
+      #CorInf-sidebar>ul>li>a {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        color: #545454;
+        font-size: 15px;
+        text-align: center;
+        background-color: #fef9e1;
+      }
+      #CorInf-sidebar>ul>li>a:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #bodyright {
+        float: right;
+        width: 788px;
+        color: #555;
+      }
+      .bodyRightBorder {
+        border: 1px solid #f9d682;
+      }
+      .tit {
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        border-bottom: 1px solid #f9d682;
+        background-color: #fef9e1;
+      }
+      .con {
+      }
+      .con p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 25px;
+        font-size: 14px;
+        text-indent: 2em;
+        text-align: justify;
+      }
+      .shuxian {
+        display: inline-block;
+        float: left;
+        position: relative;
+        top: 9px;
+        height: 20px;
+        width: 0;
+        border-left: 3px solid #ff5704;
+        margin-left: 11px;
+        margin-right: 11px;
+      }
+      .con ul li {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #ccc;
+      }
+      .con ul li img {
+        margin-left: 10px;
+        margin-right: 10px;
+        vertical-align: top;
+      }
+      .con ul li>div {
+        display: inline-block;
+        width: 544px;
+        overflow: hidden;
+        margin-left: 10px;
+      }
+      .con ul li>div a {
+        color: #555;
+      }
+      .con ul li>div h2 {
+        font-size: 14px;
+      }
+      .con .mediaReport-p {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      } 

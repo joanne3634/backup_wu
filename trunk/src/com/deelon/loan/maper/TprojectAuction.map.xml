@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TprojectAuction">
+
+	<resultMap id="TprojectAuction" type="com.deelon.loan.model.sysManager.TprojectAuction">	
+        <id property="auctionId" column="Auction_id" />
+        <result property="transferId" column="Transfer_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="highestPrice" column="HighestPrice"/>
+        <result property="offerPrice" column="OfferPrice"/>
+        <result property="offerTime" column="OfferTime"/>
+        <result property="isBid" column="IsBid"/>
+        <result property="bidTime" column="BidTime"/>
+        <result property="isCancel" column="IsCancel"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Auction_id,Transfer_id,user_id,HighestPrice,OfferPrice,OfferTime,IsBid,BidTime,IsCancel
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(auctionId)">AND Auction_id = #{auctionId}</if>
+	       <if test="@Ognl@isNotEmpty(transferId)">AND Transfer_id = #{transferId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(highestPrice)">AND HighestPrice = #{highestPrice}</if>
+	       <if test="@Ognl@isNotEmpty(offerPrice)">AND OfferPrice = #{offerPrice}</if>
+	       <if test="@Ognl@isNotEmpty(offerTimeBegin)">AND OfferTime >= #{offerTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(offerTimeEnd)">AND OfferTime &lt;= #{offerTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isBid)">AND IsBid = #{isBid}</if>
+	       <if test="@Ognl@isNotEmpty(bidTimeBegin)">AND BidTime >= #{bidTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(bidTimeEnd)">AND BidTime &lt;= #{bidTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isCancel)">AND IsCancel = #{isCancel}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TprojectAuction">
+		INSERT INTO t_project_auction
+		(<include refid="columns"/>)
+		VALUES
+		(#{auctionId} ,#{transferId} ,#{userId} ,#{highestPrice} ,#{offerPrice} ,#{offerTime} ,#{isBid} ,#{bidTime} ,#{isCancel}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_project_auction 
+		WHERE
+        Auction_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TprojectAuction">
+		UPDATE t_project_auction SET
+	        Transfer_id = #{transferId} ,
+	        user_id = #{userId} ,
+	        HighestPrice = #{highestPrice} ,
+	        OfferPrice = #{offerPrice} ,
+	        OfferTime = #{offerTime} ,
+	        IsBid = #{isBid} ,
+	        BidTime = #{bidTime} ,
+	        IsCancel = #{isCancel} 
+        WHERE 
+	        Auction_id = #{auctionId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TprojectAuction">
+		SELECT <include refid="columns"/>
+		FROM t_project_auction 
+		WHERE
+		Auction_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TprojectAuction">
+		SELECT <include refid="columns"/>
+		FROM t_project_auction   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Auction_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_project_auction 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getByTransferId" resultMap="TprojectAuction">
+		SELECT <include refid="columns"/>
+		FROM t_project_auction
+		WHERE Transfer_id = #{transferId}
+		AND IsCancel = 0
+	</select>
+</mapper>
+

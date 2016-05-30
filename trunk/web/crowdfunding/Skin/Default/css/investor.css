@@ -1,0 +1,180 @@
+@charset "utf-8"; 
+.window{
+	width: 1100px;
+	margin: 0 auto;
+	font-family:"微软雅黑";
+}
+.incestorLeft{
+	width: 810px;
+	margin-top: 25px;
+}
+.incestorRight{
+	width: 265px;
+}
+.incestorLeft h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:2px  solid #cbcbcb;
+}
+.incestorLeft h3 img{
+	margin: 0px 10px 0px 5px;
+}
+.incestorLeftlist{
+	margin: 10px 5px 10px 5px;
+	font-size: 14px;
+	color: #666666;
+	text-align: left;
+}
+.incestorLeftlist dt{
+	clear: both;
+	float: left;
+	width: 120px;
+	height: 60px;
+	font-size: 16px;
+	line-height: 60px;
+}
+.incestorLeftlist dt img{
+	margin-right: 10px;
+}
+.incestorLeftlist dd{
+	float: left;
+	width: 670px;
+}
+.incestorLeftlist dd a{
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	margin: 15px 8px 10px 8px;
+	background: #f6f6f6;
+	color: #666666;
+}
+.incestorLeftlist dd a:hover,.incestorLeftlist dd .Ahover{
+	background: #ff5500;
+	color: #fff;
+}
+.incestorLeftlist dd span{
+	margin: 0px 10px 0px 10px;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
+	background: #f6f6f6;
+}
+.incestorLeftlist dd select{
+	padding: 5px;
+	margin: 0px 10px 0px 10px;
+	font-size: 16px;
+}
+.incestorList ul li{
+	margin: 10px;
+	float: left;
+	width: 380px;
+	height: 205px;
+	border: 1px solid #cacaca;
+}
+.Inveslist,.Inveslist a{
+	color: #666666;
+	font-size: 14px;
+	line-height: 25px;
+}
+.Inveslist p img{
+	margin: 0px 5px 0px 5px;
+}
+.Inveslist span{
+	color: #ff4e00;
+	cursor: pointer;
+}
+.Inveslist p{
+	font-size: 18px;
+	color: #292929;
+	line-height: 45px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.Inveslist span{
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	background:#ff4e00;
+	color: #fff;
+	margin-top: 20px;
+	font-size: 16px;
+}
+.Inves{
+	margin:25px 0px 0px 25px;
+	text-align: left;
+}
+.Invesimg img,.incestorRightimg img{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #ccc6c6;
+}
+.Invesimg{
+	width: 100px;
+	float: left;
+	margin:0px 20px 0px 10px;
+}
+.Invesimg div{
+	margin-top: 15px;
+	text-align:center;
+	color: #ff4e00;
+	font-size: 15px;
+	cursor: pointer;
+}
+ .paging-index-box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #555;
+    text-align: center;
+}
+.incestorRight{
+	margin:25px 0px 0px 25px;
+}
+.incestorRight h4{
+	width: 250px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dbdbdb;
+	text-align: left;
+}
+.incestorRight h4 span{
+	font-size: 24px;
+	display: inline-block;
+	color: #ff5200;
+	border-bottom: 1px solid #ff5200;
+}
+.InRightlist,.InRightlist a{
+	color: #666666;
+	font-size: 14px;
+	line-height: 25px;
+	margin-left: 15px;
+}
+.InRightlist{
+	min-height: 95px;
+}
+.InRightlist span{
+	cursor: pointer;
+}
+.InRightlist p{
+	font-size: 18px;
+	color: #292929;
+	line-height: 45px;
+}
+.incestorRightList{
+	margin:25px 0px 0px 0px;
+	text-align: left;
+}
+.incestorRightimg{
+	width: 100px;
+	float: left;
+	margin-right: 20px;
+}
+.incestorRightimg div{
+	margin-top: 15px;
+	text-align:center;
+	color: #ff4e00;
+	font-size: 15px;
+}
+.incestorRightList ul li{
+	margin-top: 30px;
+}

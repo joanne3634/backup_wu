@@ -1,0 +1,181 @@
+      #hyht-bodyright {
+        float: right;
+        width: 870px;
+        color: #555;
+      }
+
+      /*以上是公用侧边栏样式*/
+
+      
+      .tips {
+        width: 695px;
+        height: 30px;
+        margin: 20px auto 5px auto;
+        padding-left: 15px;
+        background-color: #fffbe9;
+        border: 1px solid #f9d682;
+        line-height: 30px;
+        font-size: 14px;
+        color: #ff5704;
+      }
+      .con-box {
+        overflow: hidden;
+        border-left: 1px solid #f9d682;
+        border-bottom: 1px solid #f9d682;
+        border-right: 1px solid #f9d682;
+      }
+      .con-box-items {
+      	text-align: left;
+        overflow: hidden;
+        padding-top: 10px;
+      }
+      .con-box-left {
+        width: 90px;
+        padding-left: 102px;
+        padding-right: 30px;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .con-box-items dl {
+        overflow: hidden;
+        width: 540px;
+        font-size: 15px;
+        line-height: 32px;
+      }
+      .con-box-items dt {
+        position: relative;
+        top: 2px;
+        float: left;
+        width: 127px;
+        height: 30px;
+        text-align: right;
+        line-height: 30px;
+        font-weight: bold;
+		
+		 
+      }
+      .con-box-items dt span {
+        color: red;
+      }
+      .con-box-items dd {
+        float: left;
+        width: 650px;
+        height: 40px;
+        margin-left: 250px;
+    		font-size:14px;
+    		font-weight:bold;
+    		font-family:"微软雅黑", "宋体";
+      }
+      .con-box-items dd span {
+        margin-left: 5px;
+        font-size: 12px;font-weight:normal;
+        color: #aaa; 
+      }
+      .con-box-items dd .text-input {
+        width: 184px;
+        height: 20px;
+        padding: 6px 5px;
+        line-height: 20px;
+        font-size: 14px;
+        border: 1px solid #a8a8a8;
+      }
+      .con-box-items .error-tips {
+        height: 20px;
+        margin-top: 10px;
+        line-height: 20px;
+        font-size: 12px;
+        color: #fff;
+      }
+      .con-box .sub-btn {
+        height: 34px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+        line-height: 34px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5200;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      select {
+        width: 187px;
+        line-height: 32px;
+        border: none;
+      }
+      .con-box-items .select-box {
+        width: 194px;
+        height: 32px;
+        margin-right: 200px;
+        border: 1px solid #a8a8a8;
+      }
+      .radio-input {
+        margin-left: 20px;
+      }
+  	  .con-main {
+  		  line-height: 46px;
+  	  }
+  	 .con-box-btn { padding-top:42px; padding-bottom:35px; text-align:center;}
+  	 .con-box-btn .Orange1 {
+  		  position: relative;
+      	top: 1px;
+      	display: inline-block;
+  		 	width:245px; height:43px;
+  		  background-image: url(../images/PassWord_Tab.png);
+  		  background-position:-1px -1px;
+  		  background-repeat:no-repeat;cursor:pointer;
+		 }
+  	 .con-box-btn .Orange2{
+  			position: relative;
+      	top: 1px; 
+      	display: inline-block;
+  		 	width:245px; height:43px;
+  		  background-image: url(../images/PassWord_Tab.png);
+  		  background-position:-1px -46px;
+  		  background-repeat:no-repeat; cursor:pointer;
+  		}
+  		.con-box-btn .green1{
+  		  position: relative;
+      	top: 1px;margin-left:28px;
+      	display: inline-block;
+  		 	width:245px; height:43px;
+  		  background-image: url(../images/PassWord_Tab.png);
+  		  background-position:-253px -1px;
+  		  background-repeat:no-repeat;cursor:pointer;
+  		 }
+  		 .con-box-btn .green2{
+    			position: relative;
+        	top: 1px; margin-left:28px;
+        	display: inline-block;
+    		 	width:245px; height:43px;
+    		  background-image: url(../images/PassWord_Tab.png);
+    		  background-position:-253px -46px;
+    		  background-repeat:no-repeat; cursor:pointer;
+  		  }
+    	  .SetAuto_btnSave{
+    		  border:none;
+    		  width:140px; height:34px; font-size:14px; color:#FFF; font-weight:bold;
+    		  background-image: url(../images/SetAuto_btnSave.png);
+    		  background-repeat:no-repeat;
+        }
+	     .con-box-list-bottom{ margin-bottom:37px;}
+	     .con-box2{ display:none;}
+       .con-box2 .wenxintishi {
+       	text-align: left;
+		    margin-top:30px;
+        margin-left: 50px;
+        margin-bottom: 10px;
+        line-height: 24px;
+        font-size: 13px;
+        color: #555;
+        background-image: url(../images/dengpao.png);
+        background-repeat: no-repeat;
+      }
+	   .con-box2 .wenxintishi span {
+        display: inline-block;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }

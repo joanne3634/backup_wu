@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_infotemplat-->
+		
+		     <form name="tinfotemplat">
+		     	<field property="infoTemplateId" depends="digits">
+					<arg position="0" key="tinfotemplat.infoTemplateId" />
+				</field>
+			 	<field property="templateName" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.templateName" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				 </var>
+		        </field>
+			 	<field property="serviceType" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.serviceType" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="infoType" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.infoType" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="infoFlag" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.infoFlag" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				 </var>
+		        </field>
+			 	<field property="header" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.header" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>256</var-value>
+				 </var>
+		        </field>
+			 	<field property="messasge" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplat.messasge" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>2000</var-value>
+				 </var>
+		        </field>
+			 	<field property="creator" depends="required">	
+		         <arg position="0" key="tinfotemplat.creator" />		        
+		        </field>
+			 	<field property="createTime" depends="maxlength">	
+		         <arg position="0" key="tinfotemplat.createTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_infotemplat-->
+</formset>
+</form-validation>
+ 
+
+ 

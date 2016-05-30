@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.Tarea">
+
+	<resultMap id="Tarea" type="com.deelon.loan.model.front.Tarea">	
+        <id property="areaId" column="area_id" />
+        <result property="areaName" column="area_name"/>
+        <result property="helpCode" column="help_code"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="nodeLevel" column="node_level"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="areaZip" column="area_zip"/>
+        <result property="areaCode" column="area_code"/>
+        <result property="isRecommended" column="IsRecommended"/>
+        <result property="areaNumber" column="area_Number"/>
+	</resultMap>
+	
+	<sql id="columns">
+		area_id,area_name,help_code,parent_id,node_level,order_code,area_zip,area_code,IsRecommended,area_number
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(areaId)">AND area_id = #{areaId}</if>
+	       <if test="@Ognl@isNotEmpty(areaName)">AND area_name LIKE '%${areaName}%'</if>
+	       <if test="@Ognl@isNotEmpty(helpCode)">AND help_code = #{helpCode}</if>
+	       <if test="@Ognl@isNotEmpty(parentId)">AND parent_id = #{parentId}</if>
+	       <if test="@Ognl@isNotEmpty(nodeLevel)">AND node_level = #{nodeLevel}</if>
+	       <if test="@Ognl@isNotEmpty(orderCode)">AND order_code = #{orderCode}</if>
+	       <if test="@Ognl@isNotEmpty(areaZip)">AND area_zip = #{areaZip}</if>
+	       <if test="@Ognl@isNotEmpty(areaCode)">AND area_code = #{areaCode}</if>
+	       <if test="@Ognl@isNotEmpty(isRecommended)">AND IsRecommended = #{isRecommended}</if>
+	       <if test="@Ognl@isNotEmpty(areaNumber)">AND area_number = #{areaNumber}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.Tarea">
+		INSERT INTO t_area
+		(<include refid="columns"/>)
+		VALUES
+		(#{areaId} ,#{areaName} ,#{helpCode} ,#{parentId} ,#{nodeLevel} ,#{orderCode} ,#{areaZip} ,#{areaCode},#{isRecommended},#{areaNumber}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_area 
+		WHERE
+        area_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.Tarea">
+		UPDATE t_area SET
+	        area_name = #{areaName} ,
+	        help_code = #{helpCode} ,
+	        parent_id = #{parentId} ,
+	        node_level = #{nodeLevel} ,
+	        order_code = #{orderCode} ,
+	        area_zip = #{areaZip} ,
+	        area_code = #{areaCode} ,
+	        IsRecommended=#{isRecommended},
+	        area_number = #{areaNumber}
+        WHERE 
+	        area_id = #{areaId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tarea">
+		SELECT <include refid="columns"/>
+		FROM t_area 
+		WHERE 1=1 and
+		area_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tarea">
+		SELECT <include refid="columns"/>
+		FROM t_area   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<!--<if test="@Ognl@isNotEmpty(Tarea_level)">AND node_level in (#{Tarea_level})</if>
+		 <if test="@Ognl@isNotEmpty(nodeLevel)">AND node_level = #{nodeLevel}</if>-->
+		order by area_id asc 
+		
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_area WHERE 1=1 
+		<include refid="dynamicWhere" />   
+    </select>   
+	<select id="getbyParentId" resultMap="Tarea">
+        SELECT * FROM t_area WHERE 1=1 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <select id="getRecommendTheCitys" resultMap="Tarea">
+    	 SELECT * from t_area t WHERE t.IsRecommended=1
+    </select>
+	
+	<select id="getRecommendCitysByMap" resultMap="Tarea">
+        SELECT * FROM t_area WHERE 1=1 
+		<include refid="dynamicWhere" />  
+		 order by order_code asc
+    </select> 
+</mapper>
+

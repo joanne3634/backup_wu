@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TuserAudit">
+
+	<resultMap id="TuserAudit" type="com.deelon.loan.model.sysManager.TuserAudit">	
+        <id property="userId" column="user_id" />
+        <result property="loginName" column="LoginName"/>
+        <result property="realName" column="RealName"/>
+        <result property="idNo" column="id_no"/>
+        <result property="registerTime" column="RegisterTime"/>
+        <result property="userSafe" column="user_safe"/>
+        <result property="userFamily" column="user_family"/>
+        <result property="userCompany" column="user_company"/>
+        <result property="userContact" column="user_contact"/>
+        <result property="auditor" column="auditor"/>
+	</resultMap>
+	
+	<sql id="columns">
+		tuser.user_id userid,tuser.LoginName,tuser.RealName,safe.id_no idno,tuser.RegisterTime,safe.StatusID usersafe,
+		family.StatusID userfamily,company.StatusID usercompany,contact.StatusID usercontact,tuser.Checker auditor,suser.ACCOUNT auditorName
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(userId)">AND tuser.user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(loginName)">AND tuser.LoginName = #{loginName}</if>
+	       <if test="@Ognl@isNotEmpty(realName)">AND tuser.RealName = #{realName}</if>
+	       <if test="@Ognl@isNotEmpty(idNo)">AND safe.id_no = #{idNo}</if>
+	       <if test="@Ognl@isNotEmpty(registerTimeBegin)">AND tuser.RegisterTime >= #{registerTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(registerTimeEnd)">AND tuser.RegisterTime &lt;= #{registerTimeEnd}</if>
+	       <if test="userMsg == 0 and statusID != 0">AND safe.StatusID = #{statusID}</if>
+	       <if test="userMsg == 1 and statusID != 0">AND family.StatusID = #{statusID}</if>
+	       <if test="userMsg == 2 and statusID != 0">AND company.StatusID = #{statusID}</if>
+	       <if test="userMsg == 3 and statusID != 0">AND contact.StatusID = #{statusID}</if>
+	       <if test="@Ognl@isNotEmpty(auditor)">AND suser.ACCOUNT = #{auditor}</if>
+	</sql>
+	<!-- <insert id="add" parameterType="com.deelon.loan.model.sysManager.TuserAudit">
+		INSERT INTO t_user_audit
+		(<include refid="columns"/>)
+		VALUES
+		(#{userId} ,#{loginName} ,#{realName} ,#{idNo} ,#{registerTime} ,#{userSafe} ,#{userFamily} ,#{userCompany} ,#{userContact} ,#{auditor}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_audit 
+		WHERE
+        user_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TuserAudit">
+		UPDATE t_user_audit SET
+	        LoginName = #{loginName} ,
+	        RealName = #{realName} ,
+	        id_no = #{idNo} ,
+	        RegisterTime = #{registerTime} ,
+	        user_safe = #{userSafe} ,
+	        user_family = #{userFamily} ,
+	        user_company = #{userCompany} ,
+	        user_contact = #{userContact} ,
+	        auditor = #{auditor} 
+        WHERE 
+	        user_id = #{userId} 
+	</update> -->
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserAudit">
+		SELECT <include refid="columns"/>
+		FROM t_user tuser
+		LEFT JOIN t_user_safe safe
+		ON tuser.user_id = safe.user_id
+		LEFT JOIN t_user_family family
+		ON tuser.user_id = family.user_id
+		LEFT JOIN t_user_company company
+		ON tuser.user_id = company.user_id
+		LEFT JOIN t_user_contact contact
+		ON tuser.user_id = contact.user_id
+		LEFT JOIN sys_user suser
+		ON tuser.Checker = suser.USERID 
+		WHERE 1=1 and
+		tuser.user_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserAudit">
+		SELECT <include refid="columns"/>
+		FROM t_user tuser
+		LEFT JOIN t_user_safe safe
+		ON tuser.user_id = safe.user_id
+		<if test="userMsg == 0 and statusID == 0">AND safe.StatusID = ''</if>
+		LEFT JOIN t_user_family family
+		ON tuser.user_id = family.user_id
+		<if test="userMsg == 1 and statusID == 0">AND family.StatusID = ''</if>
+		LEFT JOIN t_user_company company
+		ON tuser.user_id = company.user_id
+		<if test="userMsg == 2 and statusID == 0">AND company.StatusID = ''</if>
+		LEFT JOIN t_user_contact contact
+		ON tuser.user_id = contact.user_id
+		<if test="userMsg == 3 and statusID == 0">AND contact.StatusID = ''</if>
+		LEFT JOIN sys_user suser 
+		ON tuser.Checker = suser.USERID 
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by tuser.user_id  asc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(tuser.user_id) 
+		FROM t_user tuser
+		LEFT JOIN t_user_safe safe
+		ON tuser.user_id = safe.user_id
+		LEFT JOIN t_user_family family
+		ON tuser.user_id = family.user_id
+		LEFT JOIN t_user_company company
+		ON tuser.user_id = company.user_id
+		LEFT JOIN t_user_contact contact
+		ON tuser.user_id = contact.user_id 
+		LEFT JOIN sys_user suser 
+		ON tuser.Checker = suser.USERID 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getUserAduit" resultType="com.deelon.loan.model.sysManager.TuserAudit">
+		SELECT tuser.user_id userid,tuser.LoginName,tuser.RealName,safe.id_no idno,tuser.RegisterTime,safe.StatusID usersafe,
+		family.StatusID userfamily,company.StatusID usercompany,contact.StatusID usercontact,tuser.Checker auditor,suser.ACCOUNT auditorName
+		FROM t_user tuser
+		LEFT JOIN t_user_safe safe
+		ON tuser.user_id = safe.user_id
+		LEFT JOIN t_user_family family
+		ON tuser.user_id = family.user_id
+		LEFT JOIN t_user_company company
+		ON tuser.user_id = company.user_id
+		LEFT JOIN t_user_contact contact
+		ON tuser.user_id = contact.user_id
+		LEFT JOIN sys_user suser 
+		ON tuser.Checker = suser.USERID 
+	</select>
+	
+</mapper>
+

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TuserReportFollowup">
+
+	<resultMap id="TuserReportFollowup" type="com.deelon.loan.model.sysManager.TuserReportFollowup">	
+        <id property="followupId" column="Followup_id" />
+        <result property="reportId" column="Report_id"/>
+        <result property="notes" column="Notes"/>
+        <result property="linkWay" column="LinkWay"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+         <result property="stateId" column="StateId"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Followup_id,Report_id,Notes,LinkWay,Creator,CreateTime,stateId
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(followupId)">AND Followup_id = #{followupId}</if>
+	       <if test="@Ognl@isNotEmpty(reportId)">AND Report_id = #{reportId}</if>
+	       <if test="@Ognl@isNotEmpty(notes)">AND Notes = #{notes}</if>
+	       <if test="@Ognl@isNotEmpty(linkWay)">AND LinkWay = #{linkWay}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(stateId)">AND StateId &lt;= #{stateId}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TuserReportFollowup">
+		INSERT INTO t_user_report_followup
+		(<include refid="columns"/>)
+		VALUES
+		(#{followupId} ,#{reportId} ,#{notes} ,#{linkWay} ,#{creator} ,#{createTime},#{stateId}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_report_followup 
+		WHERE
+        Followup_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TuserReportFollowup">
+		UPDATE t_user_report_followup SET
+	        Report_id = #{reportId} ,
+	        Notes = #{notes} ,
+	        LinkWay = #{linkWay} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} ,
+	        StateId = #{stateId}
+        WHERE 
+	        Followup_id = #{followupId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserReportFollowup">
+		SELECT <include refid="columns"/>
+		FROM t_user_report_followup 
+		WHERE 1=1
+		Followup_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserReportFollowup">
+		SELECT <include refid="columns"/>
+		FROM t_user_report_followup   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Followup_id  desc
+		</if>
+	</select>
+		
+		<select id="getByReportId" resultMap="TuserReportFollowup">
+		SELECT <include refid="columns"/>
+		FROM t_user_report_followup   
+		WHERE 1=1 and Report_id=#{Report_id} 
+		order by CreateTime desc
+	 
+	</select>
+	
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_report_followup 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

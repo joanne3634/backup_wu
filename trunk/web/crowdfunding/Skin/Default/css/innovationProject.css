@@ -1,0 +1,958 @@
+@charset "utf-8"; 
+.window{
+	width: 1100px;
+	margin: 0 auto;
+	font-family:"微软雅黑";
+}
+
+/*innovationProjectDetails*/
+.InPrcontentleft{
+	padding-right: 20px;
+	margin-top: 25px;
+	width: 740px;
+	border-right: 1px  solid #cbcbcb;
+	padding-bottom: 50px;
+}
+.InPrcontentleft_top{
+	border-bottom:1px  solid #cbcbcb;
+	line-height: 35px;
+}
+.InPrcontentleft_top h3{
+	margin-top: 20px;
+	font-size: 28px;
+	color: #ff5200;
+}
+.InPrcontentleft_top h3 span{
+	padding: 3px 10px 3px 10px;
+	font-size: 16px;
+	color: #fff;
+	margin-left: 15px;
+	background: #25a025;
+}
+.InPrcontentleft_top div{
+	color: #999999;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.InPrcontentleft_top p{
+	color: #ff5200;
+	font-size: 22px;
+	line-height: 50px;
+}
+.InPrcontentleft_top p img{
+	margin-right: 5px;
+}
+.InPrcontentleft_top p span{
+	font-size: 16px;
+	color: #666666;
+	float: right;
+}
+.InPrcontentleft_top p em{
+	color: #ff5200;
+}
+.InPrNum{
+	margin-top: 30px;
+	color: #ff5500;
+	font-size: 16px;
+	line-height: 25px;
+}
+.InPrNum span{
+	color: #fff;
+	display: inline-block;
+	height: 31px;
+	background: url("../images/label3.png");
+	padding: 0px 10px 0px 15px;
+	font-size: 22px;
+	line-height: 31px;
+	margin: 0px 15px 0px 5px;
+}
+.tableContent{
+	background: #fff;
+	color: #292929;
+	font-size: 14px;
+	margin: 25px 0px 20px 0px;
+	border-collapse:separate;
+	border-spacing:1px;
+}
+.tableContent tr{
+	height: 50px;
+}
+.tableContent td{
+	background: #eeeeee;
+}
+.tableContentTD1{
+	text-align: right;
+	padding: 0px 5px 0px 5px;
+	width: 130px;
+}
+.tableContentTD2{
+	padding: 0px 5px 0px 5px;
+	text-align: left;
+	width: 230px;
+}
+.InPrdescribe{
+	margin:25px 0px 20px 0px; 
+}
+.InPrdescribe h4{
+	font-size: 24px;
+	color: #ff5200;
+	line-height: 35px;
+	text-align: left;
+	border-bottom:1px  solid #cbcbcb;
+}
+.InPrdescribe h4 img{
+	margin: 0px 10px 0px 10px;
+}
+.InPrdescribe p{
+	margin-top: 25px ;
+	font-size: 14px;
+	color: #292929;
+	line-height: 30px;
+}
+.InPrtag{
+	margin:40px 0px 0px 0px; 
+	height: 50px;
+}
+.InPrtag ul li{
+	float: left;
+	width: 103px;
+	height: 50px;
+	color: #333333;
+	font-size: 18px;
+	line-height: 50px;
+	background: #f3f3f3;
+	border: 1px solid #acacac;
+	cursor: pointer;
+}
+.InPrtag ul .InPrtagLichecked{
+	background:#ff5200;
+	color: #fff;
+}
+.InPrcontentright{
+	margin:45px 0px 0px 15px; 
+	padding-bottom: 50px;
+	width: 320px;
+	overflow: hidden;
+}
+.InPrcontentright h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:1px  solid #cbcbcb;
+	width: 320px;
+}
+.InPrcontentright h3 img{
+	margin: 0px 10px 0px 5px;
+}
+.InPruser{
+	margin-top: 25px;
+}
+.InPruser img{
+	width: 105px;
+	height: 105px;
+	float: left;
+	margin: 0px 15px 0px 20px;
+}
+.InPruser div{
+	width: 180px;
+	float: left;
+	text-align: left;
+}
+.InPruser div p{
+	font-size: 18px;
+	color: #292929;
+	margin-bottom: 20px;
+}
+.InPruser span{
+	background: #ff5200;
+	padding: 5px 15px 5px 15px;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+}
+.plan{
+	padding-top: 20px;
+}
+.plan h3{
+	background: #f3f3f3;
+}
+.plan h3 img{
+	margin-left: 15px;
+}
+.plantext{
+	margin: 30px 10px 30px 10px;
+	float: left;
+	width: 140px;
+	height: 82px;
+	background: url("../images/textIcont.png");
+}
+.plantext h5,.plantext2 h5{
+	font-size: 16px;
+	color: #fff;
+	line-height: 30px;
+}
+.plantext span,.plantext2 span{
+	line-height: 50px;
+	color: #329900;
+	font-size: 22px;
+}
+.plantext2{
+	margin: 0 auto;
+	width: 250px;
+	height: 82px;
+	background: url("../images/textIcont2.png");
+}
+.planUl ul li{
+	margin-top: 30px;
+	float: left;
+	width: 50%;
+}
+.planUl div,.planNum div{
+	color: #292929;
+	font-size: 16px;
+	line-height: 30px;
+}
+.planUl span{
+	color: #329900;
+	font-size: 26px;
+	line-height: 30px;
+	word-break:break-all;
+}
+.planNum{
+	padding-top: 30px;
+}
+.planNum span{
+	color: #ff5200;
+	font-size: 24px;
+}
+.planImg{
+	margin: 10px;
+	width: 300px;
+	height: 10px;
+	background: #ffa177;
+}
+.planImg div{
+	height: 10px;
+	background: #ff5200;
+}
+.planButton{
+	margin-top: 40px;
+	width: 320px;
+}
+.planButton ul li{
+	float: left;
+	width: 145px;
+	height: 45px;
+	background: #329900;
+	margin: 10px 0px 0px 10px;
+	line-height: 45px;
+	color: #fff;
+	font-size: 18px;
+	cursor: pointer;
+}
+.planButton ul li img{
+	margin-right: 5px;
+}
+.InPruserlist p,.recordlist p{
+	font-size: 18px;
+	color: #292929;
+}
+.InPruserlist,.InPruserlist a,.recordlist{
+	font-size: 14px;
+	color: #666666;
+	line-height: 25px;
+}
+.record .InPruser2{
+	padding-top: 30px;
+}
+.recordlist span{
+	color: #ff4e00;
+}
+.recordlist p{
+	margin-bottom: 15px;
+}
+.InPruserlist span{
+	padding: 3px 5px 3px 5px;
+	background: #ff4e00;
+	color: #fff;
+	font-size: 16px;
+}
+.InPruser2{
+	margin-top: 30px;
+	text-align: left;
+}
+.InPruserimg{
+	width: 100px;
+	float: left;
+	margin:0px 20px 0px 10px;
+}
+.InPruserimg img{
+	height: 100px;
+	width: 100px;
+}
+.InPruserimg div{
+	text-align:center;
+	color: #ff4e00;
+	font-size: 15px;
+	cursor: pointer;
+}
+.InPruser2 h6{
+	margin-top: 30px;
+	border-top: 1px dashed #cbcbcb;
+	color: #666666;
+	font-size: 14px;
+	line-height: 50px;
+	border-bottom: 1px dashed #cbcbcb;
+}
+.evaluate h4{
+	color: #ff5200;
+	text-align: left;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+.evaluate h4 img{
+	margin-right: 10px;
+}
+.evaluate div img{
+	margin: 15px 0px 10px 0px;
+}
+.evaluate span{
+	padding: 3px 5px 3px 5px;
+	background: #ff4e00;
+	color: #fff;
+	font-size: 16px;
+}
+.evaluate p{
+	margin-left: 5px;
+	color: #666666;
+	font-size: 14px;
+	line-height: 25px;
+	width: 300px;
+}
+.record{
+	margin-top: 30px;
+}
+.recordAll{
+	padding-top: 10px;
+	text-align: right;
+}
+.recordAll a{
+	font-size: 15px;
+	color: #ff4e00;
+}
+
+/*innovationProject*/
+.innovationRight{
+	margin-top: 35px;
+	width: 915px;
+}
+.innovationRight h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:2px  solid #cbcbcb;
+}
+.innovationlist{
+	margin: 10px 5px 10px 5px;
+	font-size: 14px;
+	color: #666666;
+	text-align: left;
+}
+.innovationlist dt{
+	width: 65px;
+	clear: both;
+	float: left;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 60px;
+}
+.innovationlist dt img{
+	margin-right: 10px;
+}
+.innovationlist dd{
+	float: left;
+	width: 840px;
+}
+.innovationlist .innovationlistdt{
+	width: 95px;
+}
+.innovationlist .innovationlistdd{
+	width: 775px;
+}
+.innovationlist dd a{
+	padding: 5px 10px 5px 10px;
+	margin: 15px 5px 10px 5px;
+	background: #f6f6f6;
+	color: #666666;
+	display: inline-block;
+}
+.innovationlist dd a:hover,.innovationlist dd .Ahover{
+	background: #ff5500;
+	color: #fff;
+}
+.innovationlist dd span{
+	margin: 0px 5px 0px 5px;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
+	background: #f6f6f6;
+}
+.rank{
+	margin:5px 10px 0px 0px;
+	text-align: center;
+}
+.rank ul li{
+	float: left;
+	color: #999999;
+	font-size: 14px;
+	height: 35px;
+	line-height: 35px;
+	width: 105px;
+	border: 1px solid #bdbdbd;
+	cursor: pointer;
+	/*background: url("../images/upIcont.png") 85px 10px no-repeat;*/
+}
+.rank ul .rankChecked{
+	/*background: url("../images/upIcont2.png") 85px 10px no-repeat;*/
+	color: #ff5200;
+}
+.innovationProjectList{
+	margin-bottom: 30px;
+}
+.innovationProjectList ul li{
+	clear: both;
+	margin: 20px 0px 10px 0px;
+	padding-bottom: 30px;
+	border-bottom: 1px dashed #bcbcbc;
+}
+.innovationimg{
+	float: left;
+	margin-right: 20px;
+	position: relative;
+}
+.innovationimg img{
+	width: 220px;
+	height:130px;
+	border: 1px solid #ccc6c6;
+}
+.innovationimg div{
+	width: 67px;
+	height: 67px;
+	position: absolute;
+	top: 0px;
+	left:0px;
+	z-index: 100;
+	background: url("../images/icon_suc.png");
+}
+.innovationProjectList ul li h4{
+	font-size: 28px;
+	color: #ff5200;
+	line-height: 40px;
+	margin-left: 20px;
+	text-align: left;
+	width: 600px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.innovationProjectList ul li h4 a{
+	color: #ff5200;
+}
+.money{
+	margin-top: 10px;
+	border-left: 2px solid #ff5200;
+	font-size: 16px;
+	color: #333333;
+	line-height: 30px;
+	padding-left: 10px;
+	text-align: left;
+}
+.money p label{
+	margin: 0px 10px 0px 10px;
+}
+.money p span{
+	background: url("../images/label2.png");
+}
+.money span{
+	margin:0px 15px 0px 5px;
+	text-align: center;
+	font-size: 22px;
+	color: #fff;
+	display: inline-block;
+	line-height: 30px;
+	height: 31px;
+	width: 100px;
+}
+.money div{
+	margin-top: 10px;
+	display: inline-block;
+}
+.moneyspan1{
+	background: url("../images/label4.png");
+}
+.moneyspan2{
+	background: url("../images/label5.png");
+}
+.character{
+	padding-top: 20px;
+}
+.character div{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 900px;
+	font-size: 14px;
+	color: #666666;
+	line-height: 35px;
+	text-align: left;
+}
+.character img{
+	margin: 0px 5px 0px 5px;
+}
+.character .characterLeft{
+	width: 240px;
+	display: inline-block;
+	height: 100px;
+}
+.character .characterRight{
+	width: 660px;
+	display: inline-block;
+}
+.character .characterLeft div{
+	display: inline-block;
+	width: 107px;
+	height: 75px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	line-height: 30px;
+}
+.character .characterLeft p{
+	text-align: center;
+	font-size: 24px;
+	margin-top: 10px;
+}
+.characterLeft1 p{
+	color: #ff5500;
+}
+.characterLeft2 p{
+	color: #339900;
+}
+.characterLeft1{
+	background:  url("../images/textIcont3.png");
+}
+.characterLeft2{
+	background:  url("../images/textIcont4.png");
+}
+.innovationLeft{
+	margin-top: 20px;
+	position: relative;
+	font-size: 20px;
+}
+.fixation ul{
+	position: fixed;
+	top:0px;
+	z-index: 100;
+}
+.innovationLeft ul li {
+	display: block;
+	width: 120px;
+	height: 110px;
+	border: 1px solid #bdbdbd;
+	color: #666666;
+	cursor: pointer;
+}
+.innovationLeft ul li span{
+	display: inline-block;
+}
+.innovationspan1{
+	background: url("../images/innovationIcont_1.png");
+	width: 45px;
+	height: 48px;
+	margin: 15px 0px 10px 0px;
+}
+.innovationhover .innovationspan1 {
+	background: url("../images/innovationIcont.png");
+}
+.innovationspan2{
+	background: url("../images/innovationIcont2_1.png");
+	width: 47px;
+	height: 48px;
+	margin: 15px 0px 10px 0px;
+}
+.innovationhover .innovationspan2 {
+	background: url("../images/innovationIcont2.png");
+}
+.innovationspan3{
+	background: url("../images/innovationIcont3_1.png");
+	width: 54px;
+	height: 57px;
+	margin-top: 15px;
+}
+.innovationhover .innovationspan3 {
+	background: url("../images/innovationIcont3.png");
+}
+.innovationLeft ul .innovationhover{
+	border:1px solid #ff5200;
+	color: #fff;
+	background: #ff5200;
+}
+.triangle{
+	position: relative;
+	left: 115px;
+	top: -60px;
+	z-index: -1;
+    width:0;
+    height:0;
+    border-width:15px;
+    border-style:solid dashed dashed dashed;
+    border-color:transparent     transparent  transparent #ff5200;
+    display: none;
+}
+.innovationhover .triangle{
+	display: block;
+}
+.TopPath{
+	font-size: 13px;
+	color: #4c4845;
+}
+.titlebottom{
+	height: 50px;
+	line-height: 50px;
+	text-align: left;
+	border-bottom:1px  solid #cbcbcb;
+	margin-right: 30px;
+}
+.titlebottom span{
+	display: inline-block;
+	font-size: 24px;
+	color: #ff5200;
+	border-bottom:1px  solid #ff5200;
+}
+.singlePerson{
+	margin: 30px 0px 30px 0px;
+}
+.abstract{
+	float: left;
+	width: 430px;
+	font-size: 14px;
+	color: #666666;
+	line-height: 25px;
+}
+.abstract div{
+	width: 430px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 20px;
+	color: #292929;
+	text-align: left;
+}
+.singlemoney{
+	margin-left: 20px;
+	float: left;
+	width: 107px;
+	height: 75px;
+	background:  url("../images/textIcont3.png");
+}
+.singlemoney h6{
+	font-size: 18px;
+	color: #fff;
+	line-height: 30px;
+}
+.singlemoney span{
+	font-size: 28px;
+	color: #25a025;
+	line-height: 50px;
+}
+.AndRecordPerson ul li{
+	margin-right: 30px;
+	border-bottom:1px  dashed #cbcbcb;
+}
+.applyEnquiryH3{
+	margin-top: 20px;
+	line-height: 50px;
+	font-size: 24px;
+	color: #ff5200;
+	text-align: left;
+	border-bottom:1px  solid #cbcbcb;
+}
+.applyEnquiryH3 img{
+	margin-right: 10px;
+
+}
+.applyEnquiryList{
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 90%;
+	border:1px  solid #cbcbcb;
+	background: #ffffc4;
+	text-align: left;
+	padding: 30px;
+}
+.ApEnList{
+	font-size: 16px;
+	color: #141414;
+	border-bottom:1px  dashed #cbcbcb;
+	padding-bottom: 30px;
+}
+.ApEnList em{
+	font-size: 24px;
+	color: #ff5200;
+}
+.ApEnList span{
+	color: #ff5200;
+}
+.ApEnListP{
+	color: #ff5200;
+	font-size: 14px;
+	border-bottom:1px  dashed #cbcbcb;
+	padding-bottom: 20px;
+	line-height: 30px;
+	margin-top: 10px;
+}
+.ApEnListdiv{
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+}
+.ApEnListdiv h5{
+	font-size: 18px;
+	margin-top: 20px;
+}
+.ApEnListdiv div{
+	margin-top: 30px;
+	font-size: 16px;
+}
+.patternPaymentNav{
+	height: 50px;
+	margin: 30px 0px 30px 0px;
+	border-bottom: 3px solid #ff5200;
+}
+.patternPaymentNav ul li{
+	float: left;
+	padding: 0px 20px 0px 20px;
+	height: 49px;
+	border: 1px solid #cccccc;
+	margin: 0px;
+	margin-right: 10px;
+	border-bottom: 0px;
+	cursor: pointer;
+	font-size: 20px;
+	color: #666666;
+	line-height: 49px;
+}
+.patternPayment .applyEnquiryH3{
+	border-bottom: 0px;
+}
+.patternPaymentNav ul .PaPaNavChecked{
+	border-top: 1px solid #ff5200;
+	background: url("../images/background.png") repeat-x;
+	border-bottom: 3px solid #ffffff;
+	color: #ff5200;
+}
+.PaPacontentList{
+	display: none;
+}
+.PaPacontentList ul li{
+	margin-top: 10px;
+	width: 220px;
+	float: left;
+}
+.PaPacontentList ul li img{
+	width: 160px;
+	height: 45px;
+}
+.PaPacontentList ul li input{
+	margin-right: 10px;
+}
+.PaPacontentList ul li a{
+	font-size: 14px;
+	color: #333333;
+	line-height: 50px;
+}
+.PaPacontentList span{
+	margin-top: 20px;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	padding: 7px 15px 7px 15px;
+	background: #6fb701;
+	border: 1px solid #cccccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.PaPacontentList p{
+	padding-left: 20px;
+	font-size: 14px;
+	color: #141414;
+	line-height: 30px;
+}
+.PaPadic p{
+	font-size: 18px;
+	line-height: 40px;
+}
+.PaPadic img{
+	float: left;
+}
+.ProjectDynamicLeft{
+	width: 740px;
+	margin: 25px 20px 0px 0px;
+}
+.ProjectDynamicLeft h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:2px  solid #cbcbcb;
+}
+.ProjectDynamicLeft ul li{
+	padding: 40px 0px 40px 5px;
+	text-align: left;
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+.ProjectDynamicLeft h3 img{
+	margin: 0px 10px 0px 5px;
+}
+.ProjectDynamicName {
+	width: 460px;
+	padding-left: 25px;
+}
+.ProjectDynamicName h4{
+	color: #292929;
+	font-size: 24px;
+}
+.ProjectDynamicName div{
+	font-size: 14px;
+	line-height: 50px;
+	color: #292929;
+}
+.ProjectDynamicName  img{
+	margin: 0px 10px 0px 0px;
+}
+.ProjectDynamicName div span{
+	margin: 0px 10px 0px 10px;
+}
+.ProjectDynamicName p{
+	font-size: 14px;
+	line-height: 30px;
+	color: #666666;
+}
+.ProjectDynamicName span{
+	padding-left: 20px;
+}
+.ProjectDynamicName p a{
+	display: inline-block;
+}
+.comments{
+	margin:30px 20px 0px 0px;
+}
+.commentsTextarea{
+	height: 150px;
+	width: 725px;
+}
+.commentsprompt{
+	margin: 10px 20px 0px 20px;
+	color: #666666;
+	font-size: 14px;
+	text-align: left;
+}
+.commentsSpan{
+	font-size: 16px;
+	color: #fff;
+	background: #8ec017;
+	padding: 7px 15px 7px 15px;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.commentsList{
+	margin:30px 20px 0px 0px;
+}
+.commentsList ul li{
+	border-bottom: 1px dashed #dbdbdb;
+	padding: 40px 0px 40px 0px;
+}
+.commentsListLeft{
+	width: 130px;
+}
+.commentsListLeft img{
+	width: 95px;
+	height: 95px;
+	border: 1px solid #ccc6c6;
+}
+.commentsListRight{
+	text-align: left;
+	width: 570px;
+}
+.commentscontent{
+	color: #292929;
+	font-size: 14px;
+	line-height: 25px;
+}
+.commentscontent span{
+	font-size: 20px;
+	color: #ff5500;
+}
+.commentsTime{
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+}
+.commentsTime span{
+	cursor: pointer;
+	padding-left: 10px;
+}
+.commentsTextarea2{
+	width: 565px;
+	height: 70px;
+}
+.commentsReply{
+	width: 565px;
+	background: #f7f7f7;
+	padding: 15px 0px 20px 0px;
+}
+.commentsReplyLeft{
+	width: 100px;
+	text-align: center;
+}
+.commentsReplyLeft img{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #ccc6c6;
+}
+.commentsReplyRight{
+	width: 460px;
+}
+.commentsText{
+	display: none;
+}
+.innovationTagContent{
+	margin: 30px 0px 0px 0px;
+}
+.CommentNO{
+	font-size: 14px;
+	color: #292929;
+	line-height: 40px;
+}
+.CommentNO em{
+	color: #ff5500;
+}
+.InPrcontentleft .hint{
+	text-align: center;
+}
+.InPrcontentleft .ProjectDynamicLeft{
+	margin-top: 0px;
+}

@@ -1,0 +1,54 @@
+      #hyht-bodyright {
+        width: 795px;
+        color: #555;
+        text-align: left;
+      }
+
+      /*以上是公用侧边栏样式*/
+
+      .tips {
+        width: 695px;
+        height: 30px;
+        margin: 20px auto;
+        padding-left: 15px;
+        background-color: #fffbe9;
+        border: 1px solid #f9d682;
+        line-height: 30px;
+        font-size: 14px;
+        color: #ff5704;
+      }
+      .con-box {
+        overflow: hidden;
+        padding-bottom: 20px;
+      }
+      .con-box ul li {
+        margin-left: 25px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        height: 55px;
+        line-height: 55px;
+        padding-left: 20px;
+        padding-right: 30px;
+        background-color: #fffbe9;
+        font-size: 14px;
+        color: #909090;
+      }
+      .con-box ul li a {
+        float: right;
+        color: #ff5704;
+      }
+      .con-box .anquan-ite-tit {
+        margin-left: 20px;
+        margin-right: 40px;
+        font-size: 16px;
+        color: #555;
+        font-weight: bold;
+      }
+      .anquan-ite-bg {
+        float: left;
+        margin-top: 11px;
+        display: inline-block;
+        width: 33px;
+        height: 36px;
+        background-image: url(../images/anquan_ite_bg.png);
+      }

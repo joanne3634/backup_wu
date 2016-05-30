@@ -1,0 +1,361 @@
+
+/*Reset部分开始*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+small{font-size:12px;}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+legend{color:#000;}
+fieldset,img{border:0;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+.clear{clear: both;float: none;height: 0;overflow: hidden;}
+html .hide{display:none;}
+
+/*Reset部分结束*/
+
+/*常用样式归纳部分开始*/
+
+  /*宽度部分开始*/
+  .w75 { width: 75px; }
+  .w80 { width: 80px; }
+  .w100 { width: 100px; }
+  .w120 { width: 120px; }
+  .w140 { width: 140px; }
+  .w175 { width: 175px; }
+  .w260 { width: 260px; }
+  .w400 { width: 400px; }
+  .w700 { width: 700px; }
+
+  .w5_ { width: 5%; }
+  .w10_ { width: 10%; }
+  .w15_ { width: 15%; }
+  .w20_ { width: 20%; }
+  .w25_ { width: 25%; }
+  .w30_ { width: 30%; }
+  .w35_ { width: 35%; }
+  .w40_ { width: 40%; }
+  .w45_ { width: 45%; }
+  .w50_ { width: 50%; }
+  .w55_ { width: 55%; }
+  .w60_ { width: 60%; }
+  .w65_ { width: 65%; }
+  .w70_ { width: 70%; }
+  .w75_ { width: 75%; }
+  .w80_ { width: 80%; }
+  .w90_ { width: 90%; }
+  .w95_ { width: 95%; }
+
+  .max-w75 { max-width: 75px; }
+  /*宽度部分开始*/
+
+  /*高度部分开始*/
+  /*.h80 { height: 80px; }*/
+  .h100 { height: 100px; }
+  .max-h450 { height: 450px; }
+
+  .h100_ { height: 100%; }
+  /*高度部分结束*/
+  /*margin部分开始*/
+  .mt5 { margin-top: 5px; }
+  .mt10 { margin-top: 10px; }
+  .mt15 { margin-top: 15px; }
+  .mt20 { margin-top: 20px; }
+  .mt30 { margin-top: 30px; }
+  .mt50 { margin-top: 50px; }
+
+  .mr5 { margin-right: 5px; }
+  .mr10 { margin-right: 10px; }
+  .mr20 { margin-right: 20px; }
+  .mr30 { margin-right: 30px; }
+  .mr40 { margin-right: 40px; }
+  .mr50 { margin-right: 50px; }
+  .mr90 { margin-right: 90px; }
+  .mr100 { margin-right: 100px; }
+
+  .mb1 { margin-bottom: 1px; }
+  .mb5 { margin-bottom: 5px; }
+  .mb10 { margin-bottom: 10px; }
+  .mb15 { margin-bottom: 15px; }
+  .mb20 { margin-bottom: 20px; }
+  .mb25 { margin-bottom: 25px; }
+  .mb30 { margin-bottom: 30px; }
+  .mb40 { margin-bottom: 40px; }
+  .mb50 { margin-bottom: 50px; }
+
+  .ml15 { margin-left: 15px; }
+  .ml20 { margin-left: 20px; }
+  .ml25 { margin-left: 25px; }
+  .ml30 { margin-left: 30px; }
+  .ml35 { margin-left: 35px; }
+
+  .mlr20 {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .mtb5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .mtb10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .mtb20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ml-55 { margin-left: -55px; }
+  .ml-25 { margin-left: -25px; }
+  .ml5 { margin-left: 5px; }
+  .ml10 { margin-left: 10px; }
+
+  .ml3_{ margin-left: 3%; }
+  .ml5_{ margin-left: 5%; }
+
+  .mr1_ { margin-right: 1%; }
+  .mr2_ { margin-right: 2%; }
+  .mr3_ { margin-right: 3%; }
+  .mr5_ { margin-right: 5%; }
+  .mr10_ { margin-right: 10%; }
+  .mr25_ { margin-right: 25%; }
+  .mr40_ { margin-right: 40%; }
+  /*margin部分结束*/
+
+  /*padding部分开始*/
+  .pt5 { padding-top: 5px; }
+  .pt10 { padding-top: 10px; }
+  .pt15 { padding-top: 15px; }
+  .pt20 { padding-top: 20px; }
+  .pt30 { padding-top: 30px; }
+
+  .pr10 { padding-right: 10px; }
+  .pr15 { padding-right: 15px; }
+  .pr20 { padding-right: 20px; }
+  .pr30 { padding-right: 30px; }
+  .pr40 { padding-right: 40px; }
+
+  .pb5 { padding-bottom: 5px; }
+  .pb10 { padding-bottom: 10px; }
+  .pb15 { padding-bottom: 15px; }
+  .pb20 { padding-bottom: 20px; }
+  .pb30 { padding-bottom: 30px; }
+  
+  .pl10 { padding-left: 10px; }
+  .pl15 { padding-left: 15px; }
+  .pl20 { padding-left: 20px; }
+  .pl25 { padding-left: 25px; }
+  .pl30 { padding-left: 30px; }
+  .pl40 { padding-left: 40px; }
+  .pl50 { padding-left: 50px; }
+  .pl55 { padding-left: 55px; }
+
+
+  .plr5 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .plr20 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .plr25 {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .plr40 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .ptb10 {
+    padding-top: 10px;
+    padding-bottom: 10px; 
+  }
+  .ptb20 {
+    padding-top: 20px;
+    padding-bottom: 20px; 
+  }
+  /*padding部分开始*/
+
+  /*字体大小部分开始*/
+  .fs12 { font-size: 12px; }
+  .fs14 { font-size: 14px; }
+  .fs15 { font-size: 15px; }
+  .fs16 { font-size: 16px; }
+  .fs18 { font-size: 18px; }
+  .fs20 { font-size: 20px; }
+  .fs22 { font-size: 22px; }
+  .fs28 { font-size: 28px; }
+  /*字体大小部分开始*/
+
+  /*行高部分开始*/
+  .l-h-100_ { line-height: 1; }
+  .l-h-200_ { line-height: 2; }
+  .l-h-250_ { line-height: 2.5; }
+  /*行高部分开始*/
+
+  .b-ra3 { border-radius: 3px; }
+
+  /*字体粗细部分开始*/
+  .f-w-b { font-weight: bold; }
+  /*字体粗细部分开始*/
+
+  /*字体颜色部分开始*/
+  .red { color: red; }
+  .white { color: #fff; }
+  .green { color: green; }
+  .c { color: #555; }
+  .c-ccc { color: #ccc; }
+  .c-666 { color: #666; }
+  .c-aaa { color: #aaa; }
+  .c-999 { color: #999; }
+  /*字体颜色部分结束*/
+
+  /*浮动部分开始*/
+  .f-l { float: left; }
+  .f-r { float: right; }
+  .f-n { float: none; }
+  /*浮动部分结束*/
+
+  /*overflow部分开始*/
+  .o-h { overflow: hidden; }
+  .o-a { overflow: auto; }
+  /*overflow部分结束*/
+
+  /*不换行*/
+  .wh-s-now { white-space: nowrap; }
+  .wh-s-nom { white-space: normal; }
+  .wo-w-b-w { word-wrap: break-word; }
+
+  .c-p { cursor: pointer; }
+
+  .mlr-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.d-i { display: inline; }
+.d-i-b { display: inline-block; }
+.d-b { display: block; }
+.d-t-c { display: table-cell; }
+.d-n { display: none; }
+.t-l { text-align: left; }
+.t-c { text-align: center; }
+.t-r { text-align: right; }
+
+.v-a-t { vertical-align: top; }
+.v-a-m { vertical-align: middle; }
+.v-a-b { vertical-align: bottom; }
+.v-a--1 { vertical-align:-1px; }
+
+.c-m { color: #fe5400; }
+.bd-n { border: none; }
+.bd-999 { border: 1px solid #999; }
+.bdt-m {
+	border-top-width: 1px;
+	border-top-style: solid;
+  border-top-color: #f9d682;
+}
+.bdcb-m {
+  border-bottom-color: #f9d682;
+}
+.bdcb-xm {
+  border-bottom-color: #ff5500;
+}
+.bdbc { border-bottom: 1px solid #ccc; }
+.bdb-m {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #f9d682;
+}
+.bdb-xm {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ff5500;
+}
+.bdlr-m {
+	border-left-width: 1px;
+	border-left-style: solid;
+  border-left-color: #f9d682;
+	border-right-width: 1px;
+	border-right-style: solid;
+  border-right-color: #f9d682;
+}
+.bdlr-m {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #f9d682;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #f9d682;
+}
+.bdlrb-m {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #f9d682;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #f9d682;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+  border-bottom-color: #f9d682;
+}
+.bd-ccc { border: 1px solid #ccc; }
+.bdt-ccc { border-top: 1px solid #ccc; }
+.bdb-ccc { border-bottom: 1px solid #ccc; }
+.bdtb-ccc {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.bgc-m { background-color: #fff9d9; }
+.bgcf9fbfa { background-color: #f9fbfa; }
+.bgc-xm { background-color: #ff5704; }
+.bd-m { border: 1px solid #f9d682; }
+.bdc-m { border-color: #f9d682; }
+.bdc-xm { border-color: #b43c00; }
+.bd-xm { border: 1px solid #b43c00; }
+.bd-xxm { border: 1px solid #fe5400; }
+
+.bdc-green { border-color: #6db900; }
+.bdbc-green { border-bottom-color: #6db900; }
+.fff { color: #fff; }
+.bdc-ccc { border-color: #dedede; }
+.bdbc-ccc { border-bottom-color: #dedede; }
+.gray { color: #999; }
+.bdc-xxm { border-color: #fe5400; }
+
+.ccyc {/*超出隐藏*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*常用样式归纳部分结束*/
+
+.ccsl {/*超出隐藏*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.border-box {
+       -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+         -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.content-box {
+       -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+         -o-box-sizing: content-box;
+        -ms-box-sizing: content-box;
+            box-sizing: content-box;
+}

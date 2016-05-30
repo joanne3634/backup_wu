@@ -1,0 +1,289 @@
+
+	    #login-left h2 {
+	      font-size: 35px;
+	      font-family: SimHei;
+	      text-align: center;
+	      margin-bottom: 20px;
+	      color: #333;
+	    }
+	    #login-left dl {
+	      overflow: hidden;
+	      font-size: 16px;
+	    }
+	    #login-left dl dt {
+	      width: 100px;
+	      height: 36px;
+	      float: left;
+	      text-align: right;
+	      line-height: 36px;
+	      color: #666;
+	    }
+	    #login-left dl dd {
+	      width: 300px;
+	      height: 36px;
+	      margin-bottom: 25px;
+	      float: left;
+	      line-height: 36px;
+	    }
+	    #login-left dl dd input {
+	      width: 100%;
+	      line-height: 20px;
+	      height: 20px;
+	      padding: 6px 5px;
+	    }
+	    #login-left .yanzhengma-input input {
+	      width: 100px;
+	      float: left;
+	      margin-right: 10px;
+	    }
+	    #login-left .yanzhengma-input img {
+	      float: left;
+	      margin-right: 10px;
+	      padding-top: 7px;
+	    }
+	    #login-left .yanzhengma-input a {
+	      font-size: 12px;
+	      color: #ff5200;
+	    }
+	    .join-btn ,#login-right div a{
+	      width: 157px;
+	      height: 36px;
+	      display: inline-block;
+	      line-height: 36px;
+	      text-align: center;
+	      color: #fff;
+	      background-color: #ff5200;
+	    }
+        #login-right div a{
+            width: 120px;
+            margin: 20px 20px 0px 0px;
+            font-size: 16px;
+        }
+	    .join-btn:hover {
+	      text-decoration: none;
+	    }
+	    .tips {
+	      float: right;
+	      font-size: 12px;
+	    }
+	    .tips li {
+	      height: 18px;
+	      line-height: 18px;
+	    }
+	    .tips a {
+	      color: #ff5200;
+	    }
+	    .wenxintishi {
+	      margin-left: 35px;
+	      padding-left: 25px;
+	      color: red;
+	      font-size: 12px;
+	      background-image: url(../images/wenxintishi_bg.png);
+	      background-repeat: no-repeat;
+	    }
+
+        /*所有网站共用部分开始*/
+            /*reset部分S*/
+
+            /*reset部分E*/
+            /*宽度部分S*/
+                .w5_ { width: 5%; }
+                .w10_ { width: 10%; }
+                .w15_ { width: 15%; }
+                .w20_ { width: 20%; }
+                .w25_ { width: 25%; }
+                .w30_ { width: 30%; }
+                .w35_ { width: 35%; }
+                .w40_ { width: 40%; }
+                .w45_ { width: 45%; }
+                .w50_ { width: 50%; }
+                .w55_ { width: 55%; }
+                .w60_ { width: 60%; }
+                .w65_ { width: 65%; }
+                .w70_ { width: 70%; }
+                .w75_ { width: 75%; }
+                .w80_ { width: 80%; }
+                .w85_ { width: 85%; }
+                .w90_ { width: 90%; }
+                .w95_ { width: 95%; }
+                .w100_ { width: 100%; }
+            /*宽度部分E*/
+            /*margin部分S*/
+                .mt5 { margin-top: 5px; }
+                .mt10 { margin-top: 10px; }
+                .mt15 { margin-top: 15px; }
+                .mt20 { margin-top: 20px; }
+                .mt30 { margin-top: 30px; }
+                .mt40 { margin-top: 40px; }
+
+                .mr5 { margin-right: 5px; }
+                .mr10 { margin-right: 10px; }
+                .mr15 { margin-right: 15px; }
+                .mr20 { margin-right: 20px; }
+                .mr30 { margin-right: 30px; }
+                .mr40 { margin-right: 40px; }
+
+                .mb5 { margin-bottom: 5px; }
+                .mb10 { margin-bottom: 10px; }
+                .mb15 { margin-bottom: 15px; }
+                .mb20 { margin-bottom: 20px; }
+                .mb30 { margin-bottom: 30px; }
+                .mb40 { margin-bottom: 40px; }
+
+                .ml5 { margin-left: 5px; }
+                .ml10 { margin-left: 10px; }
+                .ml15 { margin-left: 15px; }
+                .ml20 { margin-left: 20px; }
+                .ml30 { margin-left: 30px; }
+                .ml40 { margin-left: 40px; }
+            /*margin部分E*/
+            /*padding部分S*/
+                .p20 { padding: 20px; }
+
+                .plr10 { padding-left: 10px;padding-right: 10px; }
+                .plr20 { padding-left: 20px;padding-right: 20px; }
+                .plr30 { padding-left: 30px;padding-right: 30px; }
+                .plr40 { padding-left: 40px;padding-right: 40px; }
+
+                .ptb10 { padding-top: 10px;padding-bottom: 10px; }
+                .ptb20 { padding-top: 20px;padding-bottom: 20px; }
+                .ptb30 { padding-top: 30px;padding-bottom: 30px; }
+                .ptb40 { padding-top: 40px;padding-bottom: 40px; }
+
+                .pt5 { padding-top: 5px; }
+                .pt10 { padding-top: 10px; }
+                .pt15 { padding-top: 15px; }
+                .pt20 { padding-top: 20px; }
+                .pt30 { padding-top: 30px; }
+                .pt40 { padding-top: 40px; }
+
+                .pr5 { padding-right: 5px; }
+                .pr10 { padding-right: 10px; }
+                .pr15 { padding-right: 15px; }
+                .pr20 { padding-right: 20px; }
+                .pr30 { padding-right: 30px; }
+                .pr40 { padding-right: 40px; }
+
+                .pb5 { padding-bottom: 5px; }
+                .pb10 { padding-bottom: 10px; }
+                .pb15 { padding-bottom: 15px; }
+                .pb20 { padding-bottom: 20px; }
+                .pb30 { padding-bottom: 30px; }
+                .pb40 { padding-bottom: 40px; }
+
+                .pl5 { padding-left: 5px; }
+                .pl10 { padding-left: 10px; }
+                .pl15 { padding-left: 15px; }
+                .pl20 { padding-left: 20px; }
+                .pl30 { padding-left: 30px; }
+                .pt40 { padding-left: 40px; }
+            /*padding部分E*/
+            /*位置S*/
+                .f-l { float: left; }
+                .f-n { float: none; }
+                .f-r { float: right; }
+
+                .t-l { text-align: left; }
+                .t-c { text-align: center; }
+                .t-r { text-align: right; }
+
+                .v-a-t { vertical-align: top; }
+                .v-a-m { vertical-align: middle; }
+                .v-a-b { vertical-align: bottom; }
+            /*位置E*/
+            /*字体大小部分S*/
+                .fs14 { font-size: 14px; }
+                .fs16 { font-size: 16px; }
+                .fs18 { font-size: 18px; }
+                .fs20 { font-size: 20px; }
+                .fs22 { font-size: 22px; }
+            /*字体大小部分E*/
+            /*行高部分S*/
+                .l-h-100_ { line-height: 1; }
+                .l-h-200_ { line-height: 2; }
+                .l-h-250_ { line-height: 2.5; }
+            /*行高部分E*/
+            /*字体粗细部分S*/
+                .f-w-b { font-weight: bold; }
+            /*字体粗细部分E*/
+            /*overflow部分S*/
+                .o-h { overflow: hidden; }
+                .o-a { overflow: auto; }
+            /*overflow部分E*/
+            /*不换行S*/
+                .wh-s-now { white-space: nowrap; }
+                .wh-s-nom { white-space: normal; }
+                .wo-w-b-w { word-wrap: break-word; }
+            /*不换行E*/
+
+            /*其他S*/
+                .red { color: red; }/*红色*/
+
+                .mlr-auto { margin-left: auto;margin-right: auto; }/*居中*/
+
+                .d-i-b { display: inline-block; }/*行内快*/
+
+                .c-p { cursor: pointer; }/*cursor:pointer*/
+
+                /*.f-w-b { font-weight: bold; }加粗*/
+            /*其他E*/
+        /*所有网站共用部分结束*/
+        /*本网站公用部分开始*/
+            /*主色调S*/
+                /*字体*/
+                .c {  }/*所有字体颜色*/
+                .c-m { color: #ff5200; }
+                .ccc {  }/*不同站点微小差异的灰色*/
+                /*背景*/
+                .bgc-ccc {  }
+
+                .bgc-s {  }
+                .bgc-m {  }
+                .bgc-l {  }
+
+                /*.bgc-2-s {  }
+                .bgc-2-m {  }
+                .bgc-2-l {  }*/
+
+                /*边框*/
+                .bd-m {  }
+                .bdt-m {  }
+                .bdb-m {  }
+                .bdtb-m {  }
+                .bd-ccc { border: 1px solid #ccc; }
+                .bdt-ccc { border-top: 1px solid #ccc; }
+                .bdb-ccc { border-bottom: 1px solid #ccc; }
+                .bdtb-ccc {
+                    border-top: 1px solid #ccc;
+                    border-bottom: 1px solid #ccc;
+                }
+            /*主色调E*/
+            /*公用的元素样式S*/
+                .de-tt {/*输入框样式*/
+                  height: 18px;
+                  line-height: 18px;
+                  padding: 6px 5px;
+                }
+            /*公用的元素样式E*/
+            /*其他S*/
+                .w-body { width: 1100px; }
+            /*其他E*/
+        /*本网站公用部分结束*/
+        /*登陆页面S*/
+        #login-left {
+            width: 450px;
+        }
+        #login-right p{
+            font-size: 16px;
+            color: #434343;
+        }
+        #login-right {
+            width: 451px;
+        }
+        #tongqian {
+            width: 241px;
+            height: 114px;
+            padding: 20px 50px;
+            background-image: url("../images/tongqian.png");
+        }
+        /*登陆页面E*/

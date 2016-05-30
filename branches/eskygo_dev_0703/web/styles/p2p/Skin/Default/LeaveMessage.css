@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+ #body {
+        margin-bottom: 30px;
+        overflow: hidden;
+      }
+      #bodyleft {
+        float: left;
+        width: 173px;
+      }
+      #CorInf-sidebar {
+        overflow: hidden;
+        border: 1px solid #f9d682;
+      }
+      #CorInf-sidebar .hover {
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #CorInf-sidebar>ul>li {
+        margin-bottom: 1px;
+      }
+      #CorInf-sidebar>ul>li>a {
+        display: block;
+        height: 35px;
+        line-height: 35px;
+        color: #545454;
+        font-size: 15px;
+        text-align: center;
+        background-color: #fef9e1;
+      }
+      #CorInf-sidebar>ul>li>a:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #fd8f59;
+      }
+      #bodyright {
+        float: right;
+        width: 788px;
+        color: #555;
+      }
+      .bodyRightBorder {
+        border: 1px solid #f9d682;
+      }
+      .tit {
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        border-bottom: 1px solid #f9d682;
+        background-color: #fef9e1;
+      }
+      .con {
+        padding: 20px 25px;
+      }
+      .con p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 25px;
+        font-size: 14px;
+        text-indent: 2em;
+        text-align: justify;
+      }
+      .shuxian {
+        display: inline-block;
+        float: left;
+        position: relative;
+        top: 9px;
+        height: 20px;
+        width: 0;
+        border-left: 3px solid #ff5704;
+        margin-left: 11px;
+        margin-right: 11px;
+      }
+      .con dl {
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 18px; 
+      }
+      .con dl dt {
+        height: 32px;
+        line-height: 32px;
+        padding-right: 10px;
+        text-align: right;
+        float: left;
+        width: 24%;
+      }
+      .con dl dd {
+        float: left;
+        width: 74%;
+        height: 32px;
+        margin-bottom: 30px;
+      }
+      .con dl dd input {
+        height: 18px;
+        padding: 6px 5px;
+        border: none;
+        border: 1px solid #ccc;
+      }
+      .con dl dd select {
+        padding: 0 5px;
+        height: 32px;
+        line-height: 32px;
+        border: 1px solid #ccc;
+      }
+      .con textarea {
+        padding: 5px;
+      }
+      .con>input {
+        width: 100px;
+        height: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+        text-align: center;
+        background-color: #ff5200;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }

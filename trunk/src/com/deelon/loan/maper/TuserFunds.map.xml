@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TUserFunds">
+	<resultMap id="TuserFunds" type="com.deelon.loan.model.front.TUserFunds">	
+	
+        <id property="fundsId" column="Funds_id" />
+        <result property="userId" column="user_id"/>
+        <result property="balance" column="Balance"/>
+        <result property="freeze" column="Freeze"/>
+        <result property="available" column="Available"/>
+        <result property="fundsIn" column="FundsIn"/>
+        <result property="fundsOut" column="FundsOut"/>
+        <result property="creditOut" column="CreditOut"/>
+        <result property="limitMaxIn" column="LimitMaxIn"/>
+        <result property="limitMaxOut" column="LimitMaxOut"/>
+        <result property="userName"  column="LoginName"/>
+        <result property="piEffectAmountTotal" column="PI_EffectAmount"/>
+        <result property="ploanRealTotal" column="P_LoanReal"/>
+        <result property="payMark" column="PayMark"/>
+        <result property="realName" column="RealName"/>
+        
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TUserFunds" id="TuserFunds_credit">
+		<id property="fundsId" column="Funds_id" />
+		<result property="creditIn" column="CreditIn"/>
+        <result property="creditOut" column="CreditOut"/>
+        <association property="user" javaType="com.deelon.loan.model.front.TUser" >
+        	<result property="groupID" column="GroupID"/>
+        </association>
+	</resultMap>
+	
+	
+	<resultMap id="TuserFunds_sysfile" type="com.deelon.loan.model.front.TUserFunds">	
+	
+        <id property="fundsId" column="Funds_id" />
+        <result property="userId" column="user_id"/>
+        <result property="balance" column="Balance"/>
+        <result property="freeze" column="Freeze"/>
+        <result property="available" column="Available"/>
+        <result property="fundsIn" column="FundsIn"/>
+        <result property="fundsOut" column="FundsOut"/>
+        <result property="creditOut" column="CreditOut"/>
+        <result property="creditIn" column="CreditIn"/>
+        <result property="fileId" column="fileId"/>
+         <result property="limitMaxIn" column="LimitMaxIn"/>
+        <result property="limitMaxOut" column="LimitMaxOut"/>
+        <result property="payMark" column="PayMark"/>
+        <result property="realName" column="RealName"/>
+        <result property="loginName" column="LoginName"/>
+        <result property="tradingPwd" column="TradingPwd"/>
+        <result property="bindMobile" column="Bind_Mobile"/>
+        <result property="bindEmail" column="Bind_EMail"/>
+        <result property="bindCard" column="Bind_Id_no"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Funds_id,uf.user_id,Balance,Freeze,Available,FundsIn,FundsOut,CreditOut,CreditIn,LimitMaxIn,LimitMaxOut,PayMark
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(fundsId)">AND Funds_id = #{fundsId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(balance)">AND Balance = #{balance}</if>
+	       <if test="@Ognl@isNotEmpty(freeze)">AND Freeze = #{freeze}</if>
+	       <if test="@Ognl@isNotEmpty(available)">AND Available = #{available}</if>
+	       <if test="@Ognl@isNotEmpty(fundsIn)">AND FundsIn = #{fundsIn}</if>
+	       <if test="@Ognl@isNotEmpty(fundsOut)">AND FundsOut = #{fundsOut}</if>
+	       <if test="@Ognl@isNotEmpty(creditOut)">AND CreditOut = #{creditOut}</if>
+	       <if test="@Ognl@isNotEmpty(creditIn)">AND CreditIn = #{creditIn}</if>
+	       <if test="@Ognl@isNotEmpty(limitMaxIn)">AND LimitMaxIn = #{LimitMaxIn}</if>
+	       <if test="@Ognl@isNotEmpty(limitMaxOut)">AND LimitMaxOut = #{LimitMaxOut}</if>
+	       <if test="@Ognl@isNotEmpty(userName)">AND us.LoginName LIKE '%${userName}%'</if>
+	       <if test="@Ognl@isNotEmpty(payMark)">AND PayMark = #{payMark}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TUserFunds">
+		INSERT INTO t_user_funds
+		(Funds_id,user_id,Balance,Freeze,Available,FundsIn,FundsOut,CreditOut,CreditIn,LimitMaxIn,LimitMaxOut,PayMark)
+		VALUES
+		(#{fundsId} ,#{userId} ,#{balance} ,#{freeze} ,#{available} ,#{fundsIn} ,#{fundsOut} ,#{creditOut} ,#{creditIn},#{limitMaxIn},#{limitMaxOut},#{payMark}   )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_funds 
+		WHERE
+        Funds_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TUserFunds">
+		UPDATE t_user_funds SET
+	        user_id = #{userId} ,
+	        Balance = #{balance} ,
+	        Freeze = #{freeze} ,
+	        Available = #{available} ,
+	        FundsIn = #{fundsIn} ,
+	        FundsOut = #{fundsOut} ,
+	        CreditOut = #{creditOut} ,
+	        CreditIn = #{creditIn} ,
+	        LimitMaxIn=#{limitMaxIn},
+	        LimitMaxOut=#{limitMaxOut},
+	        PayMark=#{payMark}
+        WHERE 
+	        Funds_id = #{fundsId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserFunds">
+		SELECT <include refid="columns"/>
+		FROM t_user_funds uf
+		WHERE 1=1 and
+		Funds_id = #{id} 
+	</select>
+	
+	  <select id="getByUserId" parameterType="java.lang.Long" resultMap="TuserFunds">
+		SELECT <include refid="columns"/>
+		FROM t_user_funds uf
+		WHERE 1=1 and
+		user_id = #{userId} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserFunds">
+		SELECT <include refid="columns"/>,us.LoginName,us.RealName
+		FROM t_user_funds uf LEFT JOIN t_user us ON uf.user_id=us.user_id
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Funds_id  desc
+		</if>
+	</select>
+	
+	<select id="getUserFundsList" resultMap="TuserFunds">
+	
+	
+		SELECT uf.*,us.LoginName,us.RealName
+		FROM t_user_funds uf LEFT JOIN t_user us ON uf.user_id=us.user_id
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(realName)">
+		  and us.RealName like  '%${realName}%'
+		</if>
+		
+		order by us.RegisterTime  desc
+		
+	</select>
+	
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_funds 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getUserFundsByUserId" resultMap="TuserFunds_sysfile" parameterType="java.lang.Long">
+	select s.fileId,u.LoginName,u.RealName,u.TradingPwd,us.Bind_Mobile,us.Bind_EMail,us.Bind_Id_no,
+	  	uf.* from t_user_funds uf
+	LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 where sf1.delFlag=0 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+	on uf.user_id=s.CREATORID
+	left join t_user u on uf.user_id=u.user_id
+	left join t_user_safe us on uf.user_id=us.user_id
+	where uf.user_id=#{id} 
+	
+	</select>
+	
+	 <select id="getPersonalAssetsByUserId" resultMap="TuserFunds" parameterType="java.lang.Long">
+	<!-- 账户资产  -->
+	
+	
+	
+		SELECT uf.user_id,uf.Available+uf.Freeze as Available  FROM t_user_funds uf where 1=1 and uf.user_id=#{userId} 
+
+	</select>
+	
+	<select id="getuserLiCai" resultMap="TuserFunds" parameterType="java.lang.Long">
+	<!-- 理财资产 -->
+		select  SUM(pi.PI_BeGetSum) as PI_EffectAmount
+		from t_project_invest pi 
+		left JOIN t_project p on pi.Project_id=p.Project_id
+		WHERE   p.P_IsBreak=0 and p.P_IsFull=1 AND p.P_IsSetup=1 and
+		pi.PI_IsCancel=0 AND pi.PI_TransferStateID !=2 GROUP BY pi.PI_Investors HAVING pi.PI_Investors=#{userId}
+	</select>
+	
+	<select id="getUserP_LoanReal" resultMap="TuserFunds" parameterType="java.lang.Long">
+		<!-- 借款负债 -->
+		SELECT p.P_Applicant, SUM(p.P_SumPayBack)-sum(p.P_SumHavedPay) as P_LoanReal   from t_project p 
+		WHERE 1=1 and p.P_IsSetup=1 and p.P_IsPayOff=0 and p.P_HavedPay=1  GROUP BY p.P_Applicant HAVING p.P_Applicant=#{userId}
+	</select>
+	
+	<select id="getfundsCredit" resultMap="TuserFunds_credit" >
+		<!-- 信誉 -->
+		SELECT fu.user_id,us.GroupID,fu.CreditOut,fu.CreditIn
+		FROM t_user us left join t_user_funds fu
+		on us.user_id=fu.user_id
+		where us.user_id=#{userId}
+	</select>
+	
+</mapper>
+

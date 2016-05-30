@@ -1,0 +1,101 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+body {
+	font: normal 100% 'microsoft yaHei','Î¢ÈíÑÅºÚ',arial;
+}
+ul li{
+	list-style-type: none;
+}
+.window{
+	padding-bottom: 30px;
+	width: 960px;
+	border: 1px solid #f9d682;	
+	margin: 0 auto;
+}
+.window h2{
+	height: 45px;
+	font-size: 18px;
+	line-height: 45px;
+	background: #fffbe9;
+	padding-left: 20px;
+	font-weight: bold;
+	border-bottom: 1px solid #f9d682;	
+}
+.auctionLeft{
+	padding-top: 100px;
+	float: left;
+	width: 350px;
+}
+.auctionRight{
+	width: 600px;
+	float: left;
+}
+.text-orange{
+	color: #ff6d23;
+}
+.text-gray{
+	color: #7c7c7c;
+}
+.text-gray2{
+	color: #8c8c8c;
+}
+.clear{
+	clear: both;
+	height: 0px;
+}
+.auctionList span{
+	font-size: 18px;
+	color: #ff6d23;
+}
+.recharge{
+	color: #fff;
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	font-size: 13px;
+	text-align: center;
+	background: #70b800;
+	line-height: 20px;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+}
+.auctionRight{
+	padding-bottom: 30px;
+	padding-top: 20px;
+	line-height: 40px;
+	font-size: 15px;
+}
+.auctionList1{
+	margin-top: 40px;
+}
+.auctionNo{
+	padding: 20px 0px 20px 0px;
+}
+.auctioninput input{
+	margin-right: 10px;
+	width: 160px;
+	height: 30px;
+	border: 1px solid #8c8c8c;	
+}
+.auctioninput div{
+	width: 80px;
+	text-align: right;
+	float: left;
+}
+.auctioninput img{
+	vertical-align: middle;
+}
+.submit{
+	background: #ff5200;
+	height: 40px;
+	line-height: 40px;
+	width: 160px;
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+}

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectInvest">
+
+	<resultMap id="TcprojectInvest" type="com.deelon.crowdfunding.model.backstage.TcprojectInvest">	
+        <id property="investId" column="Invest_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="piisLeader" column="PI_IsLeader"/>
+        <result property="pitypeId" column="PI_TypeID"/>
+        <result property="pivaluation" column="PI_Valuation"/>
+        <result property="piinvest" column="PI_Invest"/>
+        <result property="piinvestTime" column="PI_InvestTime"/>
+        <result property="pireasons" column="PI_Reasons"/>
+        <result property="pimyHelp" column="PI_MyHelp"/>
+        <result property="piisGeneralPartner" column="PI_IsGeneralPartner"/>
+        <result property="piisPay" column="PI_IsPay"/>
+        <result property="pipayTime" column="PI_PayTime"/>
+        <result property="piisAskPrice" column="PI_IsAskPrice"/>
+        <result property="pihavedPay" column="PI_HavedPay"/>
+        <result property="piisCheck" column="PI_IsCheck"/>
+        <result property="pichecker" column="PI_Checker"/>
+        <result property="picheckTime" column="PI_CheckTime"/>
+        <result property="pidenyReason" column="PI_DenyReason"/>
+        <result property="piisCancel" column="PI_IsCancel"/>
+        <result property="piisLoans" column="PI_IsLoans"/>
+        <result property="piLoansTime" column="PI_LoansTime"/>
+        <result property="PI_DueDoc" column="PI_DueDoc"/>
+        <result property="PI_EvaluationTeam" column="PI_EvaluationTeam"/>
+        <result property="PI_EvaluationProject" column="PI_EvaluationProject"/>
+        <result property="fileId" column="fileId"/>
+		<result property="myPhoto" column="MyPhoto"/>
+		<result property="realName" column="RealName"/>
+        <result property="loginName" column="LoginName"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pvaluationFinal" column="P_ValuationFinal"/>
+        <result property="piaskPriceTimes" column="PI_AskPriceTimes"/>
+        <result property="picancelReason" column="PI_CancelReason"/>
+        <result property="piCancelTime" column="PI_CancelTime"/>
+        
+        <result property="pcloseDate" column="P_CloseDate"/>
+        <result property="piinvestTotal" column="PI_Invest_total"/>
+        
+	</resultMap>
+	
+	<sql id="columns">
+		Invest_id,Project_id,user_id,PI_IsLeader,PI_TypeID,PI_Valuation,PI_Invest,PI_InvestTime,
+		PI_Reasons,PI_MyHelp,PI_IsGeneralPartner,PI_IsPay,PI_PayTime,PI_IsAskPrice,PI_HavedPay,
+		PI_IsLoans,PI_LoansTime,PI_IsCheck,PI_Checker,PI_CheckTime,PI_DenyReason,PI_IsCancel,
+		PI_AskPriceTimes,PI_DueDoc,PI_EvaluationTeam,PI_EvaluationProject,PI_CancelReason
+		
+	</sql>
+	
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(investId)">AND Invest_id = #{investId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pname)">AND (SELECT t.P_Name FROM t_c_project t where t.Project_id=p.Project_id)  LIKE '%${pname}%'</if>
+	       <if test="@Ognl@isNotEmpty(userName)">AND (SELECT t.RealName FROM t_user t where t.user_id=p.user_id) LIKE '%${userName}%'</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(piisLeader)">AND PI_IsLeader = #{piisLeader}</if>
+	       <if test="@Ognl@isNotEmpty(pitypeId)">AND PI_TypeID = #{pitypeId}</if>
+	       <if test="@Ognl@isNotEmpty(pivaluation)">AND PI_Valuation = #{pivaluation}</if>
+	       <if test="@Ognl@isNotEmpty(piinvest)">AND PI_Invest = #{piinvest}</if>
+	       <if test="@Ognl@isNotEmpty(piinvestTimeBegin)">AND PI_InvestTime >= #{piinvestTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(piinvestTimeEnd)">AND PI_InvestTime &lt;= #{piinvestTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pireasons)">AND PI_Reasons = #{pireasons}</if>
+	       <if test="@Ognl@isNotEmpty(pimyHelp)">AND PI_MyHelp = #{pimyHelp}</if>
+	       <if test="@Ognl@isNotEmpty(piisGeneralPartner)">AND PI_IsGeneralPartner = #{piisGeneralPartner}</if>
+	       <if test="@Ognl@isNotEmpty(piisPay)">AND PI_IsPay = #{piisPay}</if>
+	       <if test="@Ognl@isNotEmpty(pipayTimeBegin)">AND PI_PayTime >= #{pipayTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pipayTimeEnd)">AND PI_PayTime &lt;= #{pipayTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(piisAskPrice)">AND PI_IsAskPrice = #{piisAskPrice}</if>
+	       <if test="@Ognl@isNotEmpty(pihavedPay)">AND PI_HavedPay = #{pihavedPay}</if>
+	       <if test="@Ognl@isNotEmpty(piisCheck)">AND PI_IsCheck = #{piisCheck}</if>
+	       <if test="@Ognl@isNotEmpty(pichecker)">AND PI_Checker = #{pichecker}</if>
+	       <if test="@Ognl@isNotEmpty(picheckTimeBegin)">AND PI_CheckTime >= #{picheckTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(picheckTimeEnd)">AND PI_CheckTime &lt;= #{picheckTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pidenyReason)">AND PI_DenyReason = #{pidenyReason}</if>
+	       <if test="@Ognl@isNotEmpty(piisCancel)">AND PI_IsCancel = #{piisCancel}</if>
+	       <if test="@Ognl@isNotEmpty(PI_DueDoc)">AND PI_DueDoc = #{PI_DueDoc}</if>
+	       <if test="@Ognl@isNotEmpty(PI_EvaluationTeam)">AND PI_EvaluationTeam = #{PI_EvaluationTeam}</if>
+	       <if test="@Ognl@isNotEmpty(PI_EvaluationProject)">AND PI_EvaluationProject = #{PI_EvaluationProject}</if>
+	       <if test="@Ognl@isNotEmpty(piaskPriceTimes)">AND PI_AskPriceTimes = #{piaskPriceTimes}</if>
+	       <if test="@Ognl@isNotEmpty(picancelReason)">AND PI_CancelReason = #{picancelReason}</if>
+	       
+	      
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectInvest">
+		INSERT INTO t_c_project_invest
+		(<include refid="columns"/>)
+		VALUES
+		(#{investId} ,#{projectId} ,#{userId} ,#{piisLeader} ,#{pitypeId} ,#{pivaluation} ,
+		#{piinvest} ,#{piinvestTime} ,#{pireasons} ,#{pimyHelp} ,#{piisGeneralPartner} ,
+		#{piisPay} ,#{pipayTime} ,#{piisAskPrice} ,#{pihavedPay},#{piisLoans} ,#{piLoansTime} ,
+		#{piisCheck} ,#{pichecker} ,#{picheckTime} ,#{pidenyReason} ,#{piisCancel},
+		 #{PI_DueDoc},#{PI_EvaluationTeam},#{PI_EvaluationProject},#{piaskPriceTimes},#{picancelReason}  )
+		 
+		
+    </insert>
+    
+    <insert id="addInvest" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectInvest">
+		INSERT INTO t_c_project_invest
+		(Invest_id,Project_id,user_id,PI_IsLeader,PI_TypeID,PI_Valuation,PI_Invest,PI_InvestTime,
+		PI_Reasons,PI_MyHelp,PI_IsGeneralPartner,PI_IsAskPrice,
+		PI_IsCancel
+		)
+		VALUES
+		(#{investId} ,#{projectId} ,#{userId} ,#{piisLeader} ,#{pitypeId} ,#{pivaluation} ,
+		#{piinvest} ,#{piinvestTime} ,#{pireasons} ,#{pimyHelp} ,#{piisGeneralPartner} ,
+		#{piisAskPrice} ,#{piisCancel}
+		 )
+		 
+		
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_invest 
+		WHERE
+        Invest_id = #{investId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectInvest">
+		UPDATE t_c_project_invest SET
+	        Project_id = #{projectId} ,
+	        user_id = #{userId} ,
+	        PI_IsLeader = #{piisLeader} ,
+	        PI_TypeID = #{pitypeId} ,
+	        PI_Valuation = #{pivaluation} ,
+	        PI_Invest = #{piinvest} ,
+	        PI_InvestTime = #{piinvestTime} ,
+	        PI_Reasons = #{pireasons} ,
+	        PI_MyHelp = #{pimyHelp} ,
+	        PI_IsGeneralPartner = #{piisGeneralPartner} ,
+	        PI_IsPay = #{piisPay} ,
+	        PI_PayTime = #{pipayTime} ,
+	        PI_IsAskPrice = #{piisAskPrice} ,
+	        PI_HavedPay = #{pihavedPay} ,
+	        PI_IsLoans = #{piisLoans} ,
+        	PI_LoansTime = #{piLoansTime} ,
+	        PI_IsCheck = #{piisCheck} ,
+	        PI_Checker = #{pichecker} ,
+	        PI_CheckTime = #{picheckTime} ,
+	        PI_CancelTime = #{piCancelTime} ,
+	        PI_DenyReason = #{pidenyReason} ,
+	        PI_IsCancel = #{piisCancel},
+	        PI_DueDoc = #{PI_DueDoc},
+	        PI_EvaluationTeam = #{PI_EvaluationTeam},
+	        PI_EvaluationProject = #{PI_EvaluationProject},
+	        PI_AskPriceTimes = #{piaskPriceTimes},
+	       	PI_CancelReason = #{picancelReason},
+	       	Invest_id = #{investId} 
+        WHERE 
+	        Invest_id = #{investId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectInvest">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_invest 
+		WHERE 
+		Invest_id = #{investId} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectInvest">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_invest  p 
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Invest_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_invest 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+     <select id="getInvestforPro" resultMap="TcprojectInvest">
+    	SELECT pn.*,tu.RealName,tu.LoginName,tu.MyPhoto,s.fileId,p.P_Name,p.P_ValuationFinal
+		FROM t_c_project_invest pn
+		left join t_c_project p on pn.Project_id=p.Project_id 
+		left join T_User tu on pn.user_id=tu.user_id
+		left join 
+		(select * from (SELECT * from sys_file s  ORDER BY s.createTime desc ) s GROUP BY s.CREATORID ) s 
+		on pn.user_id=s.CREATORID 
+		WHERE 1=1 
+		and pn.PI_IsCancel=0 
+		<if test="@Ognl@isNotEmpty(projectId)">AND pn.Project_id = #{projectId}</if>
+	    <if test="@Ognl@isNotEmpty(userId)">AND pn.user_id = #{userId}</if>
+	    <if test="@Ognl@isNotEmpty(ispay)">AND pn.PI_IsPay = #{ispay}</if>
+	    <if test="@Ognl@isNotEmpty(piisCancel)">AND pn.PI_IsCancel = #{piisCancel}</if>
+	    <if test="@Ognl@isNotEmpty(piisLeader)">AND pn.PI_IsLeader = #{piisLeader}</if>
+	    <if test="@Ognl@isNotEmpty(pitypeId)">AND pn.PI_TypeID = #{pitypeId}</if>
+	    <if test="@Ognl@isNotEmpty(piisCheck)">AND pn.PI_IsCheck = #{piisCheck}</if>
+	    <if test="@Ognl@isNotEmpty(piisCheck3)">AND pn.PI_IsCheck in( #{piisCheck3})</if>
+	    <if test="@Ognl@isNotEmpty(piisCheck2)">AND pn.PI_IsCheck in (0,1)</if>
+	   
+	    ORDER BY pn.PI_IsCheck,pn.PI_Valuation desc  
+	
+    </select>
+    
+     <select id="getLeadInvestforPro" resultMap="TcprojectInvest">
+    	SELECT p.*,tu.RealName,tu.LoginName
+		FROM t_c_project_invest  p left join t_user tu
+		on p.user_id=tu.user_id
+		WHERE (p.PI_TypeID=1 or p.PI_TypeID=2)
+		and p.PI_IsCancel=0 and p.Project_id=#{projectId} 
+
+	    ORDER BY p.PI_IsCheck,p.PI_InvestTime desc
+    </select>  
+    
+     <select id="getInvestDetailById" resultMap="TcprojectInvest">
+    	SELECT
+    		Invest_id,Project_id,p.user_id,PI_IsLeader,PI_TypeID,PI_Valuation,PI_Invest,PI_InvestTime,
+		PI_Reasons,PI_MyHelp,PI_IsGeneralPartner,PI_IsPay,PI_PayTime,PI_IsAskPrice,PI_HavedPay,
+		PI_IsLoans,PI_LoansTime,PI_IsCheck,PI_Checker,PI_CheckTime,PI_DenyReason,PI_IsCancel,
+		PI_AskPriceTimes,PI_DueDoc,PI_EvaluationTeam,PI_EvaluationProject,RealName,LoginName,tu.MyPhoto
+		FROM t_c_project_invest  p left join t_user tu
+		on p.user_id=tu.user_id
+		WHERE  p.invest_id=#{investId} 
+    </select>  
+    <select id="getleadCountCr" parameterType="java.lang.Long" resultType="long">
+		 SELECT count(*) FROM t_c_project_invest where (PI_TypeID=1 or PI_TypeID=2) and PI_IsCheck=1 and PI_IsCancel=0  and  Project_id=#{projectId}
+	</select>
+    
+    <!-- 根据用户id和项目id查询记录 -->
+    <select id="getTcprojectInvest" resultMap="TcprojectInvest">
+    	SELECT * 
+		FROM t_c_project_invest t
+		WHERE 1=1 
+	    <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	    <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+    </select> 
+    	<select id="getTprojectInvestByProId" parameterType="map" resultMap="TcprojectInvest">
+		select t.*,t_user.RealName,t_user.LoginName from t_c_project_invest t
+		left join t_user  on t.user_id=t_user.user_id
+		where t.project_id=#{projectid} and t.PI_IsCancel=0 
+	</select>
+	
+	 <select id="getMinValueByProId" resultMap="TcprojectInvest">
+   		SELECT MIN(t.PI_Valuation) as PI_Valuation 
+   		FROM t_c_project_invest t 
+   		WHERE t.PI_IsCheck='1' AND t.Project_id=#{projectId}
+    </select>
+    <select id="getUserInvestList" resultMap="TcprojectInvest">
+    	SELECT p.P_Name,SUM(pj.PI_Invest) as PI_Invest,pj.PI_InvestTime,p.P_CloseDate from t_c_project_invest pj 
+		LEFT JOIN t_c_project p ON pj.Project_id=p.Project_id WHERE pj.user_id=#{userId} and pj.PI_IsCheck=1 and pj.PI_IsPay=1 and pj.PI_IsCancel=0
+		GROUP BY pj.Project_id ORDER BY pj.PI_InvestTime DESC
+    </select>
+    <select id="getUserInvestSum" resultMap="TcprojectInvest">
+    	SELECT SUM(pj.PI_Invest) as PI_Invest_total from t_c_project_invest pj 
+			LEFT JOIN t_c_project p ON pj.Project_id=p.Project_id WHERE pj.user_id=#{userId} and pj.PI_IsCheck=1 and pj.PI_IsPay=1 and pj.PI_IsCancel=0
+			GROUP BY pj.user_id ORDER BY pj.PI_InvestTime DESC
+
+    </select>
+    
+</mapper>
+

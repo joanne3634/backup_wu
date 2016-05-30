@@ -1,0 +1,293 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+ /*body {
+	font: normal 100% 'microsoft yaHei','微软雅黑',arial;
+}*/
+
+ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration:none;
+}
+.borderdashed{
+	border-bottom: 1px dashed #505050;
+}
+.bodersolid{
+	border: 1px solid #999999;	
+}
+.bodersolid2{
+	border: 1px solid #020202;	
+}
+.bodersolid3{
+	border: 1px solid #ff9961;	
+}
+.boderright{
+	border-right: 1px solid #505050;	
+}
+.background1{
+	background: #ea5503;
+}
+.background2{
+	background: #f6f6f6;
+}
+.background3{
+	background: #fff;
+}
+.background4{
+	background: #6db900;
+}
+.background5{
+	background: #c4c4c4;
+}
+.background6{
+	background: #ff9961;
+}
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-white{
+	color: #fff;
+	font-weight:bold;
+}
+.text-black{
+	color: #000;
+	font-weight:bold;
+}	
+.text-green{
+	color: #007604;
+	font-weight:bold;
+}
+.text-orange{
+	color: #f4aa81;
+	font-weight:bold;
+}
+.text-orange2{
+	color: #ff4d00;
+	font-weight:bold;
+}
+.text-black2{
+	color: #49423f;
+	font-weight:bold;
+}
+.text-gray{
+	color: #6d6d6d;
+	font-weight:bold;
+}
+.text-gray2{
+	color: #c6c6c6;
+	font-weight:bold;
+}
+.radiusleft{
+	-webkit-border-radius: 5px 0px 0px 5px;
+	 -moz-border-radius: 5px 0px 0px 5px;
+}
+.radiusright{
+	-webkit-border-radius: 0px 5px 5px 0px;
+	 -moz-border-radius: 0px 5px 5px 0px;
+}
+.radiu{
+	-webkit-border-radius: 5px;
+	 -moz-border-radius: 5px;
+}
+.clear{
+	height: 0px;
+	clear: both;
+}
+.textoverflow{
+	display:block;/*内联对象需加*/
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/
+}
+.progressbar{
+	background: #dadada;
+	height: 20px;
+	-webkit-border-radius: 15px;
+	 -moz-border-radius: 15px;
+}
+.progressbar2{
+	background: #6db900;
+	height: 20px;
+	-webkit-border-radius: 15px 0px 0px 15px;
+	 -moz-border-radius: 15px 0px 0px 15px;
+}
+.progressbar3{
+	background: #6db900;
+	height: 20px;
+	-webkit-border-radius: 15px;
+	 -moz-border-radius: 15px;
+}
+
+.paging-index-box {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        color: #555;
+        text-align: center;
+}
+.paging-index-box a {
+        display: inline-block;
+        height: 22px;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding-left: 8px;
+        padding-right: 8px;
+        line-height: 22px;
+        color: #999;
+        border: 1px solid #999;
+}
+.paging-index-box a:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #ff5200;
+        border-color: #ff5200;
+      }
+.paging-index-box .page-num {
+        color: #ff5200;
+      }
+.window{
+  padding-bottom: 30px; 
+  width:770px;
+  border: 1px solid #f9d682;  
+  margin: 0 auto;
+  margin-top: 2px;
+}
+.window h2{
+  height: 45px;
+  font-size: 18px;
+  line-height: 45px;
+  background: #fffbe9;
+  padding-left: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #f9d682; 
+}
+/*leave*/
+.leaveList{
+	line-height: 40px;
+	font-size: 14px;
+	margin: 0 0px 30px 0px;
+	padding:20px 10px 0px 10px;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 1px;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style:solid;
+}
+.leaveList li{
+	height: 40px;
+}
+.leaveList div{
+	float: left;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	padding-left:10px;
+	padding-right: 10px;
+}
+.leaveList a {
+	display:inline-block;
+}
+.leaveList input{
+	float: left;
+	margin-top: 13px;
+}
+.leaceType{
+	width: 17%;
+	height: 40px;
+}
+.leaceCont{
+	width: 37%;
+	height: 40px;
+}
+.leaceTime{
+	width: 22%;
+	height: 40px;
+}
+.leaceOper{
+	width: 12%;
+}  
+.recharge{
+	color: #fff;
+	display: inline-block;
+	width: 80px;
+	height: 25px;
+	font-size: 13px;
+	text-align: center;
+	background: #70b800;
+	line-height: 25px;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+} 
+.leaveButton div{
+	color: #fff;
+	display: inline-block;
+	width: 100px;
+	height: 25px;
+	font-size: 13px;
+	text-align: center;
+	background: #ff5704;
+	line-height: 25px;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+}
+.leaveButton{
+	font-size: 14px;
+	margin: 30px;
+}
+/*leavedetails*/
+.window h2 span{
+	margin: 8px 20px 0px 0px ;
+	background: url("./button.png");
+	float: right;
+	display: inline-block;
+	width: 92px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+	font-weight:normal; 
+}
+.ldetailList{
+	padding:50px 50px 20px 50px;
+	font-size: 15px;
+	line-height: 40px;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 1px;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style:solid;
+}
+.ldetailListTime{
+	float: right;
+	margin-right: 20px;
+}
+.ldetailList h3{
+	line-height: 60px;
+}
+/*inform*/
+.informType{
+	width: 30%;
+}
+.informCont{
+	width: 35%;
+}
+.informTime{
+	width: 30%;
+}
+.informList div{
+	display: inline-block;
+}

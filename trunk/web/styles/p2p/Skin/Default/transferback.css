@@ -1,0 +1,237 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.causelist div{
+	height: 35px;
+}
+/*body {
+	font: normal 100% 'microsoft yaHei','΢���ź�',arial;
+}*/
+ul li{
+	list-style-type: none;
+}
+a:hover {
+	text-decoration:none;
+}
+.window{
+	padding-bottom: 30px;
+	width: 795px;
+	margin: 0 auto;
+}
+.window h2{
+	height: 45px;
+	font-size: 18px;
+	line-height: 45px;
+	background: #fffbe9;
+	padding-left: 20px;
+	font-weight: bold;
+	border: 1px solid #f9d682;	
+}
+.auctionLeft{
+	padding-top: 100px;
+	float: left;
+	width: 340px;
+}
+.auctionRight{
+	width: 430px;
+	float: left;
+}
+.text-orange{
+	color: #ff6d23;
+}
+.text-gray{
+	color: #7c7c7c;
+}
+.text-gray2{
+	color: #8c8c8c;
+}
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+.clear{
+	clear: both;
+	height: 0px;
+}
+.auctionList span{
+	font-size: 18px;
+	color: #ff6d23;
+}
+.recharge{
+	color: #fff;
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	font-size: 15px;
+	text-align: center;
+	background: #ff6d23;
+	line-height: 30px;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+	 cursor: pointer;
+}
+.auctionRight{
+	padding-bottom: 30px;
+	padding-top: 20px;
+	line-height: 40px;
+	font-size: 15px;
+}
+.auctionList1{
+	margin-top: 40px;
+}
+.auctionNo{
+	padding: 20px 0px 20px 0px;
+}
+.auctioninput input{
+	margin-right: 10px;
+	width: 160px;
+	height: 30px;
+	border: 1px solid #8c8c8c;	
+}
+.auctioninput div{
+	width: 80px;
+	text-align: right;
+	float: left;
+}
+.auctioninput img{
+	vertical-align: middle;
+}
+.submit2{
+	background: #ff5200;
+	height: 40px;
+	line-height: 40px;
+	width: 160px;
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	-webkit-border-radius: 3px;
+	 -moz-border-radius: 3px;
+	 cursor: pointer;
+}
+.tableList{
+	margin-left:0;
+	border: 1px solid #f9d682;
+	margin-top: 40px;
+	width: 793px;
+	padding:70px 0px 50px 0px;
+}
+.buttonlist {
+	position: relative;
+	top:-7px;
+}
+.buttonlist div{
+	width: 150px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 18px;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.button1{
+	border: 1px solid #f9d682;
+	background: #fff;
+	color: #ff6d23;
+	border-bottom: 1px solid #fff;
+	border-top:3px solid #ff5704;
+}
+.button2{
+	border: 1px solid #c8c8c8;
+	background: #f5f5f5;
+	color: #4d4d4d;
+	border-bottom: 1px solid #f9d682;
+	border-top:1px solid #c8c8c8;
+}
+.serach{
+	position: relative;
+	top:103px;
+	padding-left: 50px;
+	line-height: 30px;
+	font-size: 13px;
+}
+.serach input{
+	margin: 0px 20px 0px 20px;
+	width: 180px;
+	height: 30px;
+	font-size: 15px;
+	border: 1px solid #a8a8a8;
+	padding-left:5px;
+	padding-right: 5px;
+}
+.tableContent{
+	width: 96%;
+	margin: 0 auto;
+	margin-top: 20px ;
+	font-size: 13px;
+	line-height: 30px;
+	border: 1px solid #a8a8a8;
+	border-collapse:collapse;
+}
+.tableContent td a {
+	background-color: #73bb00;
+    border: 1px solid #548d00;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.hideDiv{
+	display:none;
+}
+
+
+ #faqbg{background-color:#666666; position:absolute; z-index:99; left:0; top:0; display:none; width:100%; height:1000px;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;} 
+
+#faqdiv{position:absolute;width:540px;height: 460px; left:50%; top:50%; margin-left:-200px; height:auto; z-index:100;background-color:#fff; border:1px #8FA4F5 solid; padding:1px;border-radius: 3px;font-size: 13px;color: #464646;line-height: 35px;} 
+#faqdiv h2{ height:35px; font-size:16px; background-color:#fff; position:relative; padding-left:10px; line-height:35px;border-bottom:1px solid #a1a1a1; } 
+#faqdiv h2 a{position:absolute; right:5px; font-size:12px; color:#a1a1a1;text-decoration:none;} 
+#faqdiv .form{padding:10px;} 
+.causelist textarea{
+  margin-top:10px;
+  width: 70%;
+  padding:5px;
+  resize: none;
+  float:left;
+}
+.formname{
+  width: 20%;
+  float: left;
+}
+.form select{
+	width: 30%;
+	height: 30px;
+}
+.text-right{
+  text-align: right;
+}
+.causelist{
+  width: 80%;
+  float: left;
+}
+.causelist input{
+	margin: 0px 10px 0px 10px;
+	padding-left: 5px;
+	padding-right:5px;
+}
+.causelistinput{
+	height: 25px;
+	width: 30%;
+}
+.clear{
+  clear: both;
+  height: 0px;
+}
+.button{border-top:1px solid #a1a1a1;width: 100%;margin: 0 auto;text-align: center;margin-top: 30px;padding: 20px 0px 15px 0px;}
+.submit{width:100px;height:30px;border-radius: 3px;background: #699f00;color:#fff;line-height:30px;display: inline-block;cursor:pointer}
+.cancel{width:100px;height:30px;border-radius: 3px;background: #f0f0f0;color:#fff;line-height:30px;border: 1 solid #a1a1a1;display: inline-block;color: #464646;margin-left: 20px;cursor:pointer}

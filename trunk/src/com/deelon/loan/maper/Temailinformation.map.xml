@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.Temailinformation">
+
+	<resultMap id="Temailinformation" type="com.deelon.loan.model.sysManager.Temailinformation">	
+        <id property="infoId" column="InfoID" />
+        <result property="serviceType" column="ServiceType"/>
+        <result property="emailAddr" column="EmailAddr"/>
+        <result property="header" column="Header"/>
+        <result property="messasge" column="Messasge"/>
+        <result property="status" column="Status"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		InfoID,ServiceType,EmailAddr,Header,Messasge,Status,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(infoId)">AND InfoID = #{infoId}</if>
+	       <if test="@Ognl@isNotEmpty(serviceType)">AND ServiceType = #{serviceType}</if>
+	       <if test="@Ognl@isNotEmpty(emailAddr)">AND EmailAddr = #{emailAddr}</if>
+	       <if test="@Ognl@isNotEmpty(header)">AND Header = #{header}</if>
+	       <if test="@Ognl@isNotEmpty(messasge)">AND Messasge = #{messasge}</if>
+	       <if test="@Ognl@isNotEmpty(status)">AND Status = #{status}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime = #{createTime}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.Temailinformation">
+		INSERT INTO t_emailinformation
+		(<include refid="columns"/>)
+		VALUES
+		(#{infoId} ,#{serviceType} ,#{emailAddr} ,#{header} ,#{messasge} ,#{status} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_emailinformation 
+		WHERE
+        InfoID = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.Temailinformation">
+		UPDATE t_emailinformation SET
+	        ServiceType = #{serviceType} ,
+	        EmailAddr = #{emailAddr} ,
+	        Header = #{header} ,
+	        Messasge = #{messasge} ,
+	        Status = #{status} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        InfoID = #{infoId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Temailinformation">
+		SELECT <include refid="columns"/>
+		FROM t_emailinformation 
+		WHERE 1=1 and
+		InfoID = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Temailinformation">
+		SELECT <include refid="columns"/>
+		FROM t_emailinformation   
+		WHERE 1=1 
+			<if test="@Ognl@isNotEmpty(infoId)">AND InfoID = #{infoId}</if>
+			<if test="@Ognl@isNotEmpty(serviceType)">AND ServiceType = #{serviceType}</if>
+			<if test="@Ognl@isNotEmpty(emailAddr)">AND EmailAddr like '%${emailAddr}%'</if>
+			<if test="@Ognl@isNotEmpty(header)">AND Header = #{header}</if>
+			<if test="@Ognl@isNotEmpty(messasge)">AND Messasge = #{messasge}</if>
+			<if test="@Ognl@isNotEmpty(status)">AND Status = #{status}</if>
+			<if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+			<if test="@Ognl@isNotEmpty(createTime)">AND CreateTime = #{createTime}</if>
+			<if test="@Ognl@isNotEmpty(beginDate)">AND  CreateTime &gt;= #{beginDate}</if>
+			<if test="@Ognl@isNotEmpty(endDate)">AND  CreateTime &lt;= #{endDate}</if>
+<!-- 		<include refid="dynamicWhere" /> -->
+<!-- 		<if test="@Ognl@isNotEmpty(orderField)"> -->
+<!-- 		order by orderField orderSeq -->
+<!-- 		</if> -->
+<!-- 		<if test="@Ognl@isEmpty(orderField)"> -->
+		order by InfoID  desc
+<!-- 		</if> -->
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_emailinformation 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

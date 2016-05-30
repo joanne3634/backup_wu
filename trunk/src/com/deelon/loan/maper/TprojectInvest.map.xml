@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TProjectInvest">
+	<resultMap type="com.deelon.loan.model.front.TProjectInvest"
+		id="projectInvest">
+		<id property="investId" column="Invest_id" jdbcType="NUMERIC" />
+		<result property="projectId" column="Project_id" jdbcType="NUMERIC" />
+		<result property="piInvestors" column="PI_Investors" jdbcType="NUMERIC" />
+		<result property="piAmount" column="PI_Amount" jdbcType="NUMERIC" />
+		<result property="piEffectAmount" column="PI_EffectAmount"
+			jdbcType="NUMERIC" />
+		<result property="piBidTime" column="PI_BidTime" jdbcType="TIMESTAMP" />
+		<result property="piHavedPay" column="PI_HavedPay" jdbcType="NUMERIC" />
+		<result property="piHavedPayTime" column="PI_HavedPayTime"
+			jdbcType="TIMESTAMP" />
+		<result property="piIsCancel" column="PI_IsCancel" jdbcType="NUMERIC" />
+		<result property="pitypeID" column="PI_TypeID"/>
+		<result property="realName" column="RealName"/>
+		<result property="loginName" column="LoginName"/>
+		<result property="piTransferStateId" column="PI_TransferStateID"/>
+		<result property="pname" column="P_Name"/>
+		<result property="prateOut" column="P_Rate_Out"/>
+		<result property="pDeadline" column="P_Deadline"/>
+		<result property="popenDate" column="P_OpenDate"/>
+		<result property="prCurrent" column="prCurrent"/>
+		<result property="piGetSum" column="pi_GetSum"/>
+		<result property="piBeGetSum" column="pi_BeGetSum"/>
+		<result property="piGetRateSum" column="pi_GetRateSum"/>
+		<result property="piBeGetRateSum" column="pi_BeGetRateSum"/>
+		<result property="piGetPrincipalSum" column="pi_GetPrincipalSum"/>
+		<result property="piBeGetPrincipalSum" column="pi_BeGetPrincipalSum"/>
+		<result property="piGetLate" column="pi_GetLate"/>
+		<result property="piIsPayoff" column="PI_IsPayoff"/> 
+		<result property="piTransferStateId" column="PI_TransferStateID"/>  
+		<result property="piTransferCount" column="PI_TransferCount"/> 
+		<result property="transferId" column="Transfer_id"/> 
+		<result property="offerName" column="offerName"/> 
+		<result property="upsetPrice" column="UpsetPrice"/>
+		<result property="hieghtestPrice" column="hieghtestPrice"/>
+		<result property="closeDate" column="CloseDate"/>
+		<result property="transferorIdName" column="TransferorIdName"/>
+		<result property="myPrice" column="myPrice"/>
+		<result property="isCancel" column="isCancel"/>
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TProjectInvest" id="projectInvest_n">
+		<id property="investId" column="Invest_id" jdbcType="NUMERIC" />
+		<result property="projectId" column="Project_id" jdbcType="NUMERIC" />
+		<result property="piInvestors" column="PI_Investors" jdbcType="NUMERIC" />
+		<result property="piAmount" column="PI_Amount" jdbcType="NUMERIC" />
+		<result property="piEffectAmount" column="PI_EffectAmount"
+			jdbcType="NUMERIC" />
+		<result property="piBidTime" column="PI_BidTime" jdbcType="TIMESTAMP" />
+		<result property="piHavedPay" column="PI_HavedPay" jdbcType="NUMERIC" />
+		<result property="piHavedPayTime" column="PI_HavedPayTime"
+			jdbcType="TIMESTAMP" />
+		<result property="piIsCancel" column="PI_IsCancel" jdbcType="NUMERIC" />
+		<result property="pitypeID" column="PI_TypeID"/>
+		<result property="pname" column="P_Name"/>
+		<result property="prateOut" column="P_Rate_Out"/>
+		
+		<result property="paPayBackTime" column="PA_PayBackTime"/>
+		<result property="prCurrent" column="P_Current"/>
+		<result property="pDeadline" column="P_Deadline"/>
+		<result property="piBeGetPrincipalSum" column="PI_BeGetPrincipalSum"/>
+		<result property="piBeGetRateSum" column="PI_BeGetRateSum"/>
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TProjectInvest" id="sm_count">
+	<result property="sm_t_PA_Interest" column="sm_t_PA_Interest"/>
+	<result property="sm_t_PA_Late" column="sm_t_PA_Late"/>
+	<result property="sm_benxi" column="sm_benxi"/>
+	<result property="sm_Balance" column="sm_Balance"/>
+	<result property="sm_PI_EffectAmount" column="sm_PI_EffectAmount"/>
+	<result property="sm_totOutnum" column="sm_totOutnum"/>
+	<result property="sm_totIn" column="sm_totIn"/>
+	<result property="sm_applying" column="sm_applying"/>
+	<result property="sm_expect" column="sm_expect"/>
+	<result property="sm_daichang" column="sm_daichang"/>
+	<result property="sm_Natural_repayMent" column="sm_Natural_repayMent"/>
+	<result property="sm_compleate_repayMent" column="sm_compleate_repayMent"/>
+	<result property="sm_yidaichang" column="sm_yidaichang"/>
+	<result property="sm_zhengchangPayment" column="sm_zhengchangPayment"/>
+	<result property="sm_tiqianPayMent" column="sm_tiqianPayMent"/>
+	<result property="sm_benjin" column="sm_benjin"/>
+	<result property="sm_daihuanbenxi" column="sm_daihuanbenxi"/>
+	<result property="sm_totIn_ing" column="sm_totIn_ing"/>
+	</resultMap>
+	
+	 <resultMap type="com.deelon.loan.model.front.TProjectInvest" id="myTender_res">
+		<result property="piEffectAmount" column="PI_EffectAmount"
+			jdbcType="NUMERIC" />
+		<result property="pname" column="P_Name"/>
+		<result property="paPayBackTime" column="PA_PayBackTime"/>
+		<result property="realName" column="RealName"/>
+		<result property="pDeadline" column="P_Deadline"/>
+		<result property="paInterest" column="PA_Interest"/>
+		<result property="deadlineNum" column="deadlineNum"/>
+		<result property="piGetPrincipalSum" column="PI_GetPrincipalSum"/>
+		<result property="piGetRateSum" column="PI_GetRateSum"/>
+		<result property="piBeGetPrincipalSum" column="PI_BeGetPrincipalSum"/>
+		<result property="piBeGetRateSum" column="PI_BeGetRateSum"/>
+		<result property="piBeGetSum" column="PI_BeGetSum"/>
+	</resultMap>
+	 <resultMap type="com.deelon.loan.model.front.TProjectInvest" id="myTender_">
+	<!-- 	<result property="piEffectAmount" column="PI_EffectAmount"
+			jdbcType="NUMERIC" /> -->
+		<result property="paPayBackTime" column="PA_PayBackTime"/>
+		<result property="realName" column="RealName"/>
+		<result property="pDeadline" column="P_Deadline"/>
+		<result property="piBeGetSum" column="PI_BeGetSum"/>
+	</resultMap>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProjectInvest">
+		insert into T_Project_Invest
+		(
+		Project_id,	
+		PI_Investors,
+		PI_Amount,
+		PI_EffectAmount,
+		PI_BidTime,
+		PI_HavedPay,
+		PI_HavedPayTime,
+		PI_IsCancel,
+		PI_TypeID,
+		pi_GetSum ,
+		pi_BeGetSum,
+		pi_GetRateSum,
+		pi_BeGetRateSum,
+		pi_GetPrincipalSum,
+		pi_BeGetPrincipalSum,
+		pi_GetLate,
+		PI_IsPayoff,
+		PI_TransferStateID,
+		PI_TransferCount
+		
+		)
+		VALUES(
+		#{projectId},
+		#{piInvestors},
+		#{piAmount},
+		#{piEffectAmount},
+		#{piBidTime},
+		#{piHavedPay},
+		#{piHavedPayTime},
+		#{piIsCancel},   
+		#{pitypeID},
+			#{piGetSum},
+		#{piBeGetSum},
+		#{piGetRateSum},
+		#{piBeGetRateSum},
+		#{piGetPrincipalSum},
+		#{piBeGetPrincipalSum},
+		#{piGetLate},
+		#{piIsPayoff},
+		#{piTransferStateId},
+		#{piTransferCount} 
+		)
+	</insert>
+
+	<insert id="insertProjectInvest">
+		insert into T_Project_Invest
+		(
+		<if test="@Ognl@isNotEmpty(projectId)">Project_id,</if>
+		<if test="@Ognl@isNotEmpty(piInvestors)">PI_Investors,</if>
+		<if test="@Ognl@isNotEmpty(piAmount)">PI_Amount,</if>
+		<if test="@Ognl@isNotEmpty(piEffectAmount)">PI_EffectAmount,</if>
+		<if test="@Ognl@isNotEmpty(piBidTime)">PI_BidTime,</if>
+		<if test="@Ognl@isNotEmpty(piHavedPay)">PI_HavedPay,</if>
+		<if test="@Ognl@isNotEmpty(piHavedPayTime)">PI_HavedPayTime,</if>
+		<if test="@Ognl@isNotEmpty(piIsCancel)">PI_IsCancel,</if>
+		Invest_id,
+		PI_TypeID,
+		pi_GetSum ,
+		pi_BeGetSum,
+		pi_GetRateSum,
+		pi_BeGetRateSum,
+		pi_GetPrincipalSum,
+		pi_BeGetPrincipalSum,
+		pi_GetLate,
+		PI_IsPayoff,
+		PI_TransferStateID,
+		PI_TransferCount
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(projectId)">#{projectId},</if>
+		<if test="@Ognl@isNotEmpty(piInvestors)">#{piInvestors},</if>
+		<if test="@Ognl@isNotEmpty(piAmount)">#{piAmount},</if>
+		<if test="@Ognl@isNotEmpty(piEffectAmount)">#{piEffectAmount},</if>
+		<if test="@Ognl@isNotEmpty(piBidTime)">#{piBidTime},</if>
+		<if test="@Ognl@isNotEmpty(piHavedPay)">#{piHavedPay},</if>
+		<if test="@Ognl@isNotEmpty(piHavedPayTime)">#{piHavedPayTime},</if>
+		<if test="@Ognl@isNotEmpty(piIsCancel)">#{piIsCancel},</if>
+		#{investId},
+		#{pitypeID},
+			#{piGetSum},
+		#{piBeGetSum},
+		#{piGetRateSum},
+		#{piBeGetRateSum},
+		#{piGetPrincipalSum},
+		#{piBeGetPrincipalSum},
+		#{piGetLate},
+		#{piIsPayoff},
+		#{piTransferStateId},
+		#{piTransferCount} 
+		)
+	</insert>
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectInvest">
+		UPDATE t_project_invest SET
+	        Project_id = #{projectId} ,
+	        PI_Investors = #{piInvestors} ,
+	        PI_Amount = #{piAmount} ,
+	        PI_EffectAmount = #{piEffectAmount} ,
+	        PI_BidTime = #{piBidTime} ,
+	        PI_HavedPay = #{piHavedPay} ,
+	        PI_HavedPayTime = #{piHavedPayTime} ,
+	        PI_IsCancel = #{piIsCancel} ,
+	        PI_GetSum = #{piGetSum} ,
+			PI_BeGetSum = #{piBeGetSum} ,
+			PI_GetRateSum = #{piGetRateSum} ,
+			PI_BeGetRateSum = #{piBeGetRateSum} ,
+			PI_GetPrincipalSum = #{piGetPrincipalSum} ,
+			PI_BeGetPrincipalSum = #{piBeGetPrincipalSum} ,
+			PI_GetLate = #{piGetLate} ,
+			PI_IsPayoff = #{piIsPayoff} , 
+			PI_TransferStateID = #{piTransferStateId} ,  
+			PI_TransferCount = #{piTransferCount} , 
+	        PI_TypeID = #{pitypeID} 
+        	WHERE 
+	        Invest_id = #{investId} 
+	</update>
+	 <select id="getById" parameterType="java.lang.Long" resultMap="projectInvest">
+		SELECT * 
+		FROM T_Project_Invest 
+		WHERE 1=1 and
+		Invest_id = #{id} 
+	</select>
+	<select id="getTProjectInvestByUserId" resultMap="projectInvest_n">
+		select pi.*,p.P_Name,p.P_Rate_Out from T_Project_Invest pi left join t_project p on pi.Project_id=p.Project_id
+		where 1=1 
+		<if test="@Ognl@isNotEmpty(userId)">
+			and pi.PI_Investors=#{userId}
+		</if>
+		<if test="@Ognl@isNotEmpty(plTypeId)">
+			and pi.PI_TypeID=#{plTypeId}
+		</if>
+		and pi.PI_IsCancel=0 and pi.PI_TransferStateID=0
+	</select>
+	
+	<select id="getTProjectInvestByUserIdAndWhere" resultMap="projectInvest_n">
+		select u.LoginName loginName,pa.PA_PayBackTime paPayBackTime,p.P_Current prCurrent,p.P_Deadline pDeadline,pi.*,p.P_Name,p.P_Rate_Out from T_Project_Invest pi left join t_project p on pi.Project_id = p.Project_id 
+		left join t_user u on u.user_id = p.P_Applicant
+		left join t_project_accept pa on pa.Project_id = p.Project_id 
+		where 1=1 
+		<if test="@Ognl@isNotEmpty(userId)">
+			and pi.PI_Investors=#{userId}
+		</if>
+		<if test="@Ognl@isNotEmpty(P_Audit_Platform)">
+			and p.P_Audit_Platform=#{P_Audit_Platform}
+		</if>
+		<if test="@Ognl@isNotEmpty(P_HavedPay)">
+			and p.P_HavedPay=#{P_HavedPay}
+		</if>
+		<if test="@Ognl@isNotEmpty(PI_IsPayOff)">
+			and pi.PI_IsPayOff=#{PI_IsPayOff}
+		</if>
+		<if test="@Ognl@isNotEmpty(PI_TransferStateID)">
+			and pi.PI_TransferStateID=#{PI_TransferStateID} 
+		</if>
+		<if test="@Ognl@isNotEmpty(dsktype)">
+			and pi.PI_GetSum=0 and pi.PI_GetRateSum=0 
+		</if>
+		<if test="@Ognl@isNotEmpty(skztype)">
+			and pi.PI_GetSum>0 and pi.PI_GetRateSum>0 
+		</if>
+		and p.P_Del=#{P_Del} and p.P_IsBreak=#{P_IsBreak} order by PI_BidTime desc
+	</select>
+	
+	<select id="getCountInfo1" resultMap="sm_count">
+		SELECT SUM(pn.PI_GetRateSum) as sm_t_PA_Interest <!--已赚利息--> ,SUM(pn.PI_GetLate) as sm_t_PA_Late<!--已赚预期罚息-->,
+					SUM(pn.PI_GetPrincipalSum) as sm_benjin <!--返回本金-->,SUM(pn.PI_GetSum) as sm_benxi<!--已回收本息-->,
+					sum(pn.PI_EffectAmount) as sm_PI_EffectAmount<!--总借出金额(包括已全部收回的投资金额)  -->,
+					count(distinct pn.Project_id ) as sm_totOutnum<!--总投资笔数(包括已经全部收回的笔数)  -->,
+					SUM(pn.PI_BeGetSum) as sm_daihuanbenxi<!--待还本息  -->
+					
+					from t_project_invest pn WHERE pn.PI_TransferStateID !=2 AND pn.PI_IsCancel=0 and pn.PI_HavedPay=1
+					GROUP BY pn.PI_Investors HAVING pn.PI_Investors=#{userId}
+	</select>
+	<select id="getCountInfo2" resultMap="sm_count">
+		select uf.Available+uf.Freeze as sm_Balance<!--总计  --> from  t_user_funds uf where uf.user_id=#{userId} 
+	</select>
+	<!-- <select id="">
+				SELECT sum(pn.PI_EffectAmount) as sm_PI_EffectAmount总借出金额(包括已全部收回的投资金额) ,
+		count(distinct pn.Project_id ) as sm_totOutnum总投资笔数(包括已经全部收回的笔数) 
+		 from t_project_invest pn 
+		WHERE pn.PI_HavedPay=1 AND pn.PI_IsCancel=0 and pn.PI_TransferStateID=0
+		GROUP BY pn.PI_Investors HAVING pn.PI_Investors=#{userId}
+	</select> -->
+	<select id="getCountInfo3" resultMap="sm_count">
+		select count(pn.project_id) as sm_totIn<!--已收回笔数  -->   from  t_project_invest pn
+		WHERE pn.PI_HavedPay=1 AND pn.PI_IsCancel=0 and pn.PI_TransferStateID !=2 and pn.PI_IsPayOff=1
+		GROUP BY pn.PI_Investors HAVING pn.PI_Investors=#{userId}
+	</select>
+	<select id="getCountInfo4" resultMap="sm_count">
+		select count(DISTINCT pn.project_id) as sm_applying <!-- 正在申请的,还没放款的,没有流标的,招标中的  --> from t_project_invest pn
+		WHERE pn.PI_HavedPay=0 AND pn.PI_IsCancel=0 and pn.PI_TransferStateID !=2
+		GROUP BY pn.PI_Investors HAVING pn.PI_Investors=#{userId}
+	</select>
+	<select id="getCountInfo5" resultMap="sm_count">	
+	select count(pi.project_id) as sm_expect<!--预期 --> from t_project_invest pi 
+				where pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2 and pi.Project_id in (select p.project_id from t_project p 
+							
+				where p.P_IsSetup=1 and p.P_HavedPay=1   and  p.P_IsPayOff=0  and p.P_IsLate=1 
+				)
+	</select>
+	<select id="getCountInfo6" resultMap="sm_count">
+		select count(pi.project_id) as sm_daichang<!--代偿 --> from t_project_invest pi where   pi.PI_Investors=#{userId}
+			and pi.PI_TransferStateID !=2
+			and pi.Project_id in (SELECT p.Project_id from t_project p
+			left join t_project_risk pr
+			on p.project_id=pr.project_id
+			where  p.P_HavedPay=1 and  p.P_IsPayOff=0 and pr.PR_IsReplacePay=1
+			)
+	</select>
+	<select id="getCountInfo7" resultMap="sm_count">
+		select count(pi.project_id) as sm_Natural_repayMent<!--正常还款 未还清 -->  from t_project_invest pi 
+			where  pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2 and pi.Project_id in (
+			SELECT p.project_id from t_project p 
+			left join t_project_risk pr on p.project_id=pr.project_id
+					
+			where p.P_HavedPay=1 and p.P_IsLate=0  and p.P_IsPayOff=0  and pr.PR_IsReplacePay=0 )
+	</select>
+	<select id="getCountInfo8" resultMap="sm_count">
+		select count(p.project_id) as sm_compleate_repayMent<!--已完成  --> from 
+			t_project_invest pi left join t_project p  on pi.project_id=p.project_id where 
+			pi.PI_HavedPay=1 and pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2 and 
+			p.P_IsPayOff=1 
+	</select>
+	<select id="getCountInfo9" resultMap="sm_count">
+		select count(pi.project_id) as sm_yidaichang <!--已代偿  -->from t_project_invest pi LEFT JOIN t_project p 
+			on pi.project_id=  p.project_id
+			left join t_project_risk pr
+			on pi.project_id=pr.project_id
+		
+			where  pi.PI_HavedPay=1 and pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2
+			 and p.P_IsPayOff=1 and pr.PR_IsReplacePay=1
+	</select>
+	<select id="getCountInfo10" resultMap="sm_count">	
+		select count(pi.project_id) as sm_zhengchangPayment<!--正常还款(还清)  --> from t_project_invest pi LEFT JOIN t_project p ON
+			pi.project_id=p.project_id
+			left join t_project_risk pr
+			on pi.project_id=pr.project_id
+			
+			where pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2
+			 and p.P_HavedPay=1 and pr.PR_IsReplacePay=0 and p.P_IsLate=0 and p.P_IsPayOff=1
+	</select>
+	<select id="getCountInfo11" resultMap="sm_count">	
+		select count(pi.project_id) as sm_tiqianPayMent<!--提前还款  --> from
+			 t_project_invest pi LEFT JOIN  t_project p  on pi.project_id=p.project_id 
+		where  pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2 AND p.P_HavedPay=1  and p.P_IsPayOff=1 and p.P_IsPrepay=1 
+	</select>
+	<select id="getCountInfo12" resultMap="sm_count">	
+		select count(pn.project_id) as sm_totIn_ing<!-- 待收回, 持有中 -->  from  t_project_invest pn
+		WHERE pn.PI_HavedPay=1 AND pn.PI_IsCancel=0 and pn.PI_TransferStateID !=2 and pn.PI_IsPayOff=0
+		GROUP BY pn.PI_Investors HAVING pn.PI_Investors=#{userId}
+		
+	</select>
+	
+	<!-- 等待还款 -->
+	<select id="getWaitingForthePayMent" resultMap="myTender_">
+
+        select p.P_Name, p.P_Current as deadlineNum,pi.PI_BidTime as PA_PayBackTime,u.RealName,p.P_Deadline,
+		pi.PI_BeGetSum
+		
+		from t_project_invest pi left join t_project p on pi.project_id=p.project_id
+		
+   left join t_user u on p.P_Applicant=u.user_id
+    where pi.PI_Investors=#{userId}  and pi.PI_GetPrincipalSum=0 and pi.PI_GetRateSum=0
+	and p.P_HavedPay=1
+      <if test="@Ognl@isNotEmpty(beginDate1)"> and pi.PI_BidTime &gt;=#{beginDate1} </if>
+    <if test="@Ognl@isNotEmpty(endDate1)"> and pi.PI_BidTime &lt;=#{endDate1} </if>
+    
+     group by pi.project_id
+   
+	</select>
+	
+	<!--正在还款  -->
+	<select id="getRePayMenetList" resultMap="myTender_res">
+    
+   
+       select p.P_Name,p.P_Current as deadlineNum,
+				p.P_UpdateTime as PA_PayBackTime, 
+			pi.PI_BidTime ,u.RealName,
+		p.P_Deadline,pi.PI_GetPrincipalSum,
+		pi.PI_GetRateSum,pi.PI_BeGetSum,
+		pi.PI_BeGetPrincipalSum,pi.PI_BeGetRateSum
+		from t_project_invest pi left join t_project p on pi.project_id=p.project_id
+   left join t_user u on p.P_Applicant=u.user_id
+    where pi.PI_Investors=#{userId}  and pi.PI_GetPrincipalSum>0 and pi.PI_GetRateSum>0 
+    and pi.PI_TransferStateID !=2
+	and p.P_HavedPay=1 and p.P_IsPayOff=0
+       <if test="@Ognl@isNotEmpty(beginDate2)"> and p.P_UpdateTime &gt;=#{beginDate2} </if>
+    <if test="@Ognl@isNotEmpty(endDate2)"> and p.P_UpdateTime &lt;=#{endDate2} </if>
+    
+     group by pi.project_id ORDER BY p.P_UpdateTime DESC
+    
+    
+	</select>
+	
+	<!--已还清  -->
+	<select id="getPayOffList" resultMap="myTender_res">
+	    
+
+        select p.P_Name,p.P_UpdateTime as PA_PayBackTime,p.P_Current as deadlineNum,
+        u.RealName,p.P_Deadline,pi.PI_GetPrincipalSum,
+		pi.PI_GetRateSum,pi.PI_BeGetSum,
+		pi.PI_BeGetPrincipalSum,pi.PI_BeGetRateSum
+		from t_project_invest pi left join t_project p on pi.project_id=p.project_id
+   left join t_user u on p.P_Applicant=u.user_id
+    where pi.PI_Investors=#{userId} and pi.PI_TransferStateID !=2
+    and p.P_HavedPay=1 and p.P_IsPayOff=1 and p.P_Deadline=p.P_Current
+    
+      <if test="@Ognl@isNotEmpty(beginDate3)"> and p.P_UpdateTime &gt;=#{beginDate3} </if>
+    <if test="@Ognl@isNotEmpty(endDate3)"> and p.P_UpdateTime &lt;=#{endDate3} </if>
+    
+     group by pi.project_id <!-- ORDER BY p.P_UpdateTime DESC -->
+    
+	</select> 
+	<!--根据用户id和项目id获取记录  -->
+	<select id="getTProjectInvestByUserIdAndProId" resultMap="projectInvest">	
+	 	select * from T_Project_Invest pi
+	    where 1=1
+		and pi.PI_Investors=#{userId}
+		and pi.Project_id=#{projectId} and pi.PI_IsCancel=0
+	</select>
+	
+
+	<select id="getTprojectInvestByProIdForUserGet" resultMap="projectInvest">
+		select pi.Invest_id,pi.Project_id,pi.PI_Investors,pi.PI_Amount,pi.PI_EffectAmount,pi.PI_BidTime,
+		pi.PI_HavedPay,pi.PI_HavedPayTime,pi.PI_IsCancel,pi.PI_TypeID,pi.pi_GetSum ,
+		pi.pi_BeGetSum,
+		pi.pi_GetRateSum,
+		pi.pi_BeGetRateSum,
+		pi.pi_GetPrincipalSum,
+		pi.pi_BeGetPrincipalSum,
+		pi.pi_GetLate,
+		pi.PI_IsPayoff,
+		pi.PI_TransferStateID,
+		pi.PI_TransferCount from T_Project_Invest pi where pi.project_id=#{projectid} 
+		AND pi.PI_IsCancel=0 AND pi.PI_HavedPay=1 
+	</select>
+	
+	<select id="getProjectsLatelyInvest" resultMap="projectInvest">
+		select pi.PI_Amount,tu.LoginName RealName,pi.PI_BidTime from T_Project_Invest pi LEFT JOIN T_user tu on tu.User_id=pi.pi_investors
+		 where  pi.PI_IsCancel=0 ORDER BY pi.PI_BidTime DESC
+	</select>
+	
+	<select id="getProjectsLatelySumInvest" resultMap="projectInvest">
+		select SUM(pi.PI_Amount) PI_Amount,tu.LoginName RealName,pi.PI_BidTime from T_Project_Invest pi LEFT JOIN T_user tu on tu.User_id=pi.pi_investors
+		 where  pi.PI_IsCancel=0 AND pi.PI_BidTime > date_format(NOW(),'%Y-%m-%d') GROUP BY pi.pi_investors ORDER BY SUM(pi.PI_Amount) DESC
+	</select>
+	<select id="getProjectInvestsByCnd" resultMap="projectInvest">
+		select tt.isCancel,tt.Transfer_id,pi.Invest_id,pi.Project_id,pi.PI_Investors,pi.PI_Amount,pi.PI_EffectAmount,pi.PI_BidTime,
+		pi.PI_HavedPay,pi.PI_HavedPayTime,pi.PI_IsCancel,pi.PI_TypeID,pi.pi_GetSum ,
+		pi.pi_BeGetSum,tp.LoginName,tp.P_Name,tr.prCurrent,
+		pi.pi_GetRateSum,tp.P_Rate_Out,tp.P_Deadline,tp.P_OpenDate,
+		pi.pi_BeGetRateSum,
+		pi.pi_GetPrincipalSum,
+		pi.pi_BeGetPrincipalSum,
+		pi.pi_GetLate,
+		pi.PI_IsPayoff,
+		pi.PI_TransferStateID,
+		pi.PI_TransferCount from T_Project_Invest pi Left join 
+		(SELECT tp.Project_id,tp.P_Name,tp.P_Rate_Out,tp.P_Deadline,tp.P_OpenDate,t.LoginName FROM T_Project tp Left join T_user t on t.user_id=tp.P_Applicant) tp
+		on tp.Project_id=pi.Project_id  Left join 
+		(SELECT tr.Project_id,MAX(tr.PR_Current) as prCurrent From T_Project_Repayment tr where tr.PR_isDone=1 group by tr.Project_id) tr 
+		on tr.Project_id=pi.Project_id LEFT JOIN t_project_transfer tt on tt.Invest_id=pi.Invest_id
+		where  
+		pi.PI_IsCancel=0 AND pi.PI_HavedPay=1 AND pi.PI_IsPayOff=0 
+		 AND pi.PI_TransferStateID!='1' 
+		<if test="@Ognl@isNotEmpty(applyName)"> and tp.LoginName=#{applyName} </if>
+	    <if test="@Ognl@isNotEmpty(pname)"> and tp.P_Name=#{pname} </if>
+	    <if test="@Ognl@isNotEmpty(userId)"> and pi.PI_Investors=#{userId} </if>
+	    <if test="@Ognl@isNotEmpty(investId)"> and pi.Invest_id=#{investId} </if>
+	</select>
+	<!-- 查询转让中的投资记录 -->
+	<select id="getProjectInvestTransfering" resultMap="projectInvest">
+		select t.LoginName as offerName,tt.TransferorIdName,<if test="@Ognl@isNotEmpty(nInvestorId)">tt.myPrice,</if>tt.Transfer_id,tt.UpsetPrice,tt.hieghtestPrice,tt.CloseDate,pi.Invest_id,pi.Project_id,pi.PI_Investors,pi.PI_Amount,pi.PI_EffectAmount,pi.PI_BidTime,
+		pi.PI_HavedPay,pi.PI_HavedPayTime,pi.PI_IsCancel,pi.PI_TypeID,pi.pi_GetSum ,
+		pi.pi_BeGetSum,tp.LoginName,tp.P_Name,tr.prCurrent,
+		pi.pi_GetRateSum,tp.P_Rate_Out,tp.P_Deadline,tp.P_OpenDate,
+		pi.pi_BeGetRateSum,
+		pi.pi_GetPrincipalSum,
+		pi.pi_BeGetPrincipalSum,
+		pi.pi_GetLate,
+		pi.PI_IsPayoff,
+		pi.PI_TransferStateID,
+		pi.PI_TransferCount from T_Project_Invest pi Left join 
+		(SELECT tp.Project_id,tp.P_Name,tp.P_Rate_Out,tp.P_Deadline,tp.P_OpenDate,t.LoginName FROM T_Project tp Left join T_user t on t.user_id=tp.P_Applicant) tp
+		on tp.Project_id=pi.Project_id  Left join 
+		(SELECT tr.Project_id,MAX(tr.PR_Current) as prCurrent From T_Project_Repayment tr where tr.PR_isDone=1 group by tr.Project_id) tr 
+		on tr.Project_id=pi.Project_id LEFT JOIN (SELECT tt.Invest_id,tt.Transfer_id,tt.UpsetPrice,tt.CloseDate,t.LoginName as TransferorIdName,
+		<if test="@Ognl@isNotEmpty(nInvestorId)">(SELECT MAX(ta.OfferPrice) FROM t_project_auction ta WHERE ta.user_id=#{nInvestorId}) as myPrice, </if>
+		(SELECT t.user_id from t_project_auction t where t.OfferPrice=MAX(ta.OfferPrice) and t.Transfer_id=tt.Transfer_id and t.IsCancel=0) user_id,
+   		 MAX(ta.OfferPrice) hieghtestPrice FROM t_project_transfer tt LEFT JOIN T_user t on tt.TransferorID=t.user_id 
+    	LEFT JOIN t_project_auction ta on tt.Transfer_id=ta.Transfer_id AND ta.IsCancel=0 GROUP BY tt.Transfer_id ) tt on tt.Invest_id=pi.Invest_id
+		LEFT JOIN T_user t on tt.user_id=t.user_id <if test="@Ognl@isNotEmpty(nInvestorId)"> RIGHT JOIN t_project_auction ta on ta.Transfer_id=tt.Transfer_id  and ta.IsCancel=0 </if>
+		where  pi.PI_HavedPay=1 AND pi.PI_IsPayOff=0 
+		<if test="@Ognl@isNotEmpty(piTransferStateId)"> AND pi.PI_TransferStateID = #{piTransferStateId}  </if>
+		<if test="@Ognl@isNotEmpty(applyName)"> and tp.LoginName=#{applyName} </if>
+	    <if test="@Ognl@isNotEmpty(pname)"> and tp.P_Name=#{pname} </if>
+	    <if test="@Ognl@isNotEmpty(userId)"> and pi.PI_Investors=#{userId} </if>
+	     <if test="@Ognl@isNotEmpty(nInvestorId)"> and ta.user_id=#{nInvestorId} </if>
+	    <if test="@Ognl@isNotEmpty(closeDate)"> and tt.CloseDate&lt;=#{closeDate}</if>
+	</select>
+		<select id="getUnPayOffInvest" resultMap="projectInvest"> <!-- 取未结清的投资 -->
+		SELECT a.*,b.P_Deadline,c.PR_Current,c.PR_PlanPayTime FROM t_project_invest a,t_project b
+		LEFT JOIN 
+		(SELECT * FROM t_project_repayment d WHERE EXISTS(
+			SELECT * FROM (SELECT min(PR_Current) as PR_Current,project_id FROM t_project_repayment WHERE PR_IsPayOff=0 GROUP BY project_id) c
+		WHERE c.PR_Current = d.PR_Current AND d.project_id = c.project_id)) e
+		ON(b.project_id = e.project_id)
+		WHERE a.project_id = b.project_id
+		AND a.PI_IsPayOff = 0
+		AND a.PI_IsCancel = 0
+		AND b.P_Audit_Platform = 1
+	</select>
+	
+	
+	<!-- 查询是否满足任务条件 -->
+	<select id="count" resultType="long">
+        SELECT count(*) FROM t_project_invest 
+		where PI_Investors = #{piInvestors}
+    </select> 
+
+</mapper>
+
+

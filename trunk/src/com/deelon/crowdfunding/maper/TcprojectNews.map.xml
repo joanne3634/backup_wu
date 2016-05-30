@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectNews">
+
+	<resultMap id="TcprojectNews" type="com.deelon.crowdfunding.model.backstage.TcprojectNews">	
+        <id property="newsId" column="News_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pntypeId" column="PN_TypeID"/>
+        <result property="pntitle" column="PN_Title"/>
+        <result property="pncontent" column="PN_Content"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="isDel" column="IsDel"/>
+        <result property="fileId" column="FileID"/>
+        <result property="viewCount" column="ViewCount"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pic" column="P_Pic"/>
+	</resultMap>
+	
+	<sql id="columns">
+		News_id,Project_id,PN_TypeID,PN_Title,PN_Content,Creator,CreateTime,IsDel,FileID
+	</sql> 
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(newsId)">AND News_id = #{newsId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND tpn.Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pntypeId)">AND PN_TypeID = #{pntypeId}</if>
+	       <if test="@Ognl@isNotEmpty(pntitle)">AND PN_Title LIKE '%${pntitle}%'</if>
+	       <if test="@Ognl@isNotEmpty(pncontent)">AND PN_Content LIKE  '%${pncontent}%'</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND tpn.IsDel = #{isDel}</if>
+	       <if test="@Ognl@isNotEmpty(fileId)">AND FileID = #{fileId}</if>
+	       <if test="@Ognl@isNotEmpty(viewCount)">AND ViewCount = #{viewCount}</if>
+	       <if test="@Ognl@isNotEmpty(pname)">AND P_Name LIKE  '%${pname}%'</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectNews">
+		INSERT INTO t_c_project_news
+		(<include refid="columns"/>)
+		VALUES
+		(#{newsId} ,#{projectId} ,#{pntypeId} ,#{pntitle} ,#{pncontent} ,#{creator} ,#{createTime} ,#{isDel} ,#{fileId}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_news 
+		WHERE
+        News_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectNews">
+		UPDATE t_c_project_news SET
+	        Project_id = #{projectId} ,
+	        PN_TypeID = #{pntypeId} ,
+	        PN_Title = #{pntitle} ,
+	        PN_Content = #{pncontent} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} ,
+	        IsDel = #{isDel},
+	        FileID = #{fileId},
+	        ViewCount = #{viewCount}
+        WHERE 
+	        News_id = #{newsId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectNews">
+		SELECT *
+		FROM t_c_project_news 
+		WHERE 1=1 AND
+		News_id = #{id} 
+	</select>
+	
+	<select id="getByNewId" parameterType="java.lang.Long" resultMap="TcprojectNews">
+		SELECT tpn.*,tp.P_Name
+		FROM t_c_project_news tpn left join t_c_project tp on tpn.Project_id = tp.Project_id 
+		WHERE 1=1 AND
+		News_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectNews">
+		SELECT tpn.*
+		FROM t_c_project_news tpn left join t_c_project tp on tpn.Project_id = tp.Project_id 
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(projectName)">AND tp.P_Name like '%${projectName}%'</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by News_id  desc
+		</if>
+	</select>
+	
+	<select id="getAllByTypeId" resultMap="TcprojectNews">
+		SELECT tpn.*,tp.P_Name,tp.P_Pic as pic
+		FROM t_c_project_news tpn left join t_c_project tp on tpn.Project_id = tp.Project_id 
+		WHERE 1=1 AND PN_TypeID = 1 AND tpn.IsDel=0
+		<if test="@Ognl@isNotEmpty(projectId)">AND tpn.Project_id = #{projectId}</if>
+<!-- 		<include refid="dynamicWhere" /> -->
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by CreateTime  desc
+		</if>
+	</select>
+	
+	<select id="getAllByCount" resultMap="TcprojectNews">
+		SELECT top 10 tpn.*,tp.P_Name
+		FROM t_c_project_news tpn left join t_c_project tp on tpn.Project_id = tp.Project_id 
+		WHERE 1=1 AND PN_TypeID = 1 AND tpn.IsDel=0
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by viewCount  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_news WHERE 1=1
+		<include refid="dynamicWhere" />   
+    </select> 
+    
+    <update id="update_isDel" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectNews">
+		UPDATE t_c_project_news SET
+	        IsDel = #{isDel} 
+        WHERE 
+	        News_id = #{newsId} 
+	</update>  
+
+	<select id="getByProId" resultMap="TcprojectNews">
+		SELECT pn.*,p.P_Name from t_c_project_news pn 
+		left join t_c_project p on pn.Project_id=p.Project_id where 1=1 AND pn.IsDel=0
+		<if test="@Ognl@isNotEmpty(projectId)">AND pn.Project_id = #{projectId}</if>
+	    <if test="@Ognl@isNotEmpty(pntypeId)">AND pn.PN_TypeID = #{pntypeId}</if>
+	   
+		ORDER BY pn.CreateTime desc 
+	</select>
+	
+</mapper>
+

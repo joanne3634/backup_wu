@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.deelon.loan.model.front.TProjectRisk">
+
+	<resultMap id="TprojectRisk" type="com.deelon.loan.model.front.TProjectRisk">	
+        <id property="riskId" column="Risk_id" javaType="long" />
+        <result property="projectId" column="Project_id" javaType="long"/>
+        <result property="prriskRate" column="PR_RiskRate" javaType="BigDecimal"/>
+        <result property="prrisk" column="PR_Risk" javaType="BigDecimal"/>
+        <result property="prcompay" column="PR_Compay" javaType="long"/>
+        <result property="praudit" column="PR_Audit" javaType="int"/>
+        <result property="prisReplacePay" column="PR_IsReplacePay" javaType="int"/>
+        <result property="prreplacePay" column="PR_ReplacePay"  javaType="BigDecimal"/>
+        <result property="prreplacePayTime" column="PR_ReplacePayTime"/>
+        <result property="pradvice" column="PR_Advice" javaType="String"/>
+        
+        <result property="proName" column="proName" javaType="String"/>
+        <result property="prcompayName" column="RC_Name" javaType="String"/>
+        
+	</resultMap>
+
+	<sql id="columns">
+		Risk_id,Project_id,PR_RiskRate,PR_Risk,PR_Compay,PR_Audit,PR_IsReplacePay,PR_ReplacePay,PR_ReplacePayTime,PR_Advice 
+	</sql>
+
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	</sql>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProjectRisk">
+		INSERT INTO T_Project_Risk
+		(
+		<include refid="columns" />
+		)
+		VALUES
+ 		(#{riskId} ,#{projectId} ,#{prriskRate} ,#{prrisk} ,#{prcompay} ,#{praudit} ,#{prisReplacePay},#{prreplacePay} ,#{prreplacePayTime} ,#{pradvice} )
+    </insert>
+ 
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM T_Project_Risk
+		WHERE
+		Risk_id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectRisk">
+		UPDATE T_Project_Risk SET
+
+	        Risk_id = #{riskId} ,
+	        Project_id = #{projectId} ,
+	        PR_RiskRate = #{prriskRate} ,
+	        PR_Risk = #{prrisk} ,
+	        PR_Compay = #{prcompay} ,
+	        PR_Audit = #{praudit} ,
+	        PR_IsReplacePay = #{prisReplacePay} ,
+	        PR_ReplacePay = #{prreplacePay} ,
+	        PR_ReplacePayTime = #{prreplacePayTime} ,
+	        PR_Advice = #{pradvice} 
+        WHERE 
+	        Risk_id = #{riskId} 
+ 	</update>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="TprojectRisk">
+		SELECT
+		<include refid="columns" />
+		FROM T_Project_Risk
+		WHERE 1=1 and
+		Risk_id = #{id}
+	</select>
+
+	<select id="getAll" resultMap="TprojectRisk">
+		SELECT
+		<include refid="columns" />
+		FROM T_Project_Risk
+		WHERE 1=1
+		<if test="@Ognl@isNotEmpty(beginDate)">AND PR_ReplacePayTime &gt;= #{beginDate}</if>
+	     <if test="@Ognl@isNotEmpty(endDate)">AND PR_ReplacePayTime &lt;= #{endDate}</if>
+		<!-- <include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by Risk_id desc
+		</if> -->
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT count(*) FROM T_Project_Risk
+		<include refid="dynamicWhere" />
+	</select>
+	
+	<select id="getMaxProjectRiskId" resultType="long">
+		SELECT max(Risk_id) FROM T_Project_Risk
+	</select>
+	
+	<!--查询贷款项目的担保信息  -->
+	<select id="getTProjectRiskByProId" resultMap="TprojectRisk">
+	SELECT pr.*,tp.P_Name as proName<!-- ,trc.RC_Name --> FROM t_project tp 
+	left join T_Project_Risk pr on tp.Project_id=pr.Project_id
+	<!-- left join  T_Risk_Company trc on pr.PR_Compay=trc.Company_id --> 
+	where tp.Project_id=#{proId}
+	<!-- 	SELECT pr.*,tp.P_Name as proName,trc.RC_Name FROM T_Project_Risk pr left join t_project tp on pr.Project_id=tp.Project_id
+		left join  T_Risk_Company trc on pr.PR_Compay=trc.Company_id
+		where pr.Project_id=#{proId} -->
+	</select>
+
+	<!-- 查询项目相关的风险记录信息 -->
+	<select id="getTprojectRiskInfoByProjectId" resultMap="TprojectRisk">
+		SELECT pr.*,tp.P_Name as proName,trc.RC_Name FROM T_Project_Risk pr left join t_project tp on pr.Project_id=tp.Project_id
+		left join  T_Risk_Company trc on pr.PR_Compay=trc.Company_id
+		where pr.Project_id=#{proId}
+	</select>
+
+</mapper>
+

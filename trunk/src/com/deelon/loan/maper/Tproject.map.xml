@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TProject">
+
+	<resultMap id="Tproject" type="com.deelon.loan.model.front.TProject">	
+        <id property="projectId" column="Project_id" />
+        <result property="productsLoanId" column="ProductsLoan_id"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pstatusId" column="P_StatusID"/>
+        <result property="ptypeId" column="P_TypeID"/>
+        <result property="pcertifiLevel" column="P_CertifiLevel"/>
+        <result property="pclerk" column="P_Clerk"/>
+        <result property="ploan" column="P_Loan"/>
+        <result property="ploanReal" column="P_LoanReal"/>
+        <result property="prateIn" column="P_Rate_In"/>
+        <result property="prateOut" column="P_Rate_Out"/>
+        <result property="pdeadline" column="P_Deadline"/>
+        <result property="prepayWay" column="P_RepayWay"/>
+        <result property="pcomplete" column="P_Complete"/>
+        <result property="pbided" column="P_Bided"/>
+        <result property="pminInvest" column="P_MinInvest"/>
+        <result property="pmaxInvest" column="P_MaxInvest"/>
+        <result property="pviewed" column="P_Viewed"/>
+        <result property="pdesc" column="P_Desc"/>
+        <result property="papplicant" column="P_Applicant"/>
+        <result property="papplicationTime" column="P_ApplicationTime"/>
+        <result property="popenDate" column="P_OpenDate"/>
+        <result property="pcloseDate" column="P_CloseDate"/>
+        <result property="phavedPay" column="P_HavedPay"/>
+        <result property="phavedPayTime" column="P_HavedPayTime"/>
+        <result property="phavedPayer" column="P_HavedPayer"/>
+        <result property="pauditPlatform" column="P_Audit_Platform"/>
+        <result property="pisFull" column="P_IsFull"/>
+        <result property="pisBreak" column="P_IsBreak"/>
+        <result property="pbreakTimes" column="P_BreakTimes"/>
+        <result property="pisSetup" column="P_IsSetup"/>
+        <result property="pisLate" column="P_IsLate"/>
+        <result property="plateDays" column="P_LateDays"/>
+        <result property="pisPayOff" column="P_IsPayOff"/>
+        <result property="psumPayBack" column="P_SumPayBack"/>
+        <result property="psumInterest" column="P_SumInterest"/>
+        <result property="psumHavedPay" column="P_SumHavedPay"/>
+        <result property="psumLate" column="P_SumLate"/>
+        <result property="psumLateHavedPay" column="P_SumLateHavedPay"/>
+        <result property="psumHavedPayPrincipal" column="P_SumHavedPay_Principal"/>        
+        <result property="psumHavedPayInterest" column="P_SumHavedPay_Interest"/>
+        <result property="psumFee" column="P_SumFee"/>
+        <result property="pfee" column="P_Fee"/>
+        <result property="pprepay" column="P_Prepay"/>
+        <result property="pdel" column="P_Del"/>
+        <result property="pbreakRemark" column="P_Break_remark"/>
+        <result property="pupdateTime" column="P_UpdateTime"/>
+        <result property="applyName" column="RealName"/>
+         <result property="prrisk" column="PR_Risk" javaType="BigDecimal"/>
+        <result property="prcompay" column="PR_Compay" javaType="long"/>
+        <result property="praudit" column="PR_Audit" javaType="int"/>
+        <result property="prisReplacePay" column="PR_IsReplacePay" javaType="int"/>
+        <result property="prreplacePay" column="PR_ReplacePay"  javaType="BigDecimal"/>
+        <result property="prreplacePayTime" column="PR_ReplacePayTime"/>
+        <result property="pradvice" column="PR_Advice" javaType="String"/> 
+        <result property="popenDays" column="P_OpenDays" javaType="int"/>  
+        <result property="currentNum" column="P_Current"/>    
+	</resultMap>
+	
+	<resultMap id="Tproject_toz" type="com.deelon.loan.model.front.TProject">	
+        <id property="projectId" column="Project_id" />
+        <result property="productsLoanId" column="ProductsLoan_id"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pstatusId" column="P_StatusID"/>
+        <result property="ptypeId" column="P_TypeID"/>
+        <result property="pcertifiLevel" column="P_CertifiLevel"/>
+        <result property="pclerk" column="P_Clerk"/>
+        <result property="ploan" column="P_Loan"/>
+        <result property="ploanReal" column="P_LoanReal"/>
+        <result property="prateIn" column="P_Rate_In"/>
+        <result property="prateOut" column="P_Rate_Out"/>
+        <result property="pdeadline" column="P_Deadline"/>
+        <result property="prepayWay" column="P_RepayWay"/>
+        <result property="pcomplete" column="P_Complete"/>
+        <result property="pbided" column="P_Bided"/>
+        <result property="pminInvest" column="P_MinInvest"/>
+        <result property="pmaxInvest" column="P_MaxInvest"/>
+        <result property="pviewed" column="P_Viewed"/>
+        <result property="pdesc" column="P_Desc"/>
+        <result property="papplicant" column="P_Applicant"/>
+        <result property="papplicationTime" column="P_ApplicationTime"/>
+        <result property="popenDate" column="P_OpenDate"/>
+        <result property="pcloseDate" column="P_CloseDate"/>
+        <result property="phavedPay" column="P_HavedPay"/>
+        <result property="phavedPayTime" column="P_HavedPayTime"/>
+        <result property="pauditPlatform" column="P_Audit_Platform"/>
+        <result property="pisFull" column="P_IsFull"/>
+        <result property="pisBreak" column="P_IsBreak"/>
+        <result property="pbreakTimes" column="P_BreakTimes"/>
+        <result property="pisSetup" column="P_IsSetup"/>
+        <result property="pisLate" column="P_IsLate"/>
+        <result property="plateDays" column="P_LateDays"/>
+        <result property="pisPayOff" column="P_IsPayOff"/>
+        <result property="psumPayBack" column="P_SumPayBack"/>
+        <result property="psumInterest" column="P_SumInterest"/>
+        <result property="psumHavedPay" column="P_SumHavedPay"/>
+        <result property="psumLate" column="P_SumLate"/>
+        <result property="psumLateHavedPay" column="P_SumLateHavedPay"/>
+        <result property="psumHavedPayPrincipal" column="P_SumHavedPay_Principal"/>        
+        <result property="psumHavedPayInterest" column="P_SumHavedPay_Interest"/>
+        <result property="psumFee" column="P_SumFee"/>
+        <result property="pfee" column="P_Fee"/>
+        <result property="pprepay" column="P_Prepay"/>
+        <result property="pdel" column="P_Del"/>
+         <result property="popenDays" column="P_OpenDays" />
+        <result property="pbreakRemark" column="P_Break_remark"/>
+        <result property="pupdateTime" column="P_UpdateTime"/>
+        <result property="successNum" column="successNum"/>
+        <result property="isbreakNum" column="isbreakNum"/>
+        <result property="currentNum" column="P_Current"/>    
+	</resultMap>
+	
+	<resultMap id="Tproject_n" type="com.deelon.loan.model.front.TProject">	
+        <id property="projectId" column="Project_id" />
+        <result property="productsLoanId" column="ProductsLoan_id"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pstatusId" column="P_StatusID"/>
+        <result property="ptypeId" column="P_TypeID"/>
+        <result property="pcertifiLevel" column="P_CertifiLevel"/>
+        <result property="pclerk" column="P_Clerk"/>
+        <result property="ploan" column="P_Loan"/>
+        <result property="ploanReal" column="P_LoanReal"/>
+        <result property="prateIn" column="P_Rate_In"/>
+        <result property="prateOut" column="P_Rate_Out"/>
+        <result property="pdeadline" column="P_Deadline"/>
+        <result property="prepayWay" column="P_RepayWay"/>
+        <result property="pcomplete" column="P_Complete"/>
+        <result property="pbided" column="P_Bided"/>
+        <result property="pminInvest" column="P_MinInvest"/>
+        <result property="pmaxInvest" column="P_MaxInvest"/>
+        <result property="pviewed" column="P_Viewed"/>
+        <result property="pdesc" column="P_Desc"/>
+        <result property="papplicant" column="P_Applicant"/>
+        <result property="papplicationTime" column="P_ApplicationTime"/>
+        <result property="popenDate" column="P_OpenDate"/>
+        <result property="pcloseDate" column="P_CloseDate"/>
+        <result property="phavedPay" column="P_HavedPay"/>
+        <result property="phavedPayTime" column="P_HavedPayTime"/>
+        <result property="pauditPlatform" column="P_Audit_Platform"/>
+        <result property="pisFull" column="P_IsFull"/>
+        <result property="pisBreak" column="P_IsBreak"/>
+        <result property="pbreakTimes" column="P_BreakTimes"/>
+        <result property="pisSetup" column="P_IsSetup"/>
+        <result property="pisLate" column="P_IsLate"/>
+        <result property="plateDays" column="P_LateDays"/>
+        <result property="pisPayOff" column="P_IsPayOff"/>
+        <result property="psumPayBack" column="P_SumPayBack"/>
+        <result property="psumInterest" column="P_SumInterest"/>
+        <result property="psumHavedPay" column="P_SumHavedPay"/>
+        <result property="psumLate" column="P_SumLate"/>
+        <result property="psumLateHavedPay" column="P_SumLateHavedPay"/>
+        <result property="pdel" column="P_Del"/>
+        <result property="pbreakRemark" column="P_Break_remark"/>
+        <result property="pupdateTime" column="P_UpdateTime"/>
+        <result property="applyName" column="RealName"/>
+        <result property="prrisk" column="PR_Risk"/>
+        <result property="prriskRate" column="PR_RiskRate"/>
+        <result property="currentNum" column="P_Current"/>    
+        <result property="riskName" column="RC_Name"/>
+        <result property="countNum" column="breakNum"/>
+        
+	</resultMap>
+	<resultMap id="Tproject_invest" type="com.deelon.loan.model.front.TProject">	
+        <result property="pname" column="P_Name"/>
+        <result property="prateOut" column="P_Rate_Out"/>
+         <result property="pihavedPay" column="PI_HavedPay"/>
+         <result property="pieffectAmount" column="PI_EffectAmount"/>
+         <result property="pibidTime" column="PI_BidTime"/>
+	</resultMap>
+	
+	
+	<resultMap id="Tproject_" type="com.deelon.loan.model.front.TProject">	
+        <id property="projectId" column="Project_id" />
+        <result property="productsLoanId" column="ProductsLoan_id"/>
+        <result property="pname" column="P_Name"/>
+        <result property="pstatusId" column="P_StatusID"/>
+        <result property="ptypeId" column="P_TypeID"/>
+        <result property="pcertifiLevel" column="P_CertifiLevel"/>
+        <result property="pclerk" column="P_Clerk"/>
+        <result property="ploan" column="P_Loan"/>
+        <result property="ploanReal" column="P_LoanReal"/>
+        <result property="prateIn" column="P_Rate_In"/>
+        <result property="prateOut" column="P_Rate_Out"/>
+        <result property="pdeadline" column="P_Deadline"/>
+        <result property="prepayWay" column="P_RepayWay"/>
+        <result property="pcomplete" column="P_Complete"/>
+        <result property="pbided" column="P_Bided"/>
+        <result property="pminInvest" column="P_MinInvest"/>
+        <result property="pmaxInvest" column="P_MaxInvest"/>
+        <result property="pviewed" column="P_Viewed"/>
+        <result property="pdesc" column="P_Desc"/>
+        <result property="papplicant" column="P_Applicant"/>
+        <result property="papplicationTime" column="P_ApplicationTime"/>
+        <result property="popenDate" column="P_OpenDate"/>
+        <result property="pcloseDate" column="P_CloseDate"/>
+        <result property="phavedPay" column="P_HavedPay"/>
+        <result property="phavedPayTime" column="P_HavedPayTime"/>
+        <result property="pauditPlatform" column="P_Audit_Platform"/>
+        <result property="pisFull" column="P_IsFull"/>
+        <result property="pisBreak" column="P_IsBreak"/>
+        <result property="pbreakTimes" column="P_BreakTimes"/>
+        <result property="pisSetup" column="P_IsSetup"/>
+        <result property="pisLate" column="P_IsLate"/>
+        <result property="plateDays" column="P_LateDays"/>
+        <result property="pisPayOff" column="P_IsPayOff"/>
+        <result property="psumPayBack" column="P_SumPayBack"/>
+        <result property="psumInterest" column="P_SumInterest"/>
+        <result property="psumHavedPay" column="P_SumHavedPay"/>
+        <result property="psumLate" column="P_SumLate"/>
+        <result property="psumLateHavedPay" column="P_SumLateHavedPay"/>
+        <result property="pdel" column="P_Del"/>
+        <result property="pbreakRemark" column="P_Break_remark"/>
+        <result property="pupdateTime" column="P_UpdateTime"/>
+        <result property="fileId" column="fileId"/>
+        
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TProject" id="WaitingForTheLoan">
+		<id property="projectId" column="Project_id"/>
+		<result property="contractNo" column="PC_NO"/>
+		<result property="applyName" column="RealName"/>
+		<result property="pname" column="P_Name"/>
+		<result property="ploan" column="P_Loan"/>
+		<result property="ploanReal" column="P_LoanReal"/>
+		<result property="prateIn" column="P_Rate_In"/>
+		<result property="pdeadline" column="P_Deadline"/>
+		<result property="phavedPay" column="P_HavedPay"/>
+		<result property="phavedPayTime" column="P_HavedPayTime"/>
+	</resultMap>
+	
+	<resultMap type="com.deelon.loan.model.front.TProject" id="financal_coutn">
+		<result property="pieffectAmountTotal" column="PI_EffectAmount_Total"/>
+		<result property="psumHavedPayInterestTotal" column="P_SumHavedPay_Interest_total"/>
+		<result property="prateOutavg" column="P_Rate_Out_avg"/>
+		<result property="countNum" column="count_num"/>
+		<result property="produ_name" column="produ_name"/>
+		
+		
+		<result property="psumHavedPayTotal" column="P_SumHavedPay_total"/>
+		<result property="psumHavedPaytotalInterest" column="P_SumHavedPay_total_Interest"/>
+		<result property="psumLateTotal" column="P_SumLate_total"/>
+		<result property="piBeGetRateSum" column="PI_BeGetRateSum"/>
+	</resultMap>
+	
+	
+	
+	<sql id="columns">
+		t_project.Project_id,ProductsLoan_id,P_Name,P_StatusID,P_TypeID,P_CertifiLevel,P_Clerk,P_Loan,P_LoanReal,P_Rate_In,P_Rate_Out,P_Deadline,P_RepayWay,P_Complete,P_Bided,P_MinInvest,P_MaxInvest,P_Viewed,P_Desc,P_Applicant,P_ApplicationTime,P_OpenDate,P_CloseDate,P_HavedPay,P_HavedPayTime,P_Audit_Platform,P_IsFull,P_IsBreak,P_BreakTimes,P_IsSetup,P_IsLate,P_LateDays,P_IsPayOff,P_SumPayBack,P_SumInterest,P_SumHavedPay,P_SumLate,P_SumLateHavedPay,P_Del,P_Break_remark,P_UpdateTime,P_OpenDays,P_Current
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(productsLoanId)">AND ProductsLoan_id = #{productsLoanId}</if>
+	       <if test="@Ognl@isNotEmpty(pname)">AND P_Name = #{pname}</if>
+	       <if test="@Ognl@isNotEmpty(pstatusId)">AND P_StatusID = #{pstatusId}</if>
+	       <if test="@Ognl@isNotEmpty(ptypeId)">AND P_TypeID = #{ptypeId}</if>
+	       <if test="@Ognl@isNotEmpty(pcertifiLevel)">AND P_CertifiLevel = #{pcertifiLevel}</if>
+	       <if test="@Ognl@isNotEmpty(pclerk)">AND P_Clerk = #{pclerk}</if>
+	       <if test="@Ognl@isNotEmpty(ploan)">AND P_Loan = #{ploan}</if>
+	       <if test="@Ognl@isNotEmpty(ploanReal)">AND P_LoanReal = #{ploanReal}</if>
+	       <if test="@Ognl@isNotEmpty(prateIn)">AND P_Rate_In = #{prateIn}</if>
+	       <if test="@Ognl@isNotEmpty(prateOut)">AND P_Rate_Out = #{prateOut}</if>
+	       <if test="@Ognl@isNotEmpty(pdeadline)">AND P_Deadline = #{pdeadline}</if>
+	       <if test="@Ognl@isNotEmpty(prepayWay)">AND P_RepayWay = #{prepayWay}</if>
+	       <if test="@Ognl@isNotEmpty(pcomplete)">AND P_Complete = #{pcomplete}</if>
+	       <if test="@Ognl@isNotEmpty(pbided)">AND P_Bided = #{pbided}</if>
+	       <if test="@Ognl@isNotEmpty(pminInvest)">AND P_MinInvest = #{pminInvest}</if>
+	       <if test="@Ognl@isNotEmpty(pmaxInvest)">AND P_MaxInvest = #{pmaxInvest}</if>
+	       <if test="@Ognl@isNotEmpty(pviewed)">AND P_Viewed = #{pviewed}</if>
+	       <if test="@Ognl@isNotEmpty(pdesc)">AND P_Desc = #{pdesc}</if>
+	       <if test="@Ognl@isNotEmpty(papplicant)">AND P_Applicant = #{papplicant}</if>
+	       <if test="@Ognl@isNotEmpty(papplicationTimeBegin)">AND P_ApplicationTime >= #{papplicationTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(papplicationTimeEnd)">AND P_ApplicationTime &lt;= #{papplicationTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(popenDateBegin)">AND P_OpenDate >= #{popenDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(popenDateEnd)">AND P_OpenDate &lt;= #{popenDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pcloseDateBegin)">AND P_CloseDate >= #{pcloseDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcloseDateEnd)">AND P_CloseDate &lt;= #{pcloseDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(phavedPay)">AND P_HavedPay = #{phavedPay}</if>
+	       <if test="@Ognl@isNotEmpty(phavedPayTimeBegin)">AND P_HavedPayTime >= #{phavedPayTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(phavedPayTimeEnd)">AND P_HavedPayTime &lt;= #{phavedPayTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pauditPlatform)">AND P_Audit_Platform = #{pauditPlatform}</if>
+	       <if test="@Ognl@isNotEmpty(pisFull)">AND P_IsFull = #{pisFull}</if>
+	       <if test="@Ognl@isNotEmpty(pisBreak)">AND P_IsBreak = #{pisBreak}</if>
+	       <if test="@Ognl@isNotEmpty(pbreakTimes)">AND P_BreakTimes = #{pbreakTimes}</if>
+	       <if test="@Ognl@isNotEmpty(pisSetup)">AND P_IsSetup = #{pisSetup}</if>
+	       <if test="@Ognl@isNotEmpty(pisLate)">AND P_IsLate = #{pisLate}</if>
+	       <if test="@Ognl@isNotEmpty(plateDays)">AND P_LateDays = #{plateDays}</if>
+	       <if test="@Ognl@isNotEmpty(pisPayOff)">AND P_IsPayOff = #{pisPayOff}</if>
+	       <if test="@Ognl@isNotEmpty(psumPayBack)">AND P_SumPayBack = #{psumPayBack}</if>
+	       <if test="@Ognl@isNotEmpty(psumInterest)">AND P_SumInterest = #{psumInterest}</if>
+	       <if test="@Ognl@isNotEmpty(psumHavedPay)">AND P_SumHavedPay = #{psumHavedPay}</if>
+	       <if test="@Ognl@isNotEmpty(psumLate)">AND P_SumLate = #{psumLate}</if>
+	       <if test="@Ognl@isNotEmpty(psumLateHavedPay)">AND (P_SumLateHavedPay = #{psumLateHavedPay} or P_SumLateHavedPay>0)</if>
+	       <if test="@Ognl@isNotEmpty(pdel)">AND P_Del = #{pdel}</if>
+	       <if test="@Ognl@isNotEmpty(pbreakRemark)">AND P_Break_remark = #{pbreakRemark}</if>
+	       <if test="@Ognl@isNotEmpty(pupdateTime)">AND P_UpdateTime = #{pupdateTime}</if>
+	       <if test="@Ognl@isNotEmpty(applyName)">AND RealName = #{applyName}</if>
+	       <if test="@Ognl@isNotEmpty(popenDays)">AND P_OpenDays = #{popenDays}</if>
+	        <if test="@Ognl@isNotEmpty(popenDays)">AND P_Current = #{currentNum}</if>
+	       
+	       
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProject">
+		INSERT INTO t_project
+		(<include refid="columns"/>)
+		VALUES
+		(#{projectId} ,#{productsLoanId} ,#{pname} ,#{pstatusId} ,#{ptypeId} ,#{pcertifiLevel} ,#{pclerk} ,#{ploan} ,#{ploanReal} ,#{prateIn} ,#{prateOut} ,#{pdeadline} ,#{prepayWay} ,#{pcomplete} ,#{pbided} ,#{pminInvest} ,#{pmaxInvest} ,#{pviewed} ,#{pdesc} ,#{papplicant} ,#{papplicationTime} ,#{popenDate} ,#{pcloseDate} ,#{phavedPay} ,#{phavedPayTime} ,#{pauditPlatform} ,#{pisFull} ,#{pisBreak} ,#{pbreakTimes} ,#{pisSetup} ,#{pisLate} ,#{plateDays} ,#{pisPayOff} ,#{psumPayBack} ,#{psumInterest} ,#{psumHavedPay} ,#{psumLate} ,#{psumLateHavedPay} ,#{pdel},#{pbreakRemark},#{pupdateTime},#{popenDays},#{currentNum}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_project 
+		WHERE 
+        Project_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TProject">
+		UPDATE t_project SET
+	        ProductsLoan_id = #{productsLoanId} ,
+	        P_Name = #{pname} ,
+	        P_StatusID = #{pstatusId} ,
+	        P_TypeID = #{ptypeId} ,
+	        P_CertifiLevel = #{pcertifiLevel} ,
+	        P_Clerk = #{pclerk} ,
+	        P_Loan = #{ploan} ,
+	        P_LoanReal = #{ploanReal} ,
+	        P_Rate_In = #{prateIn} ,
+	        P_Rate_Out = #{prateOut} ,
+	        P_Deadline = #{pdeadline} ,
+	        P_RepayWay = #{prepayWay} ,
+	        P_Complete = #{pcomplete} ,
+	        P_Bided = #{pbided} ,
+	        P_MinInvest = #{pminInvest} ,
+	        P_MaxInvest = #{pmaxInvest} ,
+	        P_Viewed = #{pviewed} ,
+	        P_Desc = #{pdesc} ,
+	        P_Applicant = #{papplicant} ,
+	        P_ApplicationTime = #{papplicationTime} ,
+	        P_OpenDate = #{popenDate} ,
+	        P_CloseDate = #{pcloseDate} ,
+	        P_HavedPay = #{phavedPay} ,
+	        P_HavedPayTime = #{phavedPayTime} ,
+	        P_HavedPayer = #{phavedPayer} ,
+	        P_Audit_Platform = #{pauditPlatform} ,
+	        P_IsFull = #{pisFull} ,
+	        P_IsBreak = #{pisBreak} ,
+	        P_BreakTimes = #{pbreakTimes} ,
+	        P_IsSetup = #{pisSetup} ,
+	        P_IsLate = #{pisLate} ,
+	        P_LateDays = #{plateDays} ,
+	        P_IsPayOff = #{pisPayOff} ,
+	        P_SumPayBack = #{psumPayBack} ,
+	        P_SumInterest = #{psumInterest} ,
+	        P_SumHavedPay = #{psumHavedPay} ,
+	        P_SumLate = #{psumLate} ,
+	        P_SumLateHavedPay = #{psumLateHavedPay} ,
+	        P_Del = #{pdel} ,
+	        P_Break_remark = #{pbreakRemark},
+	        P_UpdateTime=#{pupdateTime},
+	        P_Current=#{currentNum},
+	        <if test="@Ognl@isNotEmpty(psumHavedPayPrincipal)">P_SumHavedPay_Principal=#{psumHavedPayPrincipal}, </if> 
+        	<if test="@Ognl@isNotEmpty(psumHavedPayInterest)">P_SumHavedPay_Interest=#{psumHavedPayInterest},</if>
+        	P_OpenDays=#{popenDays}
+        WHERE 
+	        Project_id = #{projectId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tproject">
+		SELECT <include refid="columns"/>,P_SumHavedPay_Principal,P_SumHavedPay_Interest
+		FROM t_project 
+		WHERE 1=1 and
+		Project_id = #{id} 
+	</select>
+	
+	<select id="gettprojectByWhere" parameterType="map" resultMap="Tproject">
+		SELECT <include refid="columns"/>
+		FROM t_project 
+		WHERE 1=1
+		
+		AND <!-- #{currentDate} BETWEEN P_OpenDate AND P_CloseDate -->
+		t_project.P_OpenDate is not null and t_project.P_CloseDate  is not null
+		<if test="@Ognl@isNotEmpty(typeId)">AND t_project.P_TypeID like  "%"#{typeId}"%"</if>
+	    <if test="@Ognl@isNotEmpty(pdeadlineBegin)">AND (t_project.P_Deadline >= #{pdeadlineBegin} 
+	    <if test="@Ognl@isNotEmpty(pdeadlineEnd)"> AND #{pdeadlineEnd} >= t_project.P_Deadline</if> )</if> 
+	    <if test="@Ognl@isNotEmpty(pcertifiLevel)">AND t_project.P_CertifiLevel = #{pcertifiLevel}</if> 
+	   	<!-- <choose>
+	   		<when test="pcertifiLevel==HR">AND t_project.P_CertifiLevel between 0 and 99</when>
+	   		<when test="pcertifiLevel==E">AND t_project.P_CertifiLevel between 100 and 109</when>
+	   		<when test="pcertifiLevel==D">AND t_project.P_CertifiLevel between 110 and 119</when>
+	   		<when test="pcertifiLevel==C">AND t_project.P_CertifiLevel between 120 and 129</when>
+	   		<when test="pcertifiLevel==B">AND t_project.P_CertifiLevel between 130 and 144</when>
+	   		<when test="pcertifiLevel==A">AND t_project.P_CertifiLevel between 145 and 159</when>
+	   		<otherwise>AND t_project.P_CertifiLevel >=160</otherwise>
+	   	</choose> -->
+	    and t_project.P_LoanReal&lt;t_project.P_Loan and t_project.P_IsFull=0 and t_project.P_IsBreak=0 order by t_project.P_UpdateTime desc
+	   <!--  <if test="@Ognl@isNotEmpty(pstatusId)">AND P_StatusID = #{pstatusId}</if> -->
+
+	</select>
+	
+	<!-- weixin project -->
+	<select id="wxgettprojectByWhere" parameterType="map" resultMap="Tproject">
+		SELECT <include refid="columns"/>
+		FROM t_project 
+		WHERE 1=1
+		
+		AND <!-- #{currentDate} BETWEEN P_OpenDate AND P_CloseDate -->
+		t_project.P_OpenDate is not null and t_project.P_CloseDate  is not null
+	    and t_project.P_LoanReal&lt;t_project.P_Loan and t_project.P_IsFull=0 and t_project.P_IsBreak=0 
+	    <if test="typeId=='qixian' and sort=='asc'">order by t_project.P_Deadline asc</if>
+	    <if test="typeId=='qixian' and sort=='desc'">order by t_project.P_Deadline desc</if>
+		<if test="typeId=='qtje' and sort=='asc'">order by t_project.P_MinInvest asc</if>
+		<if test="typeId=='qtje' and sort=='desc'">order by t_project.P_MinInvest desc</if>
+	</select>
+	<!-- weixin project -->
+	
+	<select id="getprojectStatistics" parameterType="map" resultMap="Tproject">
+		SELECT sum(p.P_Loan) P_Loan ,sum(p.P_LoanReal) P_LoanReal , sum(p.P_SumPayBack) P_SumPayBack,sum(p.P_SumInterest) P_SumInterest,
+		sum(p.P_SumHavedPay_Principal) P_SumHavedPay_Principal,sum(p.P_SumHavedPay_Interest) P_SumHavedPay_Interest,
+		sum(p.P_SumHavedPay) P_SumHavedPay,sum(p.P_SumLate) P_SumLate,sum(p.P_Fee) P_SumFee,
+		(select sum(t.P_Fee) from t_project t where t.P_HavedPay=1 
+		<if test="@Ognl@isNotEmpty(status)">AND t.P_StatusID in ${status}</if>
+	    <if test="@Ognl@isNotEmpty(userId)">AND t.P_Applicant = #{userId}</if> ) P_Fee,
+		sum(p.P_SumLateHavedPay) P_SumLateHavedPay,sum(p.P_Prepay) P_Prepay
+		FROM t_project p 		WHERE 1=1 
+		<if test="@Ognl@isNotEmpty(status)">AND p.P_StatusID in ${status}</if>
+	    <if test="@Ognl@isNotEmpty(userId)">AND p.P_Applicant = #{userId}</if> 
+	</select>
+	<resultMap type="com.deelon.loan.model.front.TProject" id="project">
+		<id property="projectId" column="Project_id" />
+		<result property="productsLoanId" column="ProductsLoan_id"/>
+		<result property="pstatusId" column="P_StatusID" />
+		<result property="pname" column="P_Name" />
+		<result property="pdesc" column="P_Desc" />
+		<result property="ploan" column="P_Loan" />
+		<result property="ploanReal" column="P_LoanReal"/>
+		<result property="pbided" column="P_Bided"/>
+		<result property="prepayWay" column="P_RepayWay"/>
+		<result property="prateOut" column="P_Rate_Out" />
+		<result property="prateIn" column="P_Rate_In" />
+		<result property="pdeadline" column="P_Deadline" />
+		<result property="pcomplete" column="P_Complete" />
+		<result property="papplicant" column="P_Applicant" />
+		<result property="papplicationTime" column="P_ApplicationTime"/>
+		<result property="popenDate" column="P_OpenDate"/>
+        <result property="pcloseDate" column="P_CloseDate"/>
+		<result property="phavedPayTime" column="P_HavedPayTime"/>
+        <result property="psumPayBack" column="P_SumPayBack"/>
+        <result property="psumInterest" column="P_SumInterest"/>
+        <result property="psumHavedPay" column="P_SumHavedPay"/>
+        <result property="pcNo" column="PC_NO"/>
+        <result property="counts" column="COUNTS"/>
+        <result property="sumLoan" column="Sum_Loan"/>
+	</resultMap>
+	
+	<select id="getProjectsSum" resultMap="project">
+		SELECT sum(p.P_LoanReal) Sum_Loan,sum(p.P_SumHavedPay_Interest) P_SumInterest FROM t_project p 
+		WHERE p.P_StatusID>4 and p.P_StatusID!=8
+	</select>
+	
+	<select id="getProjectsInvestDesc" resultType="map">
+		SELECT SUM(pi.PI_Amount) Amount, PI_Investors,tu.LoginName FROM t_project_invest pi LEFT JOIN t_user tu on tu.user_id=pi.PI_Investors 
+		WHERE pi.PI_HavedPay=1 AND PI_IsCancel = 0 GROUP BY pi.PI_Investors  ORDER BY SUM(pi.PI_Amount) DESC
+	</select>
+	
+	<select id="getPJById" resultMap="project">
+	
+		
+		SELECT
+		p.Project_id,
+		p.P_StatusID,
+		p.P_Bided,
+		p.P_Name,
+		p.P_RepayWay,
+		p.P_Desc,
+		p.P_Loan,
+		p.P_LoanReal,
+		p.P_Rate_Out,
+		p.P_Deadline,
+		p.P_Applicant,
+		p.P_Complete,
+		p.P_TypeID
+		FROM t_project p
+		WHERE 1=1
+		AND Project_id =
+		#{pstatusId} 
+	</select>
+	<select id="getProjectByIdandUserId" resultMap="Tproject_toz">
+			SELECT a.*,b.* from 
+(SELECT * from t_project p where p.Project_id=#{projectId}) a,
+(select sum(p1.P_IsBreak) as isbreakNum   ,sum(p1.P_IsSetup) as successNum from t_project p1   GROUP BY p1.P_Applicant  HAVING p1.P_Applicant=#{userId}) b
+		
+	</select>
+	<sql id="partParam">
+		<if test="@Ognl@isNotEmpty(pCertifiLevel)">
+			AND
+			P_CertifiLevel = #{pCertifiLevel}
+		</if>
+		<if test="@Ognl@isNotEmpty(status)">AND P_StatusID = #{status}</if>
+	    <if test="@Ognl@isNotEmpty(userId)">AND P_Applicant = #{userId}</if>
+	    <if test="@Ognl@isNotEmpty(start)">AND P_ApplicationTime  &gt;= #{start}</if>
+	    <if test="@Ognl@isNotEmpty(end)">AND P_ApplicationTime  &lt;= #{end}</if>
+		<if test="@Ognl@isNotEmpty(pType)">
+			AND
+			P_TypeID = #{pType}
+		</if>
+		<if test="@Ognl@isNotEmpty(pDeadlineMin)">
+			AND
+			P_Deadline BETWEEN #{pDeadlineMin} AND
+			#{pDeadlineMax};
+		</if>
+	</sql>
+	<select id="getProjectByCnd" resultMap="project">
+		SELECT
+		p.Project_id,
+		p.ProductsLoan_id,
+		p.P_StatusID,
+		p.P_Name,
+		p.P_Desc,
+		p.P_Loan,
+		p.P_LoanReal,
+		p.P_Rate_In,
+		p.P_Rate_Out,
+		p.P_Deadline,
+		p.P_Applicant,
+		p.P_OpenDate, 
+		p.P_CloseDate,
+		p.P_HavedPayTime,
+		P_ApplicationTime,
+		p.P_SumPayBack,
+		p.P_SumInterest,
+		p.P_SumHavedPay,
+		c.PC_NO,
+		(SELECT sum(p.P_Loan)FROM t_project p left join T_Project_Contract c on c.project_id=p.project_id 
+		WHERE 1=1 <include refid="partParam"/>) Sum_Loan,
+		(SELECT count(p.Project_id)FROM t_project p left join T_Project_Contract c on c.project_id=p.project_id 
+		WHERE 1=1  <include refid="partParam"/>) COUNTS,
+		p.P_Complete
+		FROM t_project p left join T_Project_Contract c on c.project_id=p.project_id 
+		WHERE 1=1 <include refid="partParam"/>
+	</select>
+
+	<select id="getByStatusID" parameterType="java.lang.String" resultMap="project">
+		SELECT
+		p.Project_id,
+		p.P_StatusID,
+		p.P_Name,
+		p.P_Desc,
+		p.P_Loan,
+		p.P_Rate_In,
+		p.P_Rate_Out,
+		p.P_Deadline,
+		p.P_HavedPayTime,
+		p.P_SumPayBack,
+		p.P_SumInterest,
+		p.P_SumHavedPay,
+		c.PC_NO,
+		p.P_Complete
+		FROM t_project p left join T_Project_Contract c on c.project_id=p.project_id 
+		WHERE 1=1
+		AND
+		P_StatusID = #{status}
+	</select>
+	<update id="updateProjectBybid">
+		UPDATE
+		t_project
+		SET
+		P_Loan = #{ploan},
+		P_LoanReal = #{ploanReal},
+		P_Complete = #{pcomplete},
+		P_Bided = #{pbided}
+		WHERE
+		Project_id = #{projectId}
+	</update>
+	<select id="getAll" resultMap="Tproject">
+		SELECT <include refid="columns"/>,t.RealName,PR_Risk,PR_Compay,PR_Audit,
+		PR_IsReplacePay,PR_ReplacePay,PR_ReplacePayTime,PR_Advice 
+		FROM t_project  LEFT JOIN T_user t on t.user_Id=P_Applicant  
+		LEFT JOIN t_project_risk tr on tr.Project_id=t_project.Project_id 
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Project_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_project 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <select id="getAllApplyPro" resultMap="Tproject_n" parameterType="com.deelon.loan.model.front.TProject">
+    	SELECT tu.RealName,pr.PR_Risk,pr.PR_RiskRate,rc.RC_Name,ps.breakNum ,tp.* from t_project tp
+    	LEFT JOIN T_Project_Risk pr on tp.Project_id=pr.Project_id
+    	LEFT JOIN T_Risk_Company rc on pr.PR_Compay=rc.Company_id
+		LEFT JOIN t_user tu on tp.P_Applicant=tu.user_id
+		LEFT JOIN (SELECT SUM(pj.P_IsBreak) as breakNum ,pj.P_Applicant from t_project pj 
+		WHERE pj.P_IsBreak=1 GROUP BY pj.P_Applicant) ps ON tp.P_Applicant=ps.P_Applicant
+		where 1=1 and tp.P_StatusID in (1,2,3) and tp.P_OpenDate is null and tp.P_IsFull=0 and tp.P_IsBreak=0
+		<if test="@Ognl@isNotEmpty(pname)"> AND tp.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(beginDate)"> AND tp.P_ApplicationTime&gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND tp.P_ApplicationTime&lt;= #{endDate}</if>
+		<if test="@Ognl@isNotEmpty(applyName)">
+			<!-- and tu.RealName like CONCAT('%','#{applyName}','%') -->
+			and tu.RealName like "%"#{applyName}"%"
+		</if>
+		group by tp.P_StatusID ,tp.Project_id ORDER BY tp.P_ApplicationTime DESC
+    </select>
+
+	<select id="getAllWaitingAudit" resultMap="Tproject_n" parameterType="com.deelon.loan.model.front.TProject">
+		SELECT tu.RealName,tp.* from t_project tp
+		LEFT JOIN
+		t_user tu on tp.P_Applicant=tu.user_id
+		where 1=1 
+	
+		and	tp.P_OpenDate is not null  and tp.P_CloseDate is not null and tp.P_StatusID in (3,4,5)  <!-- and tp.P_CloseDate>=#{currentDate} -->
+		and tp.P_IsBreak=0
+		and tp.P_IsFull=0
+		<if test="@Ognl@isNotEmpty(pname)"> AND tp.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(beginDate)"> AND tp.P_OpenDate &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND tp.P_OpenDate &lt;= #{endDate}</if>
+		<if test="@Ognl@isNotEmpty(applyName)">
+			<!-- and tu.RealName like CONCAT('%','#{applyName}','%') -->
+			and tu.RealName like "%"#{applyName}"%"
+		</if>
+		
+   		 GROUP BY tp.P_IsFull,tp.Project_id order by tp.P_OpenDate desc
+		
+		
+		
+		
+	</select>
+	
+	<select id="getAllWaitingAudit2" resultMap="Tproject_n" parameterType="com.deelon.loan.model.front.TProject">
+	
+		SELECT tu.RealName,tp.* from t_project tp
+		LEFT JOIN
+		t_user tu on tp.P_Applicant=tu.user_id
+		where 1=1 
+	
+		and	tp.P_OpenDate is not null and tp.P_StatusID in (3,4,5) 
+		AND tp.P_Complete>=#{pcomplete} and tp.P_CloseDate is not null and tp.P_IsBreak=0 and tp.P_IsFull=0
+		
+		<if test="@Ognl@isNotEmpty(pname)"> AND tp.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(beginDate)"> AND tp.P_OpenDate &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND tp.P_OpenDate &lt;= #{endDate}</if>
+		<if test="@Ognl@isNotEmpty(applyName)">
+			<!-- and tu.RealName like CONCAT('%','#{applyName}','%') -->
+			and tu.RealName like "%"#{applyName}"%"
+		</if>
+   		 GROUP BY tp.P_IsFull,tp.Project_id order by tp.P_OpenDate desc
+	
+	
+	
+	</select>
+	
+	
+	
+	<select id="getMaxProjectId" resultType="long">
+		SELECT max(Project_id) FROM T_Project
+	</select>
+	
+	<select id="getUserInvestList" resultMap="Tproject_invest" >
+		select p.P_Name,p.P_Rate_Out,pi.PI_HavedPay,pi.PI_EffectAmount,pi.PI_BidTime
+		 from T_Project_Invest pi left join t_project p on pi.Project_id=p.Project_id
+		where 1=1
+		<if test="@Ognl@isNotEmpty(userId)">
+			and pi.PI_Investors=#{userId}
+		</if>
+	</select>
+	
+	<!--根据客户条件查询符合投资的 项目 -->
+	
+	<select id="getProByWhere" resultMap="Tproject_">
+		select p.*,s.fileId from t_project p left join 
+		(select * from (SELECT * from sys_file s  ORDER BY s.createTime desc ) s GROUP BY s.CREATORID ) s 
+		on p.P_Applicant=s.CREATORID where 1=1
+		<!--查询已经 通过平台审核,进入招标(筹集资金)的阶段  -->
+			and p.P_StatusID='3' and p.P_IsFull=0  and p.P_IsBreak=0 and p.P_OpenDate is not null and p.P_CloseDate is not null
+			and p.P_LoanReal&lt;p.P_Loan
+	   <!--  <if test="@Ognl@isNotEmpty(ptypeId)">AND P_TypeID = #{ptypeId}</if> -->
+		<if test="@Ognl@isNotEmpty(prepayWay)">AND p.P_RepayWay = #{prepayWay}</if>
+	    <if test="@Ognl@isNotEmpty(prateIn)">AND p.P_Rate_In &gt;= #{prateIn}</if>
+		<if test="@Ognl@isNotEmpty(pdeadline)">AND p.P_Deadline &lt;= #{pdeadline}</if>
+	</select>
+	
+	<select id="getUserFocusBorrowOnTpro" resultMap="Tproject" parameterType="com.deelon.loan.model.front.TProject">
+		select p.* from t_attention att left join t_project p on att.Project_id=p.Project_id 
+		where att.user_id=#{userId} and p.P_IsBreak =0 and p.P_IsPayOff=0
+		<if test="@Ognl@isNotEmpty(beginDate)"> AND p.P_OpenDate &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND p.P_CloseDate &lt;= #{endDate}</if>
+	</select>
+	
+	<!--查询已经借款成立的 ，  -->
+	<select id="getWaitingForTheLoanList" resultMap="WaitingForTheLoan">
+		<!--这里要去确认 签订合同时跟每个投资人签 还是和平台签,如果适合投资人签，还应加上 一个 签订人员的条件  -->
+		<!--未打款的  -->
+		
+		select p.Project_id, pc.PC_NO,tu.RealName,p.P_Name,p.P_Loan,p.P_LoanReal,p.P_Rate_In,
+		p.P_Deadline,p.P_HavedPay,p.P_HavedPayTime
+		 from t_project p 
+		
+			left join t_project_contract pc on p.project_id=pc.project_id
+			left join t_user tu on p.P_Applicant=tu.user_id
+ 		 where p.P_IsFull=1  and p.P_IsBreak=0 and p.P_IsSetup=1 
+ 			<if test="@Ognl@isNotEmpty(applyName)"> AND tu.RealName like  "%"#{applyName}"%"</if>
+ 		 <if test="@Ognl@isNotEmpty(pname)"> AND p.P_Name like "%"#{pname}"%"</if>
+ 		 <if test="@Ognl@isNotEmpty(beginDate)"> AND p.P_HavedPayTime &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND p.P_HavedPayTime &lt;= #{endDate}</if>
+		<if test="@Ognl@isNotEmpty(pcNo)"> AND pc.PC_NO = #{pcNo}</if>
+		<if test="@Ognl@isNotEmpty(phavedPay)"> 
+			and  p.P_HavedPay=#{phavedPay}
+		</if>
+ 		  GROUP BY p.Project_id ,p.P_HavedPay ORDER BY p.P_HavedPay , p.P_UpdateTime  DESC
+		
+	</select>
+	
+	<!--查询已经流标的借款  -->
+	<select id="getBreakedList" resultMap="Tproject_n" >
+	<!--已经投标 又流标的项目  -->
+		
+			(select p.*,tu.RealName from t_project p
+			left join t_user tu on p.P_Applicant=tu.user_id 
+			where 1=1
+			<if test="queryNum==1||queryNum==null||queryNum==3">
+					and	p.P_OpenDate is not null
+			</if> 
+			<if test="queryNum==2">
+				and	p.P_OpenDate is  null
+			</if>
+					and p.P_IsBreak=1 
+			 <if test="@Ognl@isNotEmpty(applyName)"> AND tu.RealName like  "%"#{applyName}"%"</if>
+ 			 <if test="@Ognl@isNotEmpty(pname)"> AND p.P_Name like "%"#{pname}"%"</if> 
+ 			 ORDER BY p.P_UpdateTime DESC )
+			<if test="queryNum==null||queryNum==3">
+				union
+				(	select p1.*,tu.RealName from t_project p1
+					left join t_user tu on p1.P_Applicant=tu.user_id
+					where 1=1
+					 and	p1.P_OpenDate is  null  
+					and p1.P_IsBreak=1 
+					<if test="@Ognl@isNotEmpty(applyName)"> AND tu.RealName like  "%"#{applyName}"%"</if>
+ 					 <if test="@Ognl@isNotEmpty(pname)"> AND p1.P_Name like "%"#{pname}"%"</if>
+ 					 ORDER BY p1.P_UpdateTime DESC 
+ 					 )
+			</if>
+		
+		<!-- <if test="queryNum==2">
+			select p1.*,tu.RealName from t_project p1
+			left join t_user tu on p1.P_Applicant=tu.user_id 
+			where 1=1
+					and	p1.P_OpenDate is  null 
+					and p1.P_IsBreak=8 order by p1.P_ApplicationTime desc
+		</if>
+		<if test="queryNum==null||queryNum==3">
+			select p.*,tu.RealName from t_project p
+			left join t_user tu on p.P_Applicant=tu.user_id 
+			where 1=1
+					and	p.P_OpenDate is not null 
+					and p.P_IsBreak=8 
+					没有进入投标的项目 
+					union
+					select p1.*,tu.RealName from t_project p1
+					left join t_user tu on p1.P_Applicant=tu.user_id
+					where 1=1
+					and	p1.P_OpenDate is  null 
+					and p1.P_IsBreak=8 
+		</if> -->
+			<!-- <choose>
+				<when test="queryNum=='1'">
+					select p.* from t_project p where 1=1
+					and	p.P_OpenDate is not null 
+					and p.P_IsBreak=8 order by p.P_ApplicationTime desc
+				</when>
+				<when test="queryNum=='2'">
+					
+				</when>
+				<otherwise>
+					
+				</otherwise>
+			</choose> -->
+	</select>
+	
+	<!--查询所有借款  -->
+	<select id="getAllLoan" resultMap="Tproject">
+		select p.*,tu.RealName from t_project p
+		left join t_user tu on p.P_Applicant=tu.user_id 
+		where 1=1 and p.P_OpenDate is not null and p.P_IsSetup=1
+		<if test="@Ognl@isNotEmpty(applyName)"> AND tu.RealName like  "%"#{applyName}"%"</if>
+ 		 <if test="@Ognl@isNotEmpty(pname)"> AND p.P_Name like "%"#{pname}"%"</if>
+ 		 <if test="@Ognl@isNotEmpty(beginDate)"> AND p.P_ApplicationTime &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)"> AND p.P_ApplicationTime &lt;= #{endDate}</if>
+		group by p.P_IsPayOff,p.Project_id order by p.P_IsPayOff 
+	</select>
+	
+	<!--个人中心理财账户  -->
+	<select id="getPersonalFinanceByUserId" resultMap="financal_coutn">
+	
+		
+		SELECT
+		 SUM(pn.PI_EffectAmount) as PI_EffectAmount_Total,
+		 SUM(pn.PI_GetRateSum) as P_SumHavedPay_Interest_total,
+		 SUM(pn.PI_BeGetRateSum) as PI_BeGetRateSum,
+	<!-- 	COUNT(p1.Project_id),SUM(pn.PI_BeGetRateSum)+SUM(pn.PI_GetRateSum)/SUM(pn.PI_EffectAmount)  as P_Rate_Out_avg , -->
+		COUNT(p1.Project_id) as count_num,
+		ps.P_Name as produ_name
+		from t_project_invest pn
+		LEFT JOIN t_project p1 on pn.Project_id=p1.Project_id
+		LEFT JOIN t_productsloan ps on p1.ProductsLoan_id=ps.ProductsLoan_id
+		where pn.PI_Investors=#{userId} and pn.PI_TransferStateID !=2 
+		 and p1.P_IsBreak=0 and p1.P_HavedPay=1 AND p1.P_IsPayOff=0 
+		GROUP BY p1.ProductsLoan_id ORDER BY pn.Project_id  
+
+	</select>
+	
+	<!--个人中心借款账户  -->
+	<select id="getPersnalLoanByUserId" resultMap="financal_coutn" >
+		
+		SELECT pl.P_Name as produ_name,SUM(p.P_SumHavedPay)-SUM(p.P_SumPayBack) as P_SumHavedPay_total_Interest,
+		
+		SUM(p.P_LoanReal)-SUM(p.P_SumHavedPay_Principal) as P_SumHavedPay_total,
+		SUM(p.P_SumHavedPay_Interest)-SUM(p.P_SumInterest) AS P_SumHavedPay_Interest_total ,
+		SUM(p.P_SumLateHavedPay)-SUM(p.P_SumLate) as P_SumLate_total
+		from t_project p LEFT JOIN t_productsloan pl ON p.ProductsLoan_id=pl.ProductsLoan_id
+		WHERE 1=1 and p.P_HavedPay=1 and p.P_IsPayOff=0 AND p.P_Applicant=#{userId} GROUP BY p.ProductsLoan_id
+		
+	</select>
+	
+	<select id="getPro_clerkByProId" resultMap="Tproject">
+		select pj.*,su.FULLNAME as RealName from t_project pj left join sys_user su on pj.P_Clerk=su.USERID where pj.project_id=#{projectId}
+	</select>
+	
+	
+</mapper>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TsettingsEmail">
+
+	<resultMap id="TsettingsEmail" type="com.deelon.loan.model.sysManager.TsettingsEmail">	
+        <id property="emailId" column="Email_id" />
+        <result property="smtpSer" column="SmtpSer"/>
+        <result property="portId" column="PortID"/>
+        <result property="email" column="Email"/>
+        <result property="pwd" column="Pwd"/>
+        <result property="senderName" column="SenderName"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Email_id,SmtpSer,PortID,Email,Pwd,SenderName
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(emailId)">AND Email_id = #{emailId}</if>
+	       <if test="@Ognl@isNotEmpty(smtpSer)">AND SmtpSer = #{smtpSer}</if>
+	       <if test="@Ognl@isNotEmpty(portId)">AND PortID = #{portId}</if>
+	       <if test="@Ognl@isNotEmpty(email)">AND Email = #{email}</if>
+	       <if test="@Ognl@isNotEmpty(pwd)">AND Pwd = #{pwd}</if>
+	       <if test="@Ognl@isNotEmpty(senderName)">AND SenderName = #{senderName}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TsettingsEmail">
+		INSERT INTO t_settings_email
+		(<include refid="columns"/>)
+		VALUES
+		(#{emailId} ,#{smtpSer} ,#{portId} ,#{email} ,#{pwd} ,#{senderName}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_settings_email 
+		WHERE
+        Email_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TsettingsEmail">
+		UPDATE t_settings_email SET
+	        SmtpSer = #{smtpSer} ,
+	        PortID = #{portId} ,
+	        Email = #{email} ,
+	        Pwd = #{pwd} ,
+	        SenderName = #{senderName} 
+        WHERE 
+	        Email_id = #{emailId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TsettingsEmail">
+		SELECT <include refid="columns"/>
+		FROM t_settings_email 
+		WHERE 1=1
+		Email_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TsettingsEmail">
+		SELECT <include refid="columns"/>
+		FROM t_settings_email   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Email_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_settings_email 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getFirstOne" resultMap="TsettingsEmail">
+		SELECT <include refid="columns"/>
+		FROM t_settings_email 
+	</select>
+	
+</mapper>
+

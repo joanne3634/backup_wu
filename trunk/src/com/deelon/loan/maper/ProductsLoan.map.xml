@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.productsloan.ProductsLoan">
+	<!--贷款产品申请指南 -->
+	<resultMap id="appGuide" type="com.deelon.loan.model.productsloan.ProductsLoanAppGuide">
+        <id property="appGuideId" column="AppGuide_id" />
+        <result property="productsLoanId" column="ProductsLoan_id" />
+        <result property="agDesc" column="AG_Desc" />
+        <result property="agOrder" column="AG_Order" />
+    </resultMap>
+    <!--贷款产品申请准备材料 -->
+    <resultMap id="prepareData" type="com.deelon.loan.model.productsloan.ProductsLoanPrepareData">
+        <id property="prepareDataId" column="PrepareData_id" />
+        <result property="productsLoanId" column="ProductsLoan_id" />
+        <result property="pdDesc" column="PD_Desc" />
+        <result property="pdOrder" column="PD_Order" />
+    </resultMap>
+    <!--贷款产品主实体 -->
+	<resultMap id="productsLoan" type="com.deelon.loan.model.productsloan.ProductsLoan">	
+        <id property="productsLoanId" column="ProductsLoan_id" />
+        <result property="pName" column="P_Name"/>
+        <result property="pAmountMin" column="P_Amount_Min"/>
+        <result property="pAmountMax" column="P_Amount_Max"/>
+        <result property="pRateMin" column="P_Rate_Min"/>
+        <result property="pRateMax" column="P_Rate_Max"/>
+        <result property="pDeadlineMin" column="P_Deadline_Min"/>
+        <result property="pDeadlineMax" column="P_Deadline_Max"/>
+        <result property="pAuditDaysMin" column="P_AuditDays_Min"/>
+        <result property="pAuditDaysMax" column="P_AuditDays_Max"/>
+        <result property="pVotingDaysMin" column="P_VotingDays_Min"/>
+        <result property="pVotingDaysMax" column="P_VotingDays_Max"/>
+        <result property="pRepayWay" column="P_RepayWay"/>
+        <result property="pFee" column="P_Fee"/>
+        <result property="pGood" column="P_good"/>
+        <result property="pRecommend" column="P_Recommend"/>
+        <result property="pRepayGuide" column="P_RepayGuide"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <collection property="appGuides" resultMap="appGuide"/>
+        <collection property="prepareDatas" resultMap="prepareData"/>
+	</resultMap>
+	<!--贷款产品列sql -->	
+	<sql id="columns">
+		P_Name,P_Amount_Min,P_Amount_Max,P_Rate_Min,P_Rate_Max,P_Deadline_Min,P_Deadline_Max,P_AuditDays_Min,P_AuditDays_Max,P_VotingDays_Min,P_VotingDays_Max,P_RepayWay,P_Fee,P_good,P_Recommend,P_RepayGuide,Creator,CreateTime
+	</sql>
+	<!--贷款产品查询动态条件sql -->
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(productsLoanId)">AND ProductsLoan_id = #{productsLoanId}</if>
+	       <if test="@Ognl@isNotEmpty(pName)">AND P_Name = #{pName}</if>
+	       <if test="@Ognl@isNotEmpty(pAmountMin)">AND P_Amount_Min = #{pAmountMin}</if>
+	       <if test="@Ognl@isNotEmpty(pAmountMax)">AND P_Amount_Max = #{pAmountMax}</if>
+	       <if test="@Ognl@isNotEmpty(pRateMin)">AND P_Rate_Min = #{pRateMin}</if>
+	       <if test="@Ognl@isNotEmpty(pRateMax)">AND P_Rate_Max = #{pRateMax}</if>
+	       <if test="@Ognl@isNotEmpty(pDeadlineMin)">AND P_Deadline_Min = #{pDeadlineMin}</if>
+	       <if test="@Ognl@isNotEmpty(pDeadlineMax)">AND P_Deadline_Max = #{pDeadlineMax}</if>
+	       <if test="@Ognl@isNotEmpty(pAuditDaysMin)">AND P_AuditDays_Min = #{pAuditDaysMin}</if>
+	       <if test="@Ognl@isNotEmpty(pAuditDaysMax)">AND P_AuditDays_Max = #{pAuditDaysMax}</if>
+	       <if test="@Ognl@isNotEmpty(pVotingDaysMin)">AND P_VotingDays_Min = #{pVotingDaysMin}</if>
+	       <if test="@Ognl@isNotEmpty(pVotingDaysMax)">AND P_VotingDays_Max = #{pVotingDaysMax}</if>
+	       <if test="@Ognl@isNotEmpty(pRepayWay)">AND P_RepayWay >= #{pRepayWay}</if>
+		   <if test="@Ognl@isNotEmpty(pFee)">AND P_Fee = #{pFee}</if>
+	       <if test="@Ognl@isNotEmpty(pGood)">AND P_good = #{pGood}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime &gt;= #{createTimeBegin}</if>
+	       <if test="@Ognl@isNotEmpty(pRecommend)">AND P_Recommend = #{pRecommend}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	
+	<insert id="insertAppGuides" parameterType="com.deelon.loan.model.productsloan.ProductsLoanAppGuide">
+		INSERT INTO T_ProductsLoan_AppGuide (AppGuide_id,ProductsLoan_id,AG_Desc,AG_Order) 
+        values(#{appGuideId} , #{productsLoanId} , #{agDesc}, #{agOrder})
+	</insert>
+	<update id="delAppGuides" parameterType="java.lang.Long">
+		DELETE FROM T_ProductsLoan_AppGuide  
+		WHERE
+        ProductsLoan_id = #{id} 
+	</update>
+	<insert id="insertPrepareDatas" parameterType="com.deelon.loan.model.productsloan.ProductsLoanPrepareData">
+		INSERT INTO T_ProductsLoan_PrepareData (PrepareData_id,ProductsLoan_id,PD_Desc,PD_Order) 
+        values(#{prepareDataId} , #{productsLoanId} , #{pdDesc}, #{pdOrder}) 
+	</insert>
+	<update id="delPrepareDatas" parameterType="java.lang.Long">
+		DELETE FROM T_ProductsLoan_PrepareData  
+		WHERE
+        ProductsLoan_id = #{id} 
+	</update>
+	
+	<!--贷款产品新增sql -->
+	<insert id="insertProducts" parameterType="com.deelon.loan.model.productsloan.ProductsLoan">
+		INSERT INTO T_ProductsLoan
+		(ProductsLoan_id,<include refid="columns"/>)
+		VALUES
+		(#{productsLoanId} ,#{pName} ,#{pAmountMin} ,#{pAmountMax} ,#{pRateMin} ,#{pRateMax} ,#{pDeadlineMin} ,#{pDeadlineMax} ,#{pAuditDaysMin} ,#{pAuditDaysMax} ,#{pVotingDaysMin} ,#{pVotingDaysMax} ,#{pRepayWay} ,#{pFee} ,#{pGood} ,#{pRecommend},#{pRepayGuide},#{creator} ,#{createTime}   )
+    </insert>
+	<!--贷款产品删除byId-->
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM T_ProductsLoan 
+		WHERE
+        ProductsLoan_id = #{id} 
+	</delete>
+	<!--贷款产品修改 -->
+	<update id="updateProducts" parameterType="com.deelon.loan.model.productsloan.ProductsLoan">
+		UPDATE T_ProductsLoan SET
+	        P_Name = #{pName} ,
+	        P_Amount_Min = #{pAmountMin} ,
+	        P_Amount_Max = #{pAmountMax} ,
+	        P_Rate_Min = #{pRateMin} ,
+	        P_Rate_Max = #{pRateMax} ,
+	        P_Deadline_Min = #{pDeadlineMin} ,
+	        P_Deadline_Max = #{pDeadlineMax} ,
+	        P_AuditDays_Min = #{pAuditDaysMin} ,
+	        P_AuditDays_Max = #{pAuditDaysMax} ,
+	        P_VotingDays_Min = #{pVotingDaysMax} ,
+	        P_VotingDays_Max = #{pVotingDaysMax},
+	        P_RepayWay = #{pRepayWay} ,
+	        P_Fee = #{pFee} ,
+	        P_good = #{pGood} ,
+	        P_Recommend = #{pRecommend} ,
+	        P_RepayGuide = #{pRepayGuide},
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        ProductsLoan_id = #{productsLoanId} 
+	</update>
+    <!--贷款产品获取byId -->
+    <select id="getById" parameterType="java.lang.Long" resultMap="productsLoan">
+		SELECT t.ProductsLoan_id,<include refid="columns"/>,ag.AppGuide_id,ag.AG_Desc,ag.AG_Order,pd.PrepareData_id,pd.PD_Desc,pd.PD_Order 
+		FROM T_ProductsLoan t Left join T_ProductsLoan_AppGuide ag on t.ProductsLoan_id=ag.ProductsLoan_id 
+		 Left join T_ProductsLoan_PrepareData pd on t.ProductsLoan_id=pd.ProductsLoan_id 
+		WHERE 1=1 AND
+		t.ProductsLoan_id = #{id} 
+	</select>
+	<!--贷款产品list查询-->
+	<select id="getProducts" resultMap="productsLoan">
+		SELECT t.ProductsLoan_id,<include refid="columns"/>,ag.AppGuide_id,ag.AG_Desc,ag.AG_Order,pd.PrepareData_id,pd.PD_Desc,pd.PD_Order  
+		FROM T_ProductsLoan  t Left join T_ProductsLoan_AppGuide ag on t.ProductsLoan_id=ag.ProductsLoan_id 
+		 Left join T_ProductsLoan_PrepareData pd on t.ProductsLoan_id=pd.ProductsLoan_id   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ProductsLoan_id  desc
+		</if>
+	</select>
+	<!--贷款产品统计数据-->	
+    <select id="count" resultType="long">
+        SELECT count(*) FROM T_ProductsLoan 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

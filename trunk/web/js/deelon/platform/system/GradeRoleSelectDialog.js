@@ -1,0 +1,1 @@
+function GradeRoleSelectDialog(c){var a="dialogWidth=695px;dialogHeight=500px;help=0;status=0;scroll=0;center=1";var b=__ctx+"/platform/system/grade/roleSelector.ht?orgId="+c.orgId;b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(c.callback){if(d!=undefined){c.callback.call(this,d.roleId,d.roleName);}}}

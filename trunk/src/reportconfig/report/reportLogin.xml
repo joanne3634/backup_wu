@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+	<page id="loginPage">		
+		<report id="loginReport" title="" pagesize="20"   >
+			<display>
+				<col column="{sequence:1}" label="序号"/> 
+				<col column="LoginName" label="姓名" /> 
+				<col column="RealName" label="真姓名" /> 
+			</display>
+			<sql>
+				<value>
+					<![CDATA[SELECT *   FROM t_user where {#condition#} order by user_id]]>
+				</value> 
+				<condition name="txtname" label="姓名 "   >
+					<value>
+						<![CDATA[(LoginName like  '%#data#%' )]]>
+					</value>
+				</condition>
+			    <condition name="txtRealName" label="真姓名 "   >
+					<value>
+						<![CDATA[(RealName like  '%#data#%' )]]>
+					</value>
+				</condition> 
+			</sql>
+			 
+		</report> 
+		 
+	</page>
+</applications>
