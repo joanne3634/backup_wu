@@ -1,0 +1,100 @@
+@charset "utf-8"; 
+.window{
+	width: 1100px;
+	margin: 0 auto;
+	font-family:"微软雅黑";
+}
+.PrDyLeft{
+	width: 810px;
+	margin-top: 25px;
+}
+.ProjectDynamicLeft{
+	width: 100%;
+}
+.ProjectDynamicLeft h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:2px  solid #cbcbcb;
+}
+.ProjectDynamicLeft ul li{
+	padding: 40px 5px 40px 5px;
+	text-align: left;
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+.ProjectDynamicLeft h3 img{
+	margin: 0px 10px 0px 5px;
+}
+.PrDyImg{
+	width: 240px;
+	height: 155px;
+	border: 1px solid #ccc6c6;
+}
+.investmessageRight{
+	width: 265px;
+	margin:0px 0px 0px 25px;
+}
+.investmessageRight ul{
+	margin-top: 20px;
+}
+.investmessageRight ul li{
+	width: 250px;
+	font-size: 14px;
+	color: #292929;
+	line-height: 35px;
+	text-align: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.investmessageRight ul li img{
+	margin: 0px 10px 0px 10px
+}
+.investmessageRight h4{
+	width: 250px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dbdbdb;
+	text-align: left;
+}
+.investmessageRight h4 span{
+	font-size: 24px;
+	display: inline-block;
+	color: #ff5200;
+	border-bottom: 1px solid #ff5200;
+}
+.ProjectDynamicName {
+	width: 530px;
+	padding-left: 25px;
+}
+.ProjectDynamicName h4{
+	color: #292929;
+	font-size: 24px;
+}
+.ProjectDynamicName div{
+	font-size: 14px;
+	line-height: 50px;
+	color: #292929;
+}
+.ProjectDynamicName  img{
+	margin: 0px 10px 0px 0px;
+}
+.ProjectDynamicName div span{
+	margin: 0px 10px 0px 10px;
+}
+.ProjectDynamicName p{
+	font-size: 14px;
+	line-height: 30px;
+	color: #666666;
+}
+.ProjectDynamicName span{
+	padding-left: 20px;
+}
+.ProjectDynamicName p a{
+	display: inline-block;
+}

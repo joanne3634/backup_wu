@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectLoanRecords">
+
+	<resultMap id="TcprojectLoanRecords" type="com.deelon.crowdfunding.model.backstage.TcprojectLoanRecords">	
+        <result property="loanRecordId" column="loan_record_id"/>
+        <result property="projectId" column="project_id"/>
+        <result property="loanAmout" column="loan_Amout"/>
+        <result property="loanDate" column="loan_date"/>
+        <result property="loanPerson" column="loan_person"/>
+        <result property="loanFlowCode" column="loan_flowCode"/>
+        <result property="creatPerson" column="creat_person"/>
+        <result property="createtime" column="createtime"/>
+        
+        <result property="pname" column="P_Name"/>
+        <result property="pcurrent" column="P_Current"/>
+	</resultMap>
+	
+	<sql id="columns">
+		loan_record_id,project_id,loan_Amout,loan_date,loan_person,loan_flowCode,creat_person,createtime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(loanRecordId)">AND loan_record_id = #{loanRecordId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(loanAmout)">AND loan_Amout = #{loanAmout}</if>
+	       <if test="@Ognl@isNotEmpty(loanDateBegin)">AND loan_date >= #{loanDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(loanDateEnd)">AND loan_date &lt;= #{loanDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(loanPerson)">AND loan_person = #{loanPerson}</if>
+	       <if test="@Ognl@isNotEmpty(loanFlowCode)">AND loan_flowCode = #{loanFlowCode}</if>
+	       <if test="@Ognl@isNotEmpty(creatPerson)">AND creat_person = #{creatPerson}</if>
+	       <if test="@Ognl@isNotEmpty(createtimeBegin)">AND createtime >= #{createtimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createtimeEnd)">AND createtime &lt;= #{createtimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectLoanRecords">
+		INSERT INTO t_c_project_loan_records
+		(<include refid="columns"/>)
+		VALUES
+		(#{loanRecordId} ,#{projectId} ,#{loanAmout} ,#{loanDate} ,#{loanPerson} ,#{loanFlowCode} ,#{creatPerson} ,#{createtime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_loan_records 
+		WHERE loan_record_id = #{loanRecordId}
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectLoanRecords">
+		UPDATE t_c_project_loan_records SET
+	        loan_record_id = #{loanRecordId} ,
+	        project_id = #{projectId} ,
+	        loan_Amout = #{loanAmout} ,
+	        loan_date = #{loanDate} ,
+	        loan_person = #{loanPerson} ,
+	        loan_flowCode = #{loanFlowCode} ,
+	        creat_person = #{creatPerson} ,
+	        createtime = #{createtime} 
+        WHERE loan_record_id = #{loanRecordId}
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectLoanRecords">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_loan_records 
+		WHERE 1=1 and loan_record_id = #{loanRecordId}
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectLoanRecords">
+		SELECT t.*,c.P_Name,c.P_Current
+		FROM t_c_project_loan_records t left join t_c_project c on t.project_id =c.Project_id
+		WHERE 1=1 
+		<if test="@Ognl@isNotEmpty(projectId)">AND t.project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField1)">
+		order by t.createtime  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_loan_records 
+		<include refid="dynamicWhere" />   
+    </select>  
+    
+    
+
+	
+</mapper>
+

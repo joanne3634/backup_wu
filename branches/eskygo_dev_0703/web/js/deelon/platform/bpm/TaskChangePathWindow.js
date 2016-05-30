@@ -1,0 +1,1 @@
+function TaskChangePathWindow(b){var c=b.taskId;var a="dialogWidth=680px;dialogHeight=340px;help=0;status=0;scroll=1;center=1";url=__ctx+"/platform/bpm/task/changePath.ht?taskId="+c;url=url.getNewUrl();var d=window.showModalDialog(url,"",a);if(b.callback){if(d!=undefined){b.callback.call(this,d);}}}

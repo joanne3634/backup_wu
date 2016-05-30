@@ -1,0 +1,105 @@
+#applyEnquiry{
+    padding-top: 4em;
+    padding-bottom: 3em;
+}
+
+#applyEnquiry .title h3 {
+    color: #444;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 1em;
+}
+#applyEnquiry .upDiv{
+    margin-bottom: 3em;
+}
+#applyEnquiry .upDiv .upContent{
+    border: 1px solid #ccc;
+}
+#applyEnquiry .upDiv .upContent .applyMoney{
+    color: #444;
+    font-weight: normal;
+    padding: 1em 0em 1em 5em;
+    border-bottom: 1px dashed #ccc;
+}
+#applyEnquiry .upDiv .upContent span{
+   color:#01A0E9;
+    font-weight: normal;
+    font-size: 26px;
+}
+#applyEnquiry .upDiv .upContent .noticeInfo {
+    padding: 1em 0em 1em 5em;
+
+}
+#applyEnquiry .upDiv .upContent .noticeInfo p {
+    margin:0.5em 0em;
+    font-size: 14px;
+
+}
+#applyEnquiry .upDiv .upContent .noticeInfo .tips {
+    font-size: 18px;
+
+}
+#applyEnquiry .downDiv .voRadio{
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #F4F4F4;
+    margin:1em auto;
+}
+#applyEnquiry .downDiv .voRadio.checked{
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #1D2088;
+    margin:1em auto;
+}
+#applyEnquiry .downDiv .voRadio label {
+    padding:0;
+}
+#applyEnquiry .downDiv .voRadio input {
+    display:none;
+}
+#applyEnquiry .downDiv .onLinePay .button_submit{
+    margin-top: 4em;
+}
+#applyEnquiry .downDiv .offLinePay .ApEnListdiv {
+    margin:1em 0em;
+}
+#applyEnquiry .downDiv .offLinePay .ApEnListdiv p{
+    margin:0.5em;
+    font-size: 14px;
+}
+#applyEnquiry .downDiv .offLinePay .newNotice {
+    color: #01A0E9;
+    margin: 2em 0em;
+    font-size: 12px;
+}
+#applyEnquiry .downDiv .offLinePay .newNotice p{
+    margin: 0.5em;
+    font-size: 12px;
+}
+
+
+
+#applyEnquiry .tabs-nav {
+    padding: 0 2.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+#applyEnquiry .ink-tabs.top>.tabs-nav li a {
+    color: #444;
+    margin-right: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+     border-radius: 0;
+}
+
+#applyEnquiry .ink-tabs.top>.tabs-nav li a:hover {
+    text-decoration: none;
+}
+
+#applyEnquiry .ink-tabs .tabs-nav li.active a {
+    color: #444;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ffffff;
+}

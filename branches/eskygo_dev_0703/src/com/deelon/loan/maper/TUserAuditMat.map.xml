@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TUserAuditMat">
+
+	<resultMap id="TuserAuditmat" type="com.deelon.loan.model.front.TUserAuditMat">	
+        <id property="auditMatId" column="AuditMat_id" />
+        <result property="userId" column="user_id"/>
+        <result property="materialsId" column="Materials_id"/>
+        <result property="isPass" column="IsPass"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="reasons" column="Reasons"/>
+        <result property="isRePass" column="IsRePass"/>
+	</resultMap>
+	
+	<resultMap id="TuserAuditmat_" type="com.deelon.loan.model.front.TUserAuditMat">	
+        <id property="auditMatId" column="AuditMat_id" />
+        <result property="userId" column="user_id"/>
+        <result property="materialsId" column="Materials_id"/>
+        <result property="isPass" column="IsPass"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="reasons" column="Reasons"/>
+        <result property="isRePass" column="IsRePass"/>
+        <result property="fileName" column="fileName"/>
+	</resultMap>
+	
+	
+	<sql id="columns">
+		AuditMat_id,user_id,Materials_id,IsPass,Checker,CheckTime,Reasons,IsRePass
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(auditMatId)">AND tua.AuditMat_id = #{auditMatId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND tua.user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(materialsId)">AND tua.Materials_id = #{materialsId}</if>
+	       <if test="@Ognl@isNotEmpty(isPass)">AND tua.IsPass = #{isPass}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND tua.Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND tua.CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND tua.CheckTime &lt;= #{checkTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(reasons)">AND tua.Reasons = #{reasons}</if>
+	       <if test="@Ognl@isNotEmpty(isRePass)">AND tua.IsRePass = #{isRePass}</if>
+	       <if test="@Ognl@isNotEmpty(groupId)">AND t.GroupID = #{groupId}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TUserAuditMat">
+		INSERT INTO t_user_auditmat
+		(<include refid="columns"/>)
+		VALUES
+		(#{auditMatId} ,#{userId} ,#{materialsId} ,#{isPass} ,#{checker} ,#{checkTime} ,#{reasons} ,#{isRePass}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_auditmat 
+		WHERE
+        AuditMat_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TUserAuditMat">
+		UPDATE t_user_auditmat SET
+	        user_id = #{userId} ,
+	        Materials_id = #{materialsId} ,
+	        IsPass = #{isPass} ,
+	        Checker = #{checker} ,
+	        CheckTime = #{checkTime} ,
+	        Reasons = #{reasons} ,
+	        IsRePass = #{isRePass} 
+        WHERE 
+	        AuditMat_id = #{auditMatId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserAuditmat">
+		SELECT <include refid="columns"/>
+		FROM t_user_auditmat 
+		WHERE 1=1 and
+		AuditMat_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserAuditmat">
+		SELECT tua.*
+		FROM t_user_auditmat tua left join t_user t on tua.user_id = t.user_id  
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by tua.AuditMat_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_auditmat 
+		<include refid="dynamicWhere" />   
+    </select>   
+	<select id="getByUserId" resultMap="TuserAuditmat">
+		SELECT
+		<include refid="columns"/>
+		FROM t_user_auditmat
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+	</select>
+	
+	<select id="getAuditFileByUserId" resultMap="TuserAuditmat_">
+		SELECT ua.*,am.Name as fileName
+		FROM t_user_auditmat ua
+	    left join T_AuditMaterials am on ua.Materials_id=am.Materials_id
+		WHERE 1=1 and ua.user_id=#{userId} and ua.IsPass=1
+	</select>
+</mapper>
+
+
+
+
+
+

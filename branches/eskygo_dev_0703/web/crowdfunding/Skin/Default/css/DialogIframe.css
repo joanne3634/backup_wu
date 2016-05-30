@@ -1,0 +1,254 @@
+@charset "utf-8"; 
+#faqdiv{width:710px;height: 570px;background-color:#fff; }
+#faqdiv2{width:610px;height: 400px; background-color:#fff;}
+.faqData{
+	overflow-y: auto;
+	height: 530px;
+} 
+#faqdiv h2,#faqdiv2 h2{
+	padding-left: 20px;
+	background: #ff5500;
+	height: 40px;
+	color: #fff;
+	font-size: 24px;
+	text-align: left;
+	line-height: 40px;
+}
+#faqdiv h2 a,#faqdiv2 h2 a{
+	font-size: 34px;
+	float: right;
+	margin-right: 10px;
+	color: #fff;
+}
+.faqDataName{
+	text-align: left;
+	padding: 30px;
+	margin:0px 30px 0px 30px;
+	border-bottom: 1px dashed #bcbcbc;
+	line-height: 30px;
+	height: 100px;
+}
+.faqDataName div{
+	float: left;
+}
+.faqDataName p{
+	color: #292929;
+	font-size: 15px;
+}
+.faqDataName h3 img{
+	margin: 0px 5px 0px 5px;
+}
+.faqDataName h3{
+	color: #ff5500;
+	font-size: 28px;
+	line-height: 40px;
+}
+.faqDataDetail{
+	padding:30px 60px 30px 60px;
+	text-align: left;
+	font-size: 14px;
+	color: #666666;
+	line-height: 25px;
+}
+.faqDataDetail h3{
+	display: inline-block;
+	background: url("../images/label6.png");
+	height: 30px;
+	width: 84px;
+	font-size: 18px;
+	color: #fff;
+	line-height: 30px;
+	padding-left: 20px;
+}
+.faqDataDetail span{
+	margin: 0px 10px 0px 10px;
+}
+.faqDataDetail h4{
+	margin: 20px 0px 30px 0px;
+}
+.faqDataDetail h5{
+	margin-top: 30px;
+}
+#faqdiv2 textarea{
+	padding-left: 5px;
+  width: 90%;
+  resize: none;
+  margin: 20px 0px 0px 0px;
+}
+.faqtable{
+	margin: 0px auto;
+	width: 520px;
+	margin-top: 30px;
+	font-size: 14px;
+	color: #4c4c4c; 
+	background: #fff;
+	line-height: 35px;
+	text-align: left;
+	border-collapse:separate;
+}
+.faqtable td{
+	padding: 10px;
+	background: #f7f7f7;
+}
+.faqtable input{
+	padding-left: 5px;
+	width: 120px;
+	height: 30px;
+}
+.faqtabletd1{
+	width: 70px;
+	text-align: right;
+}
+.faqtable img{
+	margin-left: 10px;
+}
+.faqbutton{
+	margin:20px 0px 20px 0px;
+	text-align: center;
+}
+.faqbutton div{
+	display: inline-block;
+	width: 100px;
+	padding: 7px 0px 7px 0px;
+	margin:10px;
+	border-radius: 3px;
+	font-size: 16px;
+	border: 1px solid #a5a5a5;
+	cursor: pointer;
+}
+.faqbutton .submit{
+	background: #6eb601;
+	color: #fff;
+}
+.faqbutton .cancel{
+	background: #e5e5e5;
+	color: #777777;
+}
+.incestorRightimg{
+	width: 100px;
+	float: left;
+	margin-right: 20px;
+}
+
+.incestorRightimg img{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #ccc6c6;
+}
+#InquiryWindow{
+	padding: 30px;
+	width: 660px;
+}
+.InquiryIframeLeft,.InIfNextLeft{
+	width: 480px;
+	text-align: left;
+}
+.InquiryIframeLeft p{
+	font-size: 14px;
+	color: #666;
+	line-height: 25px;
+}
+.InquiryIframeRight{
+	font-size: 16px;
+	line-height: 30px;
+	color: #fff;
+	width: 162px;
+	height: 82px;
+	background: url("../images/textIcont5.png");
+}
+.InquiryIframeRight div{
+	font-size: 26px;
+	color: #329900;
+	line-height: 50px;
+}
+.InquiryIframeLeft div{
+	color: #141414;
+	font-size: 16px;
+	line-height: 30px;
+}
+.InquiryIframeLeft div input{
+	margin: 0px 15px 0px 15px;
+}
+.InIfNextLeft h4{
+	color: #ff5500;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.InIfNextLeft div{
+	margin-left: 50px;
+	font-size: 16px;
+	color: #141414;
+	line-height: 30px;
+	margin-top: 10px;
+}
+.InIfNextLeft input[type="text"]{
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	margin-right: 10px;
+}
+.InIfNextcontent{
+	padding-top: 10px;
+	margin-left: 50px;
+	text-align: left;
+	font-size: 16px;
+	color: #141414;
+	line-height: 35px;
+}
+.InIfNextcontent div{
+	width: 550px;
+}
+.InIfNextcontent textarea{
+	width: 100%;
+}
+.PrDyBack #faqdiv2 {
+	background: #fafafa;
+}
+.ItemSeDe{
+	width: 750px;
+	font-size: 14px;
+	color: #ff5200;
+}
+.ItemSeDeMessage{
+	text-align: left;
+	line-height: 35px;
+	margin-top: 5px;
+}
+.ItemSeDeMessage p{
+	font-size: 20px;
+}
+.ItemSeDe span{
+	color: #292929;
+	margin-right: 20px;
+}
+.ItemSeDeImg img{
+	width: 95px;
+	height: 95px;
+	margin: 10px;
+	border: 1px solid #ccc6c6;
+}
+.ItemSeDetextarea{
+	line-height: 30px;
+	margin-left: 10px;
+	text-align: left;
+}
+.payment{
+	width: 450px;
+	padding: 50px;
+	text-align: left;
+	color: #4c4c4c;
+	font-size: 16px;
+}
+.payment div{
+	margin-top: 10px;
+}
+.payment input{
+	height: 30px;
+	line-height: 30px;
+	width: 150px;
+}
+.payment h3,.payment span{
+	font-size: 24px;
+	color: #ff5200;
+}

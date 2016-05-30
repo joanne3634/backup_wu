@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcuserAudit">
+
+	<resultMap id="Tuser" type="com.deelon.crowdfunding.model.backstage.TcuserAudit">	
+        <id property="userId" column="user_id" />
+        <result property="loginName" column="LoginName"/>
+        <result property="loginPwd" column="LoginPwd"/>
+        <result property="loginPwdErrCount" column="LoginPwdErrCount"/>
+        <result property="tradingPwd" column="TradingPwd"/>
+        <result property="tradingPwdErrCount" column="TradingPwdErrCount"/>
+        <result property="realName" column="RealName"/>
+        <result property="gender" column="Gender"/>
+        <result property="age" column="Age"/>
+        <result property="edu" column="Edu"/>
+        <result property="school" column="School"/>
+        <result property="groupId" column="GroupID"/>
+        <result property="isLock" column="IsLock"/>
+        <result property="isActive" column="IsActive"/>
+        <result property="registerTime" column="RegisterTime"/>
+        <result property="loginCount" column="LoginCount"/>
+        <result property="checker" column="Checker"/>
+        <result property="provincesId" column="ProvincesID"/>
+        <result property="cityId" column="CityID"/>
+        <result property="remarks" column="Remarks"/>
+        <result property="personalAddress" column="PersonalAddress"/>
+        <result property="isLeader" column="IsLeader"/>
+        <result property="isCompany" column="IsCompany"/>
+        <result property="contactName" column="ContactName"/>
+        <result property="businessLicense" column="BusinessLicense"/>
+        <result property="isAskPrice" column="IsAskPrice"/>
+        <result property="askTimes" column="AskTimes"/>
+        <result property="lastLoginTime" column="LastLoginTime"/>
+        <result property="isDel" column="IsDel"/>
+        <result property="isCheck" column="IsCheck"/>
+        <result property="checkTime" column="CheckTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		user_id,LoginName,LoginPwd,LoginPwdErrCount,TradingPwd,TradingPwdErrCount,RealName,Gender,Age,Edu,School,GroupID,IsLock,IsActive,IsCompany,RegisterTime,LoginCount,Checker,ProvincesID,CityID,Remarks,PersonalAddress,IsLeader,ContactName,BusinessLicense,IsAskPrice,AskTimes,LastLoginTime,IsDel,IsCheck,CheckTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(loginName)">AND LoginName like '%${loginName}%'</if>
+	       <if test="@Ognl@isNotEmpty(loginPwd)">AND LoginPwd = #{loginPwd}</if>
+	       <if test="@Ognl@isNotEmpty(loginPwdErrCount)">AND LoginPwdErrCount = #{loginPwdErrCount}</if>
+	       <if test="@Ognl@isNotEmpty(tradingPwd)">AND TradingPwd = #{tradingPwd}</if>
+	       <if test="@Ognl@isNotEmpty(tradingPwdErrCount)">AND TradingPwdErrCount = #{tradingPwdErrCount}</if>
+	       <if test="@Ognl@isNotEmpty(realName)">AND RealName like '%${realName}%'</if>
+	       <if test="@Ognl@isNotEmpty(gender)">AND Gender = #{gender}</if>
+	       <if test="@Ognl@isNotEmpty(age)">AND Age = #{age}</if>
+	       <if test="@Ognl@isNotEmpty(edu)">AND Edu = #{edu}</if>
+	       <if test="@Ognl@isNotEmpty(school)">AND School = #{school}</if>
+	       <if test="@Ognl@isNotEmpty(groupId)">AND GroupID = #{groupId}</if>
+	       <if test="@Ognl@isNotEmpty(isLock)">AND IsLock = #{isLock}</if>
+	       <if test="@Ognl@isNotEmpty(isActive)">AND IsActive = #{isActive}</if>
+	       <if test="@Ognl@isNotEmpty(registerTimeBegin)">AND RegisterTime >= #{registerTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(registerTimeEnd)">AND RegisterTime &lt;= #{registerTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(loginCount)">AND LoginCount = #{loginCount}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(provincesId)">AND ProvincesID = #{provincesId}</if>
+	       <if test="@Ognl@isNotEmpty(cityId)">AND CityID = #{cityId}</if>
+	       <if test="@Ognl@isNotEmpty(remarks)">AND Remarks = #{remarks}</if>
+	       <if test="@Ognl@isNotEmpty(personalAddress)">AND PersonalAddress = #{personalAddress}</if>
+	       <if test="@Ognl@isNotEmpty(isLeader)">AND IsLeader = #{isLeader}</if>
+	       <if test="@Ognl@isNotEmpty(isCompany)">AND IsCompany = #{isCompany}</if>
+	       <if test="@Ognl@isNotEmpty(contactName)">AND ContactName = #{contactName}</if>
+	       <if test="@Ognl@isNotEmpty(businessLicense)">AND BusinessLicense = #{businessLicense}</if>
+	       <if test="@Ognl@isNotEmpty(isAskPrice)">AND IsAskPrice = #{isAskPrice}</if>
+	       <if test="@Ognl@isNotEmpty(askTimes)">AND AskTimes = #{askTimes}</if>
+	       <if test="@Ognl@isNotEmpty(lastLoginTimeBegin)">AND LastLoginTime >= #{lastLoginTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(lastLoginTimeEnd)">AND LastLoginTime &lt;= #{lastLoginTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	       <if test="@Ognl@isNotEmpty(isCheck)">AND IsCheck = #{isCheck}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcuserAudit">
+		INSERT INTO t_user
+		(<include refid="columns"/>)
+		VALUES
+		(#{userId} ,#{loginName} ,#{loginPwd} ,#{loginPwdErrCount} ,#{tradingPwd} ,#{tradingPwdErrCount} ,#{realName} ,#{gender} ,#{age} ,#{edu} ,#{school} ,#{groupId} ,#{isLock} ,#{isActive} ,#{registerTime} ,#{loginCount} ,#{checker} ,#{provincesId} ,#{cityId} ,#{remarks} ,#{personalAddress} ,#{isLeader} ,#{isCompany} ,#{contactName} ,#{businessLicense} ,#{isAskPrice} ,#{askTimes} ,#{lastLoginTime} ,#{isDel} ,#{isCheck} ,#{checkTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user 
+		WHERE
+        user_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcuserAudit">
+		UPDATE t_user SET
+	        LoginName = #{loginName} ,
+	        LoginPwd = #{loginPwd} ,
+	        LoginPwdErrCount = #{loginPwdErrCount} ,
+	        TradingPwd = #{tradingPwd} ,
+	        TradingPwdErrCount = #{tradingPwdErrCount} ,
+	        RealName = #{realName} ,
+	        Gender = #{gender} ,
+	        Age = #{age} ,
+	        Edu = #{edu} ,
+	        School = #{school} ,
+	        GroupID = #{groupId} ,
+	        IsLock = #{isLock} ,
+	        IsActive = #{isActive} ,
+	        RegisterTime = #{registerTime} ,
+	        LoginCount = #{loginCount} ,
+	        Checker = #{checker} ,
+	        ProvincesID = #{provincesId} ,
+	        CityID = #{cityId} ,
+	        Remarks = #{remarks} ,
+	        PersonalAddress = #{personalAddress} ,
+	        IsLeader = #{isLeader} ,
+	        IsCompany = #{isCompany} ,
+	        ContactName = #{contactName} ,
+	        BusinessLicense = #{businessLicense} ,
+	        IsAskPrice = #{isAskPrice} ,
+	        AskTimes = #{askTimes} ,
+	        LastLoginTime = #{lastLoginTime} ,
+	        IsDel = #{isDel} ,
+	        IsCheck = #{isCheck} ,
+	        CheckTime = #{checkTime} 
+        WHERE 
+	        user_id = #{userId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tuser">
+		SELECT <include refid="columns"/>
+		FROM t_user 
+		WHERE 1=1 AND
+		user_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tuser">
+		SELECT <include refid="columns"/>
+		FROM t_user   
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by user_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user WHERE 1=1
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

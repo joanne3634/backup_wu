@@ -1,0 +1,34 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+
+#tuserApplyLeaderDetails .upContent {
+    display: inline-block;
+    border-bottom: 2px dashed #e6e6e6;
+    padding-bottom: 1em;
+}
+#tuserApplyLeaderDetails .upContent .img-container {
+    display: block;
+    overflow: hidden;
+}
+#tuserApplyLeaderDetails .upContent .img-container img {
+    border-radius: 50%;
+}
+#tuserApplyLeaderDetails .upContent .detailInfo {
+    display: inline-block;
+    padding: 0.5em;
+}
+#tuserApplyLeaderDetails .upContent .detailInfo p{
+    margin: 0;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+
+}

@@ -1,0 +1,39 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+
+#inquiryIframeNext {
+
+}
+
+#inquiryIframeNext #submitBtn {
+    margin-left: 0;
+}
+
+#inquiryIframeNext .inline {
+    float: left;
+}
+
+#inquiryIframeNext .inline+.control {
+    display: inline-block;
+    min-width: 120px;
+}
+
+#inquiryIframeNext #protocol {
+    margin-bottom: 1em;
+    display: inline-block;
+}
+
+#inquiryIframeNext #protocol a {
+    color: #c91111;
+}
+
+#inquiryIframeNext #protocol a:hover {
+    color: #FF0000;
+    text-decoration: none;
+}

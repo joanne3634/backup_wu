@@ -1,0 +1,1 @@
+function CopyFormDefDialog(c){if(!c){c={};}var e=c.formDefId;var b=__ctx+"/platform/form/bpmFormDef/copy.ht?formDefId="+e;$.extend(c,{help:0,status:0,scroll:0,center:1});var a="dialogWidth=600px;dialogHeight=350px;help="+c.help+";status="+c.status+";scroll="+c.scroll+";center="+c.center;b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(c){location.reload();}}

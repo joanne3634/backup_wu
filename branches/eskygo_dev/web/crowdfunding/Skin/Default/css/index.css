@@ -1,0 +1,471 @@
+@charset "utf-8"; 
+.top{
+	width: 100%;
+	height: 40px;
+	background: #f1f1f1;
+	border-bottom: 1px solid #dedede; 
+}
+.top div img{
+	vertical-align: text-top;
+}
+.topContent{
+	width: 1100px;
+	margin: 0 auto;
+}
+.phone{
+	height: 40px;
+	line-height: 40px;
+	color: #4f4f4f;
+	font-size: 20px;
+}
+.landing{
+	height: 40px;
+	line-height: 40px;
+}
+.landing a{
+	margin: 0px 10px 0px 10px;
+	color: #ff5400;
+	font-size: 14px;
+}
+.landing span{
+	font-size: 14px;
+	font-weight: bolder;
+	color: #979797;
+}
+.search{
+	height: 100px;
+	width: 1100px;
+	margin: 0 auto;
+	line-height: 100px;
+	text-align: left;
+	font-family:"微软雅黑";
+}
+.search input{
+	height: 30px;
+	width: 450px;
+	border: 3px solid #ff5400;
+	line-height: 30px;
+	padding-left: 10px;
+} 
+.search span{
+	display: inline-block;
+	padding: 2px 10px 4px 10px;
+	color: #fff;
+	background: #ff5400;
+	line-height: 30px;
+	font-size: 15px;
+	cursor: pointer;
+}
+.tag{
+	height: 50px;
+	background: #ff5400;
+	line-height: 50px;
+}
+.tag ul{
+	width: 1100px;
+	margin: 0 auto;
+}
+.tag ul li{
+	float: left;
+	font-size: 16px;
+	margin: 0px 25px 0px 25px;
+}
+.tag a{
+	color: #fff;
+	margin: 0px 5px 0px 5px;
+}
+.advertisement{
+	width: 100%;
+	height: 350px;
+	overflow: hidden;
+}
+.advertisement span{
+	display: inline-block;
+	position: absolute;
+	left: 35%;
+	top:230px;
+	z-index: 100;
+}
+.advertisement span a{
+	font-size: 18px;
+	padding: 3px 10px 3px 10px;
+	width:100px;
+	height:30px;
+	border-radius: 3px;
+	background: #3b9d00;
+	color:#fff;
+	line-height:30px;
+	display: inline-block;
+	margin-right: 30px;
+}
+.foot{
+	height: 130px;
+	padding-top: 20px;
+	font-size: 15px;
+	line-height:30px;
+	color: #535252;
+	background: url("../images/foot.png") repeat-x;
+}
+.footTag{
+	margin: 0px 0px 20px 0px;
+	color: #000;
+	font-weight: bold;
+	line-height:30px;
+}
+.footTag span{
+	font-weight: bolder;
+	margin: 0px 10px 0px 10px;
+}
+.content{
+	width: 1100px;
+	margin: 0 auto;
+	font-family:"微软雅黑";
+}
+.content img{
+	border: 1px solid #ccc6c6;
+}
+.message{
+	width: 50%;
+}
+.message h3,.recommend h3{
+	width: 95%;
+	color: #ff5400;
+	text-align: left;
+	font-weight: bold;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 3px solid #cacaca;
+	padding-top: 30px;
+}
+.recommend h3{
+	margin-left: 5%;
+}
+.message h3 img,.recommend h3 img,.news  h3 img,.Dynamic h3 img,.case h3 img,.companion h3 img,.hot h3 img{
+	border: 0px;
+	margin:0px 10px 0px 10px;
+}
+.message h3 a,.recommend  h3 a,.news h3 a,.Dynamic h3 a,.case h3 a,.companion h3 a,.hot h3 a{
+	font-size: 15px;
+	color: #ffffff;
+	padding: 5px 10px 5px 10px;
+	line-height: 14px;
+	background: #ff5400;
+	font-weight: normal;
+	float: right;
+	margin: 10px;
+	font-family: Arial;
+}
+.messageContent img{
+	width: 115px;
+	height: 110px;
+}
+.recommendContent img,.news ul li img{
+	width: 200px;
+	height: 115px;
+}
+.messageContent img ,.recommendContent img{
+	float: left;
+}
+.messageContent li div,.recommendIntro{
+	margin-left: 10px;
+	width: 380px;
+	float: left;
+	font-family: Arial;
+	color: #666666;
+	line-height: 20px;
+}
+.recommendIntro{
+	text-align: left;
+	width: 95%;
+	margin-top: 20px;
+}
+.recommendIntro span{
+	font-weight: bold;
+	color: #ff5400;
+}
+.messageContent h4,.recommendName h4,.DynamicList h4{
+	font-size: 18px;
+	line-height: 25px;
+	color: #000000;
+	font-weight: bold;
+	font-family: Arial;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.messageContent .clear{
+	padding-top: 10px;
+}
+.messageContent{
+	text-align: left;
+	margin-top: 20px;
+	padding: 0px 5% 10px 2%;
+	border-right: 1px dashed #cccccc;
+}
+.recommend{
+	width: 50%;
+}
+.recommendContent{
+	margin-top: 20px;
+	padding: 0px 2% 10px 7%;
+}
+.recommendName{
+	height: 110px;
+	overflow: hidden;
+	margin-left: 10px;
+	float: left;
+	text-align: left;
+	line-height: 31px;
+	font-size: 15px;
+	font-weight: bold;
+	width: 280px;
+}
+.recommendLab,.recommendLab2{
+	text-align: center;
+	display: inline-block;
+	width: 100px;
+	height: 31px;
+	color: #ffffff;
+	font-family: "微软雅黑";
+	font-weight: normal;
+}
+.recommendName div{
+	margin-top: 10px;
+}
+.recommendLab{
+	background: url("../images/label.png");
+}
+.recommendLab2{
+	background: url("../images/label2.png");
+}
+.news h3,.Dynamic h3,.case h3,.companion h3,.hot h3{
+	width: 100%;
+	text-align: left;
+	font-weight: bold;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 3px solid #cacaca;
+	padding-top: 30px;
+}
+.news h3{
+	color: #339900;
+}
+.news h3 a{
+	background: #339900;
+}
+.Dynamic h3{
+	color: #ea7606;
+}
+.Dynamic h3 a{
+	background: #ea7606;
+}
+.hot h3{
+	color: #ff5400;
+}
+.case h3{
+	color: #0079b1;
+}
+.case h3 a{
+	background: #0079b1;
+}
+.companion h3{
+	color: #339900;
+}
+.companion h3 a{
+	background: #339900;
+}
+.news h3 span{
+	color: #000;
+	font-size: 16px;
+	margin-left: 20px;
+	font-family: "微软雅黑";
+	font-weight: normal;
+}
+.news ul li{
+	margin-top: 20px;
+	padding: 0px 10px 0px 10px;
+	float: left;
+	width: 525px;
+	border-right: 1px dashed #cccccc;
+}
+.DynamicList img{
+	width: 205px;
+	height: 135px;
+}
+.news ul li img,.DynamicList img{
+	float: left;
+}
+.DynamicList h4{
+	margin-bottom: 20px;
+}
+.DynamicList{
+	float: left;
+	width: 509px;
+	text-align: left;
+	margin-top: 20px;
+	padding: 0px 30px 0px 10px;
+	border-right: 1px dashed #cccccc;
+}
+.DynamicContent{
+	width: 280px;
+	float: left;
+	margin-left: 20px;
+	width: 280px;
+	color: #000;
+	line-height: 25px;
+}
+.DynamicContent div{
+	max-height: 95px;
+	overflow: hidden;
+}
+.DynamicContent h5{
+	font-size: 15px;
+	font-weight: bold;
+}
+.time{
+	color: #a7a6a6;
+}
+.case ul li,.hot ul li{
+	margin-top: 20px;
+	float: left;
+	width: 270px;
+	border-right: 1px dashed #cccccc;
+}
+.case h4,.hot h4{
+	margin-top: 10px;
+	line-height: 25px;
+	font-size: 16px;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.hotName{
+	padding: 0px 10px 0px 12px;
+}
+.hotplan{
+	margin: 0 auto;
+	width: 90%;
+	height: 13px;
+	overflow: hidden;
+	background: #ffa177;
+	margin-bottom: 10px;
+}
+.hotplanNo{
+	height: 12px;
+	background: #ff5200;
+}
+.caseName span,.hotName span{
+	padding: 0px 3px 0px 3px;
+	line-height: 20px;
+	font-size: 14px;
+	margin: 7px 1px;
+}
+.newProject span{
+	padding: 0px 3px 0px 3px;
+	line-height: 20px;
+	font-size: 14px;
+	margin: 7px 0px;
+}
+.hotNum span{
+	display: inline-block;
+	/* width: 60px; */
+	margin: 5px;
+	font-size: 14px;
+	color: #1b1b1b;
+}
+.follow em {
+width: 82px;
+margin: 0 auto;
+font-size: 12px;
+margin: 0 auto;
+text-align: center;
+float: left;
+line-height: 24px;
+}
+.hotNum span div{
+	line-height: 25px;
+	font-size: 16px;
+}
+.caseNum span{
+	display: inline-block;
+	width: 60px;
+	color: #fff;
+	font-size: 13px;
+	padding: 5px;
+	margin: 5px;
+}
+.hotNum span div{
+	line-height: 25px;
+	font-size: 16px;
+}
+.caseShade1{
+	width: 1080px;
+	overflow: hidden;
+}
+.caseShade2{
+	width: 1100px;
+}
+.hotspan1{
+	color: #009900;
+}
+.hotspan2{
+	color: #ff6600;
+}
+.hotspan3{
+	color: #00a8ff;
+}
+.casespan1{
+	background: #eb7605;
+}
+.casespan2{
+	background: #0079b1;
+}
+.casespan3{
+	background: #0fa408;
+}
+.companion{
+	text-align: left;
+}
+.companionContent img{
+	margin: 20px 5px 10px 5px;
+	width: 165px;
+	height: 70px;
+}
+.flow{
+	height: 70px;
+	margin: 30px 0px 50px 0px;
+}
+.flow img{
+	vertical-align: top;
+	margin: 0px 10px 0px 10px;
+}
+.flow span,.flow span a{
+	display: inline-block;
+	width: 230px;
+	font-size: 15px;
+}
+.flow span a{
+	font-size: 18px;
+	line-height: 25px;
+}
+#kinMaxShow{
+	display: none;
+}
+.caseImg{
+	display: inline-block;
+	position: relative;
+}
+.caseImg img{
+	width: 220px;
+	height: 130px;
+}
+.caseImg div{
+	width: 67px;
+	height: 67px;
+	position: absolute;
+	top: 0px;
+	left:0px;
+	z-index: 100;
+	background: url("../images/icon_suc.png");
+}

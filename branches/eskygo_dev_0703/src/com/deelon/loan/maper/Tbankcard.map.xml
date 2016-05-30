@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TBankcard">
+
+	<resultMap id="Tbankcard" type="com.deelon.loan.model.front.TBankcard">	
+        <id property="bankCardId" column="BankCard_id" />
+        <result property="userId" column="user_id"/>
+        <result property="realName" column="RealName"/>
+        <result property="idNo" column="id_no"/>
+        <result property="cardId" column="Card_id"/>
+        <result property="cardPwd" column="CardPwd"/>
+        <result property="mobileNum" column="Mobile"/>
+        <result property="bankId" column="Bank_id"/>
+        <result property="city" column="City"/>
+        <result property="opening" column="Opening"/>
+        <result property="audit" column="Audit"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="remark" column="Remark"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="isBindSsucceed" column="IsBindSsucceed"/>
+        <result property="bankName"  column="BankName"/>
+        <result property="cityNumber" column="CityNumber"/>
+        <result property="openingNumber"  column="OpeningNumber"/>
+        <result property="bankCode"  column="BankCode"/>
+	</resultMap>
+	<resultMap id="Tbankcard_n" type="com.deelon.loan.model.front.TBankcard">	
+        <id property="bankCardId" column="BankCard_id" />
+        <result property="userId" column="user_id"/>
+        <result property="realName" column="RealName"/>
+        <result property="idNo" column="id_no"/>
+        <result property="cardId" column="Card_id"/>
+        <result property="cardPwd" column="CardPwd"/>
+        <result property="mobileNum" column="Mobile"/>
+        <result property="bankId" column="Bank_id"/>
+        <result property="city" column="City"/>
+        <result property="opening" column="Opening"/>
+        <result property="audit" column="Audit"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="remark" column="Remark"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="isBindSsucceed" column="IsBindSsucceed"/>
+        <result property="tradingPwd" column="TradingPwd"/>
+	</resultMap>
+	
+	<sql id="columns">
+		BankCard_id,user_id,RealName,id_no,Card_id,CardPwd,Mobile,Bank_id,City,Opening,Audit,Checker,CheckTime,Remark,CreateTime,IsBindSsucceed,CityNumber,OpeningNumber,BankCode,BankName
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(bankCardId)">AND BankCard_id = #{bankCardId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(realName)">AND RealName LIKE '%${realName}%'</if>
+	       <if test="@Ognl@isNotEmpty(idNo)">AND id_no = #{idNo}</if>
+	       <if test="@Ognl@isNotEmpty(cardId)">AND Card_id LIKE '%${cardId}%'</if>
+	       <if test="@Ognl@isNotEmpty(cardPwd)">AND CardPwd = #{cardPwd}</if>
+	       <if test="@Ognl@isNotEmpty(mobileNum)">AND Mobile = #{mobileNum}</if>
+	       <if test="@Ognl@isNotEmpty(bankId)">AND Bank_id = #{bankId}</if>
+	       <if test="@Ognl@isNotEmpty(city)">AND City = #{city}</if>
+	       <if test="@Ognl@isNotEmpty(opening)">AND Opening = #{opening}</if>
+	       <if test="@Ognl@isNotEmpty(audit)">AND Audit = #{audit}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(remark)">AND Remark = #{remark}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isBindSsucceed)">AND IsBindSsucceed = #{isBindSsucceed}</if>
+	       <!-- <if test="@Ognl@isNotEmpty(bankName)">AND bk.BankName LIKE '%${bankName}%'</if> -->
+	       <if test="@Ognl@isNotEmpty(bankName)">AND t_bankcard.BankName LIKE '%${bankName}%'</if>
+	     
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TBankcard">
+		INSERT INTO t_bankcard
+		(
+		<if test="@Ognl@isNotEmpty(userId)">user_id,</if>
+		<if test="@Ognl@isNotEmpty(realName)">RealName,</if>
+		<if test="@Ognl@isNotEmpty(idNo)">id_no,</if>
+		<if test="@Ognl@isNotEmpty(cardId)">Card_id,</if>
+		<if test="@Ognl@isNotEmpty(cardPwd)">CardPwd,</if>
+		<if test="@Ognl@isNotEmpty(mobileNum)">Mobile,</if>
+		<if test="@Ognl@isNotEmpty(bankId)">Bank_id,</if>
+		<if test="@Ognl@isNotEmpty(city)">City,</if>
+		<if test="@Ognl@isNotEmpty(opening)">Opening,</if>
+		 Audit, 
+		<if test="@Ognl@isNotEmpty(checker)">Checker,</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime,</if>
+		<if test="@Ognl@isNotEmpty(remark)">Remark,</if>
+		<if test="@Ognl@isNotEmpty(createTime)">CreateTime,</if>
+		<if test="@Ognl@isNotEmpty(isBindSsucceed)">IsBindSsucceed,</if>
+		<if test="@Ognl@isNotEmpty(cityNumber)">CityNumber,</if>
+		<if test="@Ognl@isNotEmpty(openingNumber)">OpeningNumber,</if>
+		<if test="@Ognl@isNotEmpty(bankCode)">BankCode,</if>
+		<if test="@Ognl@isNotEmpty(bankName)">BankName,</if>
+		BankCard_id
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+		<if test="@Ognl@isNotEmpty(realName)">#{realName},</if>
+		<if test="@Ognl@isNotEmpty(idNo)">#{idNo},</if>
+		<if test="@Ognl@isNotEmpty(cardId)">#{cardId},</if>
+		<if test="@Ognl@isNotEmpty(cardPwd)">#{cardPwd},</if>
+		<if test="@Ognl@isNotEmpty(mobileNum)">#{mobileNum},</if>
+		<if test="@Ognl@isNotEmpty(bankId)">#{bankId},</if>
+		<if test="@Ognl@isNotEmpty(city)">#{city},</if>
+		<if test="@Ognl@isNotEmpty(opening)">#{opening},</if>
+		1, 
+		<if test="@Ognl@isNotEmpty(checker)">#{checker},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">#{checkTime},</if>
+		<if test="@Ognl@isNotEmpty(remark)">#{remark},</if>
+		<if test="@Ognl@isNotEmpty(createTime)">#{createTime},</if>
+		<if test="@Ognl@isNotEmpty(isBindSsucceed)">#{isBindSsucceed},</if>
+		<if test="@Ognl@isNotEmpty(cityNumber)">#{cityNumber},</if>
+		<if test="@Ognl@isNotEmpty(openingNumber)">#{openingNumber},</if>
+		<if test="@Ognl@isNotEmpty(bankCode)">#{bankCode},</if>
+		<if test="@Ognl@isNotEmpty(bankName)">#{bankName},</if>
+		#{bankCardId}
+		)
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_bankcard 
+		WHERE
+        BankCard_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TBankcard">
+		UPDATE t_bankcard SET
+	        user_id = #{userId} ,
+	        RealName = #{realName} ,
+	        id_no = #{idNo} ,
+	        Card_id = #{cardId} ,
+	        CardPwd = #{cardPwd} ,
+	        Mobile = #{mobileNum} ,
+	        Bank_id = #{bankId} ,
+	        City = #{city} ,
+	        Opening = #{opening} ,
+	        Audit = #{audit} ,
+	        Checker = #{checker} ,
+	        CheckTime = #{checkTime} ,
+	        Remark = #{remark} ,
+	        CreateTime = #{createTime} ,
+	        IsBindSsucceed = #{isBindSsucceed}, 
+	         CityNumber = #{cityNumber} ,
+	        OpeningNumber = #{openingNumber},
+	        BankCode = #{bankCode},
+	        BankName = #{bankName}  
+        WHERE 
+	        BankCard_id = #{bankCardId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tbankcard">
+		SELECT <include refid="columns"/>
+		FROM t_bankcard 
+		WHERE  BankCard_id = #{id} 
+	</select>
+	
+	<select id="getTbankCardByUserId" resultMap="Tbankcard" parameterType="java.lang.Long">
+		SELECT TB.*,bk.BankName FROM t_bankcard TB left join t_bank bk on TB.Bank_id=bk.Bank_id 
+		WHERE TB.USER_ID=#{userId} and TB.IsBindSsucceed=1  
+	</select>
+	
+	<select id="getAll" resultMap="Tbankcard">
+		SELECT t_bankcard.*
+		FROM t_bankcard left join t_bank bk on t_bankcard.Opening = bk.Bank_id
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by BankCard_id  desc
+		</if>
+	</select>
+	
+	
+	<select id="getBankCardAndTransactionPwd" resultMap="Tbankcard_n" parameterType="java.lang.Long">
+		SELECT t.TradingPwd,tb.* FROM t_bankcard TB LEFT JOIN t_user t on  TB.user_id=t.user_id
+ 			WHERE TB.USER_ID=#{userId} 
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_bankcard 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

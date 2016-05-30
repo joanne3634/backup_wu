@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TuserReport">
+
+	<resultMap id="TuserReport" type="com.deelon.loan.model.sysManager.TuserReport">	
+        <id property="reportId" column="Report_id" />
+        <result property="userId" column="user_id"/>
+        <result property="projectId" column="Project_id"/>
+        <result property="stateId" column="StateID"/>
+        <result property="reportReason" column="ReportReason"/>
+        <result property="remarks" column="Remarks"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        
+       <result property="proname" column="P_Name"/>
+         <result property="personHands" column="personHands"/>
+         <result property="personHands2" column="personHands2"/>
+         
+         <result property="linkWay" column="LinkWay"/>
+         <result property="notes" column="Notes"/>
+         <result property="endTimes" column="endTimes"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Report_id,user_id,Project_id,StateID,ReportReason,Remarks,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(reportId)">AND Report_id = #{reportId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(stateId)">AND StateID = #{stateId}</if>
+	       <if test="@Ognl@isNotEmpty(reportReason)">AND ReportReason = #{reportReason}</if>
+	       <if test="@Ognl@isNotEmpty(remarks)">AND Remarks = #{remarks}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator like '%${creator}%'</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TuserReport">
+		INSERT INTO t_user_report
+		(<include refid="columns"/>)
+		VALUES
+		(#{reportId} ,#{userId} ,#{projectId} ,#{stateId} ,#{reportReason} ,#{remarks} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_report 
+		WHERE
+        Report_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TuserReport">
+		UPDATE t_user_report SET
+	        user_id = #{userId} ,
+	        Project_id = #{projectId} ,
+	        StateID = #{stateId} ,
+	        ReportReason = #{reportReason} ,
+	        Remarks = #{remarks} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        Report_id = #{reportId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserReport">
+		SELECT <include refid="columns"/>
+		FROM t_user_report 
+		WHERE 1=1 and
+		Report_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserReport">
+		SELECT <include refid="columns"/>
+		FROM t_user_report   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Report_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_report 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getUserReportList" resultMap="TuserReport">
+		SELECT tp.P_Name,ur.*,urf2.LinkWay,urf2.Notes,urf2.CreateTime as endTimes,tu.RealName as personHands,
+		tu1.RealName as personHands2
+		 FROM t_user_report ur 
+		LEFT JOIN (select * from (SELECT * from t_user_report_followup urf ORDER BY urf.createTime desc ) urf1
+    GROUP BY urf1.report_id) urf2 ON ur.Report_id=urf2.Report_id
+		LEFT JOIN t_project tp ON ur.Project_id=tp.Project_id 
+		LEFT JOIN t_user tu ON ur.Creator=tu.user_id
+		LEFT JOIN t_user tu1 ON ur.user_id=tu1.user_id
+		WHERE 1=1
+		 <if test="@Ognl@isNotEmpty(creator)">AND tu.RealName like "%"#{creator}"%"</if>
+		  <if test="@Ognl@isNotEmpty(beginDate)">AND ur.CreateTime >= #{beginDate}</if>
+		   <if test="@Ognl@isNotEmpty(endDate)">AND ur.CreateTime &lt;= #{endDate}</if>
+		   <if test="@Ognl@isNotEmpty(stateId)">AND ur.StateID = #{stateId}</if>
+		GROUP BY ur.Report_id,ur.StateID ORDER BY ur.CreateTime DESC
+	</select>
+	
+	
+	    <select id="getUserId" parameterType="java.lang.Long" resultMap="TuserReport">
+		SELECT <include refid="columns"/>
+		FROM t_user_report 
+		WHERE 1=1 and
+		Creator = #{creator} 
+	</select>
+</mapper>
+

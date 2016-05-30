@@ -1,0 +1,1 @@
+function BpmImageDialog(c){if(!c){c={};}var b=__ctx+"/platform/bpm/bpmDefinition/flowImg.ht?actDefId="+c.actDefId;var a="height=600,width=800,status=no,toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes";b=b.getNewUrl();window.open(b,null,a);}

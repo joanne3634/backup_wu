@@ -1,0 +1,34 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+
+#sendPrivateMessages {
+
+}
+
+#sendPrivateMessages #code {
+    width: 6em;
+}
+
+#sendPrivateMessages #validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#sendPrivateMessages #refreshCode {
+    color: #333;
+}
+
+#sendPrivateMessages #refreshCode:hover, #sendPrivateMessages #refreshCode:active {
+    color: #444;
+}
+
+#sendPrivateMessages #submitBtn {
+    margin-left: 0;
+}

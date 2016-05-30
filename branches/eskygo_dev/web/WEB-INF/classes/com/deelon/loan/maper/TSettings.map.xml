@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.backstage.TSettings">
+	<resultMap id="settings" type="com.deelon.loan.model.backstage.TSettings">
+		<id property="settingsId" column="Settings_id" jdbcType="NUMERIC" />
+		<result property="typeId" column="TypeID" jdbcType="NUMERIC" />
+		<result property="setCode" column="SetCode" jdbcType="VARCHAR" />
+		<result property="setValue" column="SetValue" jdbcType="VARCHAR" />
+		<result property="setDesc" column="SetDesc" jdbcType="VARCHAR" />
+		<result property="orderId" column="OrderID" jdbcType="NUMERIC" />
+	</resultMap>
+	<resultMap id="Tsettings" type="com.deelon.loan.model.backstage.TSettings">	
+        <id property="settingsId" column="Settings_id"  jdbcType="NUMERIC"  />
+        <result property="typeId" column="TypeID"  jdbcType="NUMERIC" />
+        <result property="setCode" column="SetCode"  jdbcType="VARCHAR"/>
+        <result property="setValue" column="SetValue"  jdbcType="VARCHAR"/>
+        <result property="setDesc" column="SetDesc"  jdbcType="VARCHAR"/>
+        <result property="orderId" column="OrderID" jdbcType="NUMERIC" />
+	</resultMap>
+	
+	<sql id="columns">
+		Settings_id,TypeID,SetCode,SetValue,SetDesc,OrderID
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(settingsId)">AND Settings_id = #{settingsId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(setCode)">AND SetCode like '%${setCode}%'</if>
+	       <if test="@Ognl@isNotEmpty(setValue)">AND SetValue like '%${setValue}%'</if>
+	       <if test="@Ognl@isNotEmpty(setDesc)">AND SetDesc like '%${setDesc}%'</if>
+	       <if test="@Ognl@isNotEmpty(orderId)">AND OrderID = #{orderId}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.backstage.TSettings">
+		INSERT INTO t_settings
+		(<include refid="columns"/>)
+		VALUES
+		(#{settingsId} ,#{typeId} ,#{setCode} ,#{setValue} ,#{setDesc},#{orderId}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_settings 
+		WHERE
+        Settings_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.backstage.TSettings">
+		UPDATE t_settings SET
+	        TypeID = #{typeId} ,
+	        SetCode = #{setCode} ,
+	        SetValue = #{setValue} ,
+	        SetDesc = #{setDesc} 
+        WHERE 
+	        Settings_id = #{settingsId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tsettings">
+		SELECT <include refid="columns"/>
+		FROM t_settings 
+		WHERE 1=1 AND
+		Settings_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tsettings">
+		SELECT <include refid="columns"/>
+		FROM t_settings   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by OrderID  asc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_settings  WHERE 1=1 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<insert id="insertSettings">
+		insert into T_Settings
+		(
+		<if test="@Ognl@isNotEmpty(typeId)">TypeID,</if>
+		<if test="@Ognl@isNotEmpty(typeId)">SetCode,</if>
+		<if test="@Ognl@isNotEmpty(typeId)">SetValue,</if>
+		<if test="@Ognl@isNotEmpty(typeId)">SetDesc,</if>
+		Settings_id
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(typeId)">#{typeId},</if>
+		<if test="@Ognl@isNotEmpty(typeId)">#{setCode},</if>
+		<if test="@Ognl@isNotEmpty(typeId)">#{setValue},</if>
+		<if test="@Ognl@isNotEmpty(typeId)">#{setDesc},</if>
+		#{typeId}
+		)
+	</insert>
+
+	<select id="getSettings" resultMap="settings">
+		select
+		s.Settings_id,
+		s.TypeID,
+		s.SetCode,
+		s.SetValue,
+		s.SetDesc
+		from t_settings s
+	</select>
+
+	<select id="getSettingsByColumn" resultMap="settings">
+		select
+		s.Settings_id,
+		s.TypeID,
+		s.SetCode,
+		s.SetValue,
+		s.SetDesc
+		FROM
+		t_settings s
+		WHERE
+		${columnName} =
+		#{columnValue}
+	</select>
+
+	<update id="updateSettings">
+		UPDATE
+		t_settings
+		SET
+		<if test="@Ognl@isNotEmpty(typeId)">TypeID=#{typeId},</if>
+		<if test="@Ognl@isNotEmpty(setCode)">SetCode=#{setCode},</if>
+		<if test="@Ognl@isNotEmpty(setValue)">SetValue=#{setValue},</if>
+		<if test="@Ognl@isNotEmpty(setDesc)">SetDesc=#{setDesc},</if>
+		Settings_id = #{settingsId}
+		WHERE
+		Settings_id = #{settingsId}
+	</update>
+	
+	
+	<select id="getsettingsBySetCode" resultMap="settings" parameterType="java.lang.String">
+		select * from t_settings t where t.setCode=#{setCode}
+	</select>
+
+	<update id="updatePaiXu">
+		UPDATE
+		t_settings
+		SET
+		OrderID = #{orderId}
+		WHERE
+		Settings_id = #{settingsId}
+	</update>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_infotemplatparam-->
+		
+		     <form name="tinfotemplatparam">
+		     	<field property="infoTemplatId" depends="digits">
+					<arg position="0" key="tinfotemplatparam.infoTemplatId" />
+				</field>
+		     	<field property="paramName" depends="required,maxlength">
+					<arg position="0" key="tinfotemplatparam.paramName" />
+					<arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>64</var-value>
+				 </var>
+				</field>
+			 	<field property="comments" depends="required,maxlength">	
+		         <arg position="0" key="tinfotemplatparam.comments" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>256</var-value>
+				 </var>
+		        </field>
+			 	<field property="creator" depends="required">	
+		         <arg position="0" key="tinfotemplatparam.creator" />		        
+		        </field>
+			 	<field property="createTime" depends="maxlength">	
+		         <arg position="0" key="tinfotemplatparam.createTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_infotemplatparam-->
+</formset>
+</form-validation>
+ 
+
+ 

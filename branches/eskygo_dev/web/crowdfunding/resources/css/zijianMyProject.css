@@ -1,0 +1,34 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+
+#zijianMyProject {
+
+}
+
+#zijianMyProject #code {
+    width: 6em;
+}
+
+#zijianMyProject #validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#zijianMyProject #refreshCode {
+    color: #333;
+}
+
+#zijianMyProject #refreshCode:hover, #zijianMyProject #refreshCode:active {
+    color: #444;
+}
+
+#zijianMyProject #submitBtn {
+    margin-left: 0;
+}

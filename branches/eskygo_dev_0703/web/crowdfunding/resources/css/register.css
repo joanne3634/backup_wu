@@ -1,0 +1,80 @@
+#register {
+    margin-top: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    border: 1px solid #e6e6e6;
+}
+
+.registerLink .ink-button {
+    background-color: #ffffff;
+    border:1px solid #e6e6e6;
+    padding: .8em 12em;
+    border-radius: 0;
+    color: #333333;
+}
+
+.registerLink .ink-button:active,
+.registerLink .ink-button.active {
+    background-color: #1d2088;
+    border:1px solid #1d2088;
+    color: #ffffff;
+}
+
+.registerLink .ink-button.active:hover {
+    background-color: #1d2088;
+    border:1px solid #1d2088;
+}
+
+#register .register-container {
+    padding: 3em 15em 0 15em;
+}
+
+#register .register-container .control {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+#register .register-container .control .help-block {
+    color: #cccccc;
+    margin-bottom: 0;
+}
+
+#register .register-container .control .help-block.red {
+    color: #c91111;
+}
+
+#register #code {
+    width: 6em;
+}
+
+#register #validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#register #refreshCode {
+    color: #333;
+}
+
+#register #refreshCode:hover, #register #refreshCode:active {
+    color: #444;
+}
+
+#register #protocol {
+    margin-bottom: .5em;
+}
+
+#register #protocol a {
+    color: #c91111;
+}
+
+#register #protocol a:hover {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+#register #submitBtn {
+    margin-left: 0;
+}

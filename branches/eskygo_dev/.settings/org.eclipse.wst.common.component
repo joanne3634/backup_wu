@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
+  <wb-module deploy-name="wuyouchou">
+    <property name="context-root" value="wuyouchou"/>
+    <wb-resource deploy-path="/" source-path="web"/>
+    <property name="java-output-path" value="/target/classes"/>
+    <dependent-module archiveName="IKAnalyzer-3.2.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/IKAnalyzer-3.2.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="JdbcDriver-6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/JdbcDriver-6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="RXTXcomm-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/RXTXcomm-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activation-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activation-1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-all-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-all-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-amqp-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-amqp-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-broker-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-broker-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-client-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-client-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-pool-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-pool-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activemq-web-5.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activemq-web-5.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activiti-5.10-activiti-engine.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activiti-5.10-activiti-engine.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activiti-5.10-activiti-spring.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/activiti-5.10-activiti-spring.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="antlr-2.7.7.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/antlr-2.7.7.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="aopalliance-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/aopalliance-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="asm-3.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/asm-3.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="aspectjrt-1.6.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/aspectjrt-1.6.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="aspectjweaver-1.6.11.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/aspectjweaver-1.6.11.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="axis-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/axis-1.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="backport-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/backport-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bcmail-jdk14-1.38.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/bcmail-jdk14-1.38.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bcmail-jdk14-138.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/bcmail-jdk14-138.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bcprov-jdk14-1.38.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/bcprov-jdk14-1.38.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bcprov-jdk14-138.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/bcprov-jdk14-138.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bctsp-jdk14-1.38.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/bctsp-jdk14-1.38.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="c3p0-0.9.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/c3p0-0.9.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cas-client-core-3.1.10.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/cas-client-core-3.1.10.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="castor-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/castor-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cglib-2.2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/cglib-2.2.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ckeditor-java-core-3.5.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/ckeditor-java-core-3.5.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cloning-1.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/cloning-1.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="comm-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/comm-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-beanutils-1.8.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-beanutils-1.8.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-codec-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-codec-1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-codec-20041127.091804.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-codec-20041127.091804.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-collections-3.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-collections-3.2.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-dbcp-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-dbcp-1.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-digester3-3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-digester3-3.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-email-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-email-1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-fileupload-1.2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-fileupload-1.2.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-io-2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-io-2.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-lang-2.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-lang-2.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-logging-1.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-pool-1.5.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/commons-pool-1.5.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="cxf-2.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/cxf-2.5.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="db2jcc-4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/db2jcc-4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="deelon.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/deelon.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="digester-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/digester-1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="displayTag-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/displayTag-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="dom4j-1.6.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/dom4j-1.6.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="druid-0.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/druid-0.2.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ehcache-core-2.5.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/ehcache-core-2.5.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ezmorph-1.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/ezmorph-1.0.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="fastjson-1.1.23.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/fastjson-1.1.23.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="fontbox-1.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/fontbox-1.6.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="freemarker-2.3.18.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/freemarker-2.3.18.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="geronimo-j2ee-management_1.1_spec-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="geronimo-jms_1.1_spec-1.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/geronimo-jms_1.1_spec-1.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="geronimo-jta_1.0.1B_spec-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="groovy-all-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/groovy-all-2.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="gson-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/gson-2.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="guava-18.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/guava-18.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="h2-1.3.170.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/h2-1.3.170.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="hawtbuf-1.9.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/hawtbuf-1.9.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="httpclient-4.1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/httpclient-4.1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="httpcore-4.1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/httpcore-4.1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="itext-2.1.7.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/itext-2.1.7.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="itext-asian-5.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/itext-asian-5.1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="itext-xtra-5.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/itext-xtra-5.2.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="itextpdf-5.2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/itextpdf-5.2.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-all-1.7.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-all-1.7.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-annotations-2.0.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-annotations-2.0.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-core-2.0.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-core-2.0.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-core-lgpl-1.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-core-lgpl-1.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-databind-2.0.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-databind-2.0.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jackson-mapper-lgpl-1.9.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jackson-mapper-lgpl-1.9.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jakarta-regexp-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jakarta-regexp-1.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jasperreports-5.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jasperreports-5.1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="java-uuid-generator-3.1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/java-uuid-generator-3.1.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="javassist.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/javassist.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jaxb-api-2.2.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jaxb-api-2.2.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jaxb-impl-2.2.4-1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jaxb-impl-2.2.4-1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jaxen-1.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jaxen-1.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jcl-over-slf4j-1.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jcl-over-slf4j-1.6.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jcl104-over-slf4j-1.4.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jcl104-over-slf4j-1.4.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jcommon-1.0.15.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jcommon-1.0.15.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jdbc-4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jdbc-4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jdom-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jdom-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jdtcore-3.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jdtcore-3.1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jfreechart-1.0.12.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jfreechart-1.0.12.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jimi-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jimi-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jpa-3.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jpa-3.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="json-lib-2.4-jdk15.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/json-lib-2.4-jdk15.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="json.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/json.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jsoup-1.7.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jsoup-1.7.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jstl-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jtds-1.2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/jtds-1.2.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="junit-4.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/junit-4.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="log4j-1.2.16.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/log4j-1.2.16.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="log4jdbc4-1.21.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/log4jdbc4-1.21.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-core-3.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/lucene-core-3.4.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-highlighter-3.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/lucene-highlighter-3.4.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-memory-3.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/lucene-memory-3.4.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-queries-3.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/lucene-queries-3.4.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="mail-1.4.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/mail-1.4.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="morph-1.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/morph-1.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="mybatis-3.0.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/mybatis-3.0.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="mysql-connector-java-5.1.27.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/mysql-connector-java-5.1.27.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="neethi-3.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/neethi-3.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="objenesis-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/objenesis-1.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="oracledriver-11.2.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/oracledriver-11.2.0.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="pdfbox-1.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/pdfbox-1.6.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="pinyin4j-2.5.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/pinyin4j-2.5.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-3.8-beta4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-3.8-beta4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-examples-3.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-examples-3.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-excelant-3.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-excelant-3.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-ooxml-3.8-beta4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-ooxml-3.8-beta4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-ooxml-schemas-3.8-beta4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-ooxml-schemas-3.8-beta4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-scratchpad-3.8-beta4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/poi-scratchpad-3.8-beta4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="proxool-0.9.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/proxool-0.9.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="proxool-cglib-0.9.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/proxool-cglib-0.9.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="quartz-2.1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/quartz-2.1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="quartz-oracle-2.1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/quartz-oracle-2.1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="report-7.1-server.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/report-7.1-server.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="report-7.1-third.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/report-7.1-third.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="serial-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/serial-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="servlet-3.03.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/servlet-3.03.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="slf4j-api-1.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/slf4j-api-1.6.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="slf4j-log4j12-1.6.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/slf4j-log4j12-1.6.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="sms-3.4.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/sms-3.4.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-aop-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-aop-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-asm-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-asm-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-beans-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-beans-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-context-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-context-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-context-support-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-context-support-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-core-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-core-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-expression-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-expression-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-jdbc-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-jdbc-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-jms-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-jms-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-ldap-1.3.1.RELEASE-all.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-ldap-1.3.1.RELEASE-all.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-orm-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-orm-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-acl-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-acl-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-cas-client-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-cas-client-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-config-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-config-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-core-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-core-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-taglibs-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-taglibs-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-security-web-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-security-web-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-test-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-test-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-tx-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-tx-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-web-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-web-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="spring-webmvc-3.0.3.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/spring-webmvc-3.0.3.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="springmodules-validator-0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/springmodules-validator-0.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="stax2-api-3.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/stax2-api-3.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="validator-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/validator-1.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="wabacus-4.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/wabacus-4.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="woodstox-core-asl-4.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/woodstox-core-asl-4.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ws-commons-java5-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/ws-commons-java5-1.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="wsdl4j-1.6.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/wsdl4j-1.6.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="wss4j-1.6.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/wss4j-1.6.4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xalan-2.7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xalan-2.7.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xbean-3.7.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xbean-3.7.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xercesImpl-2.9.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xercesImpl-2.9.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xmemcached-1.3.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xmemcached-1.3.8.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xml-apis-1.3.02.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xml-apis-1.3.02.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xmlParserAPIs-2.6.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xmlParserAPIs-2.6.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xmlbeans-2.5.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xmlbeans-2.5.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xmlschema-core-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xmlschema-core-2.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xmlsec-1.4.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xmlsec-1.4.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xom-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xom-1.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="xstream-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/xstream-1.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="zip4j-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/web/WEB-INF/lib/zip4j-1.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src"/>
+  </wb-module>
+</project-modules>

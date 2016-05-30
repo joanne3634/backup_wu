@@ -1,0 +1,62 @@
+#proDynamic {
+    padding-top: 30px;
+    /*padding-bottom: 3em;*/
+}
+
+#proDynamic .proDynamicList{
+    margin: 0 0 4em 0;
+    list-style-type: none;
+    padding-right: 1em;
+    border-right: 2px solid #e6e6e6;
+}
+#proDynamic .proDynamicList .proDynamicUL{
+    margin-top: 0em;
+}
+#proDynamic .proDynamicList .proDynamicLI {
+    display: block;
+    border-bottom: 2px dashed #e6e6e6;
+    margin: 0em 0em 1em 0em;
+    padding-bottom: 1em;
+}
+
+#proDynamic .proDynamicList li .item {
+    display: block;
+    overflow: hidden;
+}
+#proDynamic .proDynamicList li .item .img-container {
+    float: left;
+    width: 340px;
+    height: 190px;
+    padding-right: 5em;
+}
+
+#proDynamic .proDynamicList li .item .img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+#proDynamic .proDynamicList li .item .newsINfo {
+    padding-top: 0;
+}
+#proDynamic .proDynamicList li .item .newsINfo p{
+    margin: 0;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+#proDynamic .proDynamicList li .item .newsINfo .publisher {
+    color: #c4c4c4;
+}
+
+
+
+#proDynamic .proDynamic-order h4.titleName{
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 0.75em;
+}
+#pagination ul.pagination {
+    display: inline-block;
+}

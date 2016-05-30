@@ -1,0 +1,1 @@
+function FormTableDialog(c){var b=__ctx+"/platform/form/bpmFormTable/selector.ht";if(c.isExternal!=undefined){b+="?isExternal="+c.isExternal;}var a="dialogWidth:800px;dialogHeight:500px;help:0;status:1;scroll:1;center:1;resizable:1";b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(d!=undefined){if(c.callBack){c.callBack.call(this,d.tableId,d.tableName);}}}

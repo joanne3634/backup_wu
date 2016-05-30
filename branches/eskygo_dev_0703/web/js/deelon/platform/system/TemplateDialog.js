@@ -1,0 +1,1 @@
+function TemplateDialog(c){var b=__ctx+"/platform/system/sysTemplate/dialog.ht".getNewUrl();var a="dialogWidth:600px;dialogHeight:300px;help:0;status0;scroll:1;center:1";b=b.getNewUrl();var d=window.showModalDialog(b,c,a);if(d!=undefined){if(c.callback){c.callback.call(this,d);}}}

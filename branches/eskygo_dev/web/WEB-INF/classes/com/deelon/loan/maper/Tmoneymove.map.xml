@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TMoneymove">
+
+	<resultMap id="Tmoneymove" type="com.deelon.loan.model.front.TMoneymove">	
+        <id property="moneyMoveId" column="MoneyMove_id" />
+        <result property="resultId" column="ResultID"/>
+        <result property="userId" column="user_id"/>
+        <result property="projectId" column="Project_id"/>
+        <result property="cardId" column="CardID"/>
+        <result property="typeId" column="TypeID"/>
+        <result property="moneyInOut" column="MoneyInOut"/>
+        <result property="moneyCurrent" column="MoneyCurrent"/>
+        <result property="audit" column="Audit"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="remark" column="Remark"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="getFee" column="GetFee"/>
+        <result property="userName" column="LoginName"/>
+        <result property="realName" column="RealName"/>
+        <result property="pname" column="P_Name"/>
+        <result property="serialNo" column="SerialNo"/>
+        <result property="flowCode" column="FlowCode"/>
+		<result property="isOffLine" column="IsOffLine"/>
+	</resultMap>
+	
+	<sql id="columns">
+		MoneyMove_id,user_id,CardID,TypeID,MoneyInOut,MoneyCurrent,Audit,Checker,CheckTime,Remark,CreateTime,GetFee,ResultID,Project_id,SerialNo,FlowCode,IsOffLine
+	</sql>
+	<sql id="dynamicWhere">
+	       <if test="@Ognl@isNotEmpty(moneyMoveId)">AND MoneyMove_id = #{moneyMoveId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(cardId)">AND CardID = #{cardId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(moneyInOut)">AND MoneyInOut = #{moneyInOut}</if>
+	       <if test="@Ognl@isNotEmpty(moneyCurrent)">AND MoneyCurrent = #{moneyCurrent}</if>
+	       <if test="@Ognl@isNotEmpty(audit)">AND Audit = #{audit}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+		   <if test="@Ognl@isNotEmpty(checkTime)">AND CheckTime &lt;= #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(remark)">AND Remark = #{remark}</if>
+		   <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime &lt;= #{createTime}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(serialNo)">AND SerialNo = #{serialNo}</if>
+		   <if test="@Ognl@isNotEmpty(resultId)">AND ResultID &lt;= #{resultId}</if>
+		   <if test="@Ognl@isNotEmpty(userName)">AND LoginName like '%#{resultId}%'</if>
+		   <if test="@Ognl@isNotEmpty(flowCode)">AND FlowCode = #{flowCode}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TMoneymove">
+		INSERT INTO t_moneymove
+		(<include refid="columns"/>)
+		VALUES
+		(#{moneyMoveId} ,#{userId} ,#{cardId} ,#{typeId} ,
+		#{moneyInOut} ,#{moneyCurrent} ,#{audit} ,#{checker} ,
+		#{checkTime} ,#{remark} ,#{createTime},#{getFee},#{resultId},#{projectId},#{serialNo},#{flowCode},#{isOffLine}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_moneymove 
+		WHERE
+        MoneyMove_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TMoneymove">
+		UPDATE t_moneymove SET
+	        user_id = #{userId} ,
+	        CardID = #{cardId} ,
+	        TypeID = #{typeId} ,
+	        MoneyInOut = #{moneyInOut} ,
+	        MoneyCurrent = #{moneyCurrent} ,
+	        ResultID=#{resultId},
+	        Audit = #{audit} ,
+	        Checker = #{checker} ,
+	        CheckTime = #{checkTime} ,
+	        Remark = #{remark} ,
+	        CreateTime = #{createTime} ,
+	        GetFee=#{getFee},
+	        Project_id=#{projectId},
+	        SerialNo=#{serialNo},
+	        FlowCode=#{flowCode}
+        WHERE 
+	        MoneyMove_id = #{moneyMoveId} 
+	</update>
+
+	<update id="disableRecord" parameterType="com.deelon.loan.model.front.TMoneymove">
+		UPDATE t_moneymove SET
+					ResultID= '98',
+					Remark='无效的支付记录'
+				WHERE 1=1
+		<if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+		<if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+		<if test="@Ognl@isNotEmpty(resultId)">AND ResultID = #{resultId}</if>
+	</update>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tmoneymove">
+		SELECT <include refid="columns"/>
+		FROM t_moneymove 
+		WHERE 1=1 And
+		MoneyMove_id = #{id} 
+	</select>
+	<select id="getByIdFlowCode" parameterType="java.lang.Long" resultMap="Tmoneymove">
+		SELECT <include refid="columns"/>
+		FROM t_moneymove 
+		WHERE 1=1 And
+		FlowCode = #{flowCode} 
+	</select>
+	<select id="getAll" resultMap="Tmoneymove">
+		SELECT mm.*,us.LoginName,us.RealName
+		FROM t_moneymove mm LEFT JOIN t_user us on mm.user_id=us.user_id
+		WHERE 1=1  and mm.TypeID in(1,2)
+		<if test="@Ognl@isEmpty(typeId)"> and mm.TypeID!=10 </if>
+			 <if test="@Ognl@isNotEmpty(moneyMoveId)">AND mm.MoneyMove_id = #{moneyMoveId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND  mm.user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(cardId)">AND  mm.CardID = #{cardId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND  mm.TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(moneyInOut)">AND  mm.MoneyInOut = #{moneyInOut}</if>
+	       <if test="@Ognl@isNotEmpty(moneyCurrent)">AND  mm.MoneyCurrent = #{moneyCurrent}</if>
+	       <if test="@Ognl@isNotEmpty(audit)">AND  mm.Audit = #{audit}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND  mm.Checker = #{checker}</if>
+		   <if test="@Ognl@isNotEmpty(checkTime)">AND  mm.CheckTime &lt;= #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(remark)">AND  mm.Remark = #{remark}</if>
+	       <if test="@Ognl@isNotEmpty(inCharge)"> AND  mm.TypeID in(1,12) </if>
+		 <!--   <if test="@Ognl@isNotEmpty(createTime)">AND  mm.CreateTime &lt;= #{createTime}</if>
+		   <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime >= #{createTimeBegin}</if> -->
+		   <if test="@Ognl@isNotEmpty(resultId)">AND  mm.ResultID = #{resultId}</if>
+		   <if test="@Ognl@isNotEmpty(userName)">AND  us.LoginName like '%${userName}%'</if>
+		   <if test="@Ognl@isNotEmpty(applyName)">AND us.RealName like '%${applyName}%'</if>
+		   <if test="@Ognl@isNotEmpty(beginDate)">AND  mm.CreateTime &gt;= #{beginDate}</if>
+		   <if test="@Ognl@isNotEmpty(endDate)">AND  mm.CreateTime &lt;= #{endDate}</if>
+		   <if test="@Ognl@isNotEmpty(flowCode)">AND mm.FlowCode = #{flowCode}</if>
+		<!-- <if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if> -->
+		<!-- <if test="@Ognl@isEmpty(orderField)"> -->
+		group by mm.TypeID,mm.MoneyMove_id
+		order by CreateTime  desc
+		<!-- </if> -->
+	</select>
+	
+	<select id="getByProIdAndUserIdAnd" resultMap="Tmoneymove">
+	SELECT mm.*,us.LoginName,us.RealName
+		FROM t_moneymove mm LEFT JOIN t_user us on mm.user_id=us.user_id
+		WHERE 1=1  
+		 <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(userId)">AND  mm.user_id = #{userId}</if>
+		<if test="@Ognl@isNotEmpty(typeId)">AND  mm.TypeID = #{typeId}</if>
+		 <if test="@Ognl@isNotEmpty(resultId)">AND  mm.ResultID = #{resultId}</if>
+		 order by CreateTime  desc
+	</select>
+	
+	<select id="getChargeMoneyList" resultMap="Tmoneymove">
+		SELECT mm.*,us.LoginName,us.RealName
+		FROM t_moneymove mm LEFT JOIN t_user us on mm.user_id=us.user_id
+		WHERE 1=1 
+		   <if test="@Ognl@isNotEmpty(typeId)"> and mm.TypeID = #{typeId} </if>
+		   <if test="@Ognl@isNotEmpty(moneyMoveId)">AND mm.MoneyMove_id = #{moneyMoveId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND  mm.user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(cardId)">AND  mm.CardID = #{cardId}</if>
+	       <if test="@Ognl@isNotEmpty(moneyInOut)">AND  mm.MoneyInOut = #{moneyInOut}</if>
+	       <if test="@Ognl@isNotEmpty(moneyCurrent)">AND  mm.MoneyCurrent = #{moneyCurrent}</if>
+	       <if test="@Ognl@isNotEmpty(audit)">AND  mm.Audit = #{audit}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND  mm.Checker = #{checker}</if>
+		   <if test="@Ognl@isNotEmpty(checkTime)">AND  mm.CheckTime &lt;= #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(remark)">AND  mm.Remark = #{remark}</if>
+	       <if test="@Ognl@isNotEmpty(inCharge)"> AND  mm.TypeID in(1,12) </if>
+		 <!--   <if test="@Ognl@isNotEmpty(createTime)">AND  mm.CreateTime &lt;= #{createTime}</if>
+		   <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime >= #{createTimeBegin}</if> -->
+		   <if test="@Ognl@isNotEmpty(resultId)">AND  mm.ResultID = #{resultId}</if>
+		   <if test="@Ognl@isNotEmpty(userName)">AND  us.LoginName like '%${userName}%'</if>
+		   <if test="@Ognl@isNotEmpty(applyName)">AND us.RealName like '%${applyName}%'</if>
+		   <if test="@Ognl@isNotEmpty(beginDate)">AND  mm.CreateTime &gt;= #{beginDate}</if>
+		   <if test="@Ognl@isNotEmpty(endDate)">AND  mm.CreateTime &lt;= #{endDate}</if>
+		   <if test="@Ognl@isNotEmpty(flowCode)">AND mm.FlowCode = #{flowCode}</if>
+		<!-- <if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if> -->
+		<!-- <if test="@Ognl@isEmpty(orderField)"> -->
+		order by CreateTime  desc
+		<!-- </if> -->
+	</select>
+	
+	<select id="getUserMoneyList" resultMap="Tmoneymove">
+		SELECT mm.*,cp.P_Name,LoginName
+		FROM t_moneymove mm
+		left join t_c_project cp on mm.project_id=cp.project_id 
+		LEFT JOIN t_user us on mm.user_id=us.user_id
+		WHERE 1=1 and mm.TypeID!=10
+		   AND MM.RESULTID != '98'
+		   <if test="@Ognl@isNotEmpty(userId)">AND  mm.user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND  mm.TypeID in (${typeId})</if>
+		   <if test="@Ognl@isNotEmpty(timeBucket)">AND  mm.CreateTime &gt;= #{timeBucket}</if>
+		   <if test="@Ognl@isNotEmpty(currentDate)">AND  mm.CreateTime &lt;= #{currentDate}</if>
+		   <if test="@Ognl@isNotEmpty(audit)">AND  mm.Audit = #{audit}</if>
+		group by mm.TypeID,mm.MoneyMove_id
+		order by CreateTime  desc
+	</select>
+	
+	
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_moneymove 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <select id="updateAudit" resultType="long">
+		UPDATE t_moneymove SET  Audit = #{audit},Checker = #{checker},CheckTime = #{checkTime} WHERE MoneyMove_id = #{moneyMoveId}
+    </select>
+	<!-- 查询资金记录里平台收益的汇总 -->
+	<select id="getPlatformSum" resultMap="Tmoneymove">
+		SELECT t.TypeID,SUM(t.MoneyInOut) MoneyInOut FROM t_moneymove t WHERE t.TypeID in('6','7','10') GROUP BY t.TypeID 
+    </select>
+    
+    <select id="getListByMap" resultMap="Tmoneymove">
+    SELECT mm.*
+		FROM t_moneymove mm
+		
+		WHERE 1=1 
+		   <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(cardId)">AND CardID = #{cardId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(typeIdIn)">AND TypeID in (#{typeIdIn1},#{typeIdIn2},#{typeIdIn3},#{typeIdIn4},#{typeIdIn5},#{typeIdIn6},#{typeIdIn7},#{typeIdIn8})</if>
+	       <if test="@Ognl@isNotEmpty(moneyInOut)">AND MoneyInOut = #{moneyInOut}</if>
+	       <if test="@Ognl@isNotEmpty(moneyCurrent)">AND MoneyCurrent = #{moneyCurrent}</if>
+	       <if test="@Ognl@isNotEmpty(audit)">AND Audit = #{audit}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+		   <if test="@Ognl@isNotEmpty(checkTime)">AND CheckTime &lt;= #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(remark)">AND Remark = #{remark}</if>
+		   <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime &lt;= #{createTime}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(serialNo)">AND SerialNo = #{serialNo}</if>
+		   <if test="@Ognl@isNotEmpty(resultId)">AND ResultID &lt;= #{resultId}</if>
+		   <if test="@Ognl@isNotEmpty(userName)">AND LoginName like '%#{resultId}%'</if>
+		   <if test="@Ognl@isNotEmpty(flowCode)">AND FlowCode = #{flowCode}</if>
+		order by CreateTime  desc
+    </select>
+</mapper>
+

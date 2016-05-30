@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TProjectAccept">
+
+	<resultMap id="TprojectAccept" type="com.deelon.loan.model.front.TProjectAccept">	
+        <id property="acceptId" column="Accept_id" />
+        <id property="investId" column="Invest_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="repaymentId" column="Repayment_id"/>
+        <result property="painvestors" column="PA_Investors"/>
+        <result property="papayBack" column="PA_PayBack"/>
+        <result property="paprincipal" column="PA_Principal"/>
+        <result property="painterest" column="PA_Interest"/>
+        <result property="papayBackTime" column="PA_PayBackTime"/>
+        <result property="palate" column="PA_Late"/>
+        <result property="paisLate" column="PA_IsLate"/>
+        <result property="palateDays" column="PA_LateDays"/>
+        <result property="paisReplacePay" column="PA_IsReplacePay"/>
+        <result property="pareplacePay" column="PA_ReplacePay"/>
+        <result property="pareplacePayTime" column="PA_ReplacePayTime"/>
+         <result property="paTransfering" column="PA_Transfering"/>
+		 <result property="paOldinvestors" column="PA_OldInvestors"/>
+		 <result property="paHavePay" column="PA_HavePay"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Invest_id,PA_HavePay,PA_OldInvestors,PA_Transfering,Accept_id,Project_id,Repayment_id,PA_Investors,PA_PayBack,PA_Principal,PA_Interest,PA_PayBackTime,PA_Late,PA_IsLate,PA_LateDays,PA_IsReplacePay,PA_ReplacePay,PA_ReplacePayTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(acceptId)">AND Accept_id = #{acceptId}</if>
+	       <if test="@Ognl@isNotEmpty(investId)">AND Invest_id = #{investId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(repaymentId)">AND Repayment_id = #{repaymentId}</if>
+	       <if test="@Ognl@isNotEmpty(painvestors)">AND PA_Investors = #{painvestors}</if>
+	       <if test="@Ognl@isNotEmpty(papayBack)">AND PA_PayBack = #{papayBack}</if>
+	       <if test="@Ognl@isNotEmpty(paprincipal)">AND PA_Principal = #{paprincipal}</if>
+	       <if test="@Ognl@isNotEmpty(painterest)">AND PA_Interest = #{painterest}</if>
+	       <if test="@Ognl@isNotEmpty(papayBackTimeBegin)">AND PA_PayBackTime >= #{papayBackTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(papayBackTimeEnd)">AND PA_PayBackTime &lt;= #{papayBackTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(palate)">AND PA_Late = #{palate}</if>
+	       <if test="@Ognl@isNotEmpty(paisLate)">AND PA_IsLate = #{paisLate}</if>
+	       <if test="@Ognl@isNotEmpty(palateDays)">AND PA_LateDays = #{palateDays}</if>
+	       <if test="@Ognl@isNotEmpty(paisReplacePay)">AND PA_IsReplacePay = #{paisReplacePay}</if>
+	       <if test="@Ognl@isNotEmpty(pareplacePay)">AND PA_ReplacePay = #{pareplacePay}</if>
+	       <if test="@Ognl@isNotEmpty(pareplacePayTimeBegin)">AND PA_ReplacePayTime >= #{pareplacePayTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pareplacePayTimeEnd)">AND PA_ReplacePayTime &lt;= #{pareplacePayTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProjectAccept">
+		INSERT INTO t_project_accept
+		(<include refid="columns"/>)
+		VALUES
+		(#{investId} ,#{paHavePay} ,#{paOldinvestors} ,#{paTransfering} ,#{acceptId} ,#{projectId} ,#{repaymentId} ,#{painvestors} ,#{papayBack} ,#{paprincipal} ,#{painterest} ,#{papayBackTime} ,#{palate} ,#{paisLate} ,#{palateDays} ,#{paisReplacePay} ,#{pareplacePay} ,#{pareplacePayTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_project_accept 
+		WHERE
+        Accept_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectAccept">
+		UPDATE t_project_accept SET
+	        Project_id = #{projectId} ,
+	        Repayment_id = #{repaymentId} ,
+	        PA_Investors = #{painvestors} ,
+	        PA_PayBack = #{papayBack} ,
+	        PA_Principal = #{paprincipal} ,
+	        PA_Interest = #{painterest} ,
+	        PA_PayBackTime = #{papayBackTime} ,
+	        PA_Late = #{palate} ,
+	        PA_IsLate = #{paisLate} ,
+	        PA_LateDays = #{palateDays} ,
+	        PA_IsReplacePay = #{paisReplacePay} ,
+	        PA_ReplacePay = #{pareplacePay} ,
+	        PA_ReplacePayTime = #{pareplacePayTime},
+	        PA_Transfering = #{paTransfering},
+		    PA_OldInvestors = #{paOldinvestors},
+		    Invest_id = #{investId},
+		    PA_HavePay = #{paHavePay}
+        WHERE 
+	        Accept_id = #{acceptId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TprojectAccept">
+		SELECT <include refid="columns"/>
+		FROM t_project_accept 
+		WHERE 1=1 and
+		Accept_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TprojectAccept">
+		SELECT <include refid="columns"/>
+		FROM t_project_accept   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Accept_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_project_accept 
+		<include refid="dynamicWhere" />   
+    </select>   
+	
+	<!-- <select id="">
+		SELECT * FROM t_project_accept
+	</select> -->
+	
+</mapper>
+

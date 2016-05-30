@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TUserFamily">
+	<resultMap type="com.deelon.loan.model.front.TUserFamily" id="TUserFamily">
+		<id property="familyId" column="Family_id" jdbcType="NUMERIC" />
+		<result property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="FMarriage" column="F_Marriage" jdbcType="VARCHAR" />
+		<result property="FHouse" column="F_House" jdbcType="VARCHAR" />
+		<result property="FProvincesId" column="F_ProvincesID" jdbcType="VARCHAR" />
+		<result property="FCityId" column="F_CityID" jdbcType="VARCHAR" />
+		<result property="FAreaId" column="F_AreaID" jdbcType="VARCHAR" />
+		<result property="FAddress" column="F_Address" jdbcType="VARCHAR" />
+		<result property="FPhone" column="F_Phone" jdbcType="VARCHAR" />
+		<result property="FLiveYears" column="F_LiveYears" jdbcType="VARCHAR" />
+		<result property="FIsBuyCar" column="F_IsBuyCar" jdbcType="VARCHAR" />
+		<result property="fisCarLoan" column="F_IsCarLoan" jdbcType="NUMERIC" />
+		<result property="fisHouseLoan" column="F_IsHouseLoan" jdbcType="NUMERIC" />
+		<result property="statusID" column="StatusID" jdbcType="VARCHAR" />
+		<result property="checkTime" column="CheckTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<insert id="insertUserFamily">
+		insert into
+		T_User_Family
+		(
+		<if test="@Ognl@isNotEmpty(userId)">user_id,</if>
+		<if test="@Ognl@isNotEmpty(FMarriage)">F_Marriage,</if>
+		<if test="@Ognl@isNotEmpty(FHouse)">F_House,</if>
+		<if test="@Ognl@isNotEmpty(FProvincesId)">F_ProvincesID,</if>
+		<if test="@Ognl@isNotEmpty(FCityId)">F_CityID,</if>
+		<if test="@Ognl@isNotEmpty(FAreaId)">F_AreaID,</if>
+		<if test="@Ognl@isNotEmpty(FAddress)">F_Address,</if>
+		<if test="@Ognl@isNotEmpty(FPhone)">F_Phone,</if>
+		<if test="@Ognl@isNotEmpty(FLiveYears)">F_LiveYears,</if>
+		<if test="@Ognl@isNotEmpty(FIsBuyCar)">F_IsBuyCar,</if>
+		<if test="@Ognl@isNotEmpty(FUpdateTime)">F_UpdateTime,</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID,</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime,</if>
+		family_Id
+		)
+		VALUES(
+		<if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+		<if test="@Ognl@isNotEmpty(FMarriage)">#{FMarriage},</if>
+		<if test="@Ognl@isNotEmpty(FHouse)">#{FHouse},</if>
+		<if test="@Ognl@isNotEmpty(FProvincesId)">#{FProvincesId},</if>
+		<if test="@Ognl@isNotEmpty(FCityId)">#{FCityId},</if>
+		<if test="@Ognl@isNotEmpty(FAreaId)">#{FAreaId},</if>
+		<if test="@Ognl@isNotEmpty(FAddress)">#{FAddress},</if>
+		<if test="@Ognl@isNotEmpty(FPhone)">#{FPhone},</if>
+		<if test="@Ognl@isNotEmpty(FLiveYears)">#{FLiveYears},</if>
+		<if test="@Ognl@isNotEmpty(FIsBuyCar)">#{FIsBuyCar},</if>
+		<if test="@Ognl@isNotEmpty(FUpdateTime)">#{FUpdateTime},</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">#{checkTime},</if>
+		#{familyId}
+		)
+	</insert>
+
+	<update id="updateUserFamilyByUserId">
+		UPDATE
+		T_User_Family
+		SET
+		<if test="@Ognl@isNotEmpty(FMarriage)">F_Marriage=#{FMarriage},</if>
+		<if test="@Ognl@isNotEmpty(FHouse)">F_House=#{FHouse},</if>
+		<if test="@Ognl@isNotEmpty(FProvincesId)">F_ProvincesID=#{FProvincesId},</if>
+		<if test="@Ognl@isNotEmpty(FCityId)">F_CityID=#{FCityId},</if>
+		<if test="@Ognl@isNotEmpty(FAreaId)">F_AreaID=#{FAreaId},</if>
+		<if test="@Ognl@isNotEmpty(FAddress)">F_Address=#{FAddress},</if>
+		<if test="@Ognl@isNotEmpty(FPhone)">F_Phone=#{FPhone},</if>
+		<if test="@Ognl@isNotEmpty(FLiveYears)">F_LiveYears=#{FLiveYears},</if>
+		<if test="@Ognl@isNotEmpty(FIsBuyCar)">F_IsBuyCar=#{FIsBuyCar},</if>
+		<if test="@Ognl@isNotEmpty(FUpdateTime)">F_UpdateTime=#{FUpdateTime},</if>
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(fisCarLoan)">F_IsCarLoan=#{fisCarLoan},</if>
+		<if test="@Ognl@isNotEmpty(fisHouseLoan)">F_IsHouseLoan=#{fisHouseLoan},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id=#{userId}
+		WHERE
+		user_id=#{userId}
+	</update>
+
+	<select id="getUserFamilyByColumn" resultMap="TUserFamily">
+		select
+		f.Family_id,
+		f.user_id,
+		f.F_Marriage,
+		f.F_House,
+		f.F_ProvincesID,
+		f.F_CityID,
+		f.F_AreaID,
+		f.F_Address,
+		f.F_Phone,
+		f.F_LiveYears,
+		f.F_IsBuyCar,
+		f.F_UpdateTime,
+		f.F_IsCarLoan,
+		f.F_IsHouseLoan
+		from T_User_Family f
+		where
+		${columnName} =#{columnValue}
+	</select>
+
+	<select id="queryEntityByUserId" resultMap="TUserFamily">
+		SELECT * FROM
+		T_USER_FAMILY US WHERE US.user_id=#{userId}
+	</select>
+</mapper>

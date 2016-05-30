@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectHistoryplan">
+
+	<resultMap id="TcprojectHistoryplan" type="com.deelon.crowdfunding.model.backstage.TcprojectHistoryplan">	
+        <id property="historyPlanId" column="HistoryPlan_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="phptypeId" column="PHP_TypeID"/>
+        <result property="phpname" column="PHP_Name"/>
+        <result property="phpstartYear" column="PHP_StartYear"/>
+        <result property="phpstartMonth" column="PHP_StartMonth"/>
+        <result property="phpendYear" column="PHP_EndYear"/>
+        <result property="phpendMonth" column="PHP_EndMonth"/>
+        <result property="phptargetDesc" column="PHP_TargetDesc"/>
+        <result property="phptargetWay" column="PHP_TargetWay"/>
+        <result property="phporderId" column="PHP_OrderID"/>
+        <result property="isDel" column="IsDel"/>
+        <collection property="listHpPayMent" 
+        ofType="com.deelon.crowdfunding.model.backstage.TcprojectHpPayments" 
+        select="getByHistoryPlanId"
+         column="HistoryPlan_id">
+         <id property="paymentsId" column="Payments_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="hpptypeId" column="HPP_TypeID"/>
+        <result property="hppkindName" column="HPP_KindName"/>
+        <result property="hpppayment" column="HPP_Payment"/>
+        <result property="hppremarks" column="HPP_Remarks"/>
+        <result property="hpporderId" column="HPP_OrderID"/>
+        <result property="isDel" column="IsDel"/> 
+        
+        </collection>
+	</resultMap>
+	
+	<sql id="columns">
+		HistoryPlan_id,Project_id,PHP_TypeID,PHP_Name,PHP_StartYear,PHP_StartMonth,PHP_EndYear,PHP_EndMonth,PHP_TargetDesc,PHP_TargetWay,PHP_OrderID,IsDel
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(historyPlanId)">AND HistoryPlan_id = #{historyPlanId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(phptypeId)">AND PHP_TypeID = #{phptypeId}</if>
+	       <if test="@Ognl@isNotEmpty(phpname)">AND PHP_Name = #{phpname}</if>
+	       <if test="@Ognl@isNotEmpty(phpstartYear)">AND PHP_StartYear = #{phpstartYear}</if>
+	       <if test="@Ognl@isNotEmpty(phpstartMonth)">AND PHP_StartMonth = #{phpstartMonth}</if>
+	       <if test="@Ognl@isNotEmpty(phpendYear)">AND PHP_EndYear = #{phpendYear}</if>
+	       <if test="@Ognl@isNotEmpty(phpendMonth)">AND PHP_EndMonth = #{phpendMonth}</if>
+	       <if test="@Ognl@isNotEmpty(phptargetDesc)">AND PHP_TargetDesc = #{phptargetDesc}</if>
+	       <if test="@Ognl@isNotEmpty(phptargetWay)">AND PHP_TargetWay = #{phptargetWay}</if>
+	       <if test="@Ognl@isNotEmpty(phporderId)">AND PHP_OrderID = #{phporderId}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectHistoryplan">
+		INSERT INTO t_c_project_historyplan
+		(<include refid="columns"/>)
+		VALUES
+		(#{historyPlanId} ,#{projectId} ,#{phptypeId} ,#{phpname} ,#{phpstartYear} ,#{phpstartMonth} ,#{phpendYear} ,#{phpendMonth} ,#{phptargetDesc} ,#{phptargetWay} ,#{phporderId} ,#{isDel}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_historyplan 
+		WHERE
+        HistoryPlan_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectHistoryplan">
+		UPDATE t_c_project_historyplan SET
+	        Project_id = #{projectId} ,
+	        PHP_TypeID = #{phptypeId} ,
+	        PHP_Name = #{phpname} ,
+	        PHP_StartYear = #{phpstartYear} ,
+	        PHP_StartMonth = #{phpstartMonth} ,
+	        PHP_EndYear = #{phpendYear} ,
+	        PHP_EndMonth = #{phpendMonth} ,
+	        PHP_TargetDesc = #{phptargetDesc} ,
+	        PHP_TargetWay = #{phptargetWay} ,
+	        PHP_OrderID = #{phporderId} ,
+	        IsDel = #{isDel} 
+        WHERE 
+	        HistoryPlan_id = #{historyPlanId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectHistoryplan">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_historyplan 
+		WHERE 1=1 and
+		HistoryPlan_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectHistoryplan">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_historyplan   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by HistoryPlan_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_historyplan 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    
+    <select id="getByProId" resultMap="TcprojectHistoryplan">
+   	 SELECT ph.*
+		FROM t_c_project_historyplan ph
+		WHERE 1=1 
+		
+		<if test="@Ognl@isNotEmpty(phptypeId)">
+			and ph.PHP_TypeID=#{phptypeId}
+		</if>
+		<if test="@Ognl@isNotEmpty(projectId)">
+			and ph.Project_id = #{projectId}
+		</if>
+		 
+		and ph.IsDel=0
+    </select>
+    
+    <select id="getproPlanandPayment" resultMap="TcprojectHistoryplan">
+   	 SELECT ph.*
+		FROM t_c_project_historyplan ph 
+		left JOIN t_c_project_hp_payments pp on ph.HistoryPlan_id=pp.HistoryPlan_id 
+		WHERE 1=1 
+		
+		<if test="@Ognl@isNotEmpty(phptypeId)">
+			and ph.PHP_TypeID=#{phptypeId}
+		</if>
+		<if test="@Ognl@isNotEmpty(phptypeId)">
+			and ph.Project_id = #{projectId}
+		</if>
+		 
+		and ph.IsDel=0
+    </select>
+     <select id="getByHistoryPlanId" resultMap="TcprojectHpPayments">
+    	SELECT * from t_c_project_hp_payments pp where pp.HistoryPlan_id=#{historyPlanId} and pp.IsDel=0
+    </select>
+
+	
+</mapper>
+

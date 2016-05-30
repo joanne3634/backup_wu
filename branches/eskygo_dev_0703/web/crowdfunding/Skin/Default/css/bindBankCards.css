@@ -1,0 +1,123 @@
+      .tips {
+        width: 695px;
+        height: 30px;
+        margin: 20px auto;
+        padding-left: 15px;
+        background-color: #fffbe9;
+        border: 1px solid #f9d682;
+        line-height: 30px;
+        font-size: 14px;
+        color: #ff5704;
+      }
+      .con-box {
+        text-align: left;
+        overflow: hidden;
+        padding-bottom: 20px;
+      }
+      .con-box ul li {
+        margin-left: 25px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        height: 55px;
+        line-height: 55px;
+        padding-left: 20px;
+        padding-right: 30px;
+        background-color: #fffbe9;
+        font-size: 14px;
+        color: #909090;
+      }
+      .con-box ul li a {
+        float: right;
+        color: #ff5704;
+      }
+      .con-box .anquan-ite-tit {
+        margin-left: 20px;
+        margin-right: 40px;
+        font-size: 16px;
+        color: #555;
+        font-weight: bold;
+      }
+      .anquan-ite-bg {
+        float: left;
+        margin-top: 11px;
+        display: inline-block;
+        width: 33px;
+        height: 36px;
+        background-image: url(Skin/default/images/anquan_ite_bg.png);
+      }
+      .con-box dl {
+        overflow: hidden;
+        width: 100%;
+        font-size: 15px;
+        line-height: 32px;
+      }
+      .con-box dt {
+        float: left;
+        width: 33%;
+        height: 34px;
+        text-align: right;
+        line-height: 34px;
+        font-weight: bold;
+      }
+      .con-box dt span {
+        color: red;
+      }
+      .con-box dd {
+        float: left;
+        width: 65%;
+        height: 34px;
+        line-height: 34px;
+        margin-left: 10px;
+      }
+      .con-box dd span {
+        margin-left: 5px;
+        font-size: 12px;
+        color: #aaa;
+      }
+      .con-box dd .text-input {
+        width: 254px;
+        height: 20px;
+        padding: 6px 5px;
+        line-height: 20px;
+        font-size: 14px;
+        border: 1px solid #a8a8a8;
+        color: #666;
+      }
+      .con-box dd .radio-input {
+        margin-left: 30px;
+        margin-right: 5px;
+      }
+      .con-box .error-tips {
+        height: 20px;
+        margin-top: 14px;
+        line-height: 20px;
+        font-size: 12px;
+        color: #fff;
+      }
+      select {
+        width: 257px;
+        line-height: 32px;
+        border: none;
+        color: #666;
+      }
+      .con-box .select-box {
+        width: 264px;
+        height: 32px;
+        line-height: 32px;
+        margin-right: 200px;
+        border: 1px solid #a8a8a8;
+      }
+      .con-box .sub-btn {
+        height: 34px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+        line-height: 34px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5200;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }

@@ -1,0 +1,58 @@
+
+
+.con-box ul li {
+	list-style:none;
+	display: block;
+	position: relative;
+	padding-bottom: 1em;
+}
+.con-box ul li .icon-wrap {
+	background: #6998c9;
+	color: #fff;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	display: inline-block;
+	text-align:center;
+	border-radius: 50%;
+}
+.con-box ul a:hover li .icon-wrap {
+	background: #0d66b8;
+}
+.con-box ul a:link {
+	text-decoration: none;
+}
+
+.con-box ul li header {
+	color: #222;
+}
+.con-box ul li header em.warn {
+	font-size: .8em;
+	padding: 0 .5em;
+	color: #FF5252;
+}
+.con-box ul li .icon-wrap .icon {
+	line-height: 40px;
+	font-size: 1.2em;
+}
+.con-box ul li .anquan-ite-tit {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 1.5em;
+}
+.con-box ul li .anquan-ite-tit span {
+	color: #888;
+}
+.con-box ul li .right-action {
+	position: absolute;
+	right:0;
+	height: 40px;
+}
+.con-box ul li .right-action .fa {
+	font-size: 1.2em;
+	margin-bottom: 2px;
+	line-height: 40px;
+}
+.con-box .tips {
+	
+}

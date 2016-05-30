@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TProjectApplyView">
+
+	<resultMap id="TProjectApplyView" type="com.deelon.loan.model.front.TProjectApplyView">	
+        <id property="applyViewId" column="ApplyView_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="pavIsAgree" column="PAV_IsAgree"/>
+        <result property="pavAgreeTime" column="PAV_AgreeTime"/>
+        <result property="realName" column="realName"/>
+        <result property="loginName" column="loginName"/>
+        <result property="applyTime" column="apply_time"/>
+	</resultMap>
+	
+	
+	<sql id="columns">
+		ApplyView_id,Project_id,user_id,PAV_IsAgree,apply_time
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProjectApplyView">
+	INSERT INTO t_c_project_applyview 
+		(<include refid="columns"/>)
+		VALUES
+		(#{applyViewId} ,#{projectId} ,#{userId} ,#{pavIsAgree},#{applyTime} )
+	</insert>
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectApplyView">
+		UPDATE t_c_project_applyview SET
+	        PAV_IsAgree = #{pavIsAgree} ,
+	      
+	        PAV_AgreeTime = #{pavAgreeTime}
+        WHERE 
+	        ApplyView_id = #{applyViewId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TProjectApplyView">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_applyview
+		WHERE 1=1 and
+		ApplyView_id = #{id} 
+	</select>
+	<select id="getAll" resultMap="TProjectApplyView">
+		SELECT av.ApplyView_id,av.Project_id,av.user_id,av.PAV_IsAgree,av.PAV_AgreeTime,av.apply_time,
+		tu.RealName,tu.LoginName
+		FROM t_c_project_applyview  av left join t_user tu
+		on av.user_id=tu.user_id 
+		where  1=1 
+		 <if test="@Ognl@isNotEmpty(projectId)">AND av.Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND av.user_id = #{userId}</if> 
+	        <if test="@Ognl@isNotEmpty(pavIsAgree)">AND av.PAV_IsAgree = #{pavIsAgree}</if>
+		ORDER BY av.PAV_IsAgree,av.apply_time
+	</select>
+	 <select id="getListByProjectId" parameterType="java.lang.Long" resultMap="TProjectApplyView">
+		SELECT av.ApplyView_id,av.Project_id,av.user_id,av.PAV_IsAgree,av.PAV_AgreeTime,av.apply_time,
+		tu.RealName,tu.LoginName
+		FROM t_c_project_applyview  av left join t_user tu
+		on av.user_id=tu.user_id 
+		where  av.Project_id = #{id} 
+		ORDER BY av.PAV_IsAgree,av.apply_time
+	</select>
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_applyview 
+		WHERE 
+        ApplyView_id = #{id} 
+	</delete>
+	<!-- <select id="getApplyViewUserList" parameterType="java.lang.Long" resultMap="applyViewUserList">
+		SELECT v.ApplyView_id,v.Project_id,v.PAV_IsAgree,PAV_AgreeTime.PAV_AgreeTime,
+		FROM t_c_project_applyview v,t_user u
+		WHERE v.user_id=u.user_id and
+		v.Project_id = #{id}
+	</select>-->
+	<select id="countPavAgree" parameterType="java.lang.Long" resultType="long">
+        SELECT count(*) FROM t_c_project_applyview 
+		where PAV_IsAgree = 1
+		and Project_id= #{projectId}
+    </select>   
+	
+	
+	
+</mapper>
+

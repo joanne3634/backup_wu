@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_limits_apply-->
+		
+		     <form name="tlimitsApply">
+		     	<field property="applyId" depends="digits">
+					<arg position="0" key="tlimitsApply.applyId" />
+				</field>
+			 	<field property="limitOld" depends="required,maxlength">	
+		         <arg position="0" key="tlimitsApply.limitOld" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>8</var-value>
+				 </var>
+		        </field>
+			 	<field property="limitApply" depends="required,maxlength">	
+		         <arg position="0" key="tlimitsApply.limitApply" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>8</var-value>
+				 </var>
+		        </field>
+			 	<field property="typeId" depends="required,maxlength">	
+		         <arg position="0" key="tlimitsApply.typeId" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="applicant" depends="required">	
+		         <arg position="0" key="tlimitsApply.applicant" />		        
+		        </field>
+			 	<field property="applyTime" depends="maxlength">	
+		         <arg position="0" key="tlimitsApply.applyTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="audit" depends="required,maxlength">	
+		         <arg position="0" key="tlimitsApply.audit" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="checker" depends="required">	
+		         <arg position="0" key="tlimitsApply.checker" />		        
+		        </field>
+			 	<field property="checkTime" depends="maxlength">	
+		         <arg position="0" key="tlimitsApply.checkTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_limits_apply-->
+</formset>
+</form-validation>
+ 
+
+ 

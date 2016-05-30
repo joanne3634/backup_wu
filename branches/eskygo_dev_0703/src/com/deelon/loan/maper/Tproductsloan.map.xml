@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.productsloan.Tproductsloan">
+
+	<resultMap id="Tproductsloan" type="com.deelon.loan.model.productsloan.Tproductsloan">	
+        <id property="productsLoanId" column="ProductsLoan_id" />
+        <result property="pname" column="P_Name"/>
+        <result property="pamountMin" column="P_Amount_Min"/>
+        <result property="pamountMax" column="P_Amount_Max"/>
+        <result property="prateMin" column="P_Rate_Min"/>
+        <result property="prateMax" column="P_Rate_Max"/>
+        <result property="pdeadlineMin" column="P_Deadline_Min"/>
+        <result property="pdeadlineMax" column="P_Deadline_Max"/>
+        <result property="pauditDaysMin" column="P_AuditDays_Min"/>
+        <result property="pauditDaysMax" column="P_AuditDays_Max"/>
+        <result property="pvotingDaysMin" column="P_VotingDays_Min"/>
+        <result property="pvotingDaysMax" column="P_VotingDays_Max"/>
+        <result property="prepayWay" column="P_RepayWay"/>
+        <result property="pfee" column="P_Fee"/>
+        <result property="pgood" column="P_good"/>
+        <result property="precommend" column="P_Recommend"/>
+        <result property="prepayGuide" column="P_RepayGuide"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		ProductsLoan_id,P_Name,P_Amount_Min,P_Amount_Max,P_Rate_Min,P_Rate_Max,P_Deadline_Min,P_Deadline_Max,P_AuditDays_Min,P_AuditDays_Max,P_VotingDays_Min,P_VotingDays_Max,P_RepayWay,P_Fee,P_good,P_Recommend,P_RepayGuide,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(productsLoanId)">AND ProductsLoan_id = #{productsLoanId}</if>
+	       <if test="@Ognl@isNotEmpty(pname)">AND P_Name = #{pname}</if>
+	       <if test="@Ognl@isNotEmpty(pamountMin)">AND P_Amount_Min = #{pamountMin}</if>
+	       <if test="@Ognl@isNotEmpty(pamountMax)">AND P_Amount_Max = #{pamountMax}</if>
+	       <if test="@Ognl@isNotEmpty(prateMin)">AND P_Rate_Min = #{prateMin}</if>
+	       <if test="@Ognl@isNotEmpty(prateMax)">AND P_Rate_Max = #{prateMax}</if>
+	       <if test="@Ognl@isNotEmpty(pdeadlineMin)">AND P_Deadline_Min = #{pdeadlineMin}</if>
+	       <if test="@Ognl@isNotEmpty(pdeadlineMax)">AND P_Deadline_Max = #{pdeadlineMax}</if>
+	       <if test="@Ognl@isNotEmpty(pauditDaysMin)">AND P_AuditDays_Min = #{pauditDaysMin}</if>
+	       <if test="@Ognl@isNotEmpty(pauditDaysMax)">AND P_AuditDays_Max = #{pauditDaysMax}</if>
+	       <if test="@Ognl@isNotEmpty(pvotingDaysMin)">AND P_VotingDays_Min = #{pvotingDaysMin}</if>
+	       <if test="@Ognl@isNotEmpty(pvotingDaysMax)">AND P_VotingDays_Max = #{pvotingDaysMax}</if>
+	       <if test="@Ognl@isNotEmpty(prepayWay)">AND P_RepayWay = #{prepayWay}</if>
+	       <if test="@Ognl@isNotEmpty(pfee)">AND P_Fee = #{pfee}</if>
+	       <if test="@Ognl@isNotEmpty(pgood)">AND P_good = #{pgood}</if>
+	       <if test="@Ognl@isNotEmpty(precommend)">AND P_Recommend = #{precommend}</if>
+	       <if test="@Ognl@isNotEmpty(prepayGuide)">AND P_RepayGuide = #{prepayGuide}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.productsloan.Tproductsloan">
+		INSERT INTO t_productsloan
+		(<include refid="columns"/>)
+		VALUES
+		(#{productsLoanId} ,#{pname} ,#{pamountMin} ,#{pamountMax} ,#{prateMin} ,#{prateMax} ,#{pdeadlineMin} ,#{pdeadlineMax} ,#{pauditDaysMin} ,#{pauditDaysMax} ,#{pvotingDaysMin} ,#{pvotingDaysMax} ,#{prepayWay} ,#{pfee} ,#{pgood} ,#{precommend} ,#{prepayGuide} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_productsloan 
+		WHERE
+        ProductsLoan_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.productsloan.Tproductsloan">
+		UPDATE t_productsloan SET
+	        P_Name = #{pname} ,
+	        P_Amount_Min = #{pamountMin} ,
+	        P_Amount_Max = #{pamountMax} ,
+	        P_Rate_Min = #{prateMin} ,
+	        P_Rate_Max = #{prateMax} ,
+	        P_Deadline_Min = #{pdeadlineMin} ,
+	        P_Deadline_Max = #{pdeadlineMax} ,
+	        P_AuditDays_Min = #{pauditDaysMin} ,
+	        P_AuditDays_Max = #{pauditDaysMax} ,
+	        P_VotingDays_Min = #{pvotingDaysMin} ,
+	        P_VotingDays_Max = #{pvotingDaysMax} ,
+	        P_RepayWay = #{prepayWay} ,
+	        P_Fee = #{pfee} ,
+	        P_good = #{pgood} ,
+	        P_Recommend = #{precommend} ,
+	        P_RepayGuide = #{prepayGuide} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        ProductsLoan_id = #{productsLoanId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tproductsloan">
+		SELECT <include refid="columns"/>
+		FROM t_productsloan 
+		WHERE 1=1 AND
+		ProductsLoan_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tproductsloan">
+		SELECT <include refid="columns"/>
+		FROM t_productsloan   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ProductsLoan_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_productsloan 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

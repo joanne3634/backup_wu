@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TuserTaskcomplete">
+
+	<resultMap id="TuserTaskcomplete" type="com.deelon.loan.model.front.TuserTaskcomplete">	
+        <id property="taskCompleteId" column="TaskComplete_id" />
+        <result property="userId" column="user_id"/>
+        <result property="taskId" column="Task_id"/>
+        <result property="creditAdd" column="CreditAdd"/>
+        <result property="isComplete" column="IsComplete"/>
+        <result property="completeTime" column="CompleteTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		TaskComplete_id,user_id,Task_id,CreditAdd,IsComplete,CompleteTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(taskCompleteId)">AND TaskComplete_id = #{taskCompleteId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(taskId)">AND Task_id = #{taskId}</if>
+	       <if test="@Ognl@isNotEmpty(creditAdd)">AND CreditAdd = #{creditAdd}</if>
+	       <if test="@Ognl@isNotEmpty(isComplete)">AND IsComplete = #{isComplete}</if>
+	       <if test="@Ognl@isNotEmpty(completeTimeBegin)">AND CompleteTime >= #{completeTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(completeTimeEnd)">AND CompleteTime &lt;= #{completeTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TuserTaskcomplete">
+		INSERT INTO t_user_taskcomplete
+		(<include refid="columns"/>)
+		VALUES
+		(#{taskCompleteId} ,#{userId} ,#{taskId} ,#{creditAdd} ,#{isComplete} ,#{completeTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_taskcomplete 
+		WHERE
+        TaskComplete_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TuserTaskcomplete">
+		UPDATE t_user_taskcomplete SET
+	        user_id = #{userId} ,
+	        Task_id = #{taskId} ,
+	        CreditAdd = #{creditAdd} ,
+	        IsComplete = #{isComplete} ,
+	        CompleteTime = #{completeTime} 
+        WHERE 
+	        TaskComplete_id = #{taskCompleteId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserTaskcomplete">
+		SELECT <include refid="columns"/>
+		FROM t_user_taskcomplete 
+		WHERE 1=1
+		TaskComplete_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserTaskcomplete">
+		SELECT <include refid="columns"/>
+		FROM t_user_taskcomplete   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by TaskComplete_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_taskcomplete 
+		<include refid="dynamicWhere" />   
+    </select>   
+	    <select id="getBytaskIdAndUserId" parameterType="java.lang.Long" resultMap="TuserTaskcomplete">
+		SELECT <include refid="columns"/>
+		FROM t_user_taskcomplete 
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+	</select>
+	
+</mapper>
+

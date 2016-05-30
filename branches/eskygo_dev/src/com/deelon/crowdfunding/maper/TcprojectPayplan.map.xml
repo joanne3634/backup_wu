@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectPayplan">
+
+	<resultMap id="TcprojectPayplan" type="com.deelon.crowdfunding.model.backstage.TcprojectPayplan">	
+        <id property="payPlanId" column="PayPlan_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="ppppay" column="PPP_Pay"/>
+        <result property="ppprealPay" column="PPP_RealPay"/>
+        <result property="pppplanPayTime" column="PPP_PlanPayTime"/>
+        <result property="ppprealPayTime" column="PPP_RealPayTime"/>
+        <result property="pppcurrentOfAll" column="PPP_CurrentOfAll"/>
+        <result property="pppcurrent" column="PPP_Current"/>
+        <result property="pppisPayOff" column="PPP_IsPayOff"/>
+        <result property="pppisDone" column="PPP_IsDone"/>
+        <result property="ppppayer" column="PPP_Payer"/>
+	</resultMap>
+	
+	<sql id="columns">
+		PayPlan_id,Project_id,PPP_Pay,PPP_RealPay,PPP_PlanPayTime,PPP_RealPayTime,PPP_CurrentOfAll,PPP_Current,PPP_IsPayOff,PPP_IsDone,PPP_Payer
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(payPlanId)">AND PayPlan_id = #{payPlanId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(ppppay)">AND PPP_Pay = #{ppppay}</if>
+	       <if test="@Ognl@isNotEmpty(ppprealPay)">AND PPP_RealPay = #{ppprealPay}</if>
+	       <if test="@Ognl@isNotEmpty(pppplanPayTimeBegin)">AND PPP_PlanPayTime >= #{pppplanPayTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pppplanPayTimeEnd)">AND PPP_PlanPayTime &lt;= #{pppplanPayTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(ppprealPayTimeBegin)">AND PPP_RealPayTime >= #{ppprealPayTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(ppprealPayTimeEnd)">AND PPP_RealPayTime &lt;= #{ppprealPayTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pppcurrentOfAll)">AND PPP_CurrentOfAll = #{pppcurrentOfAll}</if>
+	       <if test="@Ognl@isNotEmpty(pppcurrent)">AND PPP_Current = #{pppcurrent}</if>
+	       <if test="@Ognl@isNotEmpty(pppisPayOff)">AND PPP_IsPayOff = #{pppisPayOff}</if>
+	       <if test="@Ognl@isNotEmpty(pppisDone)">AND PPP_IsDone = #{pppisDone}</if>
+	       <if test="@Ognl@isNotEmpty(ppppayer)">AND PPP_Payer = #{ppppayer}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectPayplan">
+		INSERT INTO t_c_project_payplan
+		(<include refid="columns"/>)
+		VALUES
+		(#{payPlanId} ,#{projectId} ,#{ppppay} ,#{ppprealPay} ,#{pppplanPayTime} ,#{ppprealPayTime} ,#{pppcurrentOfAll} ,#{pppcurrent} ,#{pppisPayOff} ,#{pppisDone} ,#{ppppayer}  )
+    </insert>
+
+	<delete id="delByProjectId" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_payplan 
+		WHERE
+        Project_id = #{projectId} 
+	</delete>
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_payplan 
+		WHERE
+        PayPlan_id = #{payPlanId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectPayplan">
+		UPDATE t_c_project_payplan SET
+	        Project_id = #{projectId} ,
+	        PPP_Pay = #{ppppay} ,
+	        PPP_RealPay = #{ppprealPay} ,
+	        PPP_PlanPayTime = #{pppplanPayTime} ,
+	        PPP_RealPayTime = #{ppprealPayTime} ,
+	        PPP_CurrentOfAll = #{pppcurrentOfAll} ,
+	        PPP_Current = #{pppcurrent} ,
+	        PPP_IsPayOff = #{pppisPayOff} ,
+	        PPP_IsDone = #{pppisDone} ,
+	        PPP_Payer = #{ppppayer} 
+        WHERE 
+	        PayPlan_id = #{payPlanId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectPayplan">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_payplan 
+		WHERE 
+		PayPlan_id = #{payPlanId} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectPayplan">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_payplan   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by PayPlan_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_payplan 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

@@ -1,0 +1,1268 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+input{
+	border: 0px;
+}
+ body {
+	font: normal 75% 'microsoft yaHei','微软雅黑',arial;
+}
+@media screen and (max-width: 400px){
+	body {
+	font: normal 50% 'microsoft yaHei','微软雅黑',arial;
+}
+}
+a{
+	text-decoration:none;
+}
+ul li{
+	list-style-type: none;
+}
+.borderdashed{
+	border-bottom: 1px dashed #505050;
+}
+.bodersolid{
+	border: 1px solid #999999;	
+}
+.bodersolid2{
+	border: 1px solid #020202;	
+}
+.bodersolid3{
+	border: 1px solid #ff9961;	
+}
+.boderbottom{
+	border-bottom: 1px solid #999999;	
+}
+.boderright{
+	border-right: 1px solid #505050;	
+}
+.background1{
+	background: #ea5503;
+}
+.background2{
+	background: #f6f6f6;
+}
+.background3{
+	background: #fff;
+}
+.background4{
+	background: #6db900;
+}
+.background5{
+	background: #c4c4c4;
+}
+.background6{
+	background: #ff9961;
+}
+.background7{
+	background: #ff4e00;
+}
+.background8{
+	background: #cccccc;
+}
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-white{
+	color: #fff;
+	font-weight: bold;
+}
+.text-black{
+	color: #000;
+	font-weight: bold;
+}	
+.text-green{
+	color: #007604;
+	font-weight: bold;
+}
+.text-orange{
+	color: #f4aa81;
+	font-weight: bold;
+}
+.text-orange2{
+	color: #ff4d00;
+	font-weight: bold;
+}
+.text-black2{
+	color: #49423f;
+	font-weight: bold;
+}
+.text-gray{
+	color: #6d6d6d;
+	font-weight: bold;
+}
+.text-gray2{
+	color: #c6c6c6;
+	font-weight: bold;
+}
+.radiusleft{
+	-webkit-border-radius: 5px 0px 0px 5px;
+	 -moz-border-radius: 5px 0px 0px 5px;
+	 border-radius: 5px 0px 0px 5px;
+}
+.radiusright{
+	-webkit-border-radius: 0px 5px 5px 0px;
+	 -moz-border-radius: 0px 5px 5px 0px;
+	 border-radius: 0px 5px 5px 0px;
+}
+.radiu{
+	-webkit-border-radius: 5px;
+	 -moz-border-radius: 5px;
+	 border-radius: 5px;
+}
+.clear{
+	height: 0px;
+	clear: both;
+}
+.textoverflow{
+	display:block;/*内联对象需加*/
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/
+}
+.progressbar{
+	background: #dadada;
+	height: 20px;
+	-webkit-border-radius: 15px;
+	 -moz-border-radius: 15px;
+	 border-radius: 15px;
+}
+.progressbar2{
+	background: #6db900;
+	height: 20px;
+	-webkit-border-radius: 15px 0px 0px 15px;
+	 -moz-border-radius: 15px 0px 0px 15px;
+	 border-radius: 15px 0px 0px 15px;
+}
+.progressbar3{
+	background: #6db900;
+	height: 20px;
+	-webkit-border-radius: 15px;
+	 -moz-border-radius: 15px;
+	 border-radius: 15px;
+}
+@media screen and (max-width: 400px){
+.progressbar{
+	height: 10px;
+	-webkit-border-radius: 7px;
+	 -moz-border-radius: 7px;
+	 border-radius: 7px;
+}
+.progressbar2{
+	background: #6db900;
+	height: 10px;
+	-webkit-border-radius: 7px 0px 0px 7px;
+	 -moz-border-radius: 7px 0px 0px 7px;
+	 border-radius: 7px 0px 0px 7px;
+}
+.progressbar3{
+	background: #6db900;
+	height: 10px;
+	-webkit-border-radius: 7px;
+	 -moz-border-radius: 7px;
+	 border-radius: 7px;
+}
+}
+/*login*/
+.top{
+	width: 100%;
+	height: 74px;
+	line-height: 74px;
+	font-size: 2.1em;
+	background: url('../image/logintop.png') repeat-x;
+}
+.top span{
+	position: absolute;
+	right: 8%;
+	font-size: 0.8em;
+	line-height: 74px;
+}
+
+.textdiv{
+	width: 90%;
+	height: 54px;
+	margin: 0 auto;
+	margin-top: 7%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.lbutton{
+	line-height: 50px;
+	font-size: 1.7em;
+	margin-bottom: 30px;
+}
+.labeltext{
+	float: left;
+	width: 20%;
+	height: 52px;
+	line-height: 52px;
+	font-size: 1.5em;
+}
+@media screen and (max-width: 400px){
+	.top{
+	height: 39px;
+	line-height: 39px;
+	font-size: 2.0em;
+}
+.top span{
+	line-height: 39px;
+}
+.lbutton{
+	line-height: 35px;
+}
+.textdiv{
+	height: 39px;
+}
+.labeltext{
+	height: 37px;
+	line-height: 37px;
+	font-size: 1.3em;
+	width: 25%;
+}
+}
+.username{
+	background-image:url('../image/loginicont3.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: auto 80%;
+}
+.password{
+	background-image:url('../image/loginicont.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: auto 60%;
+}
+.textinput{
+	float: left;
+	line-height: 50px;
+	font-size: 2.1em;
+	width: 79%;
+	height: 50px;
+	background-color: transparent;
+}
+.lpwspan{
+	line-height: 55px;
+	font-size: 1.4em;
+}
+@media screen and (max-width: 400px){
+.textinput{
+	line-height: 39px;
+	width: 74%;
+	font-size: 1.9em;
+	height: 39px;
+}
+.lpwspan{
+	line-height: 34px;
+}
+}
+@media screen and (max-width: 300px){
+.textinput{
+	line-height: 39px;
+	width: 74%;
+	font-size: 1.6em;
+}
+}
+.lostword{
+	background-image:url('../image/loginicont2.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:auto 60%;
+}
+
+/*financing*/
+.fintop{
+	margin: 0 auto;
+	width: 80%;
+	height: 100%;
+	background-image:url('../image/loginicont4.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+}
+.ulbutton{
+	width: 100%;
+	line-height: 54px;
+	font-size: 1.6em;
+	display: table;
+}
+.ulbutton li{
+	display: table-cell;
+	border-right: 1px solid #020202;
+}
+.ulbutton li:last-child{
+	border: 0px;
+}
+.contentList{
+	padding:20px 0px 20px 0px;
+	border-bottom: 1px dashed #505050;
+	width: 100%;
+	line-height: 30px;
+	font-size: 1.5em;
+}
+.contentList ul{
+	width: 100%;
+	height: 100%;
+}
+.contentList ul li{
+	width: 49%;
+	float: left;
+	margin-top: 20px;
+}
+.pname{
+	width: 95%;
+	height: 54px;
+	margin: 0 auto;
+	line-height: 54px;
+	font-size: 1.1em;
+}
+@media screen and (max-width: 400px){
+	.ulbutton{
+	line-height: 39px;
+	font-size: 1.3em;
+
+}
+
+.contentList{
+	line-height: 35px;
+}
+}
+/*project*/
+.textdiv2{
+	width: 85%;
+	height: 54px;
+	margin: 0 auto;
+	margin-top: 7%;
+	-webkit-border-radius: 5px;
+	 -moz-border-radius: 5px;
+	 border-radius: 5px;
+}
+.pclleft{
+	float: left;
+	height: 180px;
+	width: 15%;
+	background-image:url('../image/loginicont5.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+}
+.pclright{
+	float: left;
+	width: 85%;
+}
+.pclright1{
+	float: left;
+	width:36%;
+}
+.pclright2{
+	float: left;
+	width:35%;
+}
+.pclright3{
+	float: left;
+	width:29%;
+}
+.pclright4{
+	float: left;
+	width:40%;
+}
+.pclright5{
+	float: left;
+	width:32%;
+}
+.pclright6{
+	float: left;
+	width:28%;
+}
+.progname{
+	float: left;
+	width: 15%;
+}
+.progwidth{
+	margin-top: 8px;
+	display: inline-block;
+	width: 38%;
+}
+.progdiv{
+	padding-top: 20px;
+	width: 100%;
+	height: 50px;
+}
+.progwidth2{
+	width: 70%;
+}
+.progwidth3{
+	width: 100%;
+}
+.prog{
+	float: left;
+	margin-left: 1%;
+	width: 17%;
+}
+.biding{
+	display: inline-block;
+	padding: 5px;
+	line-height: 20px;
+}
+@media screen and (max-width: 400px){
+	.projectcontent{
+		font-size: 1.3em;
+	}
+	.ulbutton{
+		font-size: 1.5em;
+	}
+	.progwidth{
+	margin-top: 15px;
+}
+}
+@media screen and (max-width: 320px){
+	.projectcontent{
+		font-size: 1.0em;
+	}
+	.ulbutton{
+		font-size: 1.3em;
+	}
+}
+@media screen and (max-width: 240px){
+	.projectcontent{
+		font-size: 0.8em;
+	}
+	.ulbutton{
+		font-size: 1.0em;
+	}
+}
+@media screen and (max-width: 400px){
+	.pclleft{
+	height: 130px;
+	background-image:url('../image/loginicont5.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+}
+
+.textdiv2{
+	height: 39px;
+}
+.pclright{
+	float: left;
+	width: 75%;
+}
+.progdiv{
+	padding-top: 20px;
+	width: 100%;
+	height: 35px;
+}
+.biding{
+	line-height: 15px;
+}
+}
+/*Resetpassw*/
+.newpassword{
+	margin: 0 auto;
+	width: 90%;
+	text-align: center;
+}
+.newpassword input{
+	margin-top: 30px;
+	width: 100%;
+	height: 52px;
+	line-height: 52px;
+	font-size: 1.8em;
+}
+@media screen and (max-width: 400px){
+.newpassword input{
+		font-size: 1.4em;
+		line-height: 30px;
+		height: 30px;
+	}
+}
+/*register*/
+.authcode{
+	position: absolute;
+	top:15%;
+	right: 5%;
+	z-index: 100;
+	line-height: 40px;
+	font-size: 1.0em;
+	height: 40px;
+	padding: 0px 5px 0px 5px ;
+}
+@media screen and (max-width: 400px){
+	.authcode{
+		line-height: 30px;
+		height: 30px;
+	}
+}
+/*flow*/
+.flowcontent{
+	font-size: 1.4em;
+	line-height: 30px;
+}
+.flowcontent span{
+	color: #ff4d00;
+	font-size: 1.4em;
+}
+.flowcontent ul{
+	width: 90%;
+	margin:0 auto;
+}
+.flowcontent ul li{
+	margin-top: 40px;
+	height: 160px;
+	width: 26%;
+	float: left;
+}
+.point{
+	float: left;
+	line-height: 160px;
+	font-size: 2.5em;
+	width: 11%;
+}
+@media screen and (max-width: 460px){
+	.flowcontent img{
+		width: 85%;
+	}
+	
+}
+@media screen and (max-width: 400px){
+	.flowcontent{
+	font-size: 1.2em;
+	line-height: 25px;
+}
+	.flowcontent img{
+		width: 75%;
+	}
+	.flowcontent ul li{
+	height: 90px;
+}
+	.point{
+	line-height: 130px;
+	font-size: 2.0em;
+}
+}
+/*details*/
+.pname2{
+	margin: 0 auto;
+	width: 90%;
+}
+.details ul li{
+	float: left;
+	width: 33%;
+}
+.detailsform{
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.5em;
+	line-height: 54px;
+}
+.deformname{
+	float: left;
+	width: 30%;
+}
+.deformNo{
+	float: left;
+	width: 70%;
+}
+.deforminout{
+	 width: 100%;
+	 height: 54px;
+	 font-size: 1.1em;
+	line-height: 54px;
+}
+.detailsform .textdiv{
+	width: 100%;
+	 font-size: 1.2em;
+}
+.detailsbutton{
+	padding-top: 40px;
+	width: 90%;
+	margin: 0 auto;
+	height: 40px;
+	border-bottom: 1px solid #ea5503;	
+}
+.detailsbutton div{
+	float: left;
+	padding: 0px 5% 0px 5%;
+	font-size: 1.3em;
+	line-height: 40px;
+}
+.information{
+	padding-top:20px;
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.3em;
+	line-height: 40px;
+}
+.bidRecords{
+	padding-top:20px;
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.3em;
+	line-height: 40px;
+}
+.information ul li{
+	float: left;
+	width: 16.5%;
+}
+.informationimg{
+	height: 70px;
+	width: 100%;
+	line-height: 70px;
+}
+.information2{
+	font-size: 1.1em;
+}
+.information2 div{
+	float: left;
+	width: 33%;
+	line-height: 40px;
+}
+.describe{
+	width: 100%;
+}
+.bidRecords{
+	display: none;
+	line-height: 40px;
+	font-size: 1.5em;
+}
+.bidRecordsname div{
+	width: 33%;
+	float: left;
+}
+.bidRecordslist div{
+	width: 33%;
+	float: left;
+}
+.bidRecordslist li{
+	height: 70px;
+	width: 100%;
+}
+.bidRecordslist img{
+	vertical-align:middle;
+}
+.informationimg img{
+	max-width: 85%;
+	vertical-align:middle;
+}
+@media screen and (max-width: 400px){
+	.deforminout{
+	 width: 100%;
+	 height: 30px;
+	 font-size: 0.9em;
+	line-height: 30px;
+}
+.detailsform{
+	font-size: 1.8em;
+}
+.detailsbutton{
+	height: 27px;
+}
+.detailsbutton div{
+	line-height: 27px;
+	font-size: 1.5em;
+}
+.information{
+	font-size: 1.5em;
+	line-height: 25px;
+}
+.bidRecords{
+	font-size: 1.5em;
+	line-height: 25px;
+}
+.informationimg img{
+	width: 65%;
+}
+.bidRecordslist img{
+	width:20%;
+}
+}
+@media screen and (max-width: 290px){
+	.information{
+	font-size: 1.2em;
+	line-height: 25px;
+}
+.informationimg img{
+	width: 55%;
+}
+.detailsform{
+	font-size: 1.5em;
+}
+}
+/*synopsis*/
+.advertisement{
+	width: 100%;
+}
+.advertiseimg{
+	margin: 5%;
+}
+.synopsis{
+	line-height: 30px;
+	font-size: 1.5em;
+	width: 90%;
+	margin: 0 auto;
+}
+.synopsis p{
+	margin-top: 30px;
+	text-indent:2em 
+}
+/*relation*/
+.relation{
+	width: 90%;
+	margin: 0 auto;
+	line-height: 30px;
+	font-size: 1.7em;
+}
+.relation p{
+	margin-top: 30px;
+	
+}
+.relation div{
+	width: 100%;
+}
+/*messageList*/
+.messageList{
+	line-height: 30px;
+	font-size: 1.5em;
+	width: 90%;
+	margin: 0 auto;
+}
+.messageName{
+	width: 100%;
+}
+.messageList p{
+	margin: 15px 0px 15px 0px;
+	text-indent:2em 
+}
+.messageList span{
+	float: right;
+	margin-right: 20px;
+}
+.messageList li{
+	margin-top: 30px;
+	padding-bottom: 20px;
+}
+/*apply*/
+.formlist{
+	margin-top: 50px;
+	line-height: 30px;
+	font-size: 1.5em;
+}
+.formlist span{
+	display: inline-block;
+	width: 25%;
+}
+.formlist input{
+	font-size: 1.5em;
+	width: 60%;
+	height:50px;
+	line-height: 30px;
+	margin-right: 10px;
+}
+.formlist li{
+	margin-top: 20px;
+}
+.formlist select{
+	font-size: 1.5em;
+	width: 60%;
+	height:50px;
+	line-height: 30px;
+	margin-right: 10px;
+}
+@media screen and (max-width: 400px){
+.formlist{
+	font-size: 1.5em;
+}
+.formlist span{
+	width: 28%;
+}
+.formlist input{
+	width: 57%;
+	height:35px;
+}
+.formlist select{
+	width: 57%;
+	height:35px;
+}
+}
+/*apply2*/
+.applyList{
+	margin-top: 30px;
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.5em;
+	line-height: 30px;
+}
+.applyListli{
+	margin-top: 30px;
+	padding-bottom: 50px;
+}
+.applyList h2{
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+}
+.applysname{
+	padding-left: 10%;
+	height: 80px;
+	line-height: 80px;
+}
+.applydiv{
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px dashed #505050;
+	border-top: 1px dashed #505050;
+}
+.applyleft{
+	float: left;
+	width: 54%;
+	border-right: 1px dashed #505050;
+}
+.applyright{
+	float: left;
+	width: 45%;
+}
+.applycondition{
+	padding:30px 0px 30px 30px;
+	line-height: 40px;
+}
+.applycondition span{
+	font-size: 3.5em;
+	line-height: 20px;
+}
+
+@media screen and (max-width: 400px){
+.applyList h2{
+	height: 35px;
+	line-height: 35px;
+}
+}
+/*payment*/
+.payment{
+	width: 90%;
+	margin:0 auto;
+}
+.payusername{
+	margin-top: 10px;
+	height: 70px;
+}
+.payusername div{
+	float: left;
+}
+.payusername p{
+	padding:5px 0px 0px 10px;
+	font-size: 1.8em;
+}
+.payusername p .payname{
+	margin-right: 15px; 
+	font-size: 1.2em;
+}
+.payicont{
+	padding-right: 5px;
+	font-size: 1.5em;
+	line-height: 70px;
+	float: right;
+}
+.payimg{
+	width: 15%;
+	height: 70px;
+	background-image:url('../image/Paymenticont1.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+}
+.payList{
+	margin-top: 30px;
+}
+.payList li {
+	margin-top: 10px;
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	margin-right: 15px;
+}
+.payList li .text-white{
+	height: 30px;
+	font-size: 1.8em;
+	font-weight: normal;
+}
+.payListicont{
+	height: 70%;
+	width: 100%;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:auto 60%;
+}
+.payListicont1{	
+	background-image:url('../image/Paymenticont2.png');
+}
+.payListicont2{
+	background-image:url('../image/Paymenticont3.png');
+}
+.payListicont3{
+	background-image:url('../image/Paymenticont4.png');
+}
+.payListicont4{
+	background-image:url('../image/Paymenticont5.png');
+}
+.payListli{
+	margin-top: 30px;
+	width: 100%;
+	float: left;
+}
+.payListli li{
+	height: 70px;
+	width: 100%;
+	line-height: 70px;
+	margin: 10px 0px 10px 0px;
+}
+.payListliicont{
+	height: 70%;
+	width: 10%;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:contain;
+	display: inline-block;
+	vertical-align: middle;
+}
+.payListliicont1{
+	background-image:url('../image/Paymenticont6.png');
+}
+.payListliicont2{
+	background-image:url('../image/Paymenticont7.png');
+}
+.payListliicont3{
+	background-image:url('../image/Paymenticont8.png');
+}
+.payListliicont4{
+	background-image:url('../image/Paymenticont9.png');
+}
+.payListspan{
+	margin-left: 10px;
+	font-size: 1.8em;
+	display: inline-block;
+}
+@media screen and (min-width: 400px) and (max-width: 540px){
+	.payList li  {
+	height: 60px;
+	width: 60px;
+	font-size: 0.6em;
+}
+}
+@media screen and (min-width: 380px) and (max-width: 399px){
+	.payList li  {
+	height: 60px;
+	width: 60px;
+	font-size: 1em;
+}
+}
+@media screen and (max-width: 379px) {
+	.payList li  {
+	height: 53px;
+	width: 53px;
+	font-size: 0.8em;
+}
+}
+@media screen and (max-width: 310px) {
+	.payList li  {
+	height: 77px;
+	width: 77px;
+	font-size: 1.1em;
+}
+}
+@media screen and (max-width: 290px) {
+	.payList li  {
+	height: 71px;
+	width: 71px;
+	font-size: 0.9em;
+}
+}
+/*investFlow*/
+.flowcontent h3{
+	margin: 30px 0px 0px 20px;
+	font-size: 1.9em;
+}
+/*Funds*/
+.fundsboder{
+	margin-top: 30px;
+}
+.leftspan{
+	float: right;
+	font-size: 1.8em;
+}
+.fundsbutton div{
+	display: inline-block;
+	margin: 10px;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 1.8em;
+}
+/*Fundsrecord*/
+.recordtable{
+	margin-top: 30px;
+}
+.recordtable table{
+	line-height: 40px;
+	font-size: 1.6em;
+	width: 95%;
+	margin: 0 auto;
+	border: 1px solid #a8a8a8;
+	border-collapse:collapse;
+}
+.recordtable table tr:nth-child(even) {
+	background: #f7f7f7;
+}
+/*stylesheet*/
+.safeguard{
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.6em;
+	line-height: 30px;
+}
+.safeguard h3{
+	margin-top: 30px;
+}
+.safeguard p{
+	text-indent:2em ;
+}
+/*Mydata*/
+.safetyLevel{
+	width: 100%;
+	font-size: 1.8em;
+	line-height: 70px;
+}
+.safetyLevel span{
+	padding: 0px 5px 0px 5px;
+}
+.safetyLevel .progwidth2{
+	background: #ff4e00; 
+}
+.MydataList{
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1.6em;
+	line-height: 35px;
+}
+.MydataList li{
+}
+.MydataList img{
+	width: 1em;
+	padding: 0px 3px 0px 3px;
+	vertical-align: middle;
+}
+.MydataList .text-gray2{
+	padding-left: 6px;
+	text-indent:1em ;
+	font-size: 0.9em;
+}
+.MydataList .text-orange2{
+	padding-right: 3px;
+}
+.MydataList .payicont{
+	font-size: 0.9em;
+}
+.spanwidth70{
+	width: 80%;
+	float: left;
+}
+@media screen and (max-width: 240px) {
+	.mydatawindow{
+		font-size: 0.8em;
+	}
+}
+/*Myleave*/
+.Myleave{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 5px 10px 5px 10px;
+	font-size: 1.9em;
+	line-height: 25px;
+}
+/*prepare*/
+.prepare{
+	margin-left: 30px;
+	border-left: 3px solid #c1c1c1;	
+	font-size: 1.5em;
+}
+.triangleorg{
+	position: absolute;
+	left: -0.2em;;
+    float: left;
+    color: #ff4e00;
+    font-size: 3em;
+    vertical-align: middle;
+}
+.trianglegray{
+	position: absolute;
+	left: -0.2em;;
+    float: left;
+    color: #cccccc;
+    font-size: 3em;
+    vertical-align: middle;
+}
+.prepare .text-center{
+	position: relative;
+	margin: 0 auto;
+	width: 85%;
+	line-height: 40px;
+}
+.realname ,.prepassword,.bankcard{
+	margin: 30px 0px 30px 20px;
+	position: relative;
+	font-size: 1.1em;
+} 
+.realname img,.prepassword img,.bankcard img{
+	position: absolute;
+	z-index: 1;
+	height:40px;
+	top:0px;
+	left: -40px;
+}
+.realname input,.prepassword input,.bankcard input{
+	display: block;
+	margin: 0 auto;
+	padding-left: 2%;
+	width: 83%;
+	line-height: 40px;
+	margin-top: 10px;
+	font-size: 1.3em;
+}
+.realname select,.prepassword select,.bankcard select{
+	display: block;
+	margin: 0 auto;
+	width: 85%;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	font-size: 1.3em;
+}
+.realname .textdiv ,.prepassword .textdiv,.bankcard .textdiv{
+	margin-top: 20px ;
+	line-height: 50px;
+	font-size: 1.3em;
+}
+.bankcard p{
+	margin: 0 auto;
+	width: 85%;
+	line-height: 40px;
+	margin-top: 10px;
+	font-size: 1.3em;
+}
+@media screen and (max-width: 400px) {
+	.realname .textdiv ,.prepassword .textdiv,.bankcard .textdiv{
+	line-height: 40px;
+}
+}
+/*newsdetails*/
+.newsdetails{
+	width: 95%;
+	margin: 0 auto;
+	line-height: 35px;
+	font-size: 1.3em;
+	margin-top: 20px;
+}
+.newsdetails h2{
+	font-size: 1.2em;
+}
+.newsdetails p{
+	text-indent: 2em;
+}
+@media screen and (max-width: 400px) {
+.newsdetails{
+	font-size: 1.7em;
+}
+}
+@media screen and (max-width: 300px) {
+	.newsdetails{
+	font-size: 1.5em;
+}
+}
+/*borrowingcosts*/
+.borrowingcosts{
+	width:90%;
+	margin: 0 auto;
+	margin-top: 20px;
+	font-size: 1.5em;
+	line-height: 35px;
+}
+.borrowingcosts img{
+	margin-top: 10px;
+	width: 60%;
+	max-width: 300px;
+}
+@media screen and (min-width: 300px) and (max-width: 400px) {
+.borrowingcosts{
+	font-size: 1.8em;
+	position: absolute;
+}
+}
+/*Investmentdetails*/
+.tagname{
+	font-size: 18px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 45%;
+	padding-left: 20px;
+	margin-top: 20px;
+	position: relative;
+}
+.triangle{
+	position: absolute;
+	right: 0px;
+	top: 20px;
+	float: right;
+	z-index: -1;
+    width:0;
+    height:0;
+    border-width:15px;
+    border-style:solid ;
+    border-color:transparent   #b34000  transparent transparent;
+}
+.Investmentdetails{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 30px;
+	font-size: 1.5em;
+	line-height: 35px;
+}
+.Investmentdetails p{
+	margin: 5px 0px 5px 0px;
+}
+.Investmentdetails h3{
+	margin: 10px 0px 10px 0px;
+}
+@media screen and (max-width: 400px) {
+.Investmentdetails{
+	font-size: 1.8em;
+}
+}
+.Investmentdetails img{
+	width: 100%;
+	margin: 0 auto;
+	max-width: 600px;
+}
+.helpLi {
+	font-size: 1.8em;
+	line-height: 30px;
+}
+.helpLi li{
+	width: 33%;
+	float: left;
+	margin: 30px 0px 30px 0px;
+}
+.helpLi img{
+	width: 80%;
+	max-width: 140px;
+}

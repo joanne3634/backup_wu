@@ -1,0 +1,17 @@
+#bodyDiv table{
+    margin:0 0 2em 0em;
+}
+#bodyDiv .AfIndiv{
+ margin:1em 0 1em 0em;
+}
+
+#bodyDiv td{
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+#pagination ul.pagination {
+    display: inline-block;
+}

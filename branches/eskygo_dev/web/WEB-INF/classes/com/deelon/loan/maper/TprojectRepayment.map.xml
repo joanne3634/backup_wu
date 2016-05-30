@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.deelon.loan.model.front.TProjectRepayment">
+
+	<resultMap id="TprojectRepayment" type="com.deelon.loan.model.front.TProjectRepayment">	
+        <id property="repaymentId" column="Repayment_id" />
+        <result property="currentRepaymentId" column="currentRepaymentId" />
+        <result property="projectId" column="Project_id"/>
+        <result property="prCurrentOfAll" column="PR_CurrentOfAll"/>
+        <result property="prCurrent" column="PR_Current"/>
+        <result property="prPay" column="PR_Pay"/>
+        <result property="prRealPay" column="PR_RealPay"/>
+        <result property="prIsPayoff" column="PR_IsPayOff"/>
+        <result property="prPayless" column="PR_PayLess"/>
+        <result property="prLate" column="PR_Late"/>
+        <result property="prisLate" column="PR_IsLate"/>
+        <result property="prLateDays" column="PR_LateDays"/>
+        <result property="prPrincipal" column="PR_Principal"/>
+        <result property="prInterest" column="PR_Interest"/>
+        <result property="prRepayWay" column="PR_RepayWay"/>
+        <result property="prPlanPayTime" column="PR_PlanPayTime"/>
+        <result property="prRepayer" column="PR_Repayer"/>
+        <result property="prRealPayTime" column="PR_RealPayTime"/>
+        <result property="prIsDone" column="PR_IsDone"/>
+         <result property="prPlanPayTimeStr" column="prPlanPayTimeStr"/>
+         <result property="prRealPayTimeStr" column="prRealPayTimeStr"/>
+         <result property="prRepayerName" column="prRepayerName"/>
+	  	 <result property="prRepayerUserName" column="prRepayerUserName"/>
+	  	  <result property="pname" column="P_Name"/>
+	</resultMap>
+
+	<sql id="columns">
+		Repayment_id,Project_id,PR_CurrentOfAll,PR_Current,PR_Pay,PR_RealPay,PR_IsPayOff,PR_PayLess,PR_Late,PR_IsLate,PR_LateDays,PR_Principal,PR_Interest,PR_RepayWay,PR_PlanPayTime,PR_Repayer,PR_RealPayTime,PR_IsDone 
+	</sql>
+
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(prisLate)">AND PR_IsLate = #{prisLate}</if>
+	       <if test="@Ognl@isNotEmpty(prIsPayoff)">AND PR_IsPayOff = #{prIsPayoff}</if>
+	       <if test="@Ognl@isNotEmpty(prIsDone)">AND PR_IsDone = #{prIsDone}</if>
+	       <if test="@Ognl@isNotEmpty(prPlanPayTimeStr)">AND date_format(PR_PlanPayTime,'%Y-%m-%d') = #{prPlanPayTimeStr}</if>
+	</sql>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProject">
+		INSERT INTO T_Project_Repayment
+		(
+		<include refid="columns" />
+		)
+		VALUES
+ 		(#{repaymentId} ,#{projectId} ,#{prCurrentOfAll} ,#{prCurrent} ,#{prPay} ,#{prRealPay} ,#{prIsPayoff},#{prPayless} ,#{prLate} ,#{prisLate} ,#{prLateDays},#{prPrincipal},#{prInterest} ,#{prRepayWay} ,#{prPlanPayTime} ,#{prRepayer} ,#{prRealPayTime} ,#{prIsDone} )
+    </insert>
+ 
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM T_Project_Repayment
+		WHERE
+		Repayment_id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectRepayment">
+		UPDATE T_Project_Repayment SET
+
+	        Repayment_id = #{repaymentId} ,
+	        Project_id = #{projectId} ,
+	        PR_CurrentOfAll = #{prCurrentOfAll} ,
+	        PR_Current = #{prCurrent} ,
+	        PR_Pay = #{prPay} ,
+	        PR_RealPay = #{prRealPay} ,
+	        PR_IsPayOff = #{prIsPayoff} ,
+	        PR_PayLess = #{prPayless} ,
+	        PR_Late = #{prLate} ,
+	        PR_IsLate = #{prisLate} ,
+	        PR_LateDays = #{prLateDays} ,
+	        PR_Principal = #{prPrincipal} ,
+	        PR_Interest = #{prInterest} ,
+	        PR_RepayWay = #{prRepayWay} ,
+	        PR_Repayer = #{prRepayer} ,
+	        PR_PlanPayTime = #{prPlanPayTime} ,
+	        PR_RealPayTime = #{prRealPayTime} ,
+	        PR_IsDone = #{prIsDone}  
+        WHERE 
+	        Repayment_id = #{repaymentId} 
+ 	</update>
+	<select id="getByProjectId" parameterType="java.lang.Long" resultMap="TprojectRepayment">
+		SELECT (SELECT MIN(p.Repayment_id) from t_project_repayment p WHERE p.PR_IsDone=0 AND 
+		Project_id = #{id}) currentRepaymentId, <include refid="columns" />
+		FROM T_Project_Repayment 
+		WHERE 1=1 AND 
+		Project_id = #{id}
+	</select>
+	<select id="getById" parameterType="java.lang.Long" resultMap="TprojectRepayment">
+		SELECT
+		<include refid="columns" />
+		FROM T_Project_Repayment
+		WHERE 1=1 AND 
+		Repayment_id = #{id}
+	</select>
+
+	<select id="getAll" resultMap="TprojectRepayment" parameterType="com.deelon.loan.model.front.TProjectRepayment">
+		SELECT <if test="@Ognl@isNotEmpty(projectId)">
+		(SELECT MIN(p.Repayment_id) from t_project_repayment p WHERE p.PR_IsDone=0 AND 
+		Project_id = #{projectId} ) currentRepaymentId,</if>
+		t.realName as prRepayerName,
+		t.loginName as prRepayerUserName, 
+		(SELECT t.P_Name from t_project t where t.Project_id=p.Project_id) P_Name,
+		<include refid="columns" />
+		FROM T_Project_Repayment p LEFT JOIN T_user t on p.PR_Repayer=t.user_id
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by Repayment_id desc
+		</if>
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT count(*) FROM T_Project_Repayment
+		<include refid="dynamicWhere" />
+	</select>
+	
+	<select id="getMaxProjectRepayId" resultType="long">
+		SELECT max(Repayment_id) FROM T_Project_Repayment
+	</select>
+
+</mapper>
+

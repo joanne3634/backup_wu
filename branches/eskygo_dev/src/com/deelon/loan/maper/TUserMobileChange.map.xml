@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TUserMobileChange">
+
+	<resultMap id="TUserMobileChange" type="com.deelon.loan.model.sysManager.TUserMobileChange">	
+        <id property="mobileChangeid" column="MobileChange_id" />
+        <result property="mobileOld" column="M_MobileOld"/>
+        <result property="mobileNew" column="M_MobileNew"/>
+        <result property="createTime" column="M_CreateTime"/>
+        <result property="isPass" column="M_IsPass"/>
+        <result property="checker" column="M_Checker"/>
+        <result property="checkTime" column="M_CheckTime"/>
+        <result property="reason" column="M_Reason"/>
+        <result property="userId" column="M_User_Id"/>
+        <result property="userName" column="LoginName"/>
+	</resultMap>
+	
+	<sql id="columns">
+		MobileChange_id,M_MobileOld,M_MobileNew,M_CreateTime,M_IsPass,M_Checker,M_CheckTime,M_Reason,M_User_Id
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(mobileChangeid)">AND MobileChange_id = #{mobileChangeid}</if>
+	       <if test="@Ognl@isNotEmpty(mobileOld)">AND M_MobileOld LIKE '%${mobileOld}%'</if>
+	       <if test="@Ognl@isNotEmpty(mobileNew)">AND M_MobileNew LIKE '%${mobileNew}%'</if>
+	       <if test="@Ognl@isNotEmpty(createTime)">AND M_CreateTime = #{createTime}</if>
+	       <if test="@Ognl@isNotEmpty(isPass)">AND M_IsPass = #{isPass}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND M_Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTime)">AND M_CheckTime = #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(reason)">AND M_Reason = #{reason}</if>
+	        <if test="@Ognl@isNotEmpty(userId)">AND M_User_Id = #{userId}</if>
+	        <if test="@Ognl@isNotEmpty(userName)">AND LoginName LIKE '%${userName}%'</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TUserMobileChange">
+		INSERT INTO t_user_mobilechange
+		(
+	       <if test="@Ognl@isNotEmpty(mobileOld)">M_MobileOld,</if>
+	       <if test="@Ognl@isNotEmpty(mobileNew)"> M_MobileNew,</if>
+	       <if test="@Ognl@isNotEmpty(createTime)"> M_CreateTime,</if>
+	       <if test="@Ognl@isNotEmpty(isPass)"> M_IsPass,</if>
+	       <if test="@Ognl@isNotEmpty(checker)"> M_Checker,</if>
+	       <if test="@Ognl@isNotEmpty(checkTime)"> M_CheckTime = #{checkTime}</if>
+	       <if test="@Ognl@isNotEmpty(reason)"> M_Reason ,</if>
+	        <if test="@Ognl@isNotEmpty(userId)"> M_User_Id ,</if>
+	        MobileChange_id
+		)
+		VALUES
+		(
+		    <if test="@Ognl@isNotEmpty(mobileOld)">#{mobileOld},</if>
+	        <if test="@Ognl@isNotEmpty(mobileNew)">#{mobileNew},</if>
+	        <if test="@Ognl@isNotEmpty(createTime)">#{createTime},</if>
+	        <if test="@Ognl@isNotEmpty(isPass)">#{isPass},</if>
+	        <if test="@Ognl@isNotEmpty(checker)">#{checker},</if>
+	        <if test="@Ognl@isNotEmpty(checkTime)">#{checkTime},</if>
+	        <if test="@Ognl@isNotEmpty(reason)">#{reason},</if>
+	        <if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+	        #{mobileChangeid}
+		 )
+    </insert>
+	<select id="getAll" resultMap="TUserMobileChange">
+		SELECT um.MobileChange_id,us.LoginName,um.M_MobileNew,um.M_MobileOld,um.M_CreateTime,um.M_User_Id
+			FROM t_user_mobilechange um LEFT JOIN t_user us
+			on us.user_id=um.M_User_Id
+			where 1=1 
+			<include refid="dynamicWhere" />
+			<if test="@Ognl@isNotEmpty(orderField)">
+			order by ${orderField} ${orderSeq}
+			</if>
+			<if test="@Ognl@isEmpty(orderField)">
+			order by M_CreateTime  desc
+			</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_mobilechange 
+		<include refid="dynamicWhere" />   
+    </select>   
+</mapper>
+

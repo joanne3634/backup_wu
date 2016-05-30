@@ -1,0 +1,421 @@
+#innovationProjectDetails {
+    padding-top: 4em;
+    padding-bottom: 3em;
+}
+
+#innovationProjectDetails .title {
+    text-align: center;
+    margin: 0 auto;
+    color: #c91111;
+}
+
+#innovationProjectDetails .title span {
+    border: 1px solid #cd0102;
+    color: #cd0102;
+    padding: 2px 15px;
+    border-radius: 5px;
+}
+
+#innovationProjectDetails .title h3 {
+    display: inline-block;
+    margin-right: 1em;
+    color: #333;
+    font-weight: normal;
+}
+
+#innovationProjectDetails .title-count {
+    text-align: center;
+    border-bottom: 2px solid #e6e6e6;
+    color: #444;
+    font-size: 12px;
+}
+
+#innovationProjectDetails .title-count span {
+    margin-left: 1em;
+}
+
+#innovationProjectDetails .project-table {
+    border: 1px outset #b6b6b6;
+    width: 90%;
+    margin: 1em auto;
+    text-align: right;
+}
+
+#innovationProjectDetails .project-table table {
+    margin: 0;
+    width: 100%;
+}
+
+#innovationProjectDetails .project-table tr {
+    line-height: 45px;
+}
+
+#innovationProjectDetails .project-table .td-label {
+    background-color: #e5e5e5;
+    border: 1px solid #ffffff;
+    padding-right: 1em;
+}
+
+#innovationProjectDetails .project-table .td-text {
+    background-color: #f1f1f1;
+    border: 1px solid #ffffff;
+    padding-left: 1em;
+    text-align: left;
+}
+
+#innovationProjectDetails .introduction-title {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+#innovationProjectDetails .introduction-title h3 {
+    display: inline-block;
+    color: #333;
+    font-weight: normal;
+    margin: 1em 1em .2em 1em;
+}
+
+#innovationProjectDetails .introduction-title h4 {
+    display: inline-block;
+    color: #6b6b6b;
+    font-weight: normal;
+    margin: 1em 1em .2em 1em;
+}
+
+#innovationProjectDetails .introduction {
+    margin: 2em;
+    line-height: 2;
+    font-size: 14px;
+}
+
+#innovationProjectDetails #detailTabs .content-title {
+    height: 38px;
+    line-height: 38px;
+    color: #013368;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #d9ebf9;
+    padding-left: 1em;
+}
+
+#innovationProjectDetails #detailTabs div.content-text {
+    padding: 1.5em;
+}
+
+#innovationProjectDetails #detailTabs #attachment {
+    margin: 0;
+}
+
+#innovationProjectDetails #detailTabs #attachment ul {
+    list-style-type: decimal;
+    padding: 0 1.5em 1.5em 1.5em;
+    margin: 0 0 0 1.5em;
+}
+
+#innovationProjectDetails #project-dynamic ul {
+    margin-top: 0;
+}
+
+#innovationProjectDetails #project-dynamic ul li {
+    display: block;
+    border-bottom: 2px dashed #e6e6e6;
+    margin: 0em 0em 1em 0em;
+    padding-bottom: 1em;
+}
+
+#innovationProjectDetails #project-dynamic ul li .item {
+    display: block;
+    overflow: hidden;
+}
+
+#innovationProjectDetails #project-dynamic ul li .item p.title {
+    margin: 0 0 0 1em;
+    font-size: 18px;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-align: left;
+}
+
+#innovationProjectDetails #project-dynamic ul li .item p {
+    margin-left: 1em;
+}
+
+#innovationProjectDetails #project-dynamic ul li .item .publisher {
+    color: #c4c4c4;
+}
+
+#innovationProjectDetails #project-dynamic ul li .item .publisher .author {
+    margin-left: 1.5em;
+}
+
+#innovationProjectDetails #project-comment .commentsTextarea {
+    margin-bottom: 1em;
+}
+
+#innovationProjectDetails .entrepreneur {
+    -webkit-box-shadow: 0px 1px 3px #e5e5e5;
+    -moz-box-shadow: 0px 1px 3px #e5e5e5;
+    -ms-box-shadow: 0px 1px 3px #e5e5e5;
+    box-shadow: 0px 1px 3px #e5e5e5;
+    border: 1px solid #e6e6e6;
+}
+
+#innovationProjectDetails .entrepreneur .title {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+}
+
+#innovationProjectDetails .entrepreneur .title h3 {
+    margin: 0;
+    padding: .3em .3em .3em 1em;
+}
+
+#innovationProjectDetails .entrepreneur .detail .avatar {
+    display: block;
+    padding: 1em;
+}
+
+#innovationProjectDetails .entrepreneur .detail .avatar a {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    overflow: hidden;
+}
+
+#innovationProjectDetails .entrepreneur .detail .avatar h4 {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1em;
+}
+
+#innovationProjectDetails .entrepreneur .detail .avatar i.fa {
+    cursor: pointer;
+}
+
+#innovationProjectDetails .entrepreneur .detail .avatar a img {
+    width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    vertical-align: top;
+}
+
+#innovationProjectDetails .entrepreneur .detail .project-info {
+    overflow: hidden;
+    line-height: 1.8;
+    padding: 0em 1em 1em 1em;
+}
+
+#innovationProjectDetails .entrepreneur .detail .project-info .progress-bar {
+    height: 15px;
+    line-height: 0;
+    background-color: #caeaf5;
+}
+
+#innovationProjectDetails .entrepreneur .detail .project-info .progress {
+    width:90%;
+    padding: 0 5px;
+    float: left;
+    height: 15px;
+    background: #00a0e9;
+    color: #ffffff;
+    line-height: 15px;
+    text-align: right;
+}
+
+#innovationProjectDetails .with-investor {
+    -webkit-box-shadow: 0px 1px 3px #e5e5e5;
+    -moz-box-shadow: 0px 1px 3px #e5e5e5;
+    -ms-box-shadow: 0px 1px 3px #e5e5e5;
+    box-shadow: 0px 1px 3px #e5e5e5;
+    border: 1px solid #e6e6e6;
+    margin: 1em auto;
+}
+
+#innovationProjectDetails .with-investor .title {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+}
+
+#innovationProjectDetails .with-investor .title h3 {
+    margin: 0;
+    padding: .3em .3em .3em 1em;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar {
+    display: block;
+    padding: 1em;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar span {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    padding: .3em .3em .3em 1em;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar a {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    overflow: hidden;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar span a.more {
+    width: auto;
+    height: auto;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar span p {
+    margin: 0;
+    line-height: 1.45;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar span h4 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar i.fa {
+    cursor: pointer;
+}
+
+#innovationProjectDetails .with-investor .detail .avatar a img {
+    width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    vertical-align: top;
+}
+
+#innovationProjectDetails .with-investor .detail .introduce {
+    overflow: hidden;
+    line-height: 1.8;
+    padding: 0em 1em 1em 1em;
+}
+
+#innovationProjectDetails .button-groups {
+    display: block;
+    margin: 1em auto;
+    overflow: hidden;
+}
+
+#innovationProjectDetails .button-groups section {
+    padding-left: .5em;
+}
+
+#innovationProjectDetails .button-groups section:first-child {
+    padding-left: 0;
+}
+
+#innovationProjectDetails .button-groups .ink-button {
+    width: 100%;
+    height: 55px;
+    padding: 0;
+    font-size: 12px;
+}
+
+#innovationProjectDetails .button-groups .ink-button i.fa {
+    display: block;
+    font-size: 18px;
+}
+
+#innovationProjectDetails .invest-list {
+    -webkit-box-shadow: 0px 1px 3px #e5e5e5;
+    -moz-box-shadow: 0px 1px 3px #e5e5e5;
+    -ms-box-shadow: 0px 1px 3px #e5e5e5;
+    box-shadow: 0px 1px 3px #e5e5e5;
+    border: 1px solid #e6e6e6;
+    margin: 1em auto;
+}
+
+#innovationProjectDetails .invest-list .title {
+    border-bottom: 2px solid #e6e6e6;
+    text-align: left;
+}
+
+#innovationProjectDetails .invest-list .title h3 {
+    margin: 0;
+    padding: .3em .3em .3em 1em;
+}
+
+#innovationProjectDetails .invest-list .list {
+    display: block;
+}
+
+#innovationProjectDetails .invest-list .list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar {
+    display: block;
+    padding: 1em;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar span {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    padding: .3em .3em .3em 1em;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar a {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    overflow: hidden;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar span p {
+    margin: 0;
+    line-height: 1.45;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar span h4 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar i.fa {
+    cursor: pointer;
+}
+
+#innovationProjectDetails .invest-list .list ul li .avatar a img {
+    width: 4.5em;
+ 	height: 4.5em;
+    border-radius: 50%;
+    margin: 0 auto;
+    vertical-align: top;
+}
+
+#innovationProjectDetails .invest-list .all-invest {
+    padding: 1em;
+}
+
+#innovationProjectDetails .nav-link {
+    display: table;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+}
+
+#innovationProjectDetails .nav-link a {
+    color: #333;
+    background-color: #e1e1e1;
+    display: table-cell;
+}
+
+#innovationProjectDetails .nav-link a:hover,#innovationProjectDetails .nav-link a:active {
+    text-decoration: none;
+    color: #444;
+}
+
+#innovationProjectDetails .nav-link a.active {
+    background-color: #003466;
+    color: #ffffff;
+}

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.deelon.loan.model.aboutus.TUserMsgRemind">
+	<resultMap id="TUserMsgRemind" type="com.deelon.loan.model.aboutus.TUserMsgRemind">
+		<id property="msgRemindId" column="MsgRemind_id" />
+		<result property="projectId" column="Project_id" />
+		<result property="typeId" column="TypeId" />
+		<result property="senderId" column="SenderID" />
+		<result property="sendTime" column="SendTime" />
+		<result property="content" column="Content" />
+		<result property="receiverId" column="ReceiverID" />
+		<result property="stateId" column="StateID" />
+		<result property="readTime" column="ReadTime" />
+		<result property="senderName" column="senderName" />
+		<result property="recevierName" column="recevierName" />
+		<result property="replyTimes" column="replyTimes" />
+		<result property="isReply" column="IsReply" />
+		<result property="replyID" column="ReplyID" />
+		<result property="isDel" column="IsDel" />
+	</resultMap>
+
+	<sql id="columns">
+		MsgRemind_id,Project_id,TypeId,SenderID,SendTime,Content,ReceiverID,StateID,ReadTime,IsReply,ReplyID
+	</sql> 
+	<sql id="dynamicWhere">
+		<if test="@Ognl@isNotEmpty(MsgRemindId)">AND MsgRemind_id = #{MsgRemindId}</if>
+		<if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(typeId)">AND TypeId = #{typeId}</if>
+		<if test="@Ognl@isNotEmpty(senderId)">AND SenderID like '%${senderId}%'</if>
+		<if test="@Ognl@isNotEmpty(sendTime)">AND SendTime = #{sendTime}</if>
+		<if test="@Ognl@isNotEmpty(sendTimeBegin)">AND SendTime >= #{sendTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(sendTimeEnd)">AND SendTime &lt;= #{sendTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(content)">AND Content like '%${content}%'</if>
+		<if test="@Ognl@isNotEmpty(receiverId)">AND ReceiverID like '%${receiverId}%'</if>
+		<if test="@Ognl@isNotEmpty(stateID)">AND StateID = #{stateId}</if>
+		<if test="@Ognl@isNotEmpty(readTime)">AND ReadTime = #{readTime}</if>
+		<if test="@Ognl@isNotEmpty(readTimeBegin)">AND ReadTime >= #{readTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(readTimeEnd)">AND ReadTime &lt;= #{readTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(replyID)">AND ReplyID = #{replyID}</if>
+		<if test="@Ognl@isNotEmpty(replyID)">AND IsDel = #{isDel}</if>
+	</sql>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.aboutus.TUserMsgRemind">
+		INSERT INTO t_user_msgremind
+		(<include refid="columns"/>)
+		VALUES
+		(#{msgRemindId} ,#{projectId} ,#{typeId} ,#{senderId} ,#{sendTime} ,#{content} ,#{receiverId} ,#{stateId} ,#{readTime},#{isReply},#{replyID}  )
+    </insert>
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_msgremind
+		WHERE
+		MsgRemind_id=#{msgRemindId}
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.aboutus.TUserMsgRemind">
+		UPDATE t_user_msgremind SET
+		MsgRemind_id = #{msgRemindId} ,
+		Project_id = #{projectId} ,
+		TypeId = #{typeId} ,
+		SenderID = #{senderId} ,
+		SendTime =#{sendTime} ,
+		Content = #{content} ,
+		ReceiverID = #{receiverId} ,
+		StateID = #{stateId},
+		ReadTime = #{readTime},
+		IsDel = #{isDel},
+		IsDelReceive = #{isDelReceive}
+		WHERE
+		MsgRemind_id = #{msgRemindId}
+	</update>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="TUserMsgRemind">
+	    SELECT (select LoginName from t_user where user_id=a.SenderID) as senderName,
+		a.MsgRemind_id,a.Project_id,a.TypeId,a.SenderID,a.SendTime,a.Content,a.ReceiverID,a.StateID,a.ReadTime,a.IsDel
+		FROM t_user_msgremind a
+		WHERE 1=1 and 
+		a.MsgRemind_id = #{msgRemindId}
+	</select>
+
+	<select id="getAll" resultMap="TUserMsgRemind">
+		SELECT
+		<include refid="columns" />
+		FROM t_user_msgremind
+		WHERE 1=1
+		<if test="@Ognl@isNotEmpty(typeId)">AND TypeId = #{typeId}</if>
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by MsgRemind_id desc
+		</if>
+	</select>
+	
+	<select id="getAllMsgRemind" resultMap="TUserMsgRemind">
+		SELECT
+		a.*,b.LoginName senderName,c.LoginName recevierName
+		FROM t_user_msgremind a
+		LEFT JOIN t_user b on a.SenderID=b.user_id
+		LEFT JOIN t_user c on a.ReceiverID=c.user_id
+		WHERE 1=1
+		<if test="@Ognl@isNotEmpty(content)">AND a.Content like '%${content}%'</if>
+		<if test="@Ognl@isNotEmpty(senderName)">AND b.LoginName like '%${senderName}%'</if>
+		<if test="@Ognl@isNotEmpty(recevierName)">AND c.LoginName like '%${recevierName}%'</if>
+			order by a.MsgRemind_id desc
+	</select>
+	
+	<select id="getReceiverId" resultMap="TUserMsgRemind">
+		SELECT
+		<include refid="columns" />
+		FROM t_user_msgremind
+		WHERE 1=1 and ReceiverID=#{receiverId}
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by MsgRemind_id desc
+		</if>
+	</select>
+	
+	<select id="count" resultType="long">
+		SELECT count(*) FROM t_user_message
+		<include refid="dynamicWhere" />
+	</select>
+
+	<sql id="partParam">
+		<if test="@Ognl@isNotEmpty(typeId)">AND TypeId = #{typeId}</if>
+	    <if test="@Ognl@isNotEmpty(receiverId)">AND ReceiverID = #{receiverId}</if>
+	    <if test="@Ognl@isNotEmpty(isDelReceive)">AND IsDelReceive = #{isDelReceive}</if>
+	    <if test="@Ognl@isNotEmpty(start)">AND SendTime  &gt;= #{start}</if>
+	    <if test="@Ognl@isNotEmpty(end)">AND SendTime  &lt;= #{end}</if>
+	</sql>
+	
+	
+	<!--根据消息类型查询相应的消息-->
+	<select id="getMyPrivateInfos" resultMap="TUserMsgRemind">
+		SELECT  p.P_Name pName,(select LoginName from t_user where user_id=a.SenderID) as senderName
+		,(select count(*) as replyTimes from t_user_msgremind b where b.ReplyID=a.MsgRemind_id) as replyTimes,
+		a.MsgRemind_id,a.Project_id,a.TypeId,a.SenderID,a.SendTime,a.Content,a.ReceiverID,a.StateID,a.ReadTime
+		FROM t_user_msgremind a 
+		left join t_c_project p on p.Project_id = a.Project_id 
+		WHERE 1=1 and (IsDelReceive is null or IsDelReceive = 0)
+		<include refid="partParam" />
+		order by SendTime desc
+	</select>
+	
+	<!--根据消息类型查询相应的消息-->
+	<select id="getOutBoxData" resultMap="TUserMsgRemind">
+		SELECT (select LoginName from t_user where user_id=a.ReceiverID) as recevierName
+		,(select count(*) as replyTimes from t_user_msgremind b where b.ReplyID=a.MsgRemind_id) as replyTimes,
+		a.MsgRemind_id,a.Project_id,a.TypeId,a.SenderID,a.SendTime,a.Content,a.ReceiverID,a.StateID,a.ReadTime
+		FROM t_user_msgremind a
+		WHERE 1=1 and a.TypeId in(1,2,3,4,5) and (IsDel is null or IsDel = 0)
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by MsgRemind_id desc
+		</if>
+	</select>
+	
+	<!--根据消息记录id查询回复的信息-->
+	<select id="getReplyInfos" resultMap="TUserMsgRemind">
+		SELECT (select LoginName from t_user where user_id=a.SenderID) as senderName,(select LoginName from t_user where user_id=a.ReceiverID) as recevierName,
+		a.MsgRemind_id,a.Project_id,a.TypeId,a.SenderID,a.SendTime,a.Content,a.ReceiverID,a.StateID,a.ReadTime
+		FROM t_user_msgremind a
+		WHERE 1=1 and  a.ReplyID = #{replyID} 
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by MsgRemind_id asc
+		</if>
+	</select>
+	
+	<select id="getNowDaySendInfo" resultMap="TUserMsgRemind">
+	SELECT um.* FROM t_user_msgremind um
+		WHERE 1=1
+		<if test="@Ognl@isNotEmpty(MsgRemindId)">AND um.MsgRemind_id = #{MsgRemindId}</if>
+		<if test="@Ognl@isNotEmpty(projectId)">AND um.Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(typeId)">AND um.TypeId = #{typeId}</if>
+		<if test="@Ognl@isNotEmpty(senderId)">AND um.SenderID = #{senderId}</if>
+		<if test="@Ognl@isNotEmpty(am)">AND um.SendTime >= #{am}</if>
+		<if test="@Ognl@isNotEmpty(pm)">AND um.SendTime &lt;= #{pm}</if>
+		<if test="@Ognl@isNotEmpty(sendTime)">AND um.SendTime = #{sendTime}</if>
+		<if test="@Ognl@isNotEmpty(receiverId)">AND ReceiverID = #{receiverId}</if>
+	</select>
+	<!-- 查询上一次约谈的的发送时间 -->
+	<select id="getlastSendTimeInfo" resultMap="TUserMsgRemind"> 
+	SELECT um.* FROM t_user_msgremind um
+		WHERE 1=1 and um.TypeId=2 
+		<if test="@Ognl@isNotEmpty(projectId)">AND um.Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(userId)">AND um.SenderID = #{userId}</if>
+		and um.MsgRemind_id = (select max(MsgRemind_id) from t_user_msgremind a where a.Project_id = um.Project_id 
+		<if test="@Ognl@isNotEmpty(userId)">AND a.SenderID = #{userId}</if>)
+	</select>
+	
+	<select id="getnewsum" resultType="long">
+	SELECT count(*) FROM t_user_msgremind
+		WHERE 1=1 and  ReceiverID = #{receiverId} AND StateID =0 and  (IsDelReceive is null or IsDelReceive = 0)
+		<if test="@Ognl@isNotEmpty(typeId)">AND TypeId = #{typeId}</if>
+	</select>
+</mapper>
+
+

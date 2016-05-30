@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_project_auction-->
+		
+		     <form name="tprojectAuction">
+		     	<field property="auctionId" depends="digits">
+					<arg position="0" key="tprojectAuction.auctionId" />
+				</field>
+			 	<field property="transferId" depends="required">	
+		         <arg position="0" key="tprojectAuction.transferId" />		        
+		        </field>
+			 	<field property="userId" depends="required">	
+		         <arg position="0" key="tprojectAuction.userId" />		        
+		        </field>
+			 	<field property="highestPrice" depends="required,maxlength">	
+		         <arg position="0" key="tprojectAuction.highestPrice" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="offerPrice" depends="required,maxlength">	
+		         <arg position="0" key="tprojectAuction.offerPrice" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="offerTime" depends="maxlength">	
+		         <arg position="0" key="tprojectAuction.offerTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="isBid" depends="required,maxlength">	
+		         <arg position="0" key="tprojectAuction.isBid" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="bidTime" depends="maxlength">	
+		         <arg position="0" key="tprojectAuction.bidTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="isCancel" depends="required,maxlength">	
+		         <arg position="0" key="tprojectAuction.isCancel" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_project_auction-->
+</formset>
+</form-validation>
+ 
+
+ 

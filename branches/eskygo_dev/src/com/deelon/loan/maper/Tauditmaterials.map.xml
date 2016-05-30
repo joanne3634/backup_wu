@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.Tauditmaterials">
+
+	<resultMap id="Tauditmaterials" type="com.deelon.loan.model.sysManager.Tauditmaterials">	
+        <id property="materialsId" column="Materials_id" />
+        <result property="typeId" column="TypeID"/>
+        <result property="name" column="Name"/>
+        <result property="description" column="Description"/>
+        <result property="isMust" column="Is_Must"/>
+        <result property="isAudit" column="Is_Audit"/>
+        <result property="isType" column="Is_Type"/>
+        <result property="creditAdd" column="CreditAdd"/>
+        <result property="isUpload" column="Is_Upload"/>
+    
+	   <result property="isPass" column="IsPass"/>
+	     <result property="userId" column="user_id"/>
+	     <result property="reasons" column="Reasons"/>
+		<result property="checkDate" column="CheckTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Materials_id,TypeID,Name,Description,Is_Must,Is_Audit,Is_Type,CreditAdd,Is_Upload
+	</sql>
+	<sql id="dynamicWhere">
+	       <if test="@Ognl@isNotEmpty(materialsId)">AND Materials_id = #{materialsId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(name)">AND Name like "%"#{name}"%"</if>
+	       <if test="@Ognl@isNotEmpty(description)">AND Description like "%"#{description}"%"</if>
+	       <if test="@Ognl@isNotEmpty(isMust)">AND Is_Must = #{isMust}</if>
+	       <if test="@Ognl@isNotEmpty(isAudit)">AND Is_Audit = #{isAudit}</if>
+	       <if test="@Ognl@isNotEmpty(isType)">AND Is_Type = #{isType}</if>
+	       <if test="@Ognl@isNotEmpty(creditAdd)">AND CreditAdd = #{creditAdd}</if>
+	       <if test="@Ognl@isNotEmpty(isUpload)">AND Is_Upload = #{isUpload}</if> 
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.Tauditmaterials">
+		INSERT INTO t_auditmaterials
+		(<include refid="columns"/>)
+		VALUES
+		(#{materialsId} ,#{typeId} ,#{name} ,#{description} ,#{isMust} ,#{isAudit} ,#{isType},#{creditAdd} ,#{isUpload}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_auditmaterials 
+		WHERE
+        Materials_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.Tauditmaterials">
+		UPDATE t_auditmaterials SET
+	        TypeID = #{typeId} ,
+	        Name = #{name} ,
+	        Description = #{description} ,
+	        Is_Must = #{isMust} ,
+	        Is_Audit = #{isAudit} ,
+	        Is_Type = #{isType},
+	        CreditAdd = #{creditAdd} ,
+	        Is_Upload = #{isUpload} 
+        WHERE 
+	        Materials_id = #{materialsId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tauditmaterials">
+		SELECT <include refid="columns"/>
+		FROM t_auditmaterials 
+		WHERE 1=1 AND 
+		Materials_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tauditmaterials">
+		SELECT <include refid="columns"/>
+		FROM t_auditmaterials   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Materials_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_auditmaterials 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+		<select id="getAllTauditmaterials" resultMap="Tauditmaterials">
+        SELECT <include refid="columns"/> FROM t_auditmaterials
+    </select> 
+    
+    <select id="getAudiMeByUserId" resultMap="Tauditmaterials">
+    	SELECT am.Materials_id,am.Name,am.Description,am.Is_Audit,am.Is_Type,am.Is_Must,
+		um.IsPass,um.Reasons,um.user_id,um.CheckTime
+		
+		 from t_auditmaterials am LEFT JOIN t_user_auditmat um
+		on am.Materials_id=um.Materials_id and um.user_id=#{userId}
+		GROUP BY um.user_id,am.Materials_id
+    </select>
+	
+</mapper>
+

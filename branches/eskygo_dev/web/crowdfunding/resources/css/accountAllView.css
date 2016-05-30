@@ -1,0 +1,28 @@
+#accountAllView {
+
+}
+
+#accountAllView .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#accountAllView .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+
+#accountAllView .asset {
+    margin: 1em 0;
+    color: #58b3ec;
+    font-weight: normal;
+}
+
+#accountAllView .asset em {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    color: #333;
+    margin: 0 .5em;
+}

@@ -1,0 +1,1 @@
+function addTabItem(a){top.tab.addTabItem(a);}function closeTabItem(a){top.tab.removeTabItem(a);}

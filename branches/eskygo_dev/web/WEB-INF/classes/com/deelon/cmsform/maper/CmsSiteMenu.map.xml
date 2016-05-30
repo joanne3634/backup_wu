@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.deelon.cmsform.model.site.CmsSiteMenu">
+
+	<resultMap id="CmsSiteMenu" type="com.deelon.cmsform.model.site.CmsSiteMenu">
+		<id property="siteMenuId" column="site_menu_id" />
+		<result property="siteConfigId" column="site_config_id" />
+		<result property="menuSupId" column="menu_supId" />
+		<result property="menuPath" column="menu_path" />
+		<result property="menuName" column="menu_name" />
+		<result property="menuFilePath" column="menu_file_path" />
+		<result property="menuTemplet" column="menu_templet" />
+		<result property="menuContentTemplet" column="menu_content_templet" />
+		<result property="menuSort" column="menu_sort" />
+		<result property="menuUrl" column="menu_url" />
+	</resultMap>
+
+	<sql id="columns">
+		site_menu_id,site_config_id,menu_supId,menu_path,menu_name,menu_file_path,menu_templet,menu_content_templet,menu_sort,menu_url
+	</sql>
+	<sql id="dynamicWhere">
+		<if test="@Ognl@isNotEmpty(siteMenuId)">AND site_menu_id = #{siteMenuId}</if>
+		<if test="@Ognl@isNotEmpty(siteConfigId)">AND site_config_id = #{siteConfigId}</if>
+		<if test="@Ognl@isNotEmpty(menuSupId)">AND menu_supId = #{menuSupId}</if>
+		<if test="@Ognl@isNotEmpty(menuPath)">AND menu_path = #{menuPath}</if>
+		<if test="@Ognl@isNotEmpty(menuName)">AND menu_name = #{menuName}</if>
+		<if test="@Ognl@isNotEmpty(menuFilePath)">AND menu_file_path = #{menuFilePath}</if>
+		<if test="@Ognl@isNotEmpty(menuTemplet)">AND menu_templet = #{menuTemplet}</if>
+		<if test="@Ognl@isNotEmpty(menuContentTemplet)">AND menu_content_templet = #{menuContentTemplet}</if>
+		<if test="@Ognl@isNotEmpty(menuSort)">AND menu_sort = #{menuSort}</if>
+		<if test="@Ognl@isNotEmpty(menuUrl)">AND menu_url = #{menuUrl}</if>
+		<if test="@Ognl@isNotEmpty(siteUserRolesId)">
+			AND site_menu_id in (select menuId from sys_role_menu where roleId in
+			<foreach item="item" index="index" collection="siteUserRolesId"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			)
+		</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.cmsform.model.site.CmsSiteMenu">
+		INSERT INTO cms_site_menu
+		(
+		<include refid="columns" />
+		)
+		VALUES
+		(#{siteMenuId} ,#{siteConfigId} ,#{menuSupId} ,#{menuPath}
+		,#{menuName} ,#{menuFilePath} ,#{menuTemplet} ,#{menuContentTemplet}
+		,#{menuSort} ,#{menuUrl} )
+	</insert>
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM cms_site_menu
+		WHERE
+		site_menu_id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.deelon.cmsform.model.site.CmsSiteMenu">
+		UPDATE cms_site_menu SET
+		site_config_id = #{siteConfigId} ,
+		menu_supId = #{menuSupId} ,
+		menu_path = #{menuPath} ,
+		menu_name = #{menuName} ,
+		menu_file_path = #{menuFilePath} ,
+		menu_templet = #{menuTemplet} ,
+		menu_content_templet = #{menuContentTemplet} ,
+		menu_sort = #{menuSort} ,
+		menu_url = #{menuUrl}
+		WHERE
+		site_menu_id = #{siteMenuId}
+	</update>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="CmsSiteMenu">
+		SELECT
+		<include refid="columns" />
+		FROM cms_site_menu
+		WHERE
+		site_menu_id = #{id}
+		ORDER BY menu_sort
+	</select>
+
+	<select id="getAll" resultMap="CmsSiteMenu">
+		SELECT
+		<include refid="columns" />
+		FROM cms_site_menu
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by menu_sort
+		</if>
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT count(*) FROM cms_site_menu
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getSubMenuByParentId" parameterType="java.lang.Long"
+		resultMap="CmsSiteMenu">
+		SELECT
+		<include refid="columns" />
+		FROM cms_site_menu
+		WHERE
+		menu_supId = #{id}
+		<if test="@Ognl@isNotEmpty(menuContentTemplet)">AND menu_content_templet = #{menuContentTemplet}</if>
+		ORDER BY menu_sort
+	</select>
+
+	<select id="getSubMenuByParentMenuPath" resultMap="CmsSiteMenu">
+		SELECT
+		<include refid="columns" />
+		FROM cms_site_menu
+		WHERE 1=1 and menu_supId in (
+		SELECT site_menu_id
+		FROM cms_site_menu
+		WHERE
+		menu_path = #{menuPath}
+		)
+		<if test="@Ognl@isNotEmpty(menuContentTemplet)">AND menu_content_templet = #{menuContentTemplet}</if>
+		ORDER BY menu_sort
+	</select>
+	<select id="menu_path" resultMap="CmsSiteMenu">
+		SELECT
+		<include refid="columns" />
+		FROM cms_site_menu WHERE menu_supId in
+		(SELECT site_menu_id FROM cms_site_menu WHERE menu_path=#{menu_path} )
+	</select>
+
+	<select id="checkIsExist" resultMap="CmsSiteMenu">
+		SELECT m.*
+		FROM cms_site_menu m where m.menu_name=#{menuName}
+	</select>
+</mapper>
+

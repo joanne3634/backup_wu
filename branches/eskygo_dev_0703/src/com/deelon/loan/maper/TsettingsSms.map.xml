@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TsettingsSms">
+
+	<resultMap id="TsettingsSms" type="com.deelon.loan.model.sysManager.TsettingsSms">	
+        <id property="smsid" column="SMS_id" />
+        <result property="isOpen" column="IsOpen"/>
+        <result property="account" column="Account"/>
+        <result property="subAccount" column="SubAccount"/>
+        <result property="pwd" column="Pwd"/>
+        <result property="interfaceUrl" column="InterfaceUrl"/>
+        <result property="upated" column="Upated"/>
+        <result property="upateTime" column="UpateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		SMS_id,IsOpen,Account,SubAccount,Pwd,InterfaceUrl,Upated,UpateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(smsid)">AND SMS_id = #{smsid}</if>
+	       <if test="@Ognl@isNotEmpty(isOpen)">AND IsOpen = #{isOpen}</if>
+	       <if test="@Ognl@isNotEmpty(account)">AND Account = #{account}</if>
+	       <if test="@Ognl@isNotEmpty(subAccount)">AND SubAccount = #{subAccount}</if>
+	       <if test="@Ognl@isNotEmpty(pwd)">AND Pwd = #{pwd}</if>
+	       <if test="@Ognl@isNotEmpty(interfaceUrl)">AND InterfaceUrl = #{interfaceUrl}</if>
+	       <if test="@Ognl@isNotEmpty(upated)">AND Upated = #{upated}</if>
+	       <if test="@Ognl@isNotEmpty(upateTimeBegin)">AND UpateTime >= #{upateTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(upateTimeEnd)">AND UpateTime &lt;= #{upateTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TsettingsSms">
+		INSERT INTO t_settings_sms
+		(<include refid="columns"/>)
+		VALUES
+		(#{smsid} ,#{isOpen} ,#{account} ,#{subAccount} ,#{pwd} ,#{interfaceUrl} ,#{upated} ,#{upateTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_settings_sms 
+		WHERE
+        SMS_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TsettingsSms">
+		UPDATE t_settings_sms SET
+	        IsOpen = #{isOpen} ,
+	        Account = #{account} ,
+	        SubAccount = #{subAccount} ,
+	        Pwd = #{pwd} ,
+	        InterfaceUrl = #{interfaceUrl} ,
+	        Upated = #{upated} ,
+	        UpateTime = #{upateTime} 
+        WHERE 
+	        SMS_id = #{smsid} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TsettingsSms">
+		SELECT <include refid="columns"/>
+		FROM t_settings_sms 
+		WHERE 1=1
+		SMS_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TsettingsSms">
+		SELECT <include refid="columns"/>
+		FROM t_settings_sms   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by SMS_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_settings_sms 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<select id="getFirstOne" resultMap="TsettingsSms">
+		SELECT <include refid="columns"/>
+		FROM t_settings_sms 
+	</select>
+	
+</mapper>
+

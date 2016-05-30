@@ -1,0 +1,1 @@
+function SysOrgSearch(c){url=__ctx+"/platform/system/sysOrg/allList.ht";var b="dialogWidth:"+600+"px;dialogHeight:"+500+"px;help:0 ;status:0;scroll: 1;center:1";url=url.getNewUrl();var d=window.showModalDialog(url,"",b);if(d&&c.callback){var a=d.orgId;c.callback.call(this,a);}}

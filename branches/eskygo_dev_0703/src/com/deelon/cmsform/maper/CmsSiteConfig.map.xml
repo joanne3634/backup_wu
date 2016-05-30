@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.cmsform.model.site.CmsSiteConfig">
+
+	<resultMap id="CmsSiteConfig" type="com.deelon.cmsform.model.site.CmsSiteConfig">	
+        <id property="siteConfigId" column="site_config_id" />
+        <result property="siteName" column="site_name"/>
+        <result property="siteCode" column="site_code"/>
+        <result property="siteDirPath" column="site_dir_path"/>
+        <result property="siteIndexPath" column="site_index_path"/>
+        <result property="siteStaticDir" column="site_static_dir"/>
+        <result property="siteOwner" column="site_owner"/>
+        <result property="siteMail" column="site_mail"/>
+        <result property="siteHomeUrl" column="site_home_url"/>
+        <result property="siteTempletHome" column="site_templet_home"/>
+        <result property="siteCopyright" column="site_copyright"/>
+        <result property="siteUploadType" column="site_upload_type"/>
+        <result property="siteMeta" column="site_meta"/>
+        <result property="siteMetaInfo" column="site_meta_info"/>
+        <result property="siteTemplet" column="site_templet"/>
+        <result property="siteOrgId" column="site_org_id"/>
+	</resultMap>
+	
+	<sql id="columns">
+		site_config_id,site_name,site_code,site_dir_path,site_index_path,site_static_dir,site_owner,site_mail,site_home_url,site_templet_home,site_copyright,site_upload_type,site_meta,site_meta_info,site_templet,site_org_id
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(siteConfigId)">AND site_config_id = #{siteConfigId}</if>
+	       <if test="@Ognl@isNotEmpty(siteName)">AND site_name LIKE '%${siteName}%'</if>
+	       <if test="@Ognl@isNotEmpty(siteCode)">AND site_code = #{siteCode}</if>
+	       <if test="@Ognl@isNotEmpty(siteDirPath)">AND site_dir_path = #{siteDirPath}</if>
+	       <if test="@Ognl@isNotEmpty(siteIndexPath)">AND site_index_path = #{siteIndexPath}</if>
+	       <if test="@Ognl@isNotEmpty(siteStaticDir)">AND site_static_dir = #{siteStaticDir}</if>
+	       <if test="@Ognl@isNotEmpty(siteOwner)">AND site_owner LIKE '%${siteOwner}%'</if>
+	       <if test="@Ognl@isNotEmpty(siteMail)">AND site_mail = #{siteMail}</if>
+	       <if test="@Ognl@isNotEmpty(siteHomeUrl)">AND site_home_url = #{siteHomeUrl}</if>
+	       <if test="@Ognl@isNotEmpty(siteTempletHome)">AND site_templet_home = #{siteTempletHome}</if>
+	       <if test="@Ognl@isNotEmpty(siteCopyright)">AND site_copyright = #{siteCopyright}</if>
+	       <if test="@Ognl@isNotEmpty(siteUploadType)">AND site_upload_type = #{siteUploadType}</if>
+	       <if test="@Ognl@isNotEmpty(siteMeta)">AND site_meta = #{siteMeta}</if>
+	       <if test="@Ognl@isNotEmpty(siteMetaInfo)">AND site_meta_info = #{siteMetaInfo}</if>
+	       <if test="@Ognl@isNotEmpty(siteTemplet)">AND site_templet = #{siteTemplet}</if>
+	       <if test="@Ognl@isNotEmpty(siteOrgId)">AND site_org_id = #{siteOrgId}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.cmsform.model.site.CmsSiteConfig">
+		INSERT INTO cms_site_config
+		(<include refid="columns"/>)
+		VALUES
+		(#{siteConfigId} ,#{siteName} ,#{siteCode} ,#{siteDirPath} ,#{siteIndexPath} ,#{siteStaticDir} ,#{siteOwner} ,#{siteMail} ,#{siteHomeUrl} ,#{siteTempletHome} ,#{siteCopyright} ,#{siteUploadType} ,#{siteMeta} ,#{siteMetaInfo} ,#{siteTemplet} ,#{siteOrgId}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM cms_site_config 
+		WHERE
+        site_config_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.cmsform.model.site.CmsSiteConfig">
+		UPDATE cms_site_config SET
+	        site_name = #{siteName} ,
+	        site_code = #{siteCode} ,
+	        site_dir_path = #{siteDirPath} ,
+	        site_index_path = #{siteIndexPath} ,
+	        site_static_dir = #{siteStaticDir} ,
+	        site_owner = #{siteOwner} ,
+	        site_mail = #{siteMail} ,
+	        site_home_url = #{siteHomeUrl} ,
+	        site_templet_home = #{siteTempletHome} ,
+	        site_copyright = #{siteCopyright} ,
+	        site_upload_type = #{siteUploadType} ,
+	        site_meta = #{siteMeta} ,
+	        site_meta_info = #{siteMetaInfo} ,
+	        site_templet = #{siteTemplet} ,
+	        site_org_id = #{siteOrgId} 
+        WHERE 
+	        site_config_id = #{siteConfigId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="CmsSiteConfig">
+		SELECT <include refid="columns"/>
+		FROM cms_site_config
+		WHERE
+		site_config_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="CmsSiteConfig">
+		SELECT <include refid="columns"/>
+		FROM cms_site_config   
+		where 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by site_config_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM cms_site_config 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

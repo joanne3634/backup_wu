@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TuserCredit">
+
+	<resultMap id="TuserCredit" type="com.deelon.loan.model.front.TuserCredit">	
+        <id property="creditId" column="Credit_id" />
+        <result property="userId" column="user_id"/>
+        <result property="typeId" column="TypeID"/>
+        <result property="keyId" column="KeyID"/>
+        <result property="creditAdd" column="CreditAdd"/>
+        <result property="description" column="Description"/>
+        <result property="createTime" column="CreateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Credit_id,user_id,TypeID,KeyID,CreditAdd,Description,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(creditId)">AND Credit_id = #{creditId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(keyId)">AND KeyID = #{keyId}</if>
+	       <if test="@Ognl@isNotEmpty(creditAdd)">AND CreditAdd = #{creditAdd}</if>
+	       <if test="@Ognl@isNotEmpty(description)">AND Description = #{description}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TuserCredit">
+		INSERT INTO t_user_credit
+		(<include refid="columns"/>)
+		VALUES
+		(#{creditId} ,#{userId} ,#{typeId} ,#{keyId} ,#{creditAdd} ,#{description} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_credit 
+		WHERE
+        Credit_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TuserCredit">
+		UPDATE t_user_credit SET
+	        user_id = #{userId} ,
+	        TypeID = #{typeId} ,
+	        KeyID = #{keyId} ,
+	        CreditAdd = #{creditAdd} ,
+	        Description = #{description} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        Credit_id = #{creditId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserCredit">
+		SELECT <include refid="columns"/>
+		FROM t_user_credit 
+		WHERE 1=1 and
+		Credit_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserCredit">
+		SELECT <include refid="columns"/>
+		FROM t_user_credit   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Credit_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_credit 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

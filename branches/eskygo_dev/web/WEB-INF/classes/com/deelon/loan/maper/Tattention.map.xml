@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TAttention">
+
+	<resultMap id="TAttention" type="com.deelon.loan.model.front.TAttention">	
+        <id property="attentionId" column="Attention_id" />
+        <result property="typeId" column="TypeID"/>
+        <result property="userId" column="user_id"/>
+        <result property="projectId" column="Project_id"/>
+        <result property="beUserId" column="BeUserID"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="isDel" column="IsDel"/>
+        
+       
+	</resultMap>
+	
+	<sql id="columns">
+		Attention_id,TypeID,user_id,Project_id,BeUserID,CreateTime,IsDel
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(attentionId)">AND Attention_id = #{attentionId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(beUserId)">AND BeUserID = #{beUserId}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TAttention">
+		INSERT INTO t_attention
+		(<include refid="columns"/>)
+		VALUES
+		(#{attentionId} ,#{typeId} ,#{userId} ,#{projectId} ,#{beUserId} ,#{createTime} ,#{isDel}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_attention 
+		WHERE
+        Attention_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TAttention">
+		UPDATE t_attention SET
+	        TypeID = #{typeId} ,
+	        user_id = #{userId} ,
+	        Project_id = #{projectId} ,
+	        BeUserID = #{beUserId} ,
+	        CreateTime = #{createTime} ,
+	        IsDel = #{isDel} 
+        WHERE 
+	        Attention_id = #{attentionId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TAttention">
+		SELECT <include refid="columns"/>
+		FROM t_attention 
+		WHERE 1=1 and
+		Attention_id = #{id} 
+	</select>
+	
+      
+	
+	<select id="getAll" resultMap="TAttention">
+		SELECT <include refid="columns"/>
+		FROM t_attention   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Attention_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_attention 
+		<include refid="dynamicWhere" />   
+    </select>   
+	
+
+	<insert id="saveTAttention">
+		insert into
+		t_attention
+		(
+		<if test="@Ognl@isNotEmpty(typeId)">TypeID,</if>
+		<if test="@Ognl@isNotEmpty(userId)">user_id,</if>
+		<if test="@Ognl@isNotEmpty(projectId)">Project_id,</if>
+		<if test="@Ognl@isNotEmpty(createTime)">CreateTime,</if>
+		<if test="@Ognl@isNotEmpty(isDel)">IsDel,</if>
+		Attention_id
+		)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(typeId)">#{typeId},</if>
+		<if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+		<if test="@Ognl@isNotEmpty(projectId)">#{projectId},</if>
+		<if test="@Ognl@isNotEmpty(createTime)">#{createTime},</if>
+		<if test="@Ognl@isNotEmpty(isDel)">#{isDel},</if>
+		#{attentionId}
+		)
+	</insert>
+	<select id="getTAttentionByProjectIdAndUserId" resultMap="TAttention">
+		SELECT
+		t.Attention_id,
+		t.TypeID,
+		t.user_id,
+		t.Project_id,
+		t.CreateTime,
+		t.IsDel
+		FROM t_attention t
+		WHERE 1=1
+		AND t.Project_id =#{projectId} 
+		AND t.user_id = #{userId}
+		AND t.IsDel = #{isDel}
+	</select>
+		
+
+	
+</mapper>
+

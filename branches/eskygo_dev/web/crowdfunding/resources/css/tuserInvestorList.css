@@ -1,0 +1,54 @@
+body {
+    padding: 0;
+}
+
+#pageForm {
+    margin: 1.5em 0 3em 0;
+}
+
+#investorList {
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+#investorList .investorInfo{
+    display: block;
+    border-bottom: 2px dashed #e6e6e6;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+#investorList li .item {
+    display: block;
+    overflow: hidden;
+}
+#investorList li .item .img-container img {
+    border-radius: 50%;
+    width: 8em;
+    height: 8em;
+}
+#investorList li .item .detailInfo {
+     display: inline-block;
+    padding: 0.5em;
+ }
+#investorList li .item .detailInfo p{
+    margin: 0;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    line-height: 2em;
+
+}
+#investorList li .item .operations {
+    display: inline-block;
+}
+#investorList li .item .operations li{
+    display: inline-block;
+}
+
+
+#pagination ul.pagination {
+    display: inline-block;
+}
+

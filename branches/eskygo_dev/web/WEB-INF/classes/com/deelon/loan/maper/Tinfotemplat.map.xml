@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.Tinfotemplat">
+
+	<resultMap id="Tinfotemplat" type="com.deelon.loan.model.sysManager.Tinfotemplat">	
+        <id property="infoTemplateId" column="InfoTemplateID" />
+        <result property="templateName" column="TemplateName"/>
+        <result property="serviceType" column="ServiceType"/>
+        <result property="infoType" column="InfoType"/>
+        <result property="infoFlag" column="InfoFlag"/>
+        <result property="header" column="Header"/>
+        <result property="messasge" column="Messasge"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		InfoTemplateID,TemplateName,ServiceType,InfoType,InfoFlag,Header,Messasge,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(infoTemplateId)">AND InfoTemplateID = #{infoTemplateId}</if>
+	       <if test="@Ognl@isNotEmpty(templateName)">AND TemplateName = #{templateName}</if>
+	       <if test="@Ognl@isNotEmpty(serviceType)">AND ServiceType = #{serviceType}</if>
+	       <if test="@Ognl@isNotEmpty(infoType)">AND InfoType = #{infoType}</if>
+	       <if test="@Ognl@isNotEmpty(infoFlag)">AND InfoFlag = #{infoFlag}</if>
+	       <if test="@Ognl@isNotEmpty(header)">AND Header = #{header}</if>
+	       <if test="@Ognl@isNotEmpty(messasge)">AND Messasge = #{messasge}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.Tinfotemplat">
+		INSERT INTO t_infotemplat
+		(<include refid="columns"/>)
+		VALUES
+		(#{infoTemplateId} ,#{templateName} ,#{serviceType} ,#{infoType} ,#{infoFlag} ,#{header} ,#{messasge} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_infotemplat 
+		WHERE
+        InfoTemplateID = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.Tinfotemplat">
+		UPDATE t_infotemplat SET
+	        TemplateName = #{templateName} ,
+	        ServiceType = #{serviceType} ,
+	        InfoType = #{infoType} ,
+	        InfoFlag = #{infoFlag} ,
+	        Header = #{header} ,
+	        Messasge = #{messasge} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        InfoTemplateID = #{infoTemplateId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tinfotemplat">
+		SELECT <include refid="columns"/>
+		FROM t_infotemplat 
+		WHERE
+		InfoTemplateID = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tinfotemplat">
+		SELECT <include refid="columns"/>
+		FROM t_infotemplat   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by InfoTemplateID  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_infotemplat 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

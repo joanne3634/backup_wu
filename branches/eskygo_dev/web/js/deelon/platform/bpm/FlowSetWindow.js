@@ -1,0 +1,1 @@
+function FlowSetWindow(b){if(!b){b={};}var a=__ctx+"/platform/bpm/bpmDefinition/subFlowDetail.ht?defId="+b.defId+"&actDefId="+b.actDefId+"&nodeId="+b.nodeId;a=a.getNewUrl();var c=window.open(a);}

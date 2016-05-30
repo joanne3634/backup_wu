@@ -1,0 +1,22 @@
+#tcprojectAfterCR .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#tcprojectAfterCR .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+#tcprojectAfterCR form{
+    margin-top: 2em;
+}
+#tcprojectAfterCR table{
+    margin:0 0 2em 0em;
+}
+#tcprojectAfterCR .AfIndiv{
+ margin:1em 0 1em 0em;
+}
+#pagination ul.pagination {
+    display: inline-block;
+}

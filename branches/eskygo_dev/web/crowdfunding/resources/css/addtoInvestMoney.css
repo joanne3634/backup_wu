@@ -1,0 +1,25 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+
+#addtoInvestMoney {
+    height: 150px;
+}
+
+#addtoInvestMoney #submitBtn {
+    margin-left: 0;
+}
+
+#addtoInvestMoney .inline {
+    float: left;
+}
+
+#addtoInvestMoney .inline+.control {
+    display: inline-block;
+    min-width: 120px;
+}

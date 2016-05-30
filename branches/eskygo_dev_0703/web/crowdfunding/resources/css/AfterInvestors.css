@@ -1,0 +1,18 @@
+#Afterinvestors .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#Afterinvestors .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+
+#Afterinvestors table{
+    margin:2em 0 2em 0em;
+}
+
+#pagination ul.pagination {
+    display: inline-block;
+}

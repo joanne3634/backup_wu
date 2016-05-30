@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_c_project_news-->
+		
+		     <form name="tcprojectNews">
+		     	<field property="newsId" depends="digits">
+					<arg position="0" key="tcprojectNews.newsId" />
+				</field>
+			 	<field property="projectId" depends="required">	
+		         <arg position="0" key="tcprojectNews.projectId" />		        
+		        </field>
+			 	<field property="pntypeId" depends="required,maxlength">	
+		         <arg position="0" key="tcprojectNews.pntypeId" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="pntitle" depends="required,maxlength">	
+		         <arg position="0" key="tcprojectNews.pntitle" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>150</var-value>
+				 </var>
+		        </field>
+			 	<field property="pncontent" depends="required,maxlength">	
+		         <arg position="0" key="tcprojectNews.pncontent" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>2000</var-value>
+				 </var>
+		        </field>
+			 	<field property="creator" depends="required">	
+		         <arg position="0" key="tcprojectNews.creator" />		        
+		        </field>
+			 	<field property="createTime" depends="maxlength">	
+		         <arg position="0" key="tcprojectNews.createTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="isDel" depends="required,maxlength">	
+		         <arg position="0" key="tcprojectNews.isDel" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="fileId" depends="required,maxlength">	
+		         <arg position="0" key="tcprojectNews.fileId" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_c_project_news-->
+</formset>
+</form-validation>
+ 
+
+ 

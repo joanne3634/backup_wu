@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectModel">
+
+	<resultMap id="TcprojectModel" type="com.deelon.crowdfunding.model.backstage.TcprojectModel">	
+        <id property="modelId" column="Model_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pmtargeted" column="PM_Targeted"/>
+        <result property="pmcurrentlyPlaguing" column="PM_CurrentlyPlaguing"/>
+        <result property="pmservicesMode" column="PM_ServicesMode"/>
+        <result property="pmprofitableDesc" column="PM_ProfitableDesc"/>
+        <result property="pmcompetitors" column="PM_Competitors"/>
+        <result property="pmcoreCompetitiveness" column="PM_CoreCompetitiveness"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Model_id,Project_id,PM_Targeted,PM_CurrentlyPlaguing,PM_ServicesMode,PM_ProfitableDesc,PM_Competitors,PM_CoreCompetitiveness
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(modelId)">AND Model_id = #{modelId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pmtargeted)">AND PM_Targeted = #{pmtargeted}</if>
+	       <if test="@Ognl@isNotEmpty(pmcurrentlyPlaguing)">AND PM_CurrentlyPlaguing = #{pmcurrentlyPlaguing}</if>
+	       <if test="@Ognl@isNotEmpty(pmservicesMode)">AND PM_ServicesMode = #{pmservicesMode}</if>
+	       <if test="@Ognl@isNotEmpty(pmprofitableDesc)">AND PM_ProfitableDesc = #{pmprofitableDesc}</if>
+	       <if test="@Ognl@isNotEmpty(pmcompetitors)">AND PM_Competitors = #{pmcompetitors}</if>
+	       <if test="@Ognl@isNotEmpty(pmcoreCompetitiveness)">AND PM_CoreCompetitiveness = #{pmcoreCompetitiveness}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectModel">
+		INSERT INTO t_c_project_model
+		(<include refid="columns"/>)
+		VALUES
+		(#{modelId} ,#{projectId} ,#{pmtargeted} ,#{pmcurrentlyPlaguing} ,#{pmservicesMode} ,#{pmprofitableDesc} ,#{pmcompetitors} ,#{pmcoreCompetitiveness}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_model 
+		WHERE
+        Model_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectModel">
+		UPDATE t_c_project_model SET
+	        Project_id = #{projectId} ,
+	        PM_Targeted = #{pmtargeted} ,
+	        PM_CurrentlyPlaguing = #{pmcurrentlyPlaguing} ,
+	        PM_ServicesMode = #{pmservicesMode} ,
+	        PM_ProfitableDesc = #{pmprofitableDesc} ,
+	        PM_Competitors = #{pmcompetitors} ,
+	        PM_CoreCompetitiveness = #{pmcoreCompetitiveness} 
+        WHERE 
+	        Model_id = #{modelId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectModel">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_model 
+		WHERE 1=1 and
+		Model_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectModel">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_model   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Model_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_model 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <!--查找项目的商业模式  -->
+    <select id="getByProId" resultMap="TcprojectModel">
+    	SELECT pm.*
+		FROM t_c_project_model  pm
+		WHERE 1=1 and pm.Project_id=#{projectId}
+    </select>
+
+	
+</mapper>
+

@@ -1,0 +1,24 @@
+#projectManage .tabs-nav {
+    padding: 0 2.5em;
+    border-bottom: 2px solid #00a0e9;
+}
+
+#projectManage .ink-tabs.top>.tabs-nav li a {
+    color: #444;
+    margin-right: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+     border-radius: 0;
+}
+
+#projectManage .ink-tabs.top>.tabs-nav li a:hover {
+    text-decoration: none;
+}
+
+#projectManage .ink-tabs .tabs-nav li.active a {
+    color: #444;
+    border: 2px solid #00a0e9;
+    border-bottom: 2px solid #ffffff;
+}

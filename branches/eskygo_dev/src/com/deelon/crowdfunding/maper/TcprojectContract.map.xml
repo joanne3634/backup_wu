@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectContract">
+
+	<resultMap id="TcprojectContract" type="com.deelon.crowdfunding.model.backstage.TcprojectContract">	
+        <id property="contractId" column="Contract_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pcNo" column="PC_NO"/>
+        <result property="pcname" column="PC_Name"/>
+        <result property="pccompanyName" column="PC_CompanyName"/>
+        <result property="pcstarDate" column="PC_StarDate"/>
+        <result property="pcendDate" column="PC_EndDate"/>
+        <result property="pcsigningDate" column="PC_SigningDate"/>
+        <result property="pcsignPeople" column="PC_SignPeople"/>
+        <result property="pcsignAddress" column="PC_SignAddress"/>
+        <result property="pcremarks" column="PC_Remarks"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="fileId" column="FileID"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Contract_id,Project_id,PC_NO,PC_Name,PC_CompanyName,PC_StarDate,PC_EndDate,PC_SigningDate,PC_SignPeople,PC_SignAddress,PC_Remarks,Creator,CreateTime,FileID
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(contractId)">AND Contract_id = #{contractId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pcNo)">AND PC_NO = #{pcNo}</if>
+	       <if test="@Ognl@isNotEmpty(pcname)">AND PC_Name = #{pcname}</if>
+	       <if test="@Ognl@isNotEmpty(pccompanyName)">AND PC_CompanyName = #{pccompanyName}</if>
+	       <if test="@Ognl@isNotEmpty(pcstarDateBegin)">AND PC_StarDate >= #{pcstarDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcstarDateEnd)">AND PC_StarDate &lt;= #{pcstarDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pcendDateBegin)">AND PC_EndDate >= #{pcendDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcendDateEnd)">AND PC_EndDate &lt;= #{pcendDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pcsigningDateBegin)">AND PC_SigningDate >= #{pcsigningDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcsigningDateEnd)">AND PC_SigningDate &lt;= #{pcsigningDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pcsignPeople)">AND PC_SignPeople = #{pcsignPeople}</if>
+	       <if test="@Ognl@isNotEmpty(pcsignAddress)">AND PC_SignAddress = #{pcsignAddress}</if>
+	       <if test="@Ognl@isNotEmpty(pcremarks)">AND PC_Remarks = #{pcremarks}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(fileId)">AND FileID = #{fileId}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectContract">
+		INSERT INTO t_c_project_contract
+		(<include refid="columns"/>)
+		VALUES
+		(#{contractId} ,#{projectId} ,#{pcNo} ,#{pcname} ,#{pccompanyName} ,#{pcstarDate} ,#{pcendDate} ,#{pcsigningDate} ,#{pcsignPeople} ,#{pcsignAddress} ,#{pcremarks} ,#{creator} ,#{createTime} ,#{fileId}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_contract 
+		WHERE
+        Contract_id = #{contractId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectContract">
+		UPDATE t_c_project_contract SET
+	        Project_id = #{projectId} ,
+	        PC_NO = #{pcNo} ,
+	        PC_Name = #{pcname} ,
+	        PC_CompanyName = #{pccompanyName} ,
+	        PC_StarDate = #{pcstarDate} ,
+	        PC_EndDate = #{pcendDate} ,
+	        PC_SigningDate = #{pcsigningDate} ,
+	        PC_SignPeople = #{pcsignPeople} ,
+	        PC_SignAddress = #{pcsignAddress} ,
+	        PC_Remarks = #{pcremarks} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} ,
+	        FileID = #{fileId} 
+        WHERE 
+	        Contract_id = #{contractId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectContract">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_contract 
+		WHERE 
+		Contract_id = #{contractId} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectContract">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_contract   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Contract_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_contract 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

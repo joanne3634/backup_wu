@@ -1,0 +1,263 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/commons/include/html_doctype.html" %>
+
+
+<html>
+<head>
+	<title>确认放款</title>
+	<%@include file="/commons/include/get.jsp" %>
+	<script type="text/javascript" src="${ctx}/js/util/form.js"></script>
+	<script type="text/javascript">
+	
+	
+	function syncToLdap(obj){
+		
+		var v=$(obj);
+		
+		if(v.hasClass("disabled")){
+			$.ligerDialog.error('没有权限!');
+			return;
+		}
+		var confirmContent="<font color='red'>与AD服务器同步会将AD的用户同步到系统数据库，您确定要进行同步吗？</font>";
+		$.ligerDialog.confirm(confirmContent,function(data){
+			if(data){
+				sync();
+			}else{
+				return false;
+			}
+		});
+		sync=function(conf){
+			var url=__ctx + "/platform/system/sysUser/syncUser.ht";
+			$.ligerDialog.waitting('正在同步AD用户，请等待...');
+			$.post(url,function(data){
+				$.ligerDialog.closeWaitting();
+				var obj=new com.deelon.form.ResultMessage(data);
+				if(obj.isSuccess()){
+					$.ligerDialog.success("同步用户成功!","提示信息",function(){
+						location.href=location.href.getNewUrl();
+					});
+				}
+				else{
+					$.ligerDialog.err("提示信息","同步用户失败!",obj.getMessage());
+				}
+			})
+		};
+	}
+	
+	function auditsDisagree(){
+		var d = $("input[type='checkbox'][disabled!='disabled'][class='pk']:checked");
+		if (d.length == 0) {
+			$.ligerDialog.warn("请选择记录！");
+			return false;
+		}
+		
+		var f = "";
+		var c = "";
+		var a = d.length;
+		d.each(function(g) {
+			var h = $(this);
+			if (g < a - 1) {
+				f += h.val() + ",";
+			} else {
+				c = h.attr("name");
+				f += h.val();
+			}
+		});
+		
+		openWdin(f,this);
+		
+	}
+	
+	function inviteDisagere(id){
+		openWdin(id,this);
+	}
+	
+	function openWdin(projectId,obj){
+		if($(obj).hasClass('disabled')) return false;
+		 
+		var conf={};				
+		var url=__ctx + "/loan/sysManager/invitationOftenderLoan/edit.ht?projectId="+projectId;
+		conf.url=url;
+		var dialogWidth=550;
+		var dialogHeight=450;
+		conf=$.extend({},{dialogWidth:dialogWidth ,dialogHeight:dialogHeight ,help:0,status:0,scroll:0,center:1},conf);
+		var winArgs="dialogWidth="+conf.dialogWidth+"px;dialogHeight="+conf.dialogHeight
+			+"px;help=" + conf.help +";status=" + conf.status +";scroll=" + conf.scroll +";center=" +conf.center;				
+		var rtn=window.showModalDialog(url,"",winArgs);		
+	}
+	
+	
+	function agreePayLoans(){
+		var d = $("input[type='checkbox'][disabled!='disabled'][class='pk']:checked");
+		if (d.length == 0) {
+			$.ligerDialog.warn("请选择记录！");
+			return false;
+		}
+		
+		var f = "";
+		var c = "";
+		var a = d.length;
+		d.each(function(g) {
+			var h = $(this);
+			if (g < a - 1) {
+				f += h.val() + ",";
+			} else {
+				c = h.attr("name");
+				f += h.val();
+			}
+		});
+		
+		agreePayLoan(f);
+	//	openWdin(f,this);
+		
+	}
+	
+
+	function agreePayLoan(pamrm){
+		
+		/*  var rep=$.ajax({  
+		        type: "POST",  
+		        url: "${ctx}/loan/sysManager/depositConfirm/updateLoanData.ht",
+		        data: {arrayIds:pamrm }  
+		        });  
+		      
+		   	 rep.done(function( data ){  
+		       		 //$.ligerDialog.warn(data.msg);
+		       		///closewin();
+		       		location.href=location.href.getNewUrl();
+		        });  
+		      
+		    rep.fail(function( jqXHR, textStatus ) {  
+		        $.ligerDialog.warn(textStatus);
+		    });  */ 
+		    
+		    $.ajax({
+		    	url: "${ctx}/loan/sysManager/depositConfirm/updateLoanData.ht",
+				type : 'post',
+				 data: {arrayIds:pamrm },
+				dataType : 'html',
+				success : function(data, status) {
+				
+					
+					//	location.href = "${ctx }/tenderProjects/getTenderProjects.ht";
+						alert(data);
+						location.href=location.href.getNewUrl();
+				
+				},
+				error : function(xhr, textStatus, errorThrown) {
+				}
+			});
+	}
+	 
+	function inputRemarks(pk){
+		
+	}
+	
+	
+	</script>
+</head>
+<body>
+
+	<div class="panel">
+
+			<div class="panel-top">
+				<div class="tbar-title">
+					<span class="tbar-label">确认放款列表</span>
+				</div>
+			<div class="panel-toolbar">
+				<div class="toolBar">
+					<div class="group">
+						<f:a alias="searchBorrowApply" css="link search" id="btnSearch"><span></span>查询</f:a>
+					</div>
+					<div class="l-bar-separator"></div>
+					<div class="group">
+						<a class="link " style="width: 50px;" href="javascript:void(0);" onclick="agreePayLoans();"><span>批量放款</span></a>
+					</div>
+					
+					<div class="l-bar-separator"></div>
+					
+				</div>	
+			</div>
+			
+			
+			<!--search boor  -->
+					<div class="panel-search">
+								<form id="searchForm" method="post" action="list.ht">
+										<ul class="row">
+											<li><span class="label">合同编号:</span><input type="text" name="pcNo"  class="inputText" value="${param['pcNo']}"/></li>
+											<li><span class="label">会员:</span><input type="text" name="applyName"  class="inputText" value="${param['applyName']}"/>
+											</li>
+											<li><span class="label">项目名称:</span><input type="text" name="pname"  class="inputText" value="${param['pname']}"/></li>
+											 <li><span class="label">是否放款:</span>
+											 <f:select nodeKey="sf" id="phavedPay" showBlankOnTop="true" defaultValue="${param['phavedPay']}"></f:select>
+											<%-- <select name="phavedPay" class="select" value="${param['phavedPay']}">
+												<option value="" selected>--全部--</option>
+												<option value="1" <c:if test="${param['phavedPay'] == '1' }">selected</c:if>>已放款</option>
+												<option value="0" <c:if test="${param['phavedPay'] == '0' }">selected</c:if>>待放款</option>
+											</select></li>  --%>
+											<li><span class="label">打款时间从:</span><input type="text" id="beginDate" name="beginDate"  class="inputText date" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\');}'})" value="${param['beginDate']}"/>
+											<span class="label" style="text-align:center;width:40px;">至</span><input type="text" id="endDate" name="endDate"  class="inputText date" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'beginDate\');}',realDateFmt:'yyyy-MM-dd HH:mm:ss'})"  value="${param['endDate']}"/>
+											</li>
+										</ul>
+								</form>
+								
+						</div><!-- search bar end -->
+
+		</div>
+		<div class="panel-body">
+		    	<c:set var="checkAll">
+					<input type="checkbox" id="chkall"/>
+				</c:set>
+			    <display:table name="ListVo" id="entity" requestURI="list.ht" sort="external" cellpadding="1" cellspacing="1"   class="table-grid">
+			    
+					
+					<c:choose>
+			    		<c:when test="${entity.alinkAction ne '已放款'}">
+			    			<display:column title="${checkAll}" media="html" style="width:30px;text-align:center;">
+						  	<input type="checkbox" class="pk" name="ProjectId" value="${entity.projectId}">
+							</display:column>
+			    		</c:when>
+			    		<c:otherwise>
+			    			<display:column title="${checkAll}" media="html" style="width:30px;text-align:center;">
+						  	<input type="checkbox" disabled="disabled" class="pk" name="ProjectId" value="${entity.projectId}">
+							</display:column>
+			    		</c:otherwise>
+			    	</c:choose>
+					
+					<display:column property="contractNo" title="合同编号" sortable="false" sortName="contractNo" style="text-align:center;width:6%;"></display:column>
+					<display:column property="applyName" title="会员" sortable="false" sortName="applyName" style="text-align:center;width:5%;"></display:column>
+					<display:column property="pname" title="项目名称" sortable="false" sortName="pname" style="text-align:center;width:8%;"></display:column>
+					<display:column property="ploan" title="申请借款金额" sortable="false" sortName="ploan" style="text-align:center;width:8%;"></display:column>
+					<display:column property="ploanReal" title="实际借款金额" sortable="false" sortName="ploanReal" style="text-align:center;width:8%;"></display:column>
+					<display:column property="prateIn" title="利率" sortable="false" sortName="prateIn" style="text-align:center;width:5%;"></display:column>
+					
+					
+					<display:column property="pdeadline" title="期限" sortable="false" sortName="pdeadline" style="text-align:center;width:5%;"></display:column>
+				 	<display:column title="是否放款" sortable="false" sortName="phavedPay" style="text-align:center;width:6%;">
+				 		<f:description nodeKey="sf" itemValue="${entity.phavedPay}"></f:description>
+						<%-- <c:choose>
+							<c:when test="${entity.phavedPay==0}">
+								<span class="red">待放款</span>
+						   	</c:when>
+					       	<c:otherwise>
+						    	<span class="green">已放款</span>
+						   	</c:otherwise>
+						</c:choose> --%>
+					</display:column>
+					<display:column property="havedPayTimeStr" title="打款时间" sortable="false" sortName="havedPayTimeStr" style="text-align:center;width:10%;"></display:column>
+					<display:column property="pcloaseDateStr" title="备注" sortable="false" sortName="pcloaseDateStr" style="text-align:center;"></display:column>
+				 	
+					
+					<display:column title="操作" media="html" style="text-align:center;width:8%;">
+						${entity.alinkAction}
+					</display:column>
+				</display:table>
+					<deelon:paging tableId="projectId"/>
+			
+		</div>
+	</div>
+</body>
+  
+</html>
+
+

@@ -1,0 +1,84 @@
+#payment{
+    padding-top: 4em;
+    padding-bottom: 3em;
+}
+
+#payment .title h3 {
+    color: #444;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2em;
+}
+#payment .upDiv{
+    margin-bottom: 3em;
+}
+#payment .upDiv .upContent{
+    border: 1px solid #ccc;
+    padding: 2em 0em;
+}
+
+#payment .downDiv .voRadio{
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #F4F4F4;
+    margin:1em auto;
+}
+#payment .downDiv .voRadio.checked{
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #1D2088;
+    margin:1em auto;
+}
+#payment .downDiv .voRadio label {
+    padding:0;
+}
+#payment .downDiv .voRadio input {
+    display:none;
+}
+#payment .downDiv .onLinePay .button_submit{
+    margin-top: 4em;
+}
+#payment .downDiv .offLinePay .ApEnListdiv {
+    margin:1em 0em;
+}
+#payment .downDiv .offLinePay .ApEnListdiv p{
+    margin:0.5em;
+    font-size: 14px;
+}
+#payment .downDiv .offLinePay .newNotice {
+    color: #01A0E9;
+    margin: 2em 0em;
+    font-size: 12px;
+}
+#payment .downDiv .offLinePay .newNotice p{
+    color: #01A0E9;
+    margin: 0.5em;
+    font-size: 12px;
+}
+
+
+
+#payment .tabs-nav {
+    padding: 0 2.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+#payment .ink-tabs.top>.tabs-nav li a {
+    color: #444;
+    margin-right: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+     border-radius: 0;
+}
+
+#payment .ink-tabs.top>.tabs-nav li a:hover {
+    text-decoration: none;
+}
+
+#payment .ink-tabs .tabs-nav li.active a {
+    color: #444;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ffffff;
+}

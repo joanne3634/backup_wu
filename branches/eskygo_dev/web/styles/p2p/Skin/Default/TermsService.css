@@ -1,0 +1,24 @@
+@CHARSET "UTF-8"; 
+    .TermsService-body {
+      width: 960px;
+      padding-top: 20px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      color: #333;
+    }
+    .TermsService-body h2 {
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 26px;
+      font-family: SimHei;
+    }
+    .TermsService-body p {
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .TermsService-body .tit {
+      margin-bottom: 10px;
+      font-size: 20px;
+    } 

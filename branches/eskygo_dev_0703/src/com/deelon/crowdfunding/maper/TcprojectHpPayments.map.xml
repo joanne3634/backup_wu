@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectHpPayments">
+
+	<resultMap id="TcprojectHpPayments" type="com.deelon.crowdfunding.model.backstage.TcprojectHpPayments">	
+        <id property="paymentsId" column="Payments_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="historyPlanId" column="HistoryPlan_id"/>
+        <result property="hpptypeId" column="HPP_TypeID"/>
+        <result property="hppkindName" column="HPP_KindName"/>
+        <result property="hpppayment" column="HPP_Payment"/>
+        <result property="hppremarks" column="HPP_Remarks"/>
+        <result property="hpporderId" column="HPP_OrderID"/>
+        <result property="isDel" column="IsDel"/>
+
+        
+	</resultMap>
+	
+	<sql id="columns">
+		Payments_id,Project_id,HistoryPlan_id,HPP_TypeID,HPP_KindName,HPP_Payment,HPP_Remarks,HPP_OrderID,IsDel
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(paymentsId)">AND Payments_id = #{paymentsId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(historyPlanId)">AND HistoryPlan_id = #{historyPlanId}</if>
+	       <if test="@Ognl@isNotEmpty(hpptypeId)">AND HPP_TypeID = #{hpptypeId}</if>
+	       <if test="@Ognl@isNotEmpty(hppkindName)">AND HPP_KindName = #{hppkindName}</if>
+	       <if test="@Ognl@isNotEmpty(hpppayment)">AND HPP_Payment = #{hpppayment}</if>
+	       <if test="@Ognl@isNotEmpty(hppremarks)">AND HPP_Remarks = #{hppremarks}</if>
+	       <if test="@Ognl@isNotEmpty(hpporderId)">AND HPP_OrderID = #{hpporderId}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectHpPayments">
+		INSERT INTO t_c_project_hp_payments
+		(<include refid="columns"/>)
+		VALUES
+		(#{paymentsId} ,#{projectId} ,#{historyPlanId} ,#{hpptypeId} ,#{hppkindName} ,#{hpppayment} ,#{hppremarks} ,#{hpporderId} ,#{isDel}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_hp_payments 
+		WHERE
+        Payments_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectHpPayments">
+		UPDATE t_c_project_hp_payments SET
+	        Project_id = #{projectId} ,
+	        HistoryPlan_id = #{historyPlanId} ,
+	        HPP_TypeID = #{hpptypeId} ,
+	        HPP_KindName = #{hppkindName} ,
+	        HPP_Payment = #{hpppayment} ,
+	        HPP_Remarks = #{hppremarks} ,
+	        HPP_OrderID = #{hpporderId} ,
+	        IsDel = #{isDel} 
+        WHERE 
+	        Payments_id = #{paymentsId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectHpPayments">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_hp_payments 
+		WHERE 1=1 and
+		Payments_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectHpPayments">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_hp_payments   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Payments_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_hp_payments 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <select id="getByHistoryPlanId" resultMap="TcprojectHpPayments">
+    	SELECT * from t_c_project_hp_payments pp where pp.HistoryPlan_id=#{historyPlanId} and pp.IsDel=0
+    </select>
+   
+
+	
+</mapper>
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.Tinfotemplatparam">
+
+	<resultMap id="Tinfotemplatparam" type="com.deelon.loan.model.sysManager.Tinfotemplatparam">	
+        <id property="infoTemplatParamId" column="InfoTemplatParamID" />
+        <result property="infoTemplatId" column="InfoTemplatID"/>
+        <result property="paramName" column="ParamName"/>
+        <result property="comments" column="Comments"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="templateName" column="TemplateName"/>
+        <!-- <association property="templateName" resultMap="TemplateName"></association> -->
+	</resultMap>
+	
+	<!-- <resultMap id="Tinfotemplat" type="com.deelon.loan.model.sysManager.Tinfotemplat">
+        <result property="templateName" column="TemplateName"/>
+        <result property="serviceType" column="ServiceType"/>
+        <result property="infoType" column="InfoType"/>
+        <result property="infoFlag" column="InfoFlag"/>
+        <result property="header" column="Header"/>
+        <result property="messasge" column="Messasge"/>
+	</resultMap> -->
+	
+	<sql id="columns">
+		InfoTemplatParamID,InfoTemplatID,ParamName,Comments,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(infoTemplatParamId)">AND InfoTemplatParamID = #{infoTemplatParamId}</if>
+	       <if test="@Ognl@isNotEmpty(infoTemplatId)">AND InfoTemplatID = #{infoTemplatId}</if>
+	       <if test="@Ognl@isNotEmpty(paramName)">AND ParamName LIKE '%${paramName}%'</if>
+	       <if test="@Ognl@isNotEmpty(comments)">AND Comments LIKE '%${comments}%'</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(templateName)">AND TemplateName LIKE '%${templateName}%'</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.Tinfotemplatparam">
+		INSERT INTO t_infotemplatparam
+		(<include refid="columns"/>)
+		VALUES
+		(#{infoTemplatParamId} ,#{infoTemplatId} ,#{paramName} ,#{comments} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_infotemplatparam 
+		WHERE
+        InfoTemplatParamID = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.Tinfotemplatparam">
+		UPDATE t_infotemplatparam SET
+	        InfoTemplatID = #{infoTemplatId} ,
+	        ParamName = #{paramName} ,
+	        Comments = #{comments}
+        WHERE 
+	        InfoTemplatParamID = #{infoTemplatParamId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tinfotemplatparam">
+		SELECT <include refid="columns"/>
+		FROM t_infotemplatparam 
+		WHERE
+		InfoTemplatParamID = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="Tinfotemplatparam">
+		SELECT A.InfoTemplatParamID,A.InfoTemplatID,A.ParamName,A.Comments,A.Creator,A.CreateTime,
+			 B.TemplateName,B.ServiceType,B.InfoType,B.InfoFlag,B.Header,B.Messasge
+		FROM t_infotemplatparam A LEFT JOIN t_infotemplat B
+		ON A.infoTemplatId =  B.infoTemplateId
+		WHERE 1=1 
+		 <if test="@Ognl@isNotEmpty(templateName)">AND B.TemplateName LIKE '%${templateName}%'</if>
+		 <if test="@Ognl@isNotEmpty(paramName)">AND A.ParamName LIKE '%${paramName}%'</if>
+		  <if test="@Ognl@isNotEmpty(comments)">AND A.Comments LIKE '%${comments}%'</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by InfoTemplatParamID  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_infotemplatparam 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	<delete id="delByTemplateId" parameterType="java.lang.Long">
+		DELETE FROM t_infotemplatparam 
+		WHERE
+        infoTemplatId = #{id} 
+	</delete>
+</mapper>
+

@@ -1,0 +1,1 @@
+function FormDialog(c){var b=__ctx+"/platform/form/bpmFormDef/dialog.ht";var a="dialogWidth:750px;dialogHeight:540px;help:0;status:0;scroll:1;center:1;resizable:1;";b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(d!=undefined){if(c.callback){c.callback.call(this,d.formKey,d.formName,d.tableId);}}}

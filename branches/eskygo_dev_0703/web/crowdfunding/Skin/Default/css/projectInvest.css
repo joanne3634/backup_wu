@@ -1,0 +1,26 @@
+div.queryResult{
+	color: #f50;
+	font-size:20px;
+	margin-left:20px；
+	margin-top:20px；
+	}
+
+.project_search{
+	color:#ff5500;
+	text-align:left;
+	width:850px;
+	height:30px;
+	font-size:18px;
+}
+.project_search a{
+	color:#ff5500;
+}
+.project_search input{
+	width: 180px;
+	height: 20px;
+}
+.project_search select{
+	width: 180px;
+	height: 23px;
+}
+	

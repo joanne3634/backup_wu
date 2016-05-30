@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TUserContact">
+	<resultMap id="TUserContact" type="com.deelon.loan.model.front.TUserContact">
+		<id property="contactId" column="Contact_id" jdbcType="NUMERIC" />
+		<result property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="CName" column="C_Name" jdbcType="VARCHAR" />
+		<result property="CRelation" column="C_Relation" jdbcType="VARCHAR" />
+		<result property="CMobile" column="C_Mobile" jdbcType="VARCHAR" />
+		<result property="COtherName" column="C_OtherName" jdbcType="VARCHAR" />
+		<result property="COtherRelation" column="C_OtherRelation"
+			jdbcType="VARCHAR" />
+		<result property="COtherMobile" column="C_OtherMobile"
+			jdbcType="VARCHAR" />
+		<result property="CUpdateTime" column="C_UpdateTime" jdbcType="TIMESTAMP" />
+		<result property="statusID" column="StatusID" jdbcType="VARCHAR" />
+		<result property="checkTime" column="CheckTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<select id="getUserContactByColumn" resultMap="TUserContact">
+		select
+		c.Contact_id,
+		c.user_id,
+		c.C_Name,
+		c.C_Relation,
+		c.C_Mobile,
+		c.C_OtherName,
+		c.C_OtherRelation,
+		c.C_OtherMobile,
+		c.C_UpdateTime
+		from
+		t_user_contact c
+		where
+		${columnName} =
+		#{columnValue}
+	</select>
+
+	<insert id="insertUserContact">
+		insert into
+		T_User_Contact(
+		<if test="@Ognl@isNotEmpty(userId)">user_id,</if>
+		<if test="@Ognl@isNotEmpty(CName)">C_Name,</if>
+		<if test="@Ognl@isNotEmpty(CRelation)">C_Relation,</if>
+		<if test="@Ognl@isNotEmpty(CMobile)">C_Mobile,</if>
+		<if test="@Ognl@isNotEmpty(COtherName)">C_OtherName,</if>
+		<if test="@Ognl@isNotEmpty(COtherRelation)">C_OtherRelation,</if>
+		<if test="@Ognl@isNotEmpty(COtherMobile)">C_OtherMobile,</if>
+		<if test="@Ognl@isNotEmpty(CUpdateTime)">C_UpdateTime,</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID,</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime,</if>
+		Contact_id)
+		VALUES
+		(
+		<if test="@Ognl@isNotEmpty(userId)">#{userId},</if>
+		<if test="@Ognl@isNotEmpty(CName)">#{CName},</if>
+		<if test="@Ognl@isNotEmpty(CRelation)">#{CRelation},</if>
+		<if test="@Ognl@isNotEmpty(CMobile)">#{CMobile},</if>
+		<if test="@Ognl@isNotEmpty(COtherName)">#{COtherName},</if>
+		<if test="@Ognl@isNotEmpty(COtherRelation)">#{COtherRelation},</if>
+		<if test="@Ognl@isNotEmpty(COtherMobile)">#{COtherMobile},</if>
+		<if test="@Ognl@isNotEmpty(CUpdateTime)">#{CUpdateTime},</if>
+		
+		<if test="@Ognl@isNotEmpty(statusID)">#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">#{checkTime},</if>
+		#{contactId}
+		)
+	</insert>
+
+	<update id="updateUserContact">
+		UPDATE
+		T_User_Contact
+		SET
+		<if test="@Ognl@isNotEmpty(CName)">C_Name=#{CName},</if>
+		<if test="@Ognl@isNotEmpty(CRelation)">C_Relation=#{CRelation},</if>
+		<if test="@Ognl@isNotEmpty(CMobile)">C_Mobile=#{CMobile},</if>
+		<if test="@Ognl@isNotEmpty(COtherName)">C_OtherName=#{COtherName},</if>
+		<if test="@Ognl@isNotEmpty(COtherRelation)">C_OtherRelation=#{COtherRelation},</if>
+		<if test="@Ognl@isNotEmpty(COtherMobile)">C_OtherMobile=#{COtherMobile},</if>
+		<if test="@Ognl@isNotEmpty(CUpdateTime)"> C_UpdateTime=#{CUpdateTime},</if>
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id=#{userId}
+		WHERE
+		Contact_id = #{contactId}
+	</update>
+	
+	<update id="updateUserContactByUserId">
+		UPDATE
+		T_User_Contact
+		SET
+		<if test="@Ognl@isNotEmpty(CName)">C_Name=#{CName},</if>
+		<if test="@Ognl@isNotEmpty(CRelation)">C_Relation=#{CRelation},</if>
+		<if test="@Ognl@isNotEmpty(CMobile)">C_Mobile=#{CMobile},</if>
+		<if test="@Ognl@isNotEmpty(COtherName)">C_OtherName=#{COtherName},</if>
+		<if test="@Ognl@isNotEmpty(COtherRelation)">C_OtherRelation=#{COtherRelation},</if>
+		<if test="@Ognl@isNotEmpty(COtherMobile)">C_OtherMobile=#{COtherMobile},</if>
+		<if test="@Ognl@isNotEmpty(CUpdateTime)"> C_UpdateTime=#{CUpdateTime},</if>
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id=#{userId}
+		WHERE
+		user_id=#{userId}
+	</update>
+	
+	<select id="queryEntityByUserId" resultMap="TUserContact">
+		SELECT * FROM
+		T_USER_CONTACT US WHERE US.user_id=#{userId}
+	</select>
+</mapper>

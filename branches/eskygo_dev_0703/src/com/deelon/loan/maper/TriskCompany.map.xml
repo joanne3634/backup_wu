@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TriskCompany">
+
+	<resultMap id="company" type="com.deelon.loan.model.front.TriskCompany">
+		<id property="companyId" column="Company_id"/>
+		<result property="name" column="RC_Name"/>
+		<result property="contact" column="RC_Contact"/>
+		<result property="address" column="RC_Address"/>
+		<result property="code" column="RC_Code"/>
+		<result property="phone" column="RC_Phone"/>
+		<result property="mobile" column="RC_Mobile"/>
+		<result property="fax" column="RC_Fax"/>
+		<result property="email" column="RC_Email"/>
+		<result property="summary" column="RC_Summary"/>
+		<result property="rcPaypwd" column="RC_PayPwd"/>
+		<result property="rcDefault" column="Rc_Default"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Company_id,RC_Name,RC_Contact,RC_Address,RC_Code,RC_Phone,RC_Mobile,RC_Fax,RC_Email,RC_Summary,Rc_Default,RC_PayPwd
+	</sql>
+	
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(companyId)">AND Company_id = #{companyId}</if>
+	       <if test="@Ognl@isNotEmpty(name)">AND RC_Name LIKE '%${name}%'</if>
+	       <if test="@Ognl@isNotEmpty(contact)">AND RC_Contact LIKE '%${contact}%'</if>
+	       <if test="@Ognl@isNotEmpty(address)">AND RC_Address LIKE '%${address}%'</if>
+	       <if test="@Ognl@isNotEmpty(code)">AND RC_Code = #{code}</if>
+	       <if test="@Ognl@isNotEmpty(phone)">AND RC_Phone = #{phone}</if>
+	       <if test="@Ognl@isNotEmpty(mobile)">AND RC_Mobile = #{mobile}</if>
+	       <if test="@Ognl@isNotEmpty(fax)">AND RC_Fax = #{fax}</if>
+	       <if test="@Ognl@isNotEmpty(email)">AND RC_Email = #{email}</if>
+	       <if test="@Ognl@isNotEmpty(summary)">AND RC_Summary = #{summary}</if>
+	       <if test="@Ognl@isNotEmpty(rcDefault)">AND Rc_Default = #{rcDefault}</if>
+	       <if test="@Ognl@isNotEmpty(rcPaypwd)">AND RC_PayPwd = #{rcPaypwd}</if>
+	</sql>
+	
+	<select id="findById" resultMap="company">
+		select * from t_risk_company WHERE Company_id = #{companyId}
+	</select>
+	
+	<select id="getAll" resultMap="company">
+		SELECT *
+		FROM t_risk_company
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Company_id  desc
+		</if>
+	</select>
+	
+	<insert id="add" parameterType="com.deelon.loan.model.front.TriskCompany">
+		INSERT INTO t_risk_company
+		(<include refid="columns"/>)
+		VALUES
+		(#{companyId} ,#{name} ,#{contact} ,#{address} ,#{code} ,#{phone} ,#{mobile} ,#{fax} ,#{email} ,#{summary} ,#{rcDefault} ,#{rcPaypwd})
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_risk_company WHERE Company_id = #{companyId}
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TriskCompany">
+		UPDATE t_risk_company SET
+	        RC_Name = #{name} ,
+	        RC_Contact = #{contact} ,
+	        RC_Address = #{address} ,
+	        RC_Code = #{code} ,
+	        RC_Phone = #{phone} ,
+	        RC_Mobile = #{mobile} ,
+	        RC_Fax = #{fax} ,
+	        RC_Email = #{email} ,
+	        RC_Summary = #{summary} ,
+	        RC_Default = #{rcDefault} ,
+	        RC_PayPwd = #{rcPaypwd} 
+        WHERE Company_id = #{companyId}
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="company">
+		SELECT <include refid="columns"/>
+		FROM t_risk_company WHERE Company_id = #{companyId}
+	</select>
+	
+	<select id="getDefaultRiskcom" resultMap="company">
+		SELECT rc.* FROM t_risk_company rc WHERE rc.RC_Default=1
+	</select>
+	
+	<update id="updateRcDefault" parameterType="com.deelon.loan.model.front.TriskCompany">
+		UPDATE t_risk_company SET RC_Default = 0
+	</update>
+</mapper>

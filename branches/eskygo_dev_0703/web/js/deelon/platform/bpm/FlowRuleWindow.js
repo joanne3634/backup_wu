@@ -1,0 +1,1 @@
+function FlowRuleWindow(c){var b=__ctx+"/platform/bpm/bpmNodeRule/edit.ht?deployId="+c.deployId+"&actDefId="+c.actDefId+"&nodeId="+c.nodeId+"&nodeName="+encodeURIComponent(c.nodeName);var a="dialogWidth=800px;dialogHeight=600px;help=0;status=0;scroll=1;center=0;resizable=1;";b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(c.callback){c.callback.call(this,d);}}

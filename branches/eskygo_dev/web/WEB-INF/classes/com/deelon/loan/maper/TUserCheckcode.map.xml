@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TUserCheckcode">
+
+	<resultMap id="TuserCheckcode" type="com.deelon.loan.model.front.TUserCheckcode">	
+        <id property="checkCodeId" column="CheckCode_id" />
+        <result property="userId" column="user_id"/>
+        <result property="typeId" column="TypeID"/>
+        <result property="fromObj" column="FromObj"/>
+        <result property="checkCode" column="CheckCode"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="isHaveSend" column="IsHaveSend"/>
+        <result property="isPass" column="IsPass"/>
+	</resultMap>
+	
+	<sql id="columns">
+		CheckCode_id,user_id,TypeID,FromObj,CheckCode,CreateTime,IsHaveSend,IsPass
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(checkCodeId)">AND CheckCode_id = #{checkCodeId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(fromObj)">AND FromObj = #{fromObj}</if>
+	       <if test="@Ognl@isNotEmpty(checkCode)">AND CheckCode = #{checkCode}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isHaveSend)">AND IsHaveSend = #{isHaveSend}</if>
+	       <if test="@Ognl@isNotEmpty(isPass)">AND IsPass = #{isPass}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TUserCheckcode">
+		INSERT INTO t_user_checkcode
+		(<include refid="columns"/>)
+		VALUES
+		(#{checkCodeId} ,#{userId} ,#{typeId} ,#{fromObj} ,#{checkCode} ,#{createTime} ,#{isHaveSend} ,#{isPass}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_checkcode 
+		WHERE
+        CheckCode_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TUserCheckcode">
+		UPDATE t_user_checkcode SET
+	        user_id = #{userId} ,
+	        TypeID = #{typeId} ,
+	        FromObj = #{fromObj} ,
+	        CheckCode = #{checkCode} ,
+	        CreateTime = #{createTime} ,
+	        IsHaveSend = #{isHaveSend} ,
+	        IsPass = #{isPass} 
+        WHERE 
+	        CheckCode_id = #{checkCodeId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserCheckcode">
+		SELECT <include refid="columns"/>
+		FROM t_user_checkcode 
+		WHERE 1=1 and
+		CheckCode_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserCheckcode">
+		SELECT <include refid="columns"/>
+		FROM t_user_checkcode   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by CheckCode_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_checkcode 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+		<select id="getUserCheckcodeByUserIdAndCode" resultMap="TuserCheckcode">
+		select
+		c.*
+		from t_user_checkcode c
+		where
+		c.user_id = #{userId} and c.CheckCode = #{code} 
+		ORDER BY
+		c.createTime
+		desc
+	</select>
+	
+</mapper>
+

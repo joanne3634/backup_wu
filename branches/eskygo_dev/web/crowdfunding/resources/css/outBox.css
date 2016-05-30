@@ -1,0 +1,30 @@
+#bodyDIV .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#bodyDIV .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+#bodyDIV form{
+    margin-top: 2em;
+}
+#bodyDIV table{
+    margin:0 0 2em 0em;
+}
+#bodyDIV .AfIndiv{
+ margin:1em 0 1em 0em;
+}
+
+#bodyDIV td{
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+#pagination ul.pagination {
+    display: inline-block;
+}

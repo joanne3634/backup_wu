@@ -1,0 +1,62 @@
+
+.projectList {
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+
+.projectList li {
+    display: block;
+    border-bottom: 2px dashed #e6e6e6;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+.projectList li .detail {
+    padding-left: 2em;
+}
+
+.projectList li .detail .avatar {
+    display: inline-block;
+    width: 200px;
+    height: 120px;
+}
+
+
+.projectList li .detail .avatar .ink-button.blue {
+    width: 100%;
+    padding: 2px 10px;
+    margin-top: 1em;
+}
+
+.projectList li .detail .info {
+    position: relative;
+    min-width: 500px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 1.5em;
+}
+
+.projectList li .detail .info .title {
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 1em;
+}
+
+.projectList li .detail .count p {
+    margin: 0;
+    line-height: 2.2;
+}
+
+.projectList li .detail .count em {
+    color: #cd0102;
+    font-style: normal;
+}
+
+.projectList li .buttons {
+    margin-top: 1em;
+}
+
+#pagination ul.pagination {
+    display: inline-block;
+}

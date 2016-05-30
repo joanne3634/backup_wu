@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deelon.loan.model.front.TUserCompany">
+	<resultMap type="com.deelon.loan.model.front.TUserCompany" id="TUserCompany">
+		<id property="companyId" column="Company_id" jdbcType="NUMERIC" />
+		<result property="userId" column="user_id" jdbcType="NUMERIC" />
+		<result property="CJobsStatus" column="C_JobsStatus" jdbcType="VARCHAR" />
+		<result property="CIncomePayWay" column="C_IncomePayWay"
+			jdbcType="VARCHAR" />
+		<result property="CNature" column="C_Nature" jdbcType="VARCHAR" />
+		<result property="CIndustry" column="C_Industry" jdbcType="VARCHAR" />
+		<result property="CIncomeScope" column="C_IncomeScope" jdbcType="VARCHAR" />
+		<result property="CWorkYears" column="C_WorkYears" jdbcType="VARCHAR" />
+		<result property="CName" column="C_Name" jdbcType="VARCHAR" />
+		<result property="cSize" column="C_Size" jdbcType="VARCHAR" />
+		<result property="CDeptName" column="C_DeptName" jdbcType="VARCHAR" />
+		<result property="CAreaid" column="C_Areaid" jdbcType="VARCHAR" />
+		<result property="CAddress" column="C_Address" jdbcType="VARCHAR" />
+		<result property="CPhone" column="C_Phone" jdbcType="VARCHAR" />
+		<result property="CUpdateTime" column="C_UpdateTime" jdbcType="TIMESTAMP" />
+		<result property="CPost" column="C_Post" jdbcType="VARCHAR" />
+		<result property="statusID" column="StatusID" jdbcType="VARCHAR" />
+		<result property="checkTime" column="CheckTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<insert id="insertUserCompany">
+		insert into
+		T_User_Company
+		(
+		C_JobsStatus,C_IncomePayWay,C_Nature,C_Industry,C_IncomeScope,C_WorkYears,C_Name,C_Size,C_DeptName,
+		C_Address,C_Phone,C_UpdateTime,C_Post,C_Areaid,StatusID,CheckTime,user_id
+		)
+		VALUES
+		(
+		#{CJobsStatus},#{CIncomePayWay},#{CNature},#{CIndustry},#{CIncomeScope},#{CWorkYears},#{CName},
+		#{cSize},#{CDeptName},#{CAddress},#{CPhone},#{CUpdateTime},#{CPost},#{CAreaid},#{statusID},
+		#{checkTime},#{userId}
+		)
+	</insert>
+
+	<update id="updateUserCompanyByUserId">
+		UPDATE
+		T_User_Company
+		SET
+		<if test="@Ognl@isNotEmpty(CJobsStatus)">C_JobsStatus=#{CJobsStatus},</if>
+		<if test="@Ognl@isNotEmpty(CIncomePayWay)">C_IncomePayWay=#{CIncomePayWay},</if>
+		<if test="@Ognl@isNotEmpty(CNature)">C_Nature=#{CNature},</if>
+		<if test="@Ognl@isNotEmpty(CIndustry)">C_Industry=#{CIndustry},</if>
+		<if test="@Ognl@isNotEmpty(CIncomeScope)">C_IncomeScope=#{CIncomeScope},</if>
+		<if test="@Ognl@isNotEmpty(CWorkYears)">C_WorkYears=#{CWorkYears},</if>
+		<if test="@Ognl@isNotEmpty(CName)">C_Name=#{CName},</if>
+		<if test="@Ognl@isNotEmpty(CDeptName)">C_DeptName=#{CDeptName},</if>
+		<if test="@Ognl@isNotEmpty(CAreaid)">C_Areaid=#{CAreaid},</if>
+		<if test="@Ognl@isNotEmpty(CAreaid)">C_Address=#{CAddress},</if>
+		<if test="@Ognl@isNotEmpty(CPhone)">C_Phone=#{CPhone},</if>
+		<if test="@Ognl@isNotEmpty(CUpdateTime)">C_UpdateTime=#{CUpdateTime},</if>
+		<if test="@Ognl@isNotEmpty(cSize)">C_Size=#{cSize},</if>
+		<if test="@Ognl@isNotEmpty(CPost)">C_Post=#{CPost},</if>
+		<if test="@Ognl@isNotEmpty(statusID)">StatusID=#{statusID},</if>
+		<if test="@Ognl@isNotEmpty(checkTime)">CheckTime=#{checkTime},</if>
+		user_id = #{userId}
+		WHERE
+		user_id=#{userId}
+	</update>
+
+	<select id="getUserCompanyByColumn" resultMap="TUserCompany">
+		SELECT
+		c.*
+		FROM
+		T_User_Company c
+		WHERE
+		${columnName} =
+		#{columnValue}
+	</select>
+
+	<select id="queryEntityByUserId" resultMap="TUserCompany">
+		SELECT * FROM
+		T_USER_COMPANY US WHERE US.user_id=#{userId}
+	</select>
+</mapper>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TprojectTransfer">
+
+	<resultMap id="TprojectTransfer" type="com.deelon.loan.model.sysManager.TprojectTransfer">	
+        <id property="transferId" column="Transfer_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="investId" column="Invest_id"/>
+        <result property="transferorId" column="TransferorID"/>
+        <result property="claimsSum" column="ClaimsSum"/>
+        <result property="upsetPrice" column="UpsetPrice"/>
+        <result property="auctionWay" column="AuctionWay"/>
+        <result property="auctionCount" column="AuctionCount"/>
+        <result property="viewCount" column="ViewCount"/>
+        <result property="description" column="Description"/>
+        <result property="openDays" column="OpenDays"/>
+        <result property="openDate" column="OpenDate"/>
+        <result property="closeDate" column="CloseDate"/>
+        <result property="turnoverTime" column="TurnoverTime"/>
+        <result property="bidPrice" column="BidPrice"/>
+        <result property="bidder" column="Bidder"/>
+        <result property="bidTime" column="BidTime"/>
+        <result property="isCancel" column="IsCancel"/>
+        <result property="stateId" column="StateID"/>
+        <result property="isCheck" column="IsCheck"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="remarks" column="Remarks"/>
+        <result property="lenderName" column="lenderName"/>
+        <result property="transferorName" column="transferorName"/>
+        <result property="recentPayDate" column="PR_PlanPayTime"/>
+        <result property="finalBidderName" column="finalBidderName"/>
+        <result property="hightestPrice" column="hightestPrice"/>
+        <result property="prCurrent" column="prCurrent"/>
+         <result property="fileId" column="fileId"/> 
+        <association property="project" resultMap="com.deelon.loan.model.front.TProject.Tproject"/>
+        <association property="projectInvest" resultMap="com.deelon.loan.model.front.TProjectInvest.projectInvest"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Transfer_id,Project_id,Invest_id,TransferorID,ClaimsSum,UpsetPrice,AuctionWay,AuctionCount,ViewCount,Description,OpenDays,OpenDate,CloseDate,TurnoverTime,BidPrice,Bidder,BidTime,IsCancel,StateID,IsCheck,Checker,CheckTime,Remarks
+	</sql>
+	<sql id="tproject_transfer_columns">
+		a.Transfer_id,a.Project_id,a.Invest_id,a.TransferorID,a.ClaimsSum,a.UpsetPrice,a.AuctionWay,a.AuctionCount,
+		a.ViewCount,a.Description,a.OpenDays,a.OpenDate,a.CloseDate,a.TurnoverTime,a.BidPrice,a.Bidder,a.BidTime,a.IsCancel,
+		a.StateID,a.IsCheck,a.Checker,a.CheckTime,Remarks
+	</sql>
+	<sql id="tproject_columns">
+		b.ProductsLoan_id,b.P_Name,b.P_StatusID,b.P_TypeID,b.P_CertifiLevel,b.P_RepayWay,b.P_Rate_In,b.P_Rate_Out,b.P_IsLate,b.P_Deadline,b.lenderName
+	</sql>
+	<sql id="tproject_invest_columns">
+		c.PI_Investors,c.PI_Amount,c.PI_EffectAmount,c.PI_TransferStateID
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(transferId)">AND Transfer_id = #{transferId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(investId)">AND Invest_id = #{investId}</if>
+	       <if test="@Ognl@isNotEmpty(transferorId)">AND TransferorID = #{transferorId}</if>
+	       <if test="@Ognl@isNotEmpty(claimsSum)">AND ClaimsSum = #{claimsSum}</if>
+	       <if test="@Ognl@isNotEmpty(upsetPrice)">AND UpsetPrice = #{upsetPrice}</if>
+	       <if test="@Ognl@isNotEmpty(auctionWay)">AND AuctionWay = #{auctionWay}</if>
+	       <if test="@Ognl@isNotEmpty(auctionCount)">AND AuctionCount = #{auctionCount}</if>
+	       <if test="@Ognl@isNotEmpty(viewCount)">AND ViewCount = #{viewCount}</if>
+	       <if test="@Ognl@isNotEmpty(description)">AND Description = #{description}</if>
+	       <if test="@Ognl@isNotEmpty(openDays)">AND OpenDays = #{openDays}</if>
+	       <if test="@Ognl@isNotEmpty(openDateBegin)">AND OpenDate >= #{openDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(openDateEnd)">AND OpenDate &lt;= #{openDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(closeDateBegin)">AND CloseDate >= #{closeDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(closeDateEnd)">AND CloseDate &lt;= #{closeDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(turnoverTimeBegin)">AND TurnoverTime >= #{turnoverTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(turnoverTimeEnd)">AND TurnoverTime &lt;= #{turnoverTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(bidPrice)">AND BidPrice = #{bidPrice}</if>
+	       <if test="@Ognl@isNotEmpty(bidder)">AND Bidder = #{bidder}</if>
+	       <if test="@Ognl@isNotEmpty(bidTimeBegin)">AND BidTime >= #{bidTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(bidTimeEnd)">AND BidTime &lt;= #{bidTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isCancel)">AND IsCancel = #{isCancel}</if>
+	       <if test="@Ognl@isNotEmpty(stateId)">AND StateID = #{stateId}</if>
+	       <if test="@Ognl@isNotEmpty(isCheck)">AND IsCheck = #{isCheck}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+	</sql>
+	<sql id="dynamicWhere2">			
+	       <if test="@Ognl@isNotEmpty(transferId)">AND a.Transfer_id = #{transferId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(investId)">AND Invest_id = #{investId}</if>
+	       <if test="@Ognl@isNotEmpty(transferorId)">AND TransferorID = #{transferorId}</if>
+	       <if test="@Ognl@isNotEmpty(claimsSum)">AND ClaimsSum = #{claimsSum}</if>
+	       <if test="@Ognl@isNotEmpty(upsetPrice)">AND UpsetPrice = #{upsetPrice}</if>
+	       <if test="@Ognl@isNotEmpty(auctionWay)">AND AuctionWay = #{auctionWay}</if>
+	       <if test="@Ognl@isNotEmpty(auctionCount)">AND AuctionCount = #{auctionCount}</if>
+	       <if test="@Ognl@isNotEmpty(viewCount)">AND ViewCount = #{viewCount}</if>
+	       <if test="@Ognl@isNotEmpty(description)">AND Description = #{description}</if>
+	       <if test="@Ognl@isNotEmpty(openDays)">AND OpenDays = #{openDays}</if>
+	       <if test="@Ognl@isNotEmpty(openDateBegin)">AND OpenDate >= #{openDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(openDateEnd)">AND OpenDate &lt;= #{openDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(closeDateBegin)">AND CloseDate >= #{closeDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(closeDateEnd)">AND CloseDate &lt;= #{closeDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(turnoverTimeBegin)">AND TurnoverTime >= #{turnoverTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(turnoverTimeEnd)">AND TurnoverTime &lt;= #{turnoverTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(bidPrice)">AND BidPrice = #{bidPrice}</if>
+	       <if test="@Ognl@isNotEmpty(bidder)">AND Bidder = #{bidder}</if>
+	       <if test="@Ognl@isNotEmpty(bidTimeBegin)">AND BidTime >= #{bidTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(bidTimeEnd)">AND BidTime &lt;= #{bidTimeEnd}</if>
+	       <if test="@Ognl@isNotEmpty(isCancel)">AND IsCancel = #{isCancel}</if>
+	       <if test="@Ognl@isNotEmpty(stateId)">AND StateID = #{stateId}</if>
+	       <if test="@Ognl@isNotEmpty(isCheck)">AND IsCheck = #{isCheck}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(pApplicantName)">AND b.lenderName = #{pApplicantName}</if>
+		   <if test="@Ognl@isNotEmpty(transferorName)">AND d.realName = #{transferorName}</if>
+		   <if test="@Ognl@isNotEmpty(bidderName)">AND j.RealName = #{bidderName}</if>
+		   <if test="@Ognl@isNotEmpty(pname)">AND b.p_name LIKE #{pname}</if>
+	</sql>
+	<sql id="dynamicWhere3">			
+	       <if test="@Ognl@isNotEmpty(claimsSumBegin)">AND a.ClaimsSum >= #{claimsSumBegin}</if>
+	       <if test="@Ognl@isNotEmpty(claimsSumEnd)">AND a.ClaimsSum &lt;= #{claimsSumEnd}</if>
+	       <if test="@Ognl@isNotEmpty(upsetPriceBegin)">AND a.UpsetPrice >= #{upsetPriceBegin}</if>
+	       <if test="@Ognl@isNotEmpty(upsetPriceEnd)">AND a.UpsetPrice &lt;= #{upsetPriceEnd}</if>
+	       <if test="@Ognl@isNotEmpty(auctionWay)">AND a.AuctionWay = #{auctionWay}</if>
+	       <if test="@Ognl@isNotEmpty(isLate)">AND b.p_islate = #{isLate}</if>
+	       <if test="@Ognl@isNotEmpty(openDateBelow)">AND a.openDate >= #{openDateBelow}</if> <!-- 多少天以内 -->
+	       <if test="@Ognl@isNotEmpty(openDateAbove)">AND a.openDate &lt;= #{openDateAbove}</if> <!-- 多少天以上 -->
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TprojectTransfer">
+		INSERT INTO t_project_transfer
+		(<include refid="columns"/>)
+		VALUES
+		(#{transferId} ,#{projectId} ,#{investId} ,#{transferorId} ,#{claimsSum} ,#{upsetPrice} ,#{auctionWay} ,#{auctionCount} ,#{viewCount} ,#{description} ,#{openDays} ,#{openDate} ,#{closeDate} ,#{turnoverTime} ,#{bidPrice} ,#{bidder} ,#{bidTime} ,#{isCancel} ,#{stateId} ,#{isCheck} ,#{checker} ,#{checkTime},#{remarks}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_project_transfer 
+		WHERE
+        Transfer_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TprojectTransfer">
+		UPDATE t_project_transfer SET
+	        Project_id = #{projectId} ,
+	        Invest_id = #{investId} ,
+	        TransferorID = #{transferorId} ,
+	        ClaimsSum = #{claimsSum} ,
+	        UpsetPrice = #{upsetPrice} ,
+	        AuctionWay = #{auctionWay} ,
+	        AuctionCount = #{auctionCount} ,
+	        ViewCount = #{viewCount} ,
+	        Description = #{description} ,
+	        OpenDays = #{openDays} ,
+	        OpenDate = #{openDate} ,
+	        CloseDate = #{closeDate} ,
+	        TurnoverTime = #{turnoverTime} ,
+	        BidPrice = #{bidPrice} ,
+	        Bidder = #{bidder} ,
+	        BidTime = #{bidTime} ,
+	        IsCancel = #{isCancel} ,
+	        StateID = #{stateId} ,
+	        IsCheck = #{isCheck} ,
+	        Checker = #{checker} ,
+	        CheckTime = #{checkTime} ,
+	        Remarks = #{remarks}
+        WHERE 
+	        Transfer_id = #{transferId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TprojectTransfer">
+		SELECT <include refid="columns"/>,prCurrent 
+		FROM t_project_transfer a Left join 
+		(SELECT tr.Project_id pid,MAX(tr.PR_Current) as prCurrent From T_Project_Repayment tr where tr.PR_isDone=1 group by tr.Project_id) tr 
+		on tr.pid=a.Project_id 
+		WHERE 
+		Transfer_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TprojectTransfer">
+		SELECT <include refid="tproject_transfer_columns"/>,
+			   <include refid="tproject_columns"/>,
+			   <include refid="tproject_invest_columns"/>,
+			   d.RealName AS transferorName,g.PR_PlanPayTime,i.hightestPrice,j.RealName AS finalBidderName
+		FROM t_project_transfer a 
+		LEFT JOIN (SELECT h.*,e.RealName AS lenderName FROM t_project h LEFT JOIN t_user e ON(h.P_Applicant = e.user_id)) b
+		ON (a.project_id = b.project_id)  
+		LEFT JOIN t_project_invest c
+		ON (a.invest_id = c.invest_id)
+		LEFT JOIN(select min(PR_PlanPayTime) as PR_PlanPayTime,project_id from t_project_repayment f where f.PR_PlanPayTime > now() group by project_id) g
+		ON (a.project_id = g.project_id)
+		LEFT JOIN t_user d
+		ON (a.TransferorID = d.user_id)
+		LEFT JOIN (SELECT Transfer_id,max(offerPrice) as hightestPrice FROM t_project_auction m WHERE IsCancel=0 GROUP BY Transfer_id) i
+		ON (a.Transfer_id = i.Transfer_id)
+		LEFT JOIN t_user j
+		ON (a.bidder = j.user_id)
+		WHERE 1=1
+		<include refid="dynamicWhere2" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Transfer_id  desc
+		</if>
+	</select>
+	<select id="getAllFront" resultMap="TprojectTransfer"> <!-- 前台列表 -->
+		SELECT <include refid="tproject_transfer_columns"/>,<include refid="tproject_columns"/>,b.fileId,c.loginName AS transferorName
+		FROM t_project_transfer a 
+		LEFT JOIN t_user c
+		ON (a.TransferorID = c.user_id)
+		LEFT JOIN (SELECT h.*,s.fileId,e.loginName AS lenderName FROM t_project h 
+		LEFT JOIN (select sf.* from (SELECT sf1.* from sys_file sf1 ORDER BY sf1.CREATETIME DESC ) sf GROUP BY sf.CREATORID) s
+		on h.P_Applicant=s.CREATORID  and s.delFlag=0 LEFT JOIN t_user e ON(h.P_Applicant = e.user_id)) b
+		ON (a.project_id = b.project_id)
+		WHERE a.OpenDate &lt;= #{nowtime} AND a.CloseDate >= #{nowtime}  <!-- 使用绑定，不用now()函数 -->
+		AND a.StateID = '1' AND a.isCheck = 1 AND a.isCancel = 0
+		<include refid="dynamicWhere3" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Transfer_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_project_transfer 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

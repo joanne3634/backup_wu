@@ -1,0 +1,50 @@
+
+.commentsList {
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+.commentsList li {
+    display: block;
+    overflow: hidden;
+}
+.commentsList .imgContainer img{
+    border-radius: 50%;
+}
+.commentsList .infos  p{
+    margin:0.5em;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.commentsList .infos  p span{
+    font-size: 20px;
+    color:#00a0e9;
+}
+.commentsList .infos .commentsTime{
+    font-size:12px;
+    color:#ccc;
+}
+.commentsList .infos  p .replyIcon{
+    padding-left: 1em;
+    font-size: 12px;
+    color:#ccc;
+}
+.commentsList .infos .replyTime{
+    font-size:12px;
+    color:#ccc;
+}
+.moreContents{
+    display: block;
+}
+.moreContents a{
+    color: #1d2088;
+}
+#commentsText{
+    min-height: 86px;
+}
+#commentsText textarea{
+    width: 100%;
+}

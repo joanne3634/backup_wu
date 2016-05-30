@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.TSetHomepage">
+
+	<resultMap id="TsetHomepage" type="com.deelon.loan.model.sysManager.TSetHomepage">	
+        <id property="homePageId" column="HomePage_id" />
+        <result property="code_num" column="Code_Num"/>
+        <result property="rdesc_name" column="Desc_Name"/>
+        <result property="isVisiable" column="IsVisiable"/>
+        <result property="records" column="Records"/>
+        <result property="sortID" column="SortID"/>
+        <result property="alignID" column="AlignID"/>
+	</resultMap>
+	
+	<sql id="columns">
+		HomePage_id,code_num,Desc_Name,IsVisiable,Records,SortID,AlignID
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(homePageId)">AND HomePage_id = #{homePageId}</if>
+	       <if test="@Ognl@isNotEmpty(code_num)">AND Code_Num = #{code_num}</if>
+	       <if test="@Ognl@isNotEmpty(rdesc_name)">AND Desc_Name = #{rdesc_name}</if>
+	       <if test="@Ognl@isNotEmpty(isVisiable)">AND IsVisiable = #{isVisiable}</if>
+	       <if test="@Ognl@isNotEmpty(records)">AND Records = #{records}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.TSetHomepage">
+		INSERT INTO t_set_homepage
+		(<include refid="columns"/>)
+		VALUES
+		(#{homePageId} ,#{code_num} ,#{rdesc_name} ,#{isVisiable} ,#{records},#{sortID},#{alignID}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_set_homepage 
+		WHERE
+        HomePage_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.TSetHomepage">
+	
+			UPDATE t_set_homepage SET
+		        Code_Num = #{code_num} ,
+		        Desc_Name = #{rdesc_name} ,
+		        IsVisiable = #{isVisiable} ,
+		        Records = #{records}, 
+		        AlignID=#{alignID},
+		        SortID=#{sortID}
+	        WHERE 
+		        HomePage_id = #{homePageId} 
+	   
+	</update>
+    
+    <select id="getById" parameterType="java.lang.String" resultMap="TsetHomepage">
+		SELECT <include refid="columns"/>
+		FROM t_set_homepage 
+		WHERE 1=1 and
+		HomePage_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TsetHomepage">
+		SELECT <include refid="columns"/>
+		FROM t_set_homepage   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Code_Num  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_set_homepage 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+   
+	
+</mapper>
+

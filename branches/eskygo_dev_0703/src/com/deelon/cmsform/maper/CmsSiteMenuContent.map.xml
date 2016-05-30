@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.cmsform.model.site.CmsSiteMenuContent">
+
+	<resultMap id="CmsSiteMenuContent" type="com.deelon.cmsform.model.site.CmsSiteMenuContent">	
+        <id property="siteMenuContentId" column="site_menu_content_id" />
+        <result property="siteMenuId" column="site_menu_id"/>
+        <result property="contentTitle" column="content_title"/>
+        <result property="contentIsurl" column="content_isurl"/>
+        <result property="contentUrl" column="content_url"/>
+        <result property="contentMinTitle" column="content_min_title"/>
+        <result property="contentTag" column="content_tag"/>
+        <result property="contentSummary" column="content_summary"/>
+        <result property="contentAuthor" column="content_author"/>
+        <result property="contentSort" column="content_sort"/>
+        <result property="contentCreateDate" column="content_create_date"/>
+        <result property="contentUpdateDate" column="content_update_date"/>
+        <result property="contentTemplet" column="content_templet"/>
+        <result property="contentText" column="content_text"/>
+        <result property="contentFileIds" column="content_fileIds"/>
+        <result property="contentNoticeObject" column="content_notice_object"/>
+        <result property="contentNoticeType" column="content_notice_type"/>
+        <result property="contentIfPublish" column="content_if_publish"/>
+	</resultMap>
+	
+	<sql id="columns">
+		site_menu_content_id,site_menu_id,content_title,content_text,content_fileIds,content_isurl,content_url,content_min_title,content_tag,content_summary,content_author,content_sort,content_create_date,content_update_date,content_templet,content_notice_object,content_notice_type,content_if_publish
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(siteMenuContentId)">AND site_menu_content_id = #{siteMenuContentId}</if>
+	       <if test="@Ognl@isNotEmpty(siteMenuId)">AND site_menu_id = #{siteMenuId}</if>
+	       <if test="@Ognl@isNotEmpty(contentIsurl)">AND content_isurl = #{contentIsurl}</if>
+	       <if test="@Ognl@isNotEmpty(contentUrl)">AND content_url = #{contentUrl}</if>
+	       <if test="@Ognl@isNotEmpty(contentMinTitle)">AND content_min_title = #{contentMinTitle}</if>
+	       <if test="@Ognl@isNotEmpty(contentTag)">AND content_tag = #{contentTag}</if>
+	       <if test="@Ognl@isNotEmpty(contentSummary)">AND content_summary = #{contentSummary}</if>
+	       <if test="@Ognl@isNotEmpty(contentAuthor)">AND content_author LIKE '%${contentAuthor}%'</if>
+	       <if test="@Ognl@isNotEmpty(contentSort)">AND content_sort = #{contentSort}</if>
+	       <if test="@Ognl@isNotEmpty(contentCreateDateBegin)">AND content_create_date >= #{contentCreateDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(contentCreateDateEnd)">AND content_create_date &lt;= #{contentCreateDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(contentUpdateDateBegin)">AND content_update_date >= #{contentUpdateDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(contentUpdateDateEnd)">AND content_update_date &lt;= #{contentUpdateDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(contentTemplet)">AND content_templet = #{contentTemplet}</if>
+	       	<if test="@Ognl@isNotEmpty(menuPath)">AND site_menu_id in( select site_menu_id from cms_site_menu where menu_path =  #{menuPath} )</if>
+	       <if test="@Ognl@isNotEmpty(menuIdList)"> AND site_menu_id in 
+				<foreach item="item" index="index" collection="menuIdList" open="(" separator="," close=")">
+                        ${item}
+       			</foreach>
+		 </if> 
+	       <if test="@Ognl@isNotEmpty(contentNoticeType)">AND (content_notice_type = #{contentNoticeType} or ifNull(content_notice_type,'')='')</if> 
+	       <if test="@Ognl@isNotEmpty(contentIfPublish)">AND content_if_publish = #{contentIfPublish}</if>
+	       <!-- 
+	       				根据“通知对象”，添加权限控制控制后的语句
+	       <if test="@Ognl@isNotEmpty(contentNoticeType)">AND 
+	       
+	       (
+			case #{contentNoticeType} 
+			when '1' then 1 = 1
+			<if test="@Ognl@isNotEmpty(currUserId)@isNotEmpty(contentNoticeObjectList)">
+			when '2' then #{currUserId} in 
+				<foreach item="item" index="index" collection="contentNoticeObjectList" open="(" separator="," close=")">
+                        #{item}
+       			</foreach>
+			</if>
+				
+		<if test="@Ognl@isNotEmpty(currUserId)@isNotEmpty(contentNoticeObjectList)">
+		when '3' then #{currUserId} in (select  userId from sys_user_role where roleId in
+			<foreach item="item" index="index" collection="contentNoticeObjectList" open="(" separator="," close=")">
+                       #{item}
+      			</foreach>
+		 or roleId = '1' )
+			
+		</if>
+				
+			else 0 = 1 end
+		)
+	     </if> -->
+	</sql>
+	<insert id="add" parameterType="com.deelon.cmsform.model.site.CmsSiteMenuContent">
+		INSERT INTO cms_site_menu_content
+		(<include refid="columns"/>)
+		VALUES
+		(#{siteMenuContentId} ,#{siteMenuId} ,#{contentTitle} ,#{contentText},#{contentFileIds},#{contentIsurl} ,#{contentUrl} ,#{contentMinTitle} ,#{contentTag} ,#{contentSummary} ,#{contentAuthor} ,#{contentSort} ,#{contentCreateDate} ,#{contentUpdateDate} ,#{contentTemplet},#{contentNoticeObject},#{contentNoticeType},#{contentIfPublish})
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM cms_site_menu_content 
+		WHERE
+        site_menu_content_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.cmsform.model.site.CmsSiteMenuContent">
+		UPDATE cms_site_menu_content SET
+	        site_menu_id = #{siteMenuId} ,
+	        content_title = #{contentTitle} ,
+	        content_text = #{contentText},
+	        content_isurl = #{contentIsurl} ,
+	        content_url = #{contentUrl} ,
+	        content_min_title = #{contentMinTitle} ,
+	        content_tag = #{contentTag} ,
+	        content_summary = #{contentSummary} ,
+	        content_author = #{contentAuthor} ,
+	        content_sort = #{contentSort} ,
+	        content_create_date = #{contentCreateDate} ,
+	        content_update_date = #{contentUpdateDate} ,
+	        content_templet = #{contentTemplet},
+	        content_fileIds = #{contentFileIds}, 
+	        content_notice_object = #{contentNoticeObject},
+	        content_notice_type = #{contentNoticeType},
+	        content_if_publish = #{contentIfPublish} 
+        WHERE 
+	        site_menu_content_id = #{siteMenuContentId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="CmsSiteMenuContent">
+		SELECT <include refid="columns"/>
+		FROM cms_site_menu_content
+		WHERE
+		site_menu_content_id = #{id} 
+	</select>
+	
+	<select id="getBySearch" resultMap="CmsSiteMenuContent">
+		SELECT <include refid="columns"/>
+		FROM cms_site_menu_content
+		WHERE content_if_publish =#{contentIfPublish}  AND
+		content_title LIKE '%${contentTitle}%' 
+	</select>
+	
+	<select id="getAll" resultMap="CmsSiteMenuContent">
+		SELECT <include refid="columns"/>
+		FROM cms_site_menu_content   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+	       <if test="@Ognl@isNotEmpty(contentTitle)">AND content_title like '%${contentTitle}%'</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ifNull(content_sort,9999) asc,content_create_date  desc
+		</if>
+	</select>
+	
+		<select id="getMenuid" resultMap="CmsSiteMenuContent">
+		SELECT <include refid="columns"/>
+		FROM cms_site_menu_content   
+		WHERE 1=1  
+		<if test="@Ognl@isNotEmpty(contentTitle)">AND content_title like '%${contentTitle}%'</if>
+		AND site_menu_id =(SELECT site_menu_id FROM cms_site_menu WHERE menu_path='${menu_path}') and content_if_publish=1
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ifNull(content_sort,9999) asc,content_create_date  desc
+		</if>
+	</select>
+	
+	<select id="getContentTitle" resultMap="CmsSiteMenuContent">
+		SELECT <include refid="columns"/>
+		FROM cms_site_menu_content   
+		WHERE 1=1 AND content_if_publish=1  AND site_menu_id IN (SELECT site_menu_id FROM cms_site_menu WHERE menu_path='${menu_path}') AND content_title like '%${content_title}%'
+   </select>
+	
+    <select id="count" resultType="long">
+        SELECT count(*) FROM cms_site_menu_content 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

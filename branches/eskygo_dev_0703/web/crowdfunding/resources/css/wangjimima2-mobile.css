@@ -1,0 +1,86 @@
+#findByQuestion {
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+
+
+
+#findByQuestion .zhmm-inputlist {
+    margin-bottom: 20px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 34px;
+    font-size: 14px;
+}
+#findByQuestion .zhmm-inputlist .formContainer{
+    border: 1px solid #F4F4F4;
+    border-radius: 35px;
+    padding: 50px 0px 30px 0px;
+}
+#findByQuestion .zhmm-inputlist .formContainer .desc{
+    padding-bottom: 2em;
+}
+#findByQuestion .zhmm-inputlist .formContainer span{
+    color: #01A0E9;
+}
+#findByQuestion .zhmm-inputlist .formContainer input {
+    width: 20em;
+}
+
+#findByQuestion .zhmm-inputlist .formContainer .code {
+    width: 6em;
+}
+
+#findByQuestion .zhmm-inputlist .formContainer .validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#findByQuestion .zhmm-inputlist .formContainer .refreshCode {
+    color: #333;
+}
+
+#findByQuestion .zhmm-inputlist .formContainer .refreshCode:hover,
+#findByQuestion .zhmm-inputlist .formContainer .refreshCode:active {
+    color: #444;
+}
+
+
+
+#findByQuestion .zhmm-buzhouzhiyin {
+     height: 64px;
+     margin-top: 30px;
+     margin-bottom: 30px;
+ }
+
+#findByQuestion .zhmm-buzhouzhiyin>div {
+    display: inline-block;
+}
+#findByQuestion .zhmm-buzhouzhiyin .zhmm-buzounum {
+    width: 100px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #bcbcbc;
+}
+#findByQuestion .zhmm-buzounum.one{
+      color:#01A0E9;
+  }
+#findByQuestion .zhmm-buzhouzhiyin .zhmm-buzounum>div {
+    height: 50px;
+    line-height: 50px;
+    font-size: 40px;
+}
+#findByQuestion .zhmm-buzhouzhiyin .zhmm-fengexian {
+    width: 80px;
+    height: 29px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-top: 6px solid #dcdcdc;
+}
+#findByQuestion .zhmm-fengexian.one{
+    border-color:#01A0E9;
+}
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TProjectContract">
+
+	<resultMap id="TprojectContract" type="com.deelon.loan.model.front.TProjectContract">	
+        <id property="contractId" column="Contract_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pcNo" column="PC_NO"/>
+        <result property="pcstarDate" column="PC_StarDate"/>
+        <result property="pcendDate" column="PC_EndDate"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+	</resultMap>
+	
+	<resultMap id="TprojectContract_n" type="com.deelon.loan.model.front.TProjectContract">	
+        <id property="contractId" column="Contract_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pcNo" column="PC_NO"/>
+        <result property="pcstarDate" column="PC_StarDate"/>
+        <result property="pcendDate" column="PC_EndDate"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="proName" column="P_Name"/>
+        <result property="ploanReal" column="P_LoanReal"/>
+        <result property="pdeadline" column="P_Deadline"/>
+        
+	</resultMap>
+	
+	<sql id="columns">
+		Contract_id,Project_id,PC_NO,PC_StarDate,PC_EndDate,Creator,CreateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(contractId)">AND Contract_id = #{contractId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pcNo)">AND PC_NO = #{pcNo}</if>
+	       <if test="@Ognl@isNotEmpty(pcstarDateBegin)">AND PC_StarDate >= #{pcstarDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcstarDateEnd)">AND PC_StarDate &lt;= #{pcstarDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(pcendDateBegin)">AND PC_EndDate >= #{pcendDateBegin}</if>
+		   <if test="@Ognl@isNotEmpty(pcendDateEnd)">AND PC_EndDate &lt;= #{pcendDateEnd}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TProjectContract">
+		INSERT INTO t_project_contract
+		(<include refid="columns"/>)
+		VALUES
+		(#{contractId} ,#{projectId} ,#{pcNo} ,#{pcstarDate} ,#{pcendDate} ,#{creator} ,#{createTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_project_contract 
+		WHERE
+        Contract_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TProjectContract">
+		UPDATE t_project_contract SET
+	        Project_id = #{projectId} ,
+	        PC_NO = #{pcNo} ,
+	        PC_StarDate = #{pcstarDate} ,
+	        PC_EndDate = #{pcendDate} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} 
+        WHERE 
+	        Contract_id = #{contractId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TprojectContract">
+		SELECT <include refid="columns"/>
+		FROM t_project_contract 
+		WHERE 1=1 and
+		Contract_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TprojectContract">
+		SELECT <include refid="columns"/>
+		FROM t_project_contract   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Contract_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_project_contract 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <select id="getAllContarct" resultMap="TprojectContract_n">
+    	select pc.*,p.P_Name,p.P_LoanReal,p.P_Deadline from t_project_contract pc left join T_Project p
+    	on pc.Project_id=p.Project_id order by pc.CreateTime desc
+    </select>
+
+	
+</mapper>
+

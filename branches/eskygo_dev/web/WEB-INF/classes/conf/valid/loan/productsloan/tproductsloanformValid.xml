@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_productsloan-->
+		
+		     <form name="tproductsloan">
+		     	<field property="productsLoanId" depends="digits">
+					<arg position="0" key="tproductsloan.productsLoanId" />
+				</field>
+			 	<field property="pname" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.pname" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="pamountMin" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pamountMin" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="pamountMax" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pamountMax" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="prateMin" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.prateMin" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="prateMax" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.prateMax" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="pdeadlineMin" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pdeadlineMin" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="pdeadlineMax" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pdeadlineMax" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="pauditDaysMin" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pauditDaysMin" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="pauditDaysMax" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pauditDaysMax" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="pvotingDaysMin" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pvotingDaysMin" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="pvotingDaysMax" depends="required,maxlength,number">	
+		         <arg position="0" key="tproductsloan.pvotingDaysMax" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="prepayWay" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.prepayWay" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="pfee" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.pfee" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				 </var>
+		        </field>
+			 	<field property="pgood" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.pgood" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				 </var>
+		        </field>
+			 	<field property="precommend" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.precommend" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				 </var>
+		        </field>
+			 	<field property="prepayGuide" depends="required,maxlength">	
+		         <arg position="0" key="tproductsloan.prepayGuide" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>150</var-value>
+				 </var>
+		        </field>
+			 	<field property="creator" depends="required">	
+		         <arg position="0" key="tproductsloan.creator" />		        
+		        </field>
+			 	<field property="createTime" depends="maxlength">	
+		         <arg position="0" key="tproductsloan.createTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_productsloan-->
+</formset>
+</form-validation>
+ 
+
+ 

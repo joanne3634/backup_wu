@@ -1,0 +1,91 @@
+body {
+    padding: 0;
+}
+
+#pageForm {
+    margin: 0 0 0 0;
+    padding: 1em 0 2em 0;
+}
+
+#financingProList {
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+
+#financingProList li {
+    display: block;
+    border-bottom: 2px dashed #e6e6e6;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+#financingProList li .item {
+    display: block;
+    overflow: hidden;
+}
+
+#financingProList li .item .img-container {
+    float: left;
+    width: 340px;
+    height: 190px;
+}
+
+#financingProList li .item .img-container img {
+    width: 100%;
+}
+
+#financingProList li .item .project-info {
+    display: inline-block;
+    line-height: 2.3;
+    margin-left: 1em;
+    font-size: 18px;
+}
+
+#financingProList li .item .project-info p {
+    margin-bottom: 0;
+}
+
+#financingProList li .item .project-info em {
+    font-style: normal;
+    color: #cd0102;
+}
+
+#financingProList li .item .project-info p.title {
+    line-height: 1.4;
+    font-weight: bold;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+#financingProList li .filter-info {
+    font-size: 14px;
+    width: 340px;
+    height: 40px;
+}
+
+#financingProList li .filter-info i {
+    color: #cd0102;
+}
+
+#financingProList li .desc {
+    margin-bottom: 1em;
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+#financingProList li .date span{
+    display: inline-block;
+    margin-right: 4em;
+}
+
+#pagination ul.pagination {
+    display: inline-block;
+}
+

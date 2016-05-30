@@ -1,0 +1,68 @@
+@charset "utf-8"; 
+/*css reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, blockquote, textarea, p, th, td ,table {margin:0;padding:0;}
+body, input, select, button, textarea { font-size: 14px;line-height:30px\9\0;*padding:8px 0; *height:auto; font-family: Tahoma, Geneva, sans-serif;}/*统一不同浏览器字体大小*/
+table {border-collapse:collapse;}
+button { cursor: pointer;}
+fieldset{border:0;}
+img{vertical-align:middle; border:0 none;}/*图片去边框并居中*/
+address, caption, cite, code, dfn, em, th, var {font-style:normal;font-weight:normal;}
+ol, ul,li{list-style:none;}
+caption, th {text-align:left;}
+h1, h2, h3, h4, h5, h6 {font-size:100%;font-weight:normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+p{text-align:left;}/*Sevnup add------文本左对齐*/
+i,cite,em{font-style:normal;font-weight:normal;}
+abbr, acronym {border:0;}
+a {text-decoration:none;color:#000;}
+body { text-align:center;font-size:12px; font-family:Arial,Verdana,"微软雅黑";background:#fff;}
+q:before,q:after {content:'';}  /*<q></q>标签之间的文字两头加上引号(")*/ 
+blr:expression(this.onFocus=this.blur()); /* IE Opera去掉点击链接时的虚线外框 */
+outline:none; /* FF Opera去掉点击链接时的虚线外框 */}
+area {blr:expression(this.onFocus=this.blur()); } /* 图片热点去掉点击链接时的虚线外框 */
+a:focus{-moz-outline-style: none; /* FF去掉点击链接时的虚线外框 */}
+/*html{overflow:-moz-scrollbars-vertical;}/*在FF浏览器下始终显示滚动条 到达不太浏览器效果一致*/*/
+html{overflow:auto;}
+.clear {clear:both}
+.f_l{float:left;}
+.f_city{float:left;
+background:#ff9900;
+}
+.f_r{float:right}
+.f_c{
+	margin-left: auto;
+	margin-right: auto;
+}
+.clearfix:after{content: " ";display: block;clear: both;height: 0;}
+.clearfix{zoom:1}
+
+/*滚动条 样式*/
+
+html{ scrollbar-face-color:#f6f6f6; scrollbar-highlight-color:#fff; scrollbar-shadow-color:#eeeeee; scrollbar-3dlight-color:#eeeeee; scrollbar-arrow-color:#000; scrollbar-track-color:#fff; scrollbar-darkshadow-color:#fff; }
+/*分页样式*/
+.paging-index-box{
+	margin: 30px 0px 30px 0px;
+}
+.paging-index-box a {
+    display: inline-block;
+    height: 22px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    line-height: 22px;
+    color: #999;
+    border: 1px solid #999;
+}
+.paging-index-box a:hover ,.paging-index-box  .pagehover{
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff5200;
+    border-color: #ff5200;
+}
+.paging-index-box .page-num {
+    color: #ff5200;
+}
+
+.head img {
+    width: 151px;
+}

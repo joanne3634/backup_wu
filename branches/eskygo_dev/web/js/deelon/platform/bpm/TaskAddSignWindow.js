@@ -1,0 +1,1 @@
+function TaskAddSignWindow(c){if(!c){c={};}var b=__ctx+"/platform/bpm/task/toAddSign.ht?taskId="+c.taskId;var a="dialogWidth=500px;dialogHeight=200px;help=0;status=0;scroll=0;center=1";b=b.getNewUrl();var d=window.showModalDialog(b,"",a);if(c.callback){if(d!=undefined){c.callback.call(this);}}}

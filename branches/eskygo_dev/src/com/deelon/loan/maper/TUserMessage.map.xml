@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.deelon.loan.model.aboutus.TUserMessage">
+
+	<resultMap id="TUserMessage" type="com.deelon.loan.model.aboutus.TUserMessage">
+		<id property="messageId" column="message_id" />
+		<id property="userId" column="user_id" />
+		<result property="messageTitle" column="message_title" />
+		<result property="messageType" column="message_type" />
+		<result property="messageContent" column="message_content" />
+		<result property="messageRemark" column="message_remark" />
+		<result property="messageState" column="message_state" />
+		<result property="messageIsReply" column="message_IsReply" />
+		<result property="messageReplyWay" column="message_ReplyWay" />
+		<result property="messageReplyAbout" column="message_ReplyAbout" />
+		<result property="messageMobile" column="message_Mobile" />
+		<result property="messageEmail" column="message_Email" />
+	</resultMap>
+
+	<sql id="columns">
+		message_id,user_id,message_title,message_type,message_content,message_remark,message_state,message_IsReply,message_ReplyWay,message_ReplyAbout,message_Mobile,message_Email
+	</sql>
+	<sql id="dynamicWhere">
+		<if test="@Ognl@isNotEmpty(messageId)">AND message_id = #{messageId}</if>
+		<if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+		<if test="@Ognl@isNotEmpty(messageTitle)">AND message_title LIKE '%${messageTitle}%'</if>
+		<if test="@Ognl@isNotEmpty(messageType)">AND message_type = #{messageType}</if>
+		<if test="@Ognl@isNotEmpty(messageContent)">AND message_content = #{messageContent}</if>
+		<if test="@Ognl@isNotEmpty(messageRemark)">AND message_remark = #{messageRemark}</if>
+		<if test="@Ognl@isNotEmpty(messageState)">AND message_state = #{messageState}</if>
+		<if test="@Ognl@isNotEmpty(messageIsReply)">AND message_IsReply = #{messageIsReply}</if>
+		<if test="@Ognl@isNotEmpty(messageReplyWay)">AND message_ReplyWay = #{messageReplyWay}</if>
+		<if test="@Ognl@isNotEmpty(messageReplyAbout)">AND message_ReplyAbout = #{messageReplyAbout}</if>
+		<if test="@Ognl@isNotEmpty(messageMobile)">AND message_Mobile = #{messageMobile}</if>
+		<if test="@Ognl@isNotEmpty(messageEmail)">AND message_Email = #{messageEmail}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.aboutus.TUserMessage">
+		INSERT INTO t_user_message
+		(
+		<include refid="columns" />
+		)
+		VALUES
+		(#{messageId},#{userId} ,#{messageTitle} ,#{messageType}
+		,#{messageContent} ,#{messageRemark}
+		,#{messageState},#{messageIsReply}
+		,#{messageReplyWay},#{messageReplyAbout},#{messageMobile},#{messageEmail}
+		)
+	</insert>
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_message
+		WHERE
+		message_id = #{messageId}
+	</delete>
+	<update id="update" parameterType="com.deelon.loan.model.aboutus.TUserMessage">
+		UPDATE t_user_message SET
+		user_id = #{userId} ,
+		message_title = #{messageTitle} ,
+		message_type =
+		#{messageType} ,
+		message_content = #{messageContent} ,
+		message_remark =
+		#{messageRemark} ,
+		message_state = #{messageState},
+		message_IsReply =
+		#{messageIsReply},
+		message_ReplyWay = #{messageReplyWay},
+		message_ReplyAbout = #{messageReplyAbout},
+		message_Mobile =
+		#{messageMobile},
+		message_Email = #{messageEmail}
+		WHERE
+		message_id = #{messageId}
+	</update>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="TUserMessage">
+		SELECT
+		<include refid="columns" />
+		FROM t_user_message
+		WHERE
+		message_id = #{messageId}
+	</select>
+
+	<select id="getAll" resultMap="TUserMessage">
+		SELECT
+		<include refid="columns" />
+		FROM t_user_message
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by message_id desc
+		</if>
+	</select>
+
+	<select id="getUserId" resultMap="TUserMessage">
+		SELECT
+		<include refid="columns" />
+		FROM t_user_message
+		WHERE 1=1 and user_id=#{userId} 
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT count(*) FROM t_user_message
+		<include refid="dynamicWhere" />
+	</select>
+
+
+</mapper>
+

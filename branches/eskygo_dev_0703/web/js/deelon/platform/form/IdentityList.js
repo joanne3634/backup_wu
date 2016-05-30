@@ -1,0 +1,1 @@
+function IdentityList(d){var b=__ctx+"/platform/system/identity/selector.ht";var a="dialogWidth:800px;dialogHeight:700px;help:0;status:1;scroll:1;center:1;resizable:1";b=b.getNewUrl();var c=window.showModalDialog(b,"",a);if(c!=undefined){d.call(this,c.alias,c.name);}}

@@ -1,0 +1,503 @@
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+	
+	<security:http  entry-point-ref="multipleAuthenticationLoginEntry" lowercase-comparisons="true" servlet-api-provision="true">
+		<security:intercept-url pattern="/js/**" filters="none" />
+		<security:intercept-url pattern="/commons/**" filters="none" />
+		<security:intercept-url pattern="/media/**" filters="none" />
+		<security:intercept-url pattern="/403*" filters="none" />
+		<security:intercept-url pattern="/404*" filters="none" />
+		<security:intercept-url pattern="/500*" filters="none" />
+		<security:intercept-url pattern="/servlet/ValidCode" filters="none"/>
+		<!--
+		<security:session-management invalid-session-url="/loginRedirect.ht">
+			<security:concurrency-control error-if-maximum-exceeded="false" max-sessions="1" expired-url="/loginRedirect.ht"/>
+		</security:session-management>
+		-->
+		<!--使用表单登录-->
+		<security:remember-me key="deelonPrivateKey"/> 
+		<security:logout logout-url="/logout" logout-success-url="/loginRedirect.ht"/> 
+		<security:custom-filter  ref="aopFilter" after="FORM_LOGIN_FILTER" />
+		
+		
+		<security:custom-filter  before="FILTER_SECURITY_INTERCEPTOR" ref="permissionFilter" />
+		<security:custom-filter  after="FILTER_SECURITY_INTERCEPTOR" ref="loggedInUserAccessFilter" />
+		<security:access-denied-handler ref="htAccessDeniedHandler"/>
+		<!-- <security:custom-filter position="SWITCH_USER_FILTER" ref="switchUserProcessingFilter"/> -->
+		
+	</security:http>
+	
+	
+	
+	<bean id="actionPageMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="mobile" value="/mobileLogin.jsp"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	
+	
+	<!-- <bean id="switchUserProcessingFilter" class="com.deelon.core.web.filter.HtSwitchUserFilter">
+            <property name="userDetailsService" ref="sysUserDao" />
+            <property name="switchUserUrl" value="/j_spring_security_switch_user" />
+            <property name="exitUserUrl" value="/j_spring_security_exit_user" />
+            <property name="targetUrl" value="/platform/console/main.ht" />
+    </bean> -->
+
+	
+	<!--登录入口定义-->
+	<bean id="multipleAuthenticationLoginEntry"    class="com.deelon.core.web.security.MultipleAuthenticationLoginEntry">  
+        <property name="defaultLoginUrl" value="/index-web.jsp"/>  
+        <property name="directUrlResolvers">  
+            <list>  
+                <ref bean="p2pservice"/>  
+                <ref bean="weixinLoginEntry"/>  
+            </list>  
+        </property>  
+    </bean>  
+  	
+  	 <bean id="p2pservice" class="com.deelon.core.web.security.RequestUriDirectUrlResolver">  
+        <property name="pattern" value="/login"/>  
+        <property name="directUrl" value="/login.jsp"/>  
+    </bean>
+    
+  	<!-- 跳转到手机登陆页 -->
+    <bean id="mobileLoginEntry" class="com.deelon.core.web.security.RequestUriDirectUrlResolver">  
+        <property name="pattern" value="/mobile"/>  
+        <property name="directUrl" value="/mobileLogin.jsp"/>  
+    </bean>  
+  	<!-- 跳转到微信手机登陆页 -->
+    <bean id="weixinLoginEntry" class="com.deelon.core.web.security.RequestUriDirectUrlResolver">  
+        <property name="pattern" value="/weixin"/>  
+        <property name="directUrl" value="/loginWeixin.jsp"/>  
+    </bean>
+	<bean id="htAccessDeniedHandler" class="com.deelon.core.web.security.HtAccessDeniedHandler">
+		<property name="accessDeniedUrl" value="/commons/403.jsp"></property>
+	</bean>
+		
+	<!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
+	<security:authentication-manager alias="authenticationManager" >
+		<security:authentication-provider user-service-ref="sysUserDao">
+			<security:password-encoder hash="sha-256" base64="true"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<bean id="aopFilter" class="com.deelon.core.web.filter.AopFilter"></bean>
+
+	<!-- 一个自定义的filter，必须包含authenticationManager,accessDecisionManager,securityMetadataSource三个属性，我们的所有控制将在这三个类中实现 -->
+
+	<bean id="permissionFilter" class="com.deelon.core.web.filter.PermissionFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="securityMetadataSource" ref="securityMetadataSource" />
+	</bean>
+
+	<!-- 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 -->
+	<bean id="accessDecisionManager" class="com.deelon.core.web.security.HtDecisionManager" />
+
+	<bean id="loggedInUserAccessFilter" class="com.wuyouchou.crowdfunding.security.LoggedInUserOnlySecurityFilter">
+		<property name="listType" value="BLACKLIST"/>
+		<property name="filterList">
+			<list>
+				<value>/crowdfunding/tcuserPersonalData/editAccountData.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountPwdPage.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountPwd.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountTradingPwdPage.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountTradingPwd.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/myAccount.ht</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 资源源数据定义，即定义某一资源可以被哪些角色访问 -->
+	<bean id="securityMetadataSource"
+		class="com.deelon.core.web.security.HtSecurityMetadataSource" scope="singleton" >
+		
+		<property name="anonymousUrls">
+			<set>
+				<!-- 众筹前台begin -->
+				<value>/crowdfunding/tcuserInvestor/tcuserInvestorPage.ht</value>
+				<value>/crowdfunding/tcuserInvestor/tcuserInvestorPageList.ht</value>
+				<value>/crowdfunding/tcuserInvestor/tcuserInvestorPageDetails.ht</value>
+				<value>/crowdfunding/tcuserInvestor/tcuserMsgremindSend.ht</value>
+				<value>/crowdfunding/tcuserInvestor/tcuserMsgremindPageDetails.ht</value>
+				<value>/crowdfunding/tcuserInvestor/zijianMyProjectPage.ht</value>
+				<value>/user/validateCode.ht</value>
+				
+				
+				<value>/application/*</value>
+				<value>/crowdfunding/tcproject/*</value>
+ 				<value>/platform/system/sysFile/*</value>
+ 				<value>/wuyouchou/system/sysFile/*</value>
+				<value>/crowdfunding/tcuserPersonalData/editAccountData.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountPwdPage.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountPwd.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountTradingPwdPage.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/changeAccountTradingPwd.ht</value>
+				<value>/crowdfunding/tcuserPersonalData/myAccount.ht</value>
+				
+				<value>/crowdfunding/front/tofinancingPro.ht</value>
+				<value>/crowdfunding/front/favorite.ht</value>
+				<value>/crowdfunding/front/tofinancingProList.ht</value>
+				<value>/crowdfunding/front/toProDetails.ht</value>
+				<value>/crowdfunding/front/sendPrivateMsg.ht</value>
+				<value>/crowdfunding/front/validateCode.ht</value>
+				<value>/crowdfunding/front/toSuccessProList.ht</value>
+				<value>/crowdfunding/front/openSendInfoWin.ht</value>
+				<value>/crowdfunding/front/toInvestPersonList.ht</value>
+ 				<value>/crowdfunding/front/sendTalkmsg.ht</value>
+ 				<value>/crowdfunding/front/replyMsg.ht</value>
+ 				<value>/crowdfunding/front/toProComment.ht</value>
+ 				<value>/crowdfunding/front/toProCommentAll.ht</value>
+ 				<value>/crowdfunding/front/toProCommentAllIframe.ht</value>
+ 				<value>/crowdfunding/memberCenter/drawBackMoney.ht</value> 				
+ 				<value>/crowdfunding/memberCenter/toApplyEnqPage.ht</value>
+ 				<value>/crowdfunding/memberCenter/toEnquiryRecords.ht</value>
+ 				<value>/crowdfunding/memberCenter/toPullBackRecords.ht</value>
+ 				<value>/crowdfunding/memberCenter/toRechargePage.ht</value>
+ 				<value>/crowdfunding/memberCenter/toinvestList.ht</value>
+ 				<value>/crowdfunding/memberCenter/getDrawBack.ht</value>
+ 				<value>/crowdfunding/memberCenter/todrawBack.ht</value>
+ 				<value>/crowdfunding/memberCenter/toinquiryRecogniz.ht</value>
+ 				<value>/crowdfunding/memberCenter/*</value>
+ 				<value>/payform/pay/*</value>
+ 				<value>/tcproject/ProjectComments/ProjectCommentsicList.ht</value>
+ 				<value>/crowdfunding/front/openinquiryIframe.ht</value>
+ 				<value>/crowdfunding/front/doInvest.ht</value>
+ 				<value>/crowdfunding/front/openinquiryIframeNext.ht</value>
+ 				<value>/crowdfunding/memberCenter/askpriceForUser.ht</value>
+ 				<value>/crowdfunding/front/financingSuccessProList.ht</value>
+ 				<value>/crowdfunding/memberCenter/todrawBackRecords.ht</value>
+ 				<value>/crowdfunding/front/downloadFile.ht</value>
+ 				<value>/crowdfunding/front/updateInvest.ht</value>
+ 				<value>/crowdfunding/front/addtoInvestMoney.ht</value>
+ 				<value>/crowdfunding/memberCenter/toRechargeRecords.ht</value>
+ 				<value>/user/applyLeaderInit.ht</value>
+ 				<value>/user/subApplyLeaderInfo.ht</value>
+ 				<value>/crowdfunding/onlinePayment/rechargePage.ht</value>
+ 				<value>/crowdfunding/onlinePayment/getBankCardNo.ht</value>
+ 				<value>/crowdfunding/onlinePayment/vali_callBankFunc_save.ht</value>
+ 				<value>/crowdfunding/onlinePayment/toDrawMnPage.ht</value>
+ 				<value>/crowdfunding/onlinePayment/drawMoneyAction.ht</value>
+ 				<value>/crowdfunding/onlinePayment/payAskPriceMoney.ht</value>
+ 				<value>/crowdfunding/onlinePayment/ispayAskPriceMoney.ht</value>
+ 				<value>/crowdfunding/onlinePayment/getNewBalace.ht</value>
+ 				<value>/crowdfunding/onlinePayment/*</value>
+ 				<value>/crowdfunding/upload/*</value>
+ 				<value>/upload.jsp</value>
+ 				<value>/photocut.jsp</value>
+ 				<value>/cutpreview.jsp</value>
+ 				<value>/cut.jsp</value>
+ 				<value>/crowdfunding/tcuserPersonalData/accountSafeCenter.ht</value>
+ 				<value>/crowdfunding/front/tcprojectinvest/toRoonpay.ht</value>
+				<!-- 众筹前台end -->
+			   
+			    <value>/error.ht</value>
+				<value>/mobileLogin.jsp</value>
+				<value>/mobileLogin.ht</value>
+				<value>/platform/mobile/lang/changLang.ht</value>
+				<value>/loginRedirect.ht</value>
+				<value>/login.jsp</value>
+				<value>/login.ht</value>
+				<value>/loginWeixin.jsp</value> 
+				<value>/bpmImage</value>
+				<value>/bkImages/*</value>
+				<value>/platform/bpm/processRun/processImage.ht</value>
+				<value>/platform/bpm/processRun/getFlowStatusByInstanceId.ht</value>
+				<value>/platform/bpm/processRun/taskUser.ht</value>
+				<value>/platform/bpm/taskOpinion/list.ht</value>				
+				<value>/wuyouchou/system/sysFile/getFileById.ht*</value>
+				<value>/platform/system/sysFile/uploadDialog.ht*</value>
+				<value>/platform/system/sysFile/fileUpload.ht*</value>
+				<value>/wuyouchou/system/sysFile/fileUpload.ht*</value>
+				<value>/platform/system/sysFile/delByFileId.ht*</value>
+				<value>/wuyouchou/system/sysFile/delByFileId.ht*</value>
+				<value>/ShowReport.wx*</value> 
+				<value>/platform/bpm/bpmDefinition/getXmlImport.ht</value>				 
+				<!--loan start  -->	
+				<value>/user/file/fileUpload.ht*</value>
+				<value>loan/sysManager/tuserauditmat/getFileById.ht*</value>		
+				<value>/user/login.ht</value>
+				<value>/index-web.jsp</value>
+				<value>/index-web.ht</value>
+				<value>/loginWeb.jsp</value>
+				<value>/user/ajaxGetJilian.ht</value>
+				<value>/safe/wangjimimapage.ht</value>	
+				<value>/safe/valiBindEmail.ht</value>
+				<value>/safe/valiBindEmailcode.ht</value>
+				<value>/safe/emailresetpass.ht</value>
+				<value>/safe/valiBindPhone.ht</value>
+				<value>/safe/valiBindMobilecode.ht</value>
+				<value>/safe/mobileresetpass.ht</value>
+				<value>/safe/valiBindQuesion.ht</value>
+				<value>/safe/valiBindquesionAnswer.ht</value>
+				<value>/safe/quesionresetpass.ht</value>
+				<value>/safe/validatePhone.ht</value>
+				<value>/safe/validateEmail.ht</value>
+				<value>/safe/validateBindEmail.ht</value>
+				<value>/safe/ValichangephoneWheresfEmail.ht</value>
+				<value>/safe/ValichangeemailWheresfEmail.ht</value>
+				<value>/safe/ValichangephoneCode.ht</value>
+				<value>/safe/ValichangeEmailCode.ht</value>
+				<value>/loan/myAccount/bindBandCard.ht</value>
+				<value>/loan/sysManager/tprojecttransfer/doAction.ht</value>
+				<value>/loginWeb.ht</value>
+				<value>/user/registerInit.ht</value>
+				<value>/user/validateUserName.ht</value>
+				<value>/user/validateEmail.ht</value>
+				<value>/user/validatePhone.ht</value>
+				<value>/user/validateIdNo.ht</value>
+				<value>/user/register.ht</value>
+				<value>/user/valiLoginTimeout.ht</value>
+				<value>/loginWeb/derectLoginWPage.ht</value>
+				<value>/loan/front/retrievePwd.ht</value>
+				<value>/loan/front/retrievePwdByMail.ht</value>
+				<value>/loan/front/checkResetLink.ht</value>
+				<value>/loan/front/sendEmailSuc.ht</value>
+				<value>/loan/front/modifyPwdPage.ht</value>
+				<value>/loan/front/changePwdPage.ht</value>
+				<value>/loan/front/updatechangePwd.ht</value>
+				<value>/loan/front/updatechangeTradePwd.ht</value>
+				<value>/loan/front/updatePwd.ht</value>
+				<value>/loan/front/emailValid.ht</value>
+				<value>/servlet/ValidCode</value>
+				<value>/loan/front/questionBackPwd.ht</value>
+				<value>/loan/front/mobileSendValiCode.ht</value>
+				<value>/loan/front/questionBackPwd.ht</value>
+				<value>/loan/front/questionBackPwdPage.ht</value>
+				<value>/loan/front/questionBackPwdPage2.ht</value>
+				<value>/loan/front/validationQA.ht</value>
+				<value>/loan/front/valiFromMobileCode.ht</value>
+				<value>/loan/front/toMobileValiCodePage.ht</value>
+				<value>/loan/aboutus/LeaveMessage.ht</value>
+				<value>/loan/aboutus/NoticeList.ht</value>
+				<value>/loan/aboutus/NoticeDetails.ht</value>
+				<value>/loan/aboutus/LinksList.ht</value>
+				<value>/loan/aboutus/HelpCenterList.ht</value>
+				<value>/loan/aboutus/TermsServiceList.ht</value>
+				<value>/loan/aboutus/HouseholdFinanceGuideList.ht</value>
+				<value>/loan/aboutus/toHelpCenter.ht</value>
+				<value>/loan/aboutus/HelpCenterDetails.ht</value>
+				<value>/loan/aboutus/HelpCenterQuery.ht</value> 	 
+			   <value>/loan/aboutus/Messagesave.ht</value> 		
+			   <value>/loan/aboutus/CheckTheRecords.ht</value> 	
+			   	<value>/loan/aboutus/tUserSuccessstory/fontlist.ht</value> 
+			   	<value>/loan/aboutus/CheckTheRecordsDetails.ht</value> 
+			    <value>/loan/tuserMsgRemind/MsgReminds.ht</value>
+			    <value>/loan/tuserMsgRemind/getTUserMsgCount.ht</value>
+			    <value>/loan/tuserMsgRemind/MsgRemindDetails.ht</value>
+			    <value>/loan/sysManager/*</value>
+			   	<value>/loan/sysManager/usersToReport/MyComplaint.ht</value>
+			   	<value>/loan/sysManager/usersToReport/MyComplaintDetails.ht</value>
+			   	<value>/loan/sysManager/usersToReport/Repoetsave.ht</value>
+			   	<value>/loan/sysManager/preliminaryAudit/saveBreak.ht</value>
+			   	<value>/loan/aboutus/tUserSuccessstory/SuceesstoryDetails.ht</value> 
+			   	<value>/loan/LegalPolicy/LegalPolicyList.ht</value>
+			   	<value>/loan/ThePrincipalProtection/ThePrincipalProtection.ht</value>
+			   	
+				<value>/site/AboutUs/AboutUs.ht</value>
+				<value>/site/AboutUs/AboutUsList.ht</value>
+				<value>/site/MediaReport/MediaReportList.ht</value>
+				<value>/site/MediaReport/MediaReportDetails.ht</value> 
+				<value>/site/CooperatingAgency/CooperatingAgencyList.ht</value>
+				<value>/site/CompanyNews/CompanyNewsList.ht</value>
+				<value>/site/CompanyNews/CompanyNewsDetails.ht</value>
+			    <value>/site/IndustryInformation/IndustryInformationList.ht</value>
+			     <value>/site/IndustryInformation/IndustryInformationDetails.ht</value> 
+			     <value>/site/TeamIntroduction/TeamIntroductionList.ht</value>
+			     <value>/site/ContactUs/ContactUsList.ht</value>
+			     <value>/site/JoinUs/JoinUsList.ht</value>			     
+				<value>/cmsform/site/CooperatingAgencyList.ht</value>
+				<value>/safe/fillSafeQuestion.ht</value>
+				<value>/safe/safeQuestionInit.ht</value>
+				<value>/safe/bindPhone.ht</value>
+				<value>/safe/sendPhoneValiCode.ht</value>
+				<value>/safe/validatePhoneCode.ht</value>
+				<value>/safe/bindEmail.ht</value>
+				<value>/safe/sendEmailResetPhoneValiCode.ht</value>
+				<value>/safe/sendEmailValiCode.ht</value>
+				<value>/safe/validateEmailCode.ht</value>
+				<value>/safe/safeQuestionChange.ht</value>
+				<value>/safe/safeQuestionReset.ht</value>				
+				<value>/safe/validateSingleEmail.ht</value>
+				<value>/safe/validateSingleEmailCode.ht</value>
+				<value>/attention/attentionProject.ht</value>
+				<value>/home/securityCenter.ht</value>
+				<value>/user/editUserInfoInit.ht</value>
+				<value>/user/editBaseInfo.ht</value>
+				<value>/user/editFamilyInfo.ht</value>
+				<value>/user/editContactInfo.ht</value>
+				<value>/user/editCompanyInfo.ht</value>
+				<value>/user/xyhrzziliaoInfo.ht</value>
+				<value>/user/uploadInfo.ht</value>
+				<value>/user/logout.ht</value>
+				<value>/myAccount/transferDetails.ht</value>
+				<value>/myAccount/addTransferAction.ht</value>
+				<value>/myAccount/checkTransferAction.ht</value>
+				<value>/myAccount/addTransferInfo.ht</value>
+				<value>/myAccount/transferback.ht</value>
+				<value>/myAccount/transfer.ht</value>
+				<value>/myAccount/auctionback.ht</value>
+				<value>/myAccount/auction.ht</value>
+				<value>/myAccount/cancelauction.ht</value>
+				<value>/myAccount/securityCenter.ht</value>
+				<value>/project/getTenderProjects.ht</value>
+				<value>/project/showProjectDetail.ht</value>
+				<value>/project/bidProject.ht</value>
+				<value>/project/getTenderProjectsListPage.ht</value>
+				<value>/settings/addSettings.ht</value>
+				<value>/settings/addSettings.ht</value>
+				<value>/settings/addSettings.ht</value>
+				<value>/settings/addSettings.ht</value>
+				<value>/settings/addSettings.ht</value>
+				<value>/loan/productsloan/projectincomelist.ht</value>
+				<value>/loan/productsloan/project.ht</value>
+				<value>/loan/productsloan/productDetails.ht</value>
+				<value>/loan/productsloan/productsLoanList.ht</value>
+				<value>/loan/myAccount/myaccountPage.ht</value>
+				<value>/project/myloanstatistics.ht</value>
+				<value>/project/myinprojects.ht</value>
+				<value>/project/projectRepayment.ht</value>
+				<value>/project/repayment.ht</value>
+				<value>/project/myallinprojects.ht</value>
+				<value>/project/ajaxallinprojects.ht</value>
+				<value>/project/myapprojects.ht</value>
+				<value>/project/saveProject.ht</value>
+				
+				<value>/project/investList.ht</value>
+				
+				<value>/project/apply/getUserLimit.ht</value>
+				<value>/loan/productsloan/productsLoanList.ht</value>
+				<value>/loan/productsloan/addProductLoan.ht</value>
+				<value>/user/file/uploadDialog.ht</value>
+				<value>/loan/myAccount/toAutoBidding.ht</value>
+				<value>/loan/myAccount/saveToUserSetAuto.ht</value>
+				<value>/loan/myAccount/getBiddingHistory.ht</value>
+				<value>/loan/myAccount/toManagerMoneyCount.ht</value>
+				<value>/loan/myAccount/toIFocusBorrow.ht</value>
+				<value>/loan/myAccount/toMyaccount.ht</value>
+				<value>/loan/myAccount/toMyTender.ht</value>
+				<value>/loan/myAccount/toIFocusBorrow.ht</value>
+				<value>/loan/myAccount/*</value>
+				<value>/loan/productsloan/rate.ht</value>
+				<value>/tenderProjects/getTenderProjects.ht</value>
+				<value>/tenderProjects/getTenderProjectsListPage.ht</value> 
+				<value>/weixin/*</value> 
+				<value>/wxproject/*</value> 
+				<value>/loan/aboutus/tUserSuccessstory/fontlist.ht</value> 
+				<value>/myAccount/transferList.ht</value>
+				<value>/tcproject/ProjectDynamic/ProjectDynamicList.ht</value>
+				
+				<value>/tcproject/ProjectDynamic/edit.ht</value>
+				<value>/tcproject/ProjectDynamic/ProjectNewList.ht</value>
+				<value>/tcproject/ProjectDynamic/editProject.ht</value>
+				<value>/site/Investmessage/InvestmessageDetails.ht</value>
+				<value>/site/Investmessage/InvestmessageList.ht</value>
+				<value>/site/CopyrightStatement/CopyrightStatementList.ht</value>
+				<value>/tcproject/ProjectDynamic/ProjectDynamicBackList.ht</value>
+				<value>/tcproject/ProjectDynamic/delete.ht</value>
+				<value>/site/CopyrightStatement/CopyrightStatement.ht</value>
+				<value>/loan/tuserMsgRemind/getMyPrivateInfos.ht</value>
+			    <value>/loan/tuserMsgRemind/PriInfoRemindDetails.ht</value>
+			    <value>/loan/tuserMsgRemind/replyMsgRemind.ht</value>
+			    <value>/loan/tuserMsgRemind/delConfirm.ht</value>
+			    <value>/loan/tuserMsgRemind/saveMsgRemind.ht</value>
+				<value>/loan/tuserMsgRemind/sendSuccess.ht</value>
+			    <value>/loan/tuserMsgRemind/MsgRemindDetails.ht</value>
+			    <value>/loan/tuserMsgRemind/delTUserMsgRemind.ht</value> 
+			    <value>/loan/tuserMsgRemind/getOutBoxData.ht</value>
+				<value>/loan/tuserMsgRemind/getEntrepreneurInBox.ht</value>
+				<value>/loan/tuserMsgRemind/sendMessage.ht</value>
+				<value>/loan/tuserMsgRemind/myInbox.ht</value>
+				<value>/loan/tuserMsgRemind/myProjectRecommod.ht</value>
+				<value>/loan/tuserMsgRemind/mySystemInfo.ht</value>
+				<value>/loan/tuserMsgRemind/myAboutInfo.ht</value>
+				<value>/loan/tuserMsgRemind/myCollectPro.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/getProjectLeadAndVote.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/collectProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/aboutProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/leadProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/voteProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/finishProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/refuseProj.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/savePaymenys.ht</value>
+				<value>/crowdfunding/projectApply/applyTheProjectView.ht</value>
+				<value>/crowdfunding/projectApply/tprojectApplyList.ht</value>
+				<value>/crowdfunding/projectApply/checkViewProjectPrivilage.ht</value>
+				<value>/crowdfunding/projectApply/checkTheLeadList.ht</value>
+				<value>/crowdfunding/projectApply/checkTheFollowList.ht</value>
+				<value>/crowdfunding/projectApply/checkTheViewList.ht</value>
+				<value>/crowdfunding/projectApply/approveCheckTheLead.ht</value>
+				<value>/crowdfunding/projectApply/approveCheckTheFollow.ht</value>
+				<value>/crowdfunding/projectApply/approveCheckTheView.ht</value>
+				<value>/crowdfunding/projectApply/theLeadDel.ht</value>
+				<value>/crowdfunding/projectApply/theViewDel.ht</value>
+				<value>/crowdfunding/tuser/investorList.ht</value>
+				<value>/crowdfunding/tuser/investorInfo.ht</value>
+				<value>/crowdfunding/tuser/investorDetail.ht</value>
+				<value>/crowdfunding/tuser/investorProjectList.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterForm.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterSave.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterEdit.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterUpdate.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterDetail.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterDel.ht</value>
+				<value>/crowdfunding/tcprojectAfter/tcprojectAfterProjectList.ht</value>
+				<value>/crowdfunding/tcprojectAfter/tcprojectAfterListPr.ht</value>
+				<value>/crowdfunding/tcprojectAfter/tcprojectAfterCrList.ht</value>
+				<value>/crowdfunding/tcprojectAfter/tcprojectAfterList.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterDelByIds.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterUploadDialog.ht</value>
+				<value>/crowdfunding/tcprojectAfter/projectAfterFileUpload.ht*</value>
+				<value>/tcproject/ProjectDynamic/editProjectDynamic.ht</value>
+				<value>/tcproject/ProjectDynamic/editTProject.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/cancelCollect.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/voteTou.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/aboutEntrepre.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/uploadSurvey.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/saveUploadSurvey.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/savePaymeny.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/isLeaveMoneny.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/toPayment.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/toPayment2.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/openUploadDialog.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/uploadSurveyAttachDel.ht*</value>
+				<value>/crowdfunding/front/tcprojectinvest/uploadSurveyFileUpload.ht*</value>
+				<value>/loan/tuserMsgRemind/saveAboutInfo.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/ledTou.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/ledPage.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/cancelLed.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/cancelVote.ht</value>
+				<value>/loan/tuserMsgRemind/sendFail.ht</value>
+				<value>/crowdfunding/tcprojectAfter/investorAfterDeail.ht</value>
+				<value>/tcproject/ProjectComments/ProjectCommentsDetails.ht</value>
+				<value>/tcproject/ProjectComments/delete.ht</value>
+				<value>/tcproject/ProjectComments/ProjectCommentsReply.ht</value>
+				<value>/crowdfunding/tcprojectAfter/tcprojectAfterInvestorList.ht</value>
+				<value>/crowdfunding/tcprojectAfter/getAttachmentByFileId.ht</value>
+				<value>/crowdfunding/backstage/tcprojectinvest/getInvestLeadDetailById.ht</value>
+				<value>/crowdfunding/backstage/tcprojectinvest/getInvestFollowDetailById.ht</value>
+				<value>/loan/aboutus/ZYXZDetails.ht</value>
+				<value>/crowdfunding/projectApply/approveCheckTheFollowByIds.ht</value>
+				<value>/crowdfunding/backstage/tcprojectinvest/getInvestDetailLeadById.ht</value>
+				<value>/crowdfunding/backstage/tcprojectinvest/getInvestDetailFollowById.ht</value>
+				<value>/crowdfunding/tcprojectAfter/afterFileDownloadById.ht</value>
+				<value>/crowdfunding/tcprojectAfter/afterFileProcess.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/timeLimit.ht</value>
+				<value>/crowdfunding/front/delAttachment.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/toAutoSubmitjsp.ht</value>
+				<value>/crowdfunding/front/tcprojectinvest/toPayment.ht</value>
+				<value>/user/verifyIdNo.ht</value>
+				<value>/user/valideCode.ht</value>
+			</set>
+		</property>
+	</bean>
+</beans>

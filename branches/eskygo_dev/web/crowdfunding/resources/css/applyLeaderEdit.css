@@ -1,0 +1,33 @@
+
+#applyLeaderEdit {
+
+}
+
+#applyLeaderEdit .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#applyLeaderEdit .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+
+#applyLeaderEdit .ink-form {
+    margin-top: 2em;
+    padding: 0 2rem;
+}
+
+#applyLeaderEdit .ink-form .form-h4 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+}
+#applyLeaderEdit .editors{
+    min-height:332px;
+}
+.help-block {
+    color: #ccc;
+    margin-bottom: 0;
+}

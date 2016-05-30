@@ -1,0 +1,24 @@
+#investList {
+
+}
+
+#investList .title {
+    border-bottom: 2px solid #58b3ec;
+}
+
+#investList .title h3 {
+    color: #58b3ec;
+    font-weight: normal;
+    margin-bottom: .5em;
+    padding: 0 2rem;
+}
+
+#investList .search {
+	clear:both;
+    margin: 1em 0;
+    font-weight: normal;
+}
+
+#pagination ul.pagination {
+    display: inline-block;
+}

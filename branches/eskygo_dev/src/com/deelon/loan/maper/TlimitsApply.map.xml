@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TLimitsApply">
+
+	<resultMap id="TlimitsApply" type="com.deelon.loan.model.front.TLimitsApply">	
+        <id property="applyId" column="Apply_id" />
+        <result property="limitOld" column="Limit_old"/>
+        <result property="limitApply" column="Limit_Apply"/>
+        <result property="typeId" column="TypeID"/>
+        <result property="applicant" column="Applicant"/>
+        <result property="applyTime" column="ApplyTime"/>
+     <!--    <result property="audit" column="Audit"/> -->
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="audit_status" column="audit_status"/>
+        <result property="audit_desc" column="audit_desc"/>
+	</resultMap>
+	
+	<resultMap id="TlimitsApply_new" type="com.deelon.loan.model.front.TLimitsApply">	
+        <id property="applyId" column="Apply_id" />
+        <result property="limitOld" column="Limit_old"/>
+        <result property="limitApply" column="Limit_Apply"/>
+        <result property="typeId" column="TypeID"/>
+        <result property="applicant" column="Applicant"/>
+        <result property="applyTime" column="ApplyTime"/>
+       <!--  <result property="audit" column="Audit"/> -->
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="audit_status" column="audit_status"/>
+        <result property="audit_desc" column="audit_desc"/>
+        <result property="applyName" column="RealName"/>
+        <result property="checkrName" column="FULLNAME"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Apply_id,Limit_old,Limit_Apply,TypeID,Applicant,ApplyTime,Checker,CheckTime,audit_status,audit_desc
+	</sql>
+	<sql id="columns_2">
+		Apply_id,Limit_old,Limit_Apply,TypeID,Applicant,ApplyTime,Checker,CheckTime,audit_status,audit_desc,FULLNAME,RealName
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(applyId)">AND Apply_id = #{applyId}</if>
+	       <if test="@Ognl@isNotEmpty(limitOld)">AND Limit_old = #{limitOld}</if>
+	       <if test="@Ognl@isNotEmpty(limitApply)">AND Limit_Apply = #{limitApply}</if>
+	       <if test="@Ognl@isNotEmpty(typeId)">AND TypeID = #{typeId}</if>
+	       <if test="@Ognl@isNotEmpty(applicant)">AND Applicant = #{applicant}</if>
+	       <if test="@Ognl@isNotEmpty(applyTimeBegin)">AND ApplyTime >= #{applyTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(applyTimeEnd)">AND ApplyTime &lt;= #{applyTimeEnd}</if>
+	       <!-- <if test="@Ognl@isNotEmpty(audit)">AND Audit = #{audit}</if> -->
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+		    <if test="@Ognl@isNotEmpty(audit_status)">AND audit_status = #{audit_status}</if>
+		     <if test="@Ognl@isNotEmpty(audit_desc)">AND audit_desc = #{audit_desc}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TLimitsApply">
+		INSERT INTO t_limits_apply
+		(<include refid="columns"/>)
+		VALUES
+		(#{applyId} ,#{limitOld} ,#{limitApply} ,#{typeId} ,#{applicant} ,#{applyTime}  ,#{checker} ,#{checkTime} ,#{audit_status},#{audit_desc} )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_limits_apply 
+		WHERE
+        Apply_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TLimitsApply">
+		UPDATE t_limits_apply SET
+	        Limit_old = #{limitOld} ,
+	        Limit_Apply = #{limitApply} ,
+	        TypeID = #{typeId} ,
+	        Applicant = #{applicant} ,
+	        ApplyTime = #{applyTime} ,
+	        <!-- Audit = #{audit} , -->
+	        Checker = #{checker} ,
+	        CheckTime = #{checkTime} ,
+	        audit_status=#{audit_status},
+	        audit_desc=#{audit_desc}
+        WHERE 
+	        Apply_id = #{applyId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TlimitsApply">
+		SELECT <include refid="columns"/>
+		FROM t_limits_apply 
+		WHERE 1=1 and
+		Apply_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TlimitsApply">
+		SELECT <include refid="columns"/>
+		FROM t_limits_apply   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Apply_id  desc
+		</if>
+	</select>
+	
+	<select id="getAllData" resultMap="TlimitsApply_new" parameterType="com.deelon.loan.model.front.TLimitsApply">
+	
+		
+		 ( select la1.* ,su3.FULLNAME,t3.RealName 
+		from 
+			t_limits_apply la1
+			LEFT JOIN sys_user su3 on la1.Checker=su3.USERID 
+			LEFT JOIN t_user t3 on la1.Apply_id=t3.user_id where la1.audit_status is null or la1.audit_status='' order by la1.ApplyTime desc) 
+
+		union
+			 (select la.* ,su3.FULLNAME,t3.RealName 
+			from 
+			t_limits_apply la
+			LEFT JOIN sys_user su3 on la.Checker=su3.USERID 
+			LEFT JOIN t_user t3 on la.Apply_id=t3.user_id where la.audit_status in (1,2) ORDER BY la.checkTime desc )
+		
+		
+		
+		
+	
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_limits_apply 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

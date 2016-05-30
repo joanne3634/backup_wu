@@ -1,0 +1,62 @@
+#DownloadResources{
+		margin-top:76px;
+	}
+      #hyht-bodyright {
+        float: right;
+        width: 1080px;
+        color: #555;
+      }
+    
+      .tit {
+        height: 38px;
+        line-height: 38px;
+        font-size: 16px;
+        border-bottom:none;;
+        background-color: #fff;
+      }
+      .con {
+        padding: 20px 25px;
+      }
+      .shuxian {
+        display: inline-block;
+        float: left;
+        position: relative;
+        top: 9px;
+        height: 20px;
+        width: 0;
+        border-left: 3px solid #ffffff;
+        margin-left: 11px;
+        margin-right: 11px;
+      }
+      .P2Pdai-con {
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+      .P2Pdai-con li {
+        padding-left: 10px;
+        line-height: 64px;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+      }
+      .P2Pdai-con dd {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 22px;
+        display: none;
+      }
+      .dian {
+        display: inline-block;
+        position: relative;
+        top: -2px;
+        height: 6px;
+        width: 6px;
+        margin-right: 8px;
+        border-radius: 3px;
+        background-color: #333;
+        vertical-align: middle;
+      }
+       #sidebar ul li a.hover{
+        background-color:#fd8f59;
+        color: #fff;
+      }

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.sysManager.Tbank">
+
+	<resultMap id="Tbank" type="com.deelon.loan.model.sysManager.Tbank">	
+        <id property="bankId" column="Bank_id" />
+        <result property="bankName" column="BankName"/>
+        <result property="parentId" column="ParentID"/>
+        <result property="bankPic" column="BankPic"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="bankCode" column="Bank_Code"/>
+        <result property="isCompanyPay" column="IS_Company_Pay"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Bank_id,BankName,ParentID,BankPic,Creator,CreateTime,Bank_Code,IS_Company_Pay
+	</sql>
+	<sql id="columns2">
+		Bank_id,BankName,ParentID,BankPic,ba.Creator,ba.CreateTime,Bank_Code,IS_Company_Pay
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(bankId)">AND Bank_id = #{bankId}</if>
+	       <if test="@Ognl@isNotEmpty(bankName)">AND BankName = #{bankName}</if>
+	       <if test="@Ognl@isNotEmpty(parentId)">AND ParentID = #{parentId}</if>
+	       <if test="@Ognl@isNotEmpty(bankPic)">AND BankPic = #{bankPic}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(bankCode)">AND Bank_Code = #{bankCode}</if>
+		   <if test="@Ognl@isNotEmpty(isCompanyPay)">AND IS_Company_Pay = #{isCompanyPay}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.sysManager.Tbank">
+		INSERT INTO t_bank
+		(<include refid="columns"/>)
+		VALUES
+		(#{bankId} ,#{bankName} ,#{parentId} ,#{bankPic} ,#{creator} ,#{createTime},#{bankCode},#{isCompanyPay}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_bank 
+		WHERE
+        Bank_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.sysManager.Tbank">
+		UPDATE t_bank SET
+	        BankName = #{bankName} ,
+	        ParentID = #{parentId} ,
+	        BankPic = #{bankPic} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime},
+	        Bank_Code = #{bankCode},
+	        IS_Company_Pay = #{isCompanyPay}
+        WHERE 
+	        Bank_id = #{bankId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="Tbank">
+		SELECT <include refid="columns"/>
+		FROM t_bank 
+		WHERE 1=1 and
+		Bank_id = #{id} 
+	</select>
+	
+	<select id="getAllOther" resultMap="Tbank">
+		SELECT <include refid="columns2"/>
+		FROM t_bank ba LEFT JOIN sys_user us on ba.Creator=us.USERID
+		WHERE 1=1 
+		<if test="@Ognl@isNotEmpty(parentId)">AND ba.ParentID = #{parentId}</if>
+	    <if test="@Ognl@isNotEmpty(bankName)">AND ba.BankName like '%${bankName}%'</if>
+	    <if test="@Ognl@isNotEmpty(parentName)">AND ba.BankName like '%${parentName}%'</if>
+	    <if test="@Ognl@isNotEmpty(fullName)">AND us.FULLNAME like '%${fullName}%'</if>
+	    <if test="@Ognl@isNotEmpty(beginDate)">AND ba.CreateTime &gt;= #{beginDate}</if>
+		<if test="@Ognl@isNotEmpty(endDate)">AND ba.CreateTime &lt;= #{endDate}</if>
+	    <if test="@Ognl@isNotEmpty(bankCode)">AND ba.Bank_Code = #{bankCode}</if>
+	    
+	    <!-- add by nicole 2015/3/9 时间倒序 -->
+	    order  by  ba.CreateTime desc
+	    
+		<!--<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		 <if test="@Ognl@isEmpty(orderField)">
+		order by Bank_id  desc
+		</if> -->
+	</select>
+	
+	<select id="getAll" resultMap="Tbank">
+		SELECT tb.*
+		FROM t_bank tb 
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by CreateTime  desc
+		</if>
+		
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_bank 
+		<include refid="dynamicWhere" />   
+    </select>   
+
+	
+</mapper>
+

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!--start_t_project_transfer-->
+		
+		     <form name="tprojectTransfer">
+		     	<field property="transferId" depends="digits">
+					<arg position="0" key="tprojectTransfer.transferId" />
+				</field>
+			 	<field property="projectId" depends="required">	
+		         <arg position="0" key="tprojectTransfer.projectId" />		        
+		        </field>
+			 	<field property="investId" depends="required">	
+		         <arg position="0" key="tprojectTransfer.investId" />		        
+		        </field>
+			 	<field property="transferorId" depends="required">	
+		         <arg position="0" key="tprojectTransfer.transferorId" />		        
+		        </field>
+			 	<field property="claimsSum" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.claimsSum" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="upsetPrice" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.upsetPrice" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="auctionWay" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.auctionWay" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="auctionCount" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.auctionCount" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="transferCount" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.transferCount" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="viewCount" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.viewCount" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="description" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.description" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>500</var-value>
+				 </var>
+		        </field>
+			 	<field property="openDays" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.openDays" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="openDate" depends="maxlength">	
+		         <arg position="0" key="tprojectTransfer.openDate" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="closeDate" depends="maxlength">	
+		         <arg position="0" key="tprojectTransfer.closeDate" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="turnoverTime" depends="maxlength">	
+		         <arg position="0" key="tprojectTransfer.turnoverTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="bidPrice" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.bidPrice" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>32</var-value>
+				 </var>
+		        </field>
+			 	<field property="bidder" depends="required">	
+		         <arg position="0" key="tprojectTransfer.bidder" />		        
+		        </field>
+			 	<field property="bidTime" depends="maxlength">	
+		         <arg position="0" key="tprojectTransfer.bidTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 	<field property="isCancel" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.isCancel" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="stateId" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.stateId" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				 </var>
+		        </field>
+			 	<field property="isCheck" depends="required,maxlength">	
+		         <arg position="0" key="tprojectTransfer.isCheck" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>3</var-value>
+				 </var>
+		        </field>
+			 	<field property="checker" depends="required">	
+		         <arg position="0" key="tprojectTransfer.checker" />		        
+		        </field>
+			 	<field property="checkTime" depends="maxlength">	
+		         <arg position="0" key="tprojectTransfer.checkTime" />		        
+		         <arg position="1" name="maxlength" key="${var:maxlength}" resource="false" />
+				 <var>
+					<var-name>maxlength</var-name>
+					<var-value>0</var-value>
+				 </var>
+		        </field>
+			 </form>
+		<!--end_t_project_transfer-->
+</formset>
+</form-validation>
+ 
+
+ 

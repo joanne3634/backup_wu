@@ -1,0 +1,23 @@
+html {
+    height: auto;
+}
+
+body.iframe {
+    padding: 0;
+    overflow: hidden;
+}
+#afterInvestorsDetail .editorsCont{
+    min-height: 332px;
+}
+
+
+#fileIdShow {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    line-height: 2;
+}
+
+#fileIdShow li{
+    margin: 0;
+}

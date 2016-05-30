@@ -1,0 +1,65 @@
+#loginWeb {
+    padding-top: 4em;
+    padding-bottom: 3em;
+}
+
+#loginWeb .login-container {
+    padding: 0 5em;
+    border-right: 1px solid #e6e6e6;
+}
+
+#loginWeb .login-container .title {
+    text-align: center;
+    margin: 1.5em;
+}
+
+#loginWeb .login-container .control {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+#loginWeb .login-register .ink-button {
+    margin: 1em;
+}
+
+#loginWeb .login-register {
+    margin-top: 6em;
+}
+
+#loginWeb #longForm {
+    margin-bottom: 0;
+}
+
+#loginWeb #code {
+    width: 6em;
+}
+
+#loginWeb #validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#loginWeb #refreshCode {
+    color: #333;
+}
+
+#loginWeb #refreshCode:hover, #loginWeb #refreshCode:active {
+    color: #444;
+}
+
+#loginWeb #submitBtn {
+    margin-left: 0;
+}
+
+#loginWeb #status {
+    margin-bottom: .5em;
+}
+
+#loginWeb #status a {
+    color: #333;
+}
+
+#loginWeb #status a:hover {
+    color: #444;
+}

@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.Tcproject">
+
+	<resultMap id="Tcproject"
+		type="com.deelon.crowdfunding.model.backstage.Tcproject">
+		<id property="projectId" column="Project_id" />
+		<result property="pname" column="P_Name" />
+		<result property="pstateId" column="P_StateID" />
+		<result property="pviewLimit" column="P_ViewLimit" />
+		<result property="ptypeId" column="P_TypeID" />
+		<result property="pindustry" column="P_Industry" />
+		<result property="pcityId" column="P_CityID" />
+		<result property="pprovincesId" column="P_ProvincesID" />
+		<result property="pfoundedYear" column="P_FoundedYear" />
+		<result property="pfoundedMonth" column="P_FoundedMonth" />
+		<result property="plabel" column="P_Label" />
+		<result property="pstage" column="P_Stage" />
+		<result property="pisHaveOther" column="P_IsHaveOther" />
+		<result property="pcompanyName" column="P_CompanyName" />
+		<result property="paddress" column="P_Address" />
+		<result property="pdetail" column="P_Detail" />
+		<result property="pfinancingAmount" column="P_FinancingAmount" />
+		<result property="pinvestAmount" column="P_InvestAmount" />
+		<result property="pcomplete" column="P_Complete" />
+		<result property="ppayWay" column="P_PayWay" />
+		<result property="psetup" column="P_Setup" />
+		<result property="pviewCount" column="P_ViewCount" />
+		<result property="pfavoritesCount" column="P_FavoritesCount" />
+		<result property="pinvestCount" column="P_InvestCount" />
+		<result property="paskPriceCount" column="P_AskPriceCount" />
+		<result property="ppic" column="P_Pic" />
+		<result property="pvideo" column="P_Video" />
+		<result property="popenDate" column="P_OpenDate" />
+		<result property="pcloseDate" column="P_CloseDate" />
+		<result property="pisRecommended" column="P_IsRecommended" />
+		<result property="pneedWarmUp" column="P_NEED_WARMUP"/>
+		<result property="popenDays" column="P_OpenDays" />
+		<result property="pinvestMax" column="P_InvestMax" />
+		<result property="pinvestMin" column="P_InvestMin" />
+		<result property="creator" column="Creator" />
+		<result property="createTime" column="CreateTime" />
+		<result property="isDel" column="IsDel" />
+		<result property="pisFull" column="P_IsFull" />
+		<result property="pfullTime" column="P_FullTime" />
+		<result property="pisCheck" column="P_IsCheck" />
+		<result property="pchecker" column="P_Checker" />
+		<result property="pcheckTime" column="P_CheckTime" />
+		<result property="pisPay" column="P_IsPay" />
+		<result property="ppayTime" column="P_PayTime" />
+		<result property="pdealRate" column="P_DealRate" />
+		<result property="pdealFees" column="P_DealFees" />
+		<result property="pfinalGetPay" column="P_FinalGetPay" />
+		<result property="pisBreak" column="P_IsBreak" />
+		<result property="pbreakTime" column="P_BreakTime" />
+		<result property="pbreakRemark" column="P_Break_remark" />
+		<result property="pPayer" column="P_Payer" />
+
+		<result property="realName" column="RealName" />
+		<result property="auditName" column="auditName" />
+		<result property="pcheckRemark" column="P_CheckRemark" />
+		<result property="pcheckTimes" column="P_CheckTimes" />
+		<result property="phavedPay" column="P_HavedPay" />
+		<result property="ppayPercent" column="P_PayPercent" />
+		<result property="pcityIname" column="P_CityIName" />
+		<result property="pprovincesName" column="P_ProvincesName" />
+		<result property="pcurrent" column="P_Current" />
+		<result property="pleaderId" column="P_LeaderID" />
+		<result property="psharesPercent" column="P_SharesPercent" />
+		<result property="pinvestMinLeader" column="P_InvestMinLeader" />
+		<result property="pinvestMinFollow" column="P_InvestMinFollow" />
+		<result property="investId" column="Invest_id" />
+		<result property="attentionId" column="Attention_id" />
+		<result property="msgRemindId" column="MsgRemind_id" />
+
+		<result property="fileId" column="fileId" />
+		<result property="pemployeesCount" column="P_EmployeesCount" />
+		<result property="updateTime" column="UpdateTime" />
+
+		<result property="leaderName" column="leaderName" />
+		<result property="loginName" column="LoginName" />
+		<result property="leaderLoginName" column="leader_LoginName" />
+		<result property="pvaluationFinal" column="P_ValuationFinal" />
+		<result property="pinvestMaxLeader" column="P_InvestMaxLeader" />
+		<result property="agreeLead" column="agreeLead" />
+		<result property="allLead" column="allLead" />
+		<result property="agreeFollow" column="agreeFollow" />
+		<result property="allFollow" column="allFollow" />
+		<result property="agreeView" column="agreeView" />
+		<result property="allView" column="allView" />
+		<result property="myPhoto" column="MyPhoto" />
+		<result property="contractId" column="Contract_id" />
+		<result property="pivaluation" column="PI_Valuation" />
+		<result property="piisPay" column="PI_IsPay" />
+		<result property="piisCheck" column="PI_IsCheck" />
+		<result property="piinvest" column="PI_Invest" />
+		<result property="precommendedTime" column="P_RecommendedTime" />
+		<result property="piisAskPrice" column="PI_IsAskPrice"/>
+		<result property="setValue" column="SetValue" />
+		<result property="pvaluationFinalNew" column="p_ValuationFinal_New" />
+		<result property="projectAddress" column="ProjectAddress"/>
+		
+	</resultMap>
+
+	<sql id="columns">
+		P_LeaderID,P_SharesPercent,P_InvestMinLeader,P_InvestMinFollow,Project_id,P_Name,
+		P_StateID,P_ViewLimit,P_TypeID,P_Industry,P_CityID,P_ProvincesID,P_FoundedYear,
+		P_FoundedMonth,P_Label,P_Stage,P_IsHaveOther,P_CompanyName,P_Address,P_Detail,
+		P_FinancingAmount,P_InvestAmount,P_Complete,P_PayWay,P_Setup,P_ViewCount,P_FavoritesCount,
+		P_InvestCount,P_AskPriceCount,P_Pic,P_Video,P_OpenDate,P_CloseDate,P_IsRecommended,
+		P_OpenDays,P_InvestMax,P_InvestMin,Creator,CreateTime,IsDel,P_IsFull,P_FullTime,P_IsCheck,
+		P_Checker,P_CheckTime,P_IsPay,P_PayTime,P_DealRate,P_DealFees,P_FinalGetPay,P_IsBreak,
+		P_BreakTime,P_Break_remark,P_CheckRemark,P_CheckTimes,P_HavedPay,P_PayPercent,P_CityIName,
+		P_ProvincesName,P_Current,P_EmployeesCount,UpdateTime,P_ValuationFinal,P_InvestMaxLeader,ProjectAddress
+		,P_RecommendedTime,p_ValuationFinal_New,P_NEED_WARMUP
+	</sql>
+	<sql id="dynamicWhere">
+		<if test="@Ognl@isNotEmpty(pleaderId)">AND P_LeaderID = #{pleaderId}</if>
+		<if test="@Ognl@isNotEmpty(psharesPercent)">AND P_SharesPercent = #{psharesPercent}</if>
+		<if test="@Ognl@isNotEmpty(pinvestMinLeader)">AND P_InvestMinLeader = #{pinvestMinLeader}</if>
+		<if test="@Ognl@isNotEmpty(pinvestMinFollow)">AND P_InvestMinFollow = #{pinvestMinFollow}</if>
+		<if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(pname)">AND P_Name LIKE '%${pname}%'</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pviewLimit)">AND P_ViewLimit = #{pviewLimit}</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pindustry)">AND P_Industry = #{pindustry}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND P_CityID = #{pcityId}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesId)">AND P_ProvincesID = #{pprovincesId}</if>
+		<if test="@Ognl@isNotEmpty(pfoundedYear)">AND P_FoundedYear = #{pfoundedYear}</if>
+		<if test="@Ognl@isNotEmpty(pfoundedMonth)">AND P_FoundedMonth = #{pfoundedMonth}</if>
+		<if test="@Ognl@isNotEmpty(plabel)">AND P_Label = #{plabel}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND P_Stage = #{pstage}</if>
+		<if test="@Ognl@isNotEmpty(pisHaveOther)">AND P_IsHaveOther = #{pisHaveOther}</if>
+		<if test="@Ognl@isNotEmpty(pcompanyName)">AND P_CompanyName = #{pcompanyName}</if>
+		<if test="@Ognl@isNotEmpty(paddress)">AND P_Address = #{paddress}</if>
+		<if test="@Ognl@isNotEmpty(pdetail)">AND P_Detail = #{pdetail}</if>
+		<if test="@Ognl@isNotEmpty(pfinancingAmount)">AND P_FinancingAmount = #{pfinancingAmount}</if>
+		<if test="@Ognl@isNotEmpty(pinvestAmount)">AND P_InvestAmount = #{pinvestAmount}</if>
+		<if test="@Ognl@isNotEmpty(pcomplete)">AND P_Complete = #{pcomplete}</if>
+		<if test="@Ognl@isNotEmpty(ppayWay)">AND P_PayWay = #{ppayWay}</if>
+		<if test="@Ognl@isNotEmpty(psetup)">AND P_Setup = #{psetup}</if>
+		<if test="@Ognl@isNotEmpty(pviewCount)">AND P_ViewCount = #{pviewCount}</if>
+		<if test="@Ognl@isNotEmpty(pfavoritesCount)">AND P_FavoritesCount = #{pfavoritesCount}</if>
+		<if test="@Ognl@isNotEmpty(pinvestCount)">AND P_InvestCount = #{pinvestCount}</if>
+		<if test="@Ognl@isNotEmpty(paskPriceCount)">AND P_AskPriceCount = #{paskPriceCount}</if>
+		<if test="@Ognl@isNotEmpty(ppic)">AND P_Pic = #{ppic}</if>
+		<if test="@Ognl@isNotEmpty(pvideo)">AND P_Video = #{pvideo}</if>
+		<if test="@Ognl@isNotEmpty(popenDateBegin)">AND P_OpenDate >= #{popenDateBegin}</if>
+		<if test="@Ognl@isNotEmpty(popenDateEnd)">AND P_OpenDate &lt;= #{popenDateEnd}</if>
+		<if test="@Ognl@isNotEmpty(pcloseDateBegin)">AND P_CloseDate >= #{pcloseDateBegin}</if>
+		<if test="@Ognl@isNotEmpty(pcloseDateEnd)">AND P_CloseDate &lt;= #{pcloseDateEnd}</if>
+		<if test="@Ognl@isNotEmpty(pisRecommended)">AND P_IsRecommended = #{pisRecommended}</if>
+		<if test="@Ognl@isNotEmpty(popenDays)">AND P_OpenDays = #{popenDays}</if>
+		<if test="@Ognl@isNotEmpty(pinvestMax)">AND P_InvestMax = #{pinvestMax}</if>
+		<if test="@Ognl@isNotEmpty(pinvestMin)">AND P_InvestMin = #{pinvestMin}</if>
+		<if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+		<if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+		<if test="@Ognl@isNotEmpty(pisFull)">AND P_IsFull = #{pisFull}</if>
+		<if test="@Ognl@isNotEmpty(pfullTimeBegin)">AND P_FullTime >= #{pfullTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(pfullTimeEnd)">AND P_FullTime &lt;= #{pfullTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pisCheck)">AND P_IsCheck = #{pisCheck}</if>
+		<if test="@Ognl@isNotEmpty(pchecker)">AND P_Checker = #{pchecker}</if>
+		<if test="@Ognl@isNotEmpty(pcheckTimeBegin)">AND P_CheckTime >= #{pcheckTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(pcheckTimeEnd)">AND P_CheckTime &lt;= #{pcheckTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pisPay)">AND P_IsPay = #{pisPay}</if>
+		<if test="@Ognl@isNotEmpty(ppayTimeBegin)">AND P_PayTime >= #{ppayTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(ppayTimeEnd)">AND P_PayTime &lt;= #{ppayTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pdealRate)">AND P_DealRate = #{pdealRate}</if>
+		<if test="@Ognl@isNotEmpty(pdealFees)">AND P_DealFees = #{pdealFees}</if>
+		<if test="@Ognl@isNotEmpty(pfinalGetPay)">AND P_FinalGetPay = #{pfinalGetPay}</if>
+		<if test="@Ognl@isNotEmpty(pisBreak)">AND P_IsBreak = #{pisBreak}</if>
+		<if test="@Ognl@isNotEmpty(pbreakTimeBegin)">AND P_BreakTime >= #{pbreakTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(pbreakTimeEnd)">AND P_BreakTime &lt;= #{pbreakTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pbreakRemark)">AND P_Break_remark = #{pbreakRemark}</if>
+		<if test="@Ognl@isNotEmpty(pcheckRemark)">AND P_CheckRemark = #{pcheckRemark}</if>
+		<if test="@Ognl@isNotEmpty(pcheckTimes)">AND P_CheckTimes = #{pcheckTimes}</if>
+		<if test="@Ognl@isNotEmpty(phavedPay)">AND P_HavedPay = #{phavedPay}</if>
+		<if test="@Ognl@isNotEmpty(ppayPercent)">AND P_PayPercent = #{ppayPercent}</if>
+		<if test="@Ognl@isNotEmpty(pcityIname)">AND P_CityIName = #{pcityIname}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesName)">AND P_ProvincesName = #{pprovincesName}</if>
+		<if test="@Ognl@isNotEmpty(pcurrent)">AND P_Current = #{pcurrent}</if>
+		<if test="@Ognl@isNotEmpty(pemployeesCount)">AND P_EmployeesCount = #{pemployeesCount}</if>
+		<if test="@Ognl@isNotEmpty(updateTime)">AND UpdateTime = #{updateTime}</if>
+		<if test="@Ognl@isNotEmpty(pvaluationFinal)">AND P_ValuationFinal = #{pvaluationFinal}</if>
+		<if test="@Ognl@isNotEmpty(pinvestMaxLeader)">AND P_InvestMaxLeader = #{pinvestMaxLeader}</if>
+		 <if test="@Ognl@isNotEmpty(projectAddress)">AND ProjectAddress = #{projectAddress}</if>
+		<if test="@Ognl@isNotEmpty(precommendedTime)">AND P_RecommendedTime = #{precommendedTime}</if>
+		<if test="@Ognl@isNotEmpty(pvaluationFinalNew)">AND p_ValuationFinal_New = #{pvaluationFinalNew}</if>
+		
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.Tcproject">
+		INSERT INTO t_c_project
+		(
+		P_InvestMinLeader,P_InvestMinFollow,Project_id,
+		P_Name,P_StateID,P_ViewLimit,P_TypeID,P_Industry,P_CityID,P_ProvincesID,
+		P_FoundedYear,P_FoundedMonth,P_Label,P_Stage,P_IsHaveOther,P_CompanyName,
+		P_Address,P_Detail,P_FinancingAmount ,P_Complete,P_PayWay,P_OpenDays,
+		P_Setup, P_Pic, Creator,CreateTime, P_CityIName,P_ProvincesName,
+		P_EmployeesCount, P_InvestMaxLeader,ProjectAddress, UpdateTime,P_ValuationFinal,
+		P_RecommendedTime,p_ValuationFinal_New,P_NEED_WARMUP)
+		VALUES
+		(#{pinvestMinLeader}, #{pinvestMinFollow},#{projectId} ,
+		#{pname} ,#{pstateId} ,#{pviewLimit,jdbcType=NUMERIC} ,#{ptypeId}
+		,#{pindustry} ,#{pcityId} ,#{pprovincesId} ,
+		#{pfoundedYear}
+		,#{pfoundedMonth} ,#{plabel} ,#{pstage} ,#{pisHaveOther}
+		,#{pcompanyName} ,
+		#{paddress} ,#{pdetail} ,#{pfinancingAmount}
+		,#{pcomplete,jdbcType=NUMERIC} ,#{ppayWay} ,#{popenDays} ,
+		#{psetup}
+		,#{ppic} ,#{creator} ,#{createTime} ,#{pcityIname} ,#{pprovincesName}
+		,#{pemployeesCount},#{pinvestMaxLeader},#{projectAddress},
+		#{updateTime},#{pvaluationFinal},#{precommendedTime},#{pvaluationFinalNew},#{pneedWarmUp})
+		
+	</insert>
+
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project
+		WHERE
+		Project_id = #{projectId}
+	</delete>
+
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.Tcproject">
+		UPDATE t_c_project SET
+		P_Name = #{pname} ,
+		P_StateID = #{pstateId} ,
+		P_ViewLimit = #{pviewLimit} ,
+		P_TypeID = #{ptypeId} ,
+		P_Industry = #{pindustry} ,
+		P_CityID = #{pcityId} ,
+		P_ProvincesID = #{pprovincesId} ,
+		P_FoundedYear = #{pfoundedYear} ,
+		P_FoundedMonth = #{pfoundedMonth} ,
+		P_Label = #{plabel} ,
+		P_Stage = #{pstage} ,
+		P_IsHaveOther = #{pisHaveOther} ,
+		P_CompanyName = #{pcompanyName} ,
+		P_Address = #{paddress} ,
+		P_Detail = #{pdetail} ,
+		P_FinancingAmount = #{pfinancingAmount} ,
+		P_InvestAmount = #{pinvestAmount} ,
+		P_Complete = #{pcomplete} ,
+		P_PayWay = #{ppayWay} ,
+		P_Setup = #{psetup} ,
+		P_ViewCount = #{pviewCount} ,
+		P_FavoritesCount = #{pfavoritesCount} ,
+		P_InvestCount = #{pinvestCount} ,
+		P_AskPriceCount = #{paskPriceCount} ,
+		P_Pic = #{ppic} ,
+		P_Video = #{pvideo} ,
+		P_OpenDate = #{popenDate} ,
+		P_CloseDate = #{pcloseDate} ,
+		P_IsRecommended = #{pisRecommended} ,
+		P_OpenDays = #{popenDays} ,
+		P_InvestMax = #{pinvestMax} ,
+		P_InvestMin = #{pinvestMin} ,
+		Creator = #{creator} ,
+		CreateTime = #{createTime} ,
+		IsDel = #{isDel} ,
+		P_IsFull = #{pisFull} ,
+		P_FullTime = #{pfullTime} ,
+		P_IsCheck = #{pisCheck} ,
+		P_Checker = #{pchecker} ,
+		P_CheckTime = #{pcheckTime} ,
+		P_IsPay = #{pisPay} ,
+		P_PayTime = #{ppayTime} ,
+		P_DealRate = #{pdealRate} ,
+		P_DealFees = #{pdealFees} ,
+		P_FinalGetPay = #{pfinalGetPay} ,
+		P_IsBreak = #{pisBreak} ,
+		P_BreakTime = #{pbreakTime} ,
+		P_Break_remark = #{pbreakRemark} ,
+		P_CheckRemark = #{pcheckRemark} ,
+		P_CheckTimes = #{pcheckTimes} ,
+		P_HavedPay = #{phavedPay} ,
+		P_PayPercent = #{ppayPercent} ,
+		P_CityIName = #{pcityIname} ,
+		P_ProvincesName = #{pprovincesName} ,
+		P_Current = #{pcurrent} ,
+		P_LeaderID = #{pleaderId} ,
+		P_SharesPercent = #{psharesPercent} ,
+		P_InvestMinLeader = #{pinvestMinLeader} ,
+		P_InvestMinFollow = #{pinvestMinFollow} ,
+		P_EmployeesCount = #{pemployeesCount} ,
+		UpdateTime = #{updateTime} ,
+		P_ValuationFinal = #{pvaluationFinal} ,
+		P_InvestMaxLeader = #{pinvestMaxLeader} ,
+		P_RecommendedTime = #{precommendedTime},
+		p_ValuationFinal_New = #{pvaluationFinalNew},
+		ProjectAddress = #{projectAddress},
+		P_NEED_WARMUP=#{pneedWarmUp}
+		WHERE
+		Project_id = #{projectId}
+	</update>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="Tcproject">
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE
+		Project_id = #{projectId}
+	</select>
+	<select id="getSuccessTcProjects" resultMap="Tcproject">
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE 1=1
+		AND P_StateID in('4','5','6')
+			order by CreateTime desc
+	</select>
+	<select id="getAll" resultMap="Tcproject">
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<!-- <if test="@Ognl@isNotEmpty(pstateId)">AND P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND cp.P_Stage = #{pstage}</if> -->
+		
+		<if test="@Ognl@isNotEmpty(pfinancingAmount1)">AND P_FinancingAmount >= #{pfinancingAmount1}*10000</if>
+		<if test="@Ognl@isNotEmpty(pfinancingAmount2)">AND P_FinancingAmount &lt;= #{pfinancingAmount2}*10000</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by CreateTime desc
+		</if>
+		<if test="@Ognl@isNotEmpty(limitCount)">
+			limit #{limitCount}
+		</if>
+	</select>
+	<select id="getAllSendMoney" resultMap="Tcproject">
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE 1=1
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(pstateIdIn)">AND P_StateID in ( ${pstateIdIn} )</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND cp.P_Stage = #{pstage}</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by CreateTime desc
+		</if>
+	</select>
+
+	<select id="getAllProByWhere" parameterType="map"  resultMap="Tcproject">
+		SELECT cp.*,tu.RealName,tu.LoginName,tu1.RealName as
+		leaderName,tu1.LoginName as leader_LoginName
+		FROM t_c_project cp
+		left
+		join t_user tu on cp.Creator=tu.user_id
+		left join t_user tu1 on cp.P_LeaderID=tu1.user_id
+		WHERE 1=1 and cp.P_OpenDate is not null and cp.P_IsBreak=0
+		<!--<if test="@Ognl@isEmpty(phavedPay)">and cp.P_IsPay=0</if>-->
+		<if test="@Ognl@isNotEmpty(pindustry)">AND cp.P_Industry = #{pindustry} </if>
+		<if test="@Ognl@isNotEmpty(pcityIname)">AND cp.P_CityIName like "%"#{pcityIname}"%" </if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND cp.p_stateId in ${pstage}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND (cp.P_CityID = #{pcityId} OR cp.P_ProvincesID = #{pcityId})</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND cp.P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pisFull)">AND cp.P_IsFull = #{pisFull}</if>
+		<if test="@Ognl@isNotEmpty(phavedPay)">AND cp.P_StateID =6 or cp.P_StateID =5 and cp.P_IsPay=1</if>
+		<if test="@Ognl@isNotEmpty(likepname)">AND cp.P_Name like '%${likepname}%'  </if>
+		<if test="@Ognl@isNotEmpty(pisRecommended)">AND cp.P_IsRecommended = #{pisRecommended}</if>
+		<if test="@Ognl@isNotEmpty(pneedWarmUp)">AND cp.P_NEED_WARMUP = #{pneedWarmUp}</if>
+		<if test="@Ognl@isNotEmpty(popenDate)">
+			order by cp.P_OpenDate
+		</if>
+		<if test="@Ognl@isNotEmpty(createTime)">
+			order by cp.CreateTime
+		</if>
+		<if test="@Ognl@isNotEmpty(pfinancingAmount)">
+			order by cp.P_FinancingAmount
+		</if>
+		<if test="@Ognl@isNotEmpty(pinvestAmount)">
+			order by cp.P_InvestAmount
+		</if>
+		<if test="@Ognl@isNotEmpty(pcomplete)">
+			order by cp.P_Complete
+		</if>
+		<if test="@Ognl@isNotEmpty(pviewCount)">
+			order by cp.P_ViewCount
+		</if>
+		<if test="@Ognl@isNotEmpty(phavedPay)">
+			order by cp.P_PayTime
+		</if>
+		<if test="popenDate==null and pfinancingAmount==null and pinvestAmount==null and pcomplete==null and pviewCount==null and phavedPay==null">
+			order by cp.P_OpenDate
+		</if>
+		<if test="@Ognl@isNotEmpty(orderBy)">
+			${orderBy}
+		</if>
+		<if test="orderBy==null">
+			desc
+		</if>
+	</select>
+
+	<select id="getAllHotProjects" resultMap="Tcproject">
+		<!-- SELECT cp.*,tu.RealName,tu.LoginName,tu1.RealName as leaderName,tu1.LoginName 
+			as leader_LoginName FROM t_c_project cp left join t_user tu on cp.Creator=tu.user_id 
+			left join t_user tu1 on cp.P_LeaderID=tu1.user_id WHERE 1=1 and cp.P_OpenDate 
+			is not null and cp.P_IsBreak=0 order by cp.P_ViewCount desc -->
+		<!--,tu.RealName,tu.LoginName,tu1.RealName as
+		leaderName,tu1.LoginName as leader_LoginName,SELECT cp.*,p.LoanNum
+		FROM (
+		SELECT Project_id,COUNT(Invest_id) as LoanNum
+		FROM t_c_project_invest
+		GROUP BY Project_id) P
+		LEFT JOIN t_c_project cp on p.Project_id=cp.Project_id
+		WHERE 1=1 and cp.P_OpenDate is not null and cp.P_IsBreak=0
+		ORDER BY p.LoanNum desc-->
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE
+		P_stateId in('3','4','5','6')
+		order by P_Complete desc,p_OpenDate DESC
+		<if test="@Ognl@isNotEmpty(limitCount)"> limit  #{limitCount}</if>
+
+
+	</select>
+
+
+	<!--查询项目所在城市 -->
+	<select id="getProOfCitys" resultMap="Tcproject">
+		SELECT
+		cp.P_CityIName,cp.P_CityID from t_c_project cp
+		WHERE 1=1 and cp.P_OpenDate is not null and cp.P_IsPay=0 and cp.P_IsBreak=0
+		GROUP BY cp.P_CityIName ORDER BY COUNT(*) DESC
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT count(*) FROM t_c_project
+		<include refid="dynamicWhere" />
+	</select>
+
+
+	<!--查询待审核的项目 -->
+	<select id="getToAuditPro" resultMap="Tcproject">
+		<!-- SELECT cj.*,tu.RealName,tu1.RealName as auditName FROM t_c_project 
+			cj left join T_User tu on cj.Creator=tu.user_id left join T_User tu1 on cj.P_Checker=tu1.user_id 
+			WHERE 1=1 and cj.P_StateID =1 -->
+		<!-- update nicole 2015/3/5 项目审核审核人管理不对 -->
+		SELECT cj.*,tu.RealName,tu1.FullName as auditName,cj.P_checkTime as
+		auditTimestr
+		FROM t_c_project cj left join T_User tu on
+		cj.Creator=tu.user_id
+		left join sys_user tu1 on cj.P_Checker=tu1.userid
+		WHERE 1=1
+
+		<if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+		<if test="@Ognl@isNotEmpty(pname)">AND cj.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND cj.P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pindustry)">AND cj.P_Industry = #{pindustry}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND cj.P_CityID = #{pcityId}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesId)">AND cj.P_ProvincesID = #{pprovincesId}</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND cj.P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pcompanyName)">AND cj.P_CompanyName = #{pcompanyName}</if>
+		<if test="@Ognl@isNotEmpty(plabel)">AND cj.P_Label = #{plabel}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND P_Stage = #{pstage}</if>
+		<if test="pcheckTime==1">AND cj.p_checkTime is null</if> <!-- 未审核 -->
+		<if test="pcheckTime==2">AND cj.p_checkTime is not null</if> <!-- 已审核 -->
+
+		<!--null 未审核、1 未审核、2、已通过、3 已拒绝 -->
+		<if test="pstatus==0">
+
+			and cj.P_StateID in (1,3,9)
+			GROUP BY cj.P_StateID,cj.Project_id
+			ORDER BY cj.P_StateID, cj.CreateTime DESC
+		</if>
+		<if test="pstatus==1">
+			<!-- and cj.P_CheckTimes=0 and cj.P_StateID in (1,2) and cj.P_IsBreak=0 
+				ORDER BY cj.CreateTime DESC -->
+			and cj.P_StateID =1
+			ORDER BY cj.CreateTime DESC
+		</if>
+		<if test="pstatus==null">
+			<!-- and cj.P_StateID in (1,2,3,4,5,6,7) and cj.P_IsBreak in (0,1) and 
+				cj.P_CheckTimes in(0,1) ORDER BY cj.CreateTime DESC -->
+			<!-- and cj.P_StateID =1 -->
+			ORDER BY cj.CreateTime DESC
+
+		</if>
+		<if test="pstatus==2">
+			<!-- and cj.P_StateID in (3,4,5,6,7) and cj.P_IsBreak in (0,1) and cj.P_CheckTimes=1 
+				ORDER BY cj.P_CheckTime DESC -->
+			and cj.P_StateID =3 <!--询价认筹中 -->
+			ORDER BY cj.P_CheckTime DESC
+		</if>
+		<if test="pstatus==3">
+			<!-- and cj.P_StateID in (3,4,5,6,7) and cj.P_IsBreak in (0,1) and cj.P_CheckTimes=1 
+				ORDER BY cj.P_CheckTime DESC -->
+			and cj.P_StateID =9 <!--询价认筹中 -->
+			ORDER BY cj.P_CheckTime DESC
+		</if>
+
+
+	</select>
+
+	<select id="getTcprojectById" resultMap="Tcproject">
+		SELECT cj.*,tu.RealName<!-- ,s.fileId -->
+		,tu.MyPhoto
+		FROM t_c_project cj left join T_User tu on
+		cj.Creator=tu.user_id
+		<!-- left join (select * from (SELECT * from sys_file s ORDER BY s.createTime 
+			desc ) s GROUP BY s.CREATORID ) s on cj.Creator=s.CREATORID -->
+		WHERE 1=1 and cj.Project_id=#{proId}
+	</select>
+
+	<select id="getInvitationforPro" resultMap="Tcproject">
+		SELECT cj.*,tu.RealName,tu1.RealName as auditName
+		FROM t_c_project cj
+		left join T_User tu on cj.Creator=tu.user_id
+		left join T_User tu1 on
+		cj.P_Checker=tu1.user_id
+		WHERE 1=1 and cj.P_StateID =3 <!-- and cj.P_IsFull=0 -->
+		and cj.P_IsBreak=0
+
+		<if test="@Ognl@isNotEmpty(pname)">AND cj.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND cj.P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pindustry)">AND cj.P_Industry = #{pindustry}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND cj.P_CityID = #{pcityId}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesId)">AND cj.P_ProvincesID = #{pprovincesId}</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND cj.P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pcompanyName)">AND cj.P_CompanyName = #{pcompanyName}</if>
+		<if test="@Ognl@isNotEmpty(plabel)">AND cj.P_Label = #{plabel}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND P_Stage = #{pstage}</if>
+		GROUP BY cj.P_IsCheck,cj.Project_id ORDER BY cj.P_CheckTime DESC
+	</select>
+
+	<select id="getFullTenderForPro" resultMap="Tcproject">
+
+		SELECT cj.*,tu.RealName
+		FROM t_c_project cj left join T_User tu on
+		cj.Creator=tu.user_id
+		WHERE 1=1 and cj.P_Complete>=#{pcomplete}
+
+		<if test="@Ognl@isNotEmpty(pname)">AND cj.P_Name like '%${pname}%'</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND cj.P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pindustry)">AND cj.P_Industry = #{pindustry}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND cj.P_CityID = #{pcityId}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesId)">AND cj.P_ProvincesID = #{pprovincesId}</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND cj.P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pcompanyName)">AND cj.P_CompanyName = #{pcompanyName}</if>
+		<if test="@Ognl@isNotEmpty(plabel)">AND cj.P_Label = #{plabel}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND P_Stage = #{pstage}</if>
+
+		<!--0 查询所有、1.未审核、2.已满标、3.已流标 -->
+		<!-- <if test="pstatus==0"> and cj.P_StateID in (3,4,7) GROUP BY cj.P_StateID,cj.Project_id 
+			ORDER BY cj.P_StateID, cj.P_CloseDate DESC </if> -->
+		<if test="pstatus==0">
+			and cj.P_StateID =3
+			GROUP BY cj.P_StateID,cj.Project_id
+			ORDER BY cj.P_StateID, cj.P_CloseDate DESC
+		</if>
+		<if test="pstatus==null">
+			and cj.P_StateID =3
+			and cj.P_IsFull=0 and cj.P_IsPay=0 and cj.P_IsBreak=0
+			ORDER BY cj.P_CloseDate DESC
+		</if>
+		<if test="pstatus==1">
+			and cj.P_StateID =3
+			and cj.P_IsFull=0 and cj.P_IsPay=0 and cj.P_IsBreak=0
+			ORDER BY cj.P_CloseDate DESC
+		</if>
+		<if test="pstatus==2">
+			and cj.P_StateID =4
+			and cj.P_IsFull=1 and cj.P_IsPay=0 and cj.P_IsBreak=0
+			ORDER BY cj.P_FullTime DESC
+		</if>
+		<if test="pstatus==3">
+			and cj.P_StateID =7
+			and cj.P_IsFull=0 and cj.P_IsPay=0 and cj.P_IsBreak=1
+			ORDER BY cj.P_BreakTime DESC
+		</if>
+
+
+		<!-- (SELECT cj.*,tu.RealName FROM t_c_project cj left join T_User tu on 
+			cj.Creator=tu.user_id WHERE 1=1 and cj.P_StateID =3 and cj.P_InvestAmount>=cj.P_FinancingAmount 
+			or cj.P_Complete>=#{pcomplete} and cj.P_IsFull=0 and cj.P_IsPay=0 and cj.P_IsBreak=0 
+			<if test="@Ognl@isNotEmpty(pname)">AND cj.P_Name like "%"#{pname}"%"</if> 
+			<if test="@Ognl@isNotEmpty(pstateId)">AND cj.P_StateID = #{pstateId}</if> 
+			<if test="@Ognl@isNotEmpty(pindustry)">AND cj.P_Industry = #{pindustry}</if> 
+			<if test="@Ognl@isNotEmpty(pcityId)">AND cj.P_CityID = #{pcityId}</if> <if 
+			test="@Ognl@isNotEmpty(pprovincesId)">AND cj.P_ProvincesID = #{pprovincesId}</if> 
+			<if test="@Ognl@isNotEmpty(ptypeId)">AND cj.P_TypeID = #{ptypeId}</if> <if 
+			test="@Ognl@isNotEmpty(pcompanyName)">AND cj.P_CompanyName = #{pcompanyName}</if> 
+			<if test="@Ognl@isNotEmpty(plabel)">AND cj.P_Label = #{plabel}</if> <if test="@Ognl@isNotEmpty(pstage)">AND 
+			P_Stage = #{pstage}</if> group by cj.P_IsFull,cj.Project_id order by cj.P_CloseDate 
+			) union (SELECT cj.*,tu.RealName FROM t_c_project cj left join T_User tu 
+			on cj.Creator=tu.user_id WHERE 1=1 and cj.P_StateID =4 and cj.P_IsFull=1 
+			and cj.P_IsPay=0 and cj.P_IsBreak=0 <if test="@Ognl@isNotEmpty(pname)">AND 
+			cj.P_Name like "%"#{pname}"%"</if> <if test="@Ognl@isNotEmpty(pstateId)">AND 
+			cj.P_StateID = #{pstateId}</if> <if test="@Ognl@isNotEmpty(pindustry)">AND 
+			cj.P_Industry = #{pindustry}</if> <if test="@Ognl@isNotEmpty(pcityId)">AND 
+			cj.P_CityID = #{pcityId}</if> <if test="@Ognl@isNotEmpty(pprovincesId)">AND 
+			cj.P_ProvincesID = #{pprovincesId}</if> <if test="@Ognl@isNotEmpty(ptypeId)">AND 
+			cj.P_TypeID = #{ptypeId}</if> <if test="@Ognl@isNotEmpty(pcompanyName)">AND 
+			cj.P_CompanyName = #{pcompanyName}</if> <if test="@Ognl@isNotEmpty(plabel)">AND 
+			cj.P_Label = #{plabel}</if> <if test="@Ognl@isNotEmpty(pstage)">AND P_Stage 
+			= #{pstage}</if> group by cj.P_IsFull,cj.Project_id order by cj.P_CloseDate 
+			) -->
+	</select>
+
+	
+	<select id="getExpiredForPro" resultMap="Tcproject">
+	    
+		SELECT P.Project_id,P.P_Name,P.P_StateID,U.RealName,P.CreateTime,P.P_FinancingAmount,P.P_InvestAmount,
+		       P.P_Complete,S.SetValue,P.P_InvestCount,P.P_OpenDate,P.P_CloseDate,P.P_OpenDays
+		FROM t_c_project P,t_settings S, t_user U
+		where P.Creator=U.user_id
+		  and S.SetCode='INVITE_TENDER_PERCENT' 
+		  and P.P_CloseDate &lt; NOW() and P.P_InvestAmount &lt; P.P_FinancingAmount
+		  and P.P_StateID in (1,2,3) and P.P_Complete &lt; CAST(S.SetValue AS DECIMAL)
+
+		<if test="@Ognl@isNotEmpty(pname)">AND P.P_Name like '%${pname}%'</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND P.P_StateID = #{pstateId}</if>
+	</select>
+
+	<select id="getAllFullTender" resultMap="Tcproject">
+		SELECT cj.*,tu.RealName,tc.Contract_id
+		FROM t_c_project cj left join T_User tu on cj.Creator=tu.user_id
+		left join T_C_Project_Contract tc on tc.Project_id=cj.Project_id
+		WHERE 1=1 and <!-- cj.P_StateID in ('4','5') -->
+		cj.P_StateID=4
+		and cj.P_IsFull=1 and cj.P_IsPay=0 and cj.P_IsBreak=0
+		<if test="@Ognl@isNotEmpty(pname)">AND cj.P_Name like "%"#{pname}"%"</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND cj.P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(pindustry)">AND cj.P_Industry = #{pindustry}</if>
+		<if test="@Ognl@isNotEmpty(pcityId)">AND cj.P_CityID = #{pcityId}</if>
+		<if test="@Ognl@isNotEmpty(pprovincesId)">AND cj.P_ProvincesID = #{pprovincesId}</if>
+		<if test="@Ognl@isNotEmpty(ptypeId)">AND cj.P_TypeID = #{ptypeId}</if>
+		<if test="@Ognl@isNotEmpty(pcompanyName)">AND cj.P_CompanyName = #{pcompanyName}</if>
+		<if test="@Ognl@isNotEmpty(plabel)">AND cj.P_Label = #{plabel}</if>
+		<if test="@Ognl@isNotEmpty(pstage)">AND P_Stage = #{pstage}</if>
+		group by cj.P_IsFull,cj.Project_id order by cj.P_FullTime desc
+	</select>
+	<!-- 根据登陆用户查看自己拒绝的认投项目 -->
+	<select id="getProjectRefuse" resultMap="Tcproject">
+		SELECT pn.PI_IsCheck piisCheck,pn.PI_Valuation
+		pivaluation,pn.PI_Invest,pn.Invest_id,pn.PI_TypeID piTypeId
+		,pn.PI_CancelReason piCancelReason,pn.PI_DenyReason pidenyReason,tu.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id =
+		pn.Project_id and ms.TypeID =2) aboutNum,
+		(select t.SendTime from t_user_msgremind t where t.Project_id = pn.Project_id
+		and t.MsgRemind_id =(select MAX(MsgRemind_id) from t_user_msgremind
+		where Project_id = t.Project_id)) SendTime,
+		(select sum(a.PI_Invest) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from t_c_project_invest b where b.Project_id =
+		pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount,
+		(select b.PI_Invest from t_c_project_invest b where b.Project_id =
+		pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) myfollowAmount,
+		(select a.PI_Invest from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) myleaderAmount,
+		(select sum(a.PI_Valuation) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) sumleaderPivaluation,
+		(select sum(a.PI_Valuation) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 0 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) sumlfollowPivaluation
+		FROM t_c_project_invest
+		pn,t_c_project tu
+		WHERE 1=1 and pn.Project_id=tu.Project_id and pn.PI_TypeID in(1,2,3) and
+		(pn.PI_IsCancel=1 or pn.PI_IsCheck = 2)
+		<if test="@Ognl@isNotEmpty(userId)">AND pn.user_id = #{userId}</if>
+		ORDER BY pn.PI_InvestTime desc
+	</select>
+
+	<!-- 根据登陆用户查看自己领投项目 -->
+	<select id="getProjectLeads" resultMap="Tcproject">
+		SELECT pn.PI_IsCheck piisCheck,pn.PI_Valuation
+		pivaluation,pn.PI_Invest,pn.Invest_id,pn.PI_TypeID,pn.PI_IsPay,tu.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id =
+		pn.Project_id and ms.TypeID =2) aboutNum,
+		(select t.SendTime from t_user_msgremind t where t.Project_id = pn.Project_id
+		and t.MsgRemind_id =(select MAX(MsgRemind_id) from t_user_msgremind
+		where Project_id = t.Project_id)) SendTime,
+		(select sum(a.PI_Invest) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from t_c_project_invest b where b.Project_id =
+		pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount,
+		(select b.PI_Invest from t_c_project_invest b where b.Project_id =
+		pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) myfollowAmount,
+		(select a.PI_Invest from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) myleaderAmount,
+		(select sum(a.PI_Valuation) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) sumPivaluation
+		FROM t_c_project_invest
+		pn,t_c_project tu
+		WHERE 1=1 and pn.Project_id=tu.Project_id and pn.PI_TypeID in(1,2) and
+		pn.PI_IsCancel in (0,2) and pn.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND pn.user_id = #{userId}</if>
+		ORDER BY pn.PI_InvestTime desc
+	</select>
+
+	<!-- 根据登陆用户查看自己跟投项目 -->
+	<select id="getProjectVotes" resultMap="Tcproject">
+		<!--2/11 by pyg modify -->
+
+		SELECT
+		pn.PI_IsCheck as piisCheck,pn.PI_Valuation as
+		pivaluation,pn.PI_Invest,pn.Invest_id,pn.PI_TypeID,pn.PI_IsAskPrice,pn.PI_IsPay,tu.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id =
+		pn.Project_id and ms.TypeID =2
+		<if test="@Ognl@isNotEmpty(userId)">AND ms.SenderID= #{userId}</if>
+		) aboutNum,
+		(select t.SendTime from t_user_msgremind t where
+		t.Project_id = pn.Project_id and t.MsgRemind_id =(select
+		MAX(MsgRemind_id) from t_user_msgremind where Project_id =
+		t.Project_id)) SendTime,
+		(select sum(a.PI_Invest) from
+		t_c_project_invest a where a.Project_id = pn.Project_id and
+		a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from
+		t_c_project_invest b where b.Project_id = pn.Project_id and
+		b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount
+
+		FROM t_c_project_invest pn
+		LEFT JOIN t_c_project tu ON pn.Project_id=tu.Project_id
+
+		WHERE 1=1
+		and pn.PI_TypeID=3
+		and pn.PI_IsCancel in(0,2)
+		and pn.PI_IsCheck in(0,1)
+
+		<if test="@Ognl@isNotEmpty(userId)">AND pn.user_id = #{userId}</if>
+		ORDER BY pn.PI_InvestTime desc
+
+		<!-- SELECT pn.PI_IsCheck piisCheck,pn.PI_Valuation pivaluation,pn.PI_Invest,pn.Invest_id,pn.PI_TypeID,pn.PI_IsPay,tu.*, 
+			(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id = pn.Project_id 
+			and ms.TypeID =2) aboutNum, (select t.SendTime from t_user_msgremind t where 
+			t.Project_id = pn.Project_id and t.MsgRemind_id =(select MAX(MsgRemind_id) 
+			from t_user_msgremind where Project_id = t.Project_id)) SendTime, (select 
+			sum(a.PI_Invest) from t_c_project_invest a where a.Project_id = pn.Project_id 
+			and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1) <if test="@Ognl@isNotEmpty(userId)">AND 
+			a.user_id = #{userId}</if>AND a.PI_IsCancel=0) leaderAmount, (select sum(b.PI_Invest) 
+			from t_c_project_invest b where b.Project_id = pn.Project_id and b.PI_IsLeader 
+			= 0 and b.PI_IsCheck in(0,1) and b.PI_IsCancel=0 <if test="@Ognl@isNotEmpty(userId)">AND 
+			b.user_id = #{userId}</if>) followAmount, (select b.PI_Invest from t_c_project_invest 
+			b where b.Project_id = pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck 
+			in(0,1) and b.PI_IsCancel=0 <if test="@Ognl@isNotEmpty(userId)">AND b.user_id 
+			= #{userId}</if>) myfollowAmount, (select a.PI_Invest from t_c_project_invest 
+			a where a.Project_id = pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck 
+			in(0,1) <if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>AND 
+			a.PI_IsCancel=0) myleaderAmount, (select sum(a.PI_Valuation) from t_c_project_invest 
+			a where a.Project_id = pn.Project_id and a.PI_IsLeader = 0 and a.PI_IsCheck 
+			in(0,1) <if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>AND 
+			a.PI_IsCancel=0) sumPivaluation FROM t_c_project_invest pn,t_c_project tu 
+			WHERE 1=1 and pn.Project_id=tu.Project_id and pn.PI_TypeID=3 and pn.PI_IsCancel=0 
+			and pn.PI_IsCheck in(0,1) <if test="@Ognl@isNotEmpty(userId)">AND pn.user_id 
+			= #{userId}</if> ORDER BY pn.PI_InvestTime desc -->
+	</select>
+
+	<!-- 根据登陆用户查看自己收藏的项目 -->
+	<select id="getProjectCollections" resultMap="Tcproject">
+		SELECT pn.Project_id projectId,pn.Attention_id,tc.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id = pn.Project_id
+		and ms.TypeID =2) aboutNum,
+		(select sum(a.PI_Invest) from t_c_project_invest a where a.Project_id =
+		pn.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from t_c_project_invest b where b.Project_id =
+		pn.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount
+		FROM t_attention pn
+		left join t_c_project tc on
+		pn.Project_id=tc.Project_id
+		left join t_user tu on
+		pn.user_id=tu.user_id
+		WHERE 1=1 and pn.TypeID=2 and pn.IsDel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND pn.user_id = #{userId}</if>
+		ORDER BY pn.CreateTime desc
+	</select>
+
+	<!-- 根据登陆用户查看自己约谈的项目 -->
+	<select id="getAboutProjs" resultMap="Tcproject">
+		SELECT tu.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id = tu.Project_id
+		and ms.TypeID =2) aboutNum,
+		(select t.SendTime from t_user_msgremind t where t.Project_id = tu.Project_id
+		and t.MsgRemind_id =(select MAX(MsgRemind_id) from t_user_msgremind
+		where Project_id = t.Project_id)) SendTime,
+		(select sum(a.PI_Invest) from t_c_project_invest a where a.Project_id =
+		tu.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from t_c_project_invest b where b.Project_id =
+		tu.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount
+
+		FROM t_c_project tu LEFT JOIN t_user_msgremind p ON
+		tu.Project_id=p.Project_id
+		WHERE 1=1 and p.TypeID=2
+		<if test="@Ognl@isNotEmpty(userId)">AND p.SenderID = #{userId} </if>
+		GROUP BY p.Project_id ORDER BY p.SendTime DESC
+		<!-- FROM t_c_project tu WHERE EXISTS (select 1 from t_user_msgremind p 
+			where p.Project_id = tu.Project_id and p.TypeID=2 <if test="@Ognl@isNotEmpty(userId)">AND 
+			p.SenderID = #{userId} </if> order by p.SendTime desc) -->
+	</select>
+
+	<!-- 根据登陆用户查看完成的项目 -->
+	<select id="getFinishProjs" resultMap="Tcproject">
+		SELECT tu.*,
+		(SELECT count(*) FROM t_user_msgremind ms where ms.Project_id = tu.Project_id
+		and ms.TypeID =2) aboutNum,
+		(select sum(a.PI_Invest) from t_c_project_invest a where a.Project_id =
+		tu.Project_id and a.PI_IsLeader = 1 and a.PI_IsCheck in(0,1)
+		<if test="@Ognl@isNotEmpty(userId)">AND a.user_id = #{userId}</if>
+		AND a.PI_IsCancel=0) leaderAmount,
+		(select sum(b.PI_Invest) from t_c_project_invest b where b.Project_id =
+		tu.Project_id and b.PI_IsLeader = 0 and b.PI_IsCheck in(0,1) and
+		b.PI_IsCancel=0
+		<if test="@Ognl@isNotEmpty(userId)">AND b.user_id = #{userId}</if>
+		) followAmount
+		FROM t_c_project tu
+		WHERE 1=1 and tu.P_StateID=6
+		<if test="@Ognl@isNotEmpty(userId)">AND tu.P_LeaderID = #{userId}</if>
+		order by tu.P_PayTime desc
+	</select>
+	<!-- 查领投人数量 -->
+	<select id="projectLeadCount" parameterType="java.lang.Long"
+		resultType="long">
+		SELECT count(*) FROM t_c_project where P_LeaderID=0 and
+		Project_id=#{projectId}
+	</select>
+	<select id="projectFollowCount" parameterType="java.lang.Long"
+		resultType="long">
+		SELECT P_InvestCount FROM t_c_project where Project_id=#{projectId}
+	</select>
+
+	<select id="getProjectByUserId" resultMap="Tcproject">
+		SELECT cj.*,tu.RealName
+		FROM t_c_project cj left join T_User tu on
+		cj.Creator=tu.user_id
+		WHERE 1=1 and cj.Creator=#{u}
+	</select>
+	<select id="getProjectCr" resultMap="Tcproject">
+		SELECT
+		p.Project_id,p.P_Name,p.p_StateID,p.P_Pic,p.P_FinancingAmount,p.P_InvestAmount,p.P_Complete
+		,p.v.agreeLead,v.allLead,v.agreeFollow,v.allFollow,y.agreeView,y.allView
+		FROM t_c_project p left join
+		(SELECT t.Project_id,<!-- sum(if(t.PI_TypeID!=3 AND t.PI_IsCheck=1,1,0)) agreeLead, -->
+		(SELECT COUNT(*) FROM t_c_project_invest tci WHERE tci.PI_TypeID!=3
+		AND tci.PI_IsCheck=1 AND tci.PI_IsCancel=0 and
+		tci.Project_id=t.Project_id) agreeLead,
+		sum(if(t.PI_TypeID!=3,1,0))
+		allLead,
+		sum(if(t.PI_TypeID=3 AND t.PI_IsCheck=1,1,0))
+		agreeFollow,sum(if(t.PI_TypeID=3,1,0)) allFollow
+		from t_c_project_invest t WHERE t.PI_IsCancel=0 GROUP BY t.Project_id) v on
+		p.Project_id=v.Project_id
+		left join (SELECT t.*,sum(if(t.PAV_IsAgree=1,1,0)) agreeView,count(1)
+		allView
+		from t_c_project_applyview t GROUP BY t.Project_id) y on
+		p.Project_id=y.Project_id
+		WHERE 1=1
+		
+		<if test="@Ognl@isNotEmpty(pname)">AND P_Name LIKE '%${pname}%'</if>
+		<if test="@Ognl@isNotEmpty(paddress)">AND P_Address = #{paddress}</if>
+		<if test="@Ognl@isNotEmpty(pdetail)">AND P_Detail = #{pdetail}</if>
+		<if test="@Ognl@isNotEmpty(ppic)">AND P_Pic = #{ppic}</if>
+		<if test="@Ognl@isNotEmpty(pvideo)">AND P_Video = #{pvideo}</if>
+		<if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+		<if test="@Ognl@isNotEmpty(createTimeBegin)">AND CreateTime >= #{createTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(createTimeEnd)">AND CreateTime &lt;= #{createTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+		<if test="@Ognl@isNotEmpty(pisFull)">AND P_IsFull = #{pisFull}</if>
+		<if test="@Ognl@isNotEmpty(pfullTimeBegin)">AND P_FullTime >= #{pfullTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(pfullTimeEnd)">AND P_FullTime &lt;= #{pfullTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pisCheck)">AND P_IsCheck = #{pisCheck}</if>
+		<if test="@Ognl@isNotEmpty(pchecker)">AND P_Checker = #{pchecker}</if>
+		<if test="@Ognl@isNotEmpty(pcheckTimeBegin)">AND P_CheckTime >= #{pcheckTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(pcheckTimeEnd)">AND P_CheckTime &lt;= #{pcheckTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(pstateId)">AND P_StateID = #{pstateId}</if>
+		<if test="@Ognl@isNotEmpty(orderField)">
+			order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+			order by P_OpenDate desc
+		</if>
+	</select>
+
+	<select id="getWarmupProject" resultMap="Tcproject">
+		SELECT
+		<include refid="columns" />
+		FROM t_c_project
+		WHERE P_NEED_WARMUP = 1
+		  AND P_OpenDate is not null
+		  AND P_IsBreak=0
+		<if test="@Ognl@isNotEmpty(pname)">AND P_Name LIKE '%${pname}%'</if>
+		ORDER BY CreateTime desc,P_FavoritesCount desc
+		<if test="@Ognl@isNotEmpty(limitCount)">
+			limit #{limitCount}
+		</if>
+	</select>
+</mapper>
+

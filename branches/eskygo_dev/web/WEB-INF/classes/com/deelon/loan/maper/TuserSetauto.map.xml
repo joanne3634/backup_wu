@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.loan.model.front.TuserSetauto">
+
+	<resultMap id="TuserSetauto" type="com.deelon.loan.model.front.TuserSetauto">	
+        <id property="setAutoId" column="SetAuto_id" />
+        <result property="userId" column="user_id"/>
+        <result property="amountType" column="AmountType"/>
+        <result property="amountTypeValue" column="AmountTypeValue"/>
+        <result property="amount" column="Amount"/>
+        <result property="isRepayWay" column="IsRepayWay"/>
+        <result property="repayWay" column="RepayWay"/>
+        <result property="isDeadline" column="IsDeadline"/>
+        <result property="deadline" column="Deadline"/>
+        <result property="isRateOut" column="IsRateOut"/>
+        <result property="rateOut" column="RateOut"/>
+        <result property="productsLoanId" column="ProductsLoan_id"/>
+        <result property="isLessThan" column="IsLessThan"/>
+        <result property="lessThan" column="LessThan"/>
+        <result property="isAutoDate" column="IsAutoDate"/>
+        <result property="autoDateStart" column="AutoDateStart"/>
+        <result property="autoDateEnd" column="AutoDateEnd"/>
+        <result property="updateTime" column="UpdateTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		SetAuto_id,user_id,AmountType,AmountTypeValue,Amount,IsRepayWay,RepayWay,IsDeadline,Deadline,IsRateOut,RateOut,ProductsLoan_id,IsLessThan,LessThan,IsAutoDate,AutoDateStart,AutoDateEnd,UpdateTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(setAutoId)">AND SetAuto_id = #{setAutoId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(amountType)">AND AmountType = #{amountType}</if>
+	       <if test="@Ognl@isNotEmpty(amountTypeValue)">AND AmountTypeValue = #{amountTypeValue}</if>
+	       <if test="@Ognl@isNotEmpty(amount)">AND Amount = #{amount}</if>
+	       <if test="@Ognl@isNotEmpty(isRepayWay)">AND IsRepayWay = #{isRepayWay}</if>
+	       <if test="@Ognl@isNotEmpty(repayWay)">AND RepayWay = #{repayWay}</if>
+	       <if test="@Ognl@isNotEmpty(isDeadline)">AND IsDeadline = #{isDeadline}</if>
+	       <if test="@Ognl@isNotEmpty(deadline)">AND Deadline = #{deadline}</if>
+	       <if test="@Ognl@isNotEmpty(isRateOut)">AND IsRateOut = #{isRateOut}</if>
+	       <if test="@Ognl@isNotEmpty(rateOut)">AND RateOut = #{rateOut}</if>
+	       <if test="@Ognl@isNotEmpty(productsLoanId)">AND ProductsLoan_id = #{productsLoanId}</if>
+	       <if test="@Ognl@isNotEmpty(isLessThan)">AND IsLessThan = #{isLessThan}</if>
+	       <if test="@Ognl@isNotEmpty(lessThan)">AND LessThan = #{lessThan}</if>
+	       <if test="@Ognl@isNotEmpty(isAutoDate)">AND IsAutoDate = #{isAutoDate}</if>
+	       <if test="@Ognl@isNotEmpty(autoDateStartBegin)">AND AutoDateStart >= #{autoDateStartBegin}</if>
+		   <if test="@Ognl@isNotEmpty(autoDateStartEnd)">AND AutoDateStart &lt;= #{autoDateStartEnd}</if>
+	       <if test="@Ognl@isNotEmpty(autoDateEndBegin)">AND AutoDateEnd >= #{autoDateEndBegin}</if>
+		   <if test="@Ognl@isNotEmpty(autoDateEndEnd)">AND AutoDateEnd &lt;= #{autoDateEndEnd}</if>
+	       <if test="@Ognl@isNotEmpty(updateTimeBegin)">AND UpdateTime >= #{updateTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(updateTimeEnd)">AND UpdateTime &lt;= #{updateTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.loan.model.front.TuserSetauto">
+		INSERT INTO t_user_setauto
+		(<include refid="columns"/>)
+		VALUES
+		(#{setAutoId} ,#{userId} ,#{amountType} ,#{amountTypeValue} ,#{amount} ,#{isRepayWay} ,#{repayWay} ,#{isDeadline} ,#{deadline} ,#{isRateOut} ,#{rateOut} ,#{productsLoanId} ,#{isLessThan} ,#{lessThan} ,#{isAutoDate} ,#{autoDateStart} ,#{autoDateEnd} ,#{updateTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_user_setauto 
+		WHERE
+        SetAuto_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.loan.model.front.TuserSetauto">
+		UPDATE t_user_setauto SET
+	        user_id = #{userId} ,
+	        AmountType = #{amountType} ,
+	        AmountTypeValue = #{amountTypeValue} ,
+	        Amount = #{amount} ,
+	        IsRepayWay = #{isRepayWay} ,
+	        RepayWay = #{repayWay} ,
+	        IsDeadline = #{isDeadline} ,
+	        Deadline = #{deadline} ,
+	        IsRateOut = #{isRateOut} ,
+	        RateOut = #{rateOut} ,
+	        ProductsLoan_id = #{productsLoanId} ,
+	        IsLessThan = #{isLessThan} ,
+	        LessThan = #{lessThan} ,
+	        IsAutoDate = #{isAutoDate} ,
+	        AutoDateStart = #{autoDateStart} ,
+	        AutoDateEnd = #{autoDateEnd} ,
+	        UpdateTime = #{updateTime} 
+        WHERE 
+	        SetAuto_id = #{setAutoId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserSetauto">
+		SELECT <include refid="columns"/>
+		FROM t_user_setauto 
+		WHERE 1=1 and
+		SetAuto_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TuserSetauto">
+		SELECT <include refid="columns"/>
+		FROM t_user_setauto   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by SetAuto_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_user_setauto 
+		<include refid="dynamicWhere" />   
+    </select>   
+    
+    <!--根据用户id 查询用户最近的 投标条件设置  -->
+    <select id="getTuserSetautoByUserId" resultMap="TuserSetauto">
+    	select u.* from (select us.* from t_user_setauto us order by us.UpdateTime desc) u 
+    	where u.user_id=#{userId} group by u.user_id
+    </select>
+    
+    <select id="getAllAutoTenderList" resultMap="TuserSetauto">
+    	<!-- select u.* from (select us.* from t_user_setauto us order by us.UpdateTime desc) u group by u.user_id -->
+    	select u.* from (select us.* from t_user_setauto us where 
+    	#{currentDate} BETWEEN us.AutoDateStart AND us.AutoDateEnd order by us.UpdateTime desc) u group by u.user_id
+    </select>
+
+	
+</mapper>
+

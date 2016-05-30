@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+	<page id="listpage1">
+		<report id="report1" title="员工基本信息列表" pagesize="20" scrollstyle="image" scrollheight="300px" width="1000px" dataexport="richexcel">
+			<display>
+				<col column="{sequence:1}" label="序号"/>
+				<col column="user_id" label="工号" clickorderby="true" valuestyleproperty="style='mso-number-format:\@'"/>
+				<col column="LoginName" label="姓名" clickorderby="true"/> 
+			</display>
+			<sql>
+				<value>
+					<![CDATA[SELECT user_id,LoginName FROM t_user where {#condition#} order by user_id]]>
+				</value> 
+				<condition name="txtname" label="姓名">
+					<value>
+						<![CDATA[(LoginName like  '%#data#%' )]]>
+					</value>
+				</condition> 
+			</sql>
+			 
+		</report>
+	</page>
+</applications>

@@ -1,0 +1,1 @@
+PageUEditor=function(a){this.editor=null;this.getEditor=function(b){if(!b){b={};}this.editor=new baidu.editor.ui.Editor(b);return this.editor;};};

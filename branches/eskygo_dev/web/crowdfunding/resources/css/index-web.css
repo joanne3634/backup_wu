@@ -1,0 +1,234 @@
+.title {
+    margin: 20px auto;
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.title h3 {
+    display: inline-block;
+    font-weight: normal;
+    margin: .3em auto;
+}
+
+.card {
+    position: relative;
+    font-size: 12px;
+    color: #333;
+    font-weight: normal;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid rgb(235, 235, 235);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    z-index: 10;
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+.card:hover {
+    -webkit-box-shadow: 0px 1px 3px #e5e5e5;
+    -moz-box-shadow: 0px 1px 3px #e5e5e5;
+    -ms-box-shadow: 0px 1px 3px #e5e5e5;
+    box-shadow: 0px 1px 3px #e5e5e5;
+    border: 1px solid #e6e6e6;
+}
+
+.card .link-pic {
+    height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.card .link-pic img {
+    width: 100%;
+    vertical-align: top;
+    opacity: 1;
+    filter: alpha(opacity=80);
+    -webkit-transition: all .2s ease-in-out,opacity 1s;
+    -moz-transition: all .2s ease-in-out,opacity 1s;
+    -ms-transition: all .2s ease-in-out,opacity 1s;
+    transition: all .2s ease-in-out,opacity 1s;
+}
+
+.card .title {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+    padding: 5px 14px;
+    border-bottom: 0;
+
+    width: 100%;                   /* IE6 needs any width */
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.card .title:hover {
+    color: #666;
+    text-decoration: none;
+}
+
+.card .desc {
+    padding-bottom: 10px;
+    line-height: 20px;
+    color: #333;
+}
+
+.card .desc .text {
+    padding: 0 14px;
+    width: 100%;                   /* IE6 needs any width */
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+p.fundedTarget{
+    font-size: 20px;
+    margin: .5em auto;
+}
+
+.wall-33{
+    clear: none;
+    float: left;
+    width: 50%;
+}
+.card .desc .funded {
+    padding: 0 14px;
+    font-size: 20px;
+    margin: .5em auto;
+}
+
+.card .desc .outter {
+    padding: 0 14px;
+    overflow: hidden;
+}
+.card .desc .outter .provinceCity{
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.card .desc .outter .progress-bar {
+    height: 15px;
+    line-height: 0;
+    background-color: #caeaf5;
+}
+
+.card .desc .outter .progress {
+    width:90%;
+    padding: 0 5px;
+    float: left;
+    height: 15px;
+    background: #00a0e9;
+    color: #ffffff;
+    line-height: 15px;
+    text-align: right;
+}
+
+.progress {
+    word-break: normal;
+    word-wrap: normal;
+}
+
+.card .card-bottom {
+    padding-top: 7px;
+    margin-top: 10px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.card em {
+    font-style: initial;
+    color: #cd0102;
+}
+
+.lists .title {
+    font-size: 16px;
+    color: #333;
+    border-bottom: 0;
+
+    width: 100%;                   /* IE6 needs any width */
+    overflow: hidden;              /* "overflow" value must be different from "visible" */
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.lists a {
+    text-decoration: none;
+}
+
+.lists .datetime {
+    font-size: 12px;
+    color: #333;
+}
+
+#site-desc {
+    margin-top: 1em;
+}
+
+#site-desc h5 {
+    font-weight: normal;
+    margin-top: 1em;
+}
+
+#site-desc img {
+    width: 110px;
+}
+
+#friend-link {
+    margin-bottom: 2em;
+}
+
+#friend-link .img-container {
+    height: 65px;
+    border: 1px solid #e6e6e6;
+}
+
+#friend-link .img-container img {
+    vertical-align: middle;
+    width: auto;
+    height: 100%;
+}
+
+#index-carousel {
+    padding-top: 10px;
+}
+
+#index-carousel .stage .slide img {
+    width: 100%;
+}
+
+#index-carousel #index-carousel-pagination {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#index-carousel #index-carousel-pagination ul.pagination.dotted {
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+}
+
+#index-carousel #index-carousel-pagination ul.pagination.dotted li a {
+    background-color: #ffffff;
+}
+
+#index-carousel #index-carousel-pagination  ul.pagination.chevron {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -15px;
+}

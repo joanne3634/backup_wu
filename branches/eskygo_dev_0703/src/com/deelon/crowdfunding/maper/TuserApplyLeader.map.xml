@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">
+	<resultMap id="TuserApplyLeader" type="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">	
+        <id property="applyLeaderId" column="ApplyLeader_id" />
+        <result property="userId" column="user_id"/>
+        <result property="applyTime" column="ApplyTime"/>
+        <result property="industryId" column="IndustryId"/>
+        <result property="industryDesc" column="IndustryDesc"/>
+        <result property="applyInfo" column="ApplyInfo"/>
+        <result property="isCheck" column="IsCheck"/>
+        <result property="checker" column="Checker"/>
+        <result property="checkTime" column="CheckTime"/>
+        <result property="checkFailReason" column="CheckFailReason"/>
+        
+        <result property="loginName" column="LoginName"/>
+        <result property="applyTimeStr" column="ApplyTimeStr"/>
+        <result property="checkTimeStr" column="CheckTimeStr"/>
+        <result property="checkerName" column="CheckerName"/>
+        <result property="realName" column="RealName"/>
+        
+        <result property="personalRemark" column="personalRemark"/>
+        <result property="provincesName" column="provincesName"/>
+        <result property="cityName" column="cityName"/>
+        <result property="isLeader" column="IsLeader"/>
+        <result property="isAskPrice" column="IsAskPrice"/>
+        <result property="bindIdno" column="bindIdno"/>
+        <result property="isCompany" column="IsCompany"/>
+        <result property="contactName" column="ContactName"/>
+        <result property="myPhoto" column="MyPhoto"/>
+	</resultMap>
+	
+	
+
+	
+	<sql id="columns">
+		ApplyLeader_id,user_id,ApplyTime,IndustryId,IndustryDesc,ApplyInfo,IsCheck,Checker,CheckTime,CheckFailReason
+	</sql>
+	<sql id="dynamicWhere">		
+	       <if test="@Ognl@isNotEmpty(loginName)">AND LoginName = #{loginName}</if>	
+	       <if test="@Ognl@isNotEmpty(applyLeaderId)">AND ApplyLeader_id = #{applyLeaderId}</if>
+	       <if test="@Ognl@isNotEmpty(userId)">AND user_id = #{userId}</if>
+	       <if test="@Ognl@isNotEmpty(applyTimeBegin)">AND str_to_date(ApplyTime,'%Y-%m-%d') >= #{applyTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(applyTimeEnd)">AND str_to_date(ApplyTime,'%Y-%m-%d') &lt;= #{applyTimeEnd}</if>
+		   <if test="@Ognl@isNotEmpty(industryId)">AND IndustryId = #{industryId}</if>
+		   <if test="@Ognl@isNotEmpty(industryDesc)">AND IndustryDesc LIKE '%${industryDesc}%'</if>
+	       <if test="@Ognl@isNotEmpty(applyInfo)">AND ApplyInfo LIKE '%${applyInfo}%'</if>
+	       <if test="@Ognl@isNotEmpty(isCheck)">AND IsCheck = #{isCheck}</if>
+	       <if test="@Ognl@isNotEmpty(checker)">AND Checker = #{checker}</if>
+	       <if test="@Ognl@isNotEmpty(checkTimeBegin)">AND CheckTime >= #{checkTimeBegin}</if>
+		   <if test="@Ognl@isNotEmpty(checkTimeEnd)">AND CheckTime &lt;= #{checkTimeEnd}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">
+		INSERT INTO T_User_ApplyLeader
+		(<include refid="columns"/>)
+		VALUES(#{applyLeaderId},#{userId},#{applyTime},#{industryId},#{industryDesc},#{applyInfo},#{isCheck},#{checker},#{checkTime},#{checkFailReason})
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM T_User_ApplyLeader WHERE ApplyLeader_id = #{applyLeaderId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">
+		UPDATE T_User_ApplyLeader SET
+	        user_id = #{userId}, ApplyTime = #{applyTime}, IndustryId = #{industryId}, IndustryDesc = #{industryDesc}, 
+	        ApplyInfo = #{applyInfo}, Checker = #{checker}, IsCheck = #{isCheck}, CheckTime = #{checkTime},CheckFailReason = #{checkFailReason}
+        WHERE ApplyLeader_id = #{applyLeaderId} 
+	</update>
+	
+	<!--审核通过-->
+	<update id="pass" parameterType="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">
+		UPDATE T_User_ApplyLeader SET Checker = #{checker}, IsCheck=1, CheckTime = #{checkTime}, CheckFailReason = #{checkFailReason}
+        WHERE ApplyLeader_id = #{applyLeaderId} 
+	</update>
+	
+	<!--审核不通过-->
+	<update id="fail" parameterType="com.deelon.crowdfunding.model.backstage.TuserApplyLeader">
+		UPDATE T_User_ApplyLeader SET Checker = #{checker}, IsCheck=2, CheckTime = #{checkTime}, CheckFailReason = #{checkFailReason}
+        WHERE ApplyLeader_id = #{applyLeaderId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TuserApplyLeader">
+		SELECT *
+		FROM T_User_ApplyLeader
+		WHERE ApplyLeader_id = #{applyLeaderId} 
+	</select>
+	
+	<select id="getApplyLeaderInfo" resultMap="TuserApplyLeader">
+		SELECT A.ApplyLeader_id,A.user_id,U.LoginName,U.IsCompany,A.ApplyTime,A.IndustryId,A.IndustryDesc,A.ApplyInfo,A.IsCheck,A.Checker,S.FullName as CheckerName,A.CheckTime,A.CheckFailReason
+		FROM T_User_ApplyLeader A left join T_User U on A.user_id=U.user_id left join Sys_User S on A.Checker=S.USERID
+		WHERE 1=1
+		<if test="@Ognl@isNotEmpty(loginName)">AND  U.LoginName = #{loginName}</if>	
+		<if test="@Ognl@isNotEmpty(applyTimeBegin)">AND str_to_date( A.ApplyTime,'%Y-%m-%d') >= #{applyTimeBegin}</if>
+		<if test="@Ognl@isNotEmpty(applyTimeEnd)">AND str_to_date( A.ApplyTime,'%Y-%m-%d') &lt;= #{applyTimeEnd}</if>
+		<if test="@Ognl@isNotEmpty(isCheck)">AND  A.IsCheck = #{isCheck}</if>
+		order by A.ApplyTime DESC
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(ApplyLeader_id) FROM T_User_ApplyLeader 
+		<include refid="dynamicWhere" />   
+    </select>
+    
+    	<select id="getAll" resultMap="TuserApplyLeader">
+		SELECT <include refid="columns"/>
+		FROM T_User_ApplyLeader   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by #{orderField} #{orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ApplyLeader_id  desc
+		</if>
+	</select> 
+    
+    <select id="getLeaderInfoDetail" resultMap="TuserApplyLeader">
+    	SELECT al.*,tu.RealName,tu.MyPhoto,tu.ContactName,tu.Remarks as personalRemark,ta.area_name as provincesName,tar.area_name as cityName,tu.IsLeader,tu.IsAskPrice,tu.IsCompany,tus.Bind_Id_no as bindIdno
+		FROM T_User_ApplyLeader al
+		left join T_User tu on al.user_id=tu.user_id
+		left join t_area ta on tu.ProvincesID=ta.area_id
+		left join t_area tar on tu.CityID=tar.area_id
+		left join t_user_safe tus on tus.user_id=tu.user_id
+		WHERE al.user_id=#{leaderId} and al.IsCheck=1 
+    </select>
+    
+    <select id="getListByPojo" parameterType="com.deelon.crowdfunding.model.backstage.TuserApplyLeader" resultMap="TuserApplyLeader">
+    	select t.* from T_User_ApplyLeader t where 1=1
+    	<if test="@Ognl@isNotEmpty(userId)">
+			and t.user_id = #{userId}
+		</if>
+			and t.IsCheck not in('1','2')
+    </select>
+</mapper>
+

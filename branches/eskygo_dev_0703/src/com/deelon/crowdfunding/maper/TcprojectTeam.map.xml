@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectTeam">
+
+	<resultMap id="TcprojectTeam" type="com.deelon.crowdfunding.model.backstage.TcprojectTeam">	
+        <id property="teamId" column="Team_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="pttypeId" column="PT_TypeID"/>
+        <result property="ptname" column="PT_Name"/>
+        <result property="ptduty" column="PT_Duty"/>
+        <result property="ptmisFullTime" column="PTM_IsFullTime"/>
+        <result property="pttheShare" column="PT_TheShare"/>
+        <result property="ptrealPay" column="PT_RealPay"/>
+        <result property="ptrelationship" column="PT_Relationship"/>
+        <result property="ptmemberInfo" column="PT_MemberInfo"/>
+        <result property="ptorderId" column="PT_OrderID"/>
+        <result property="isDel" column="IsDel"/>
+        <result property="ptentryTime" column="PT_EntryTime"/>
+	</resultMap>
+	
+	<sql id="columns">
+		Team_id,Project_id,PT_TypeID,PT_Name,PT_Duty,PTM_IsFullTime,PT_TheShare,PT_RealPay,PT_Relationship,PT_MemberInfo,PT_OrderID,IsDel,PT_EntryTime
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(teamId)">AND Team_id = #{teamId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(pttypeId)">AND PT_TypeID = #{pttypeId}</if>
+	       <if test="@Ognl@isNotEmpty(ptname)">AND PT_Name = #{ptname}</if>
+	       <if test="@Ognl@isNotEmpty(ptduty)">AND PT_Duty = #{ptduty}</if>
+	       <if test="@Ognl@isNotEmpty(ptmisFullTime)">AND PTM_IsFullTime = #{ptmisFullTime}</if>
+	       <if test="@Ognl@isNotEmpty(pttheShare)">AND PT_TheShare = #{pttheShare}</if>
+	       <if test="@Ognl@isNotEmpty(ptrealPay)">AND PT_RealPay = #{ptrealPay}</if>
+	       <if test="@Ognl@isNotEmpty(ptrelationship)">AND PT_Relationship = #{ptrelationship}</if>
+	       <if test="@Ognl@isNotEmpty(ptmemberInfo)">AND PT_MemberInfo = #{ptmemberInfo}</if>
+	       <if test="@Ognl@isNotEmpty(ptorderId)">AND PT_OrderID = #{ptorderId}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND IsDel = #{isDel}</if>
+	       <if test="@Ognl@isNotEmpty(ptentryTime)">AND PT_EntryTime = #{ptentryTime}</if>
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectTeam">
+		INSERT INTO t_c_project_team
+		(<include refid="columns"/>)
+		VALUES
+		(#{teamId} ,#{projectId} ,#{pttypeId} ,#{ptname} ,#{ptduty} ,
+		#{ptmisFullTime} ,#{pttheShare} ,#{ptrealPay} ,#{ptrelationship} ,
+		#{ptmemberInfo} ,#{ptorderId} ,#{isDel},#{ptentryTime}  )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_team 
+		WHERE
+        Team_id = #{id} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectTeam">
+		UPDATE t_c_project_team SET
+	        Project_id = #{projectId} ,
+	        PT_TypeID = #{pttypeId} ,
+	        PT_Name = #{ptname} ,
+	        PT_Duty = #{ptduty} ,
+	        PTM_IsFullTime = #{ptmisFullTime} ,
+	        PT_TheShare = #{pttheShare} ,
+	        PT_RealPay = #{ptrealPay} ,
+	        PT_Relationship = #{ptrelationship} ,
+	        PT_MemberInfo = #{ptmemberInfo} ,
+	        PT_OrderID = #{ptorderId} ,
+	        IsDel = #{isDel} ,
+	        PT_EntryTime=#{ptentryTime}
+        WHERE 
+	        Team_id = #{teamId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectTeam">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_team 
+		WHERE 1=1 and
+		Team_id = #{id} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectTeam">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_team   
+		WHERE 1=1 
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by orderField orderSeq
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by Team_id  desc
+		</if>
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_team 
+		<include refid="dynamicWhere" />   
+    </select>   
+ 	<select id="getByProId" resultMap="TcprojectTeam">
+    	SELECT pt.*
+		FROM t_c_project_team pt 
+		WHERE 1=1  and pt.Project_id = #{projectId}
+    </select>
+	
+</mapper>
+

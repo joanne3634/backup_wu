@@ -1,0 +1,128 @@
+@charset "utf-8"; 
+.window{
+	width: 1100px;
+	margin: 0 auto;
+	font-family:"微软雅黑";
+}
+.investmessageLeft,.InMeDeLeft{
+	width: 810px;
+	margin-top: 25px;
+}
+.investmessageRight{
+	width: 265px;
+}
+.investmessageLeft h3{
+	height: 50px;
+	line-height: 50px;
+	color: #ff5200;
+	font-size: 24px;
+	text-align: left;
+	border-bottom:2px  solid #cbcbcb;
+}
+.investmessageLeft h3 img{
+	margin: 0px 10px 0px 5px;
+}
+.investmessageRight{
+	margin:25px 0px 0px 25px;
+}
+.investmessageRight h4{
+	width: 250px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dbdbdb;
+	text-align: left;
+}
+.investmessageRight h4 span{
+	font-size: 24px;
+	display: inline-block;
+	color: #ff5200;
+	border-bottom: 1px solid #ff5200;
+}
+.investmessageLeft ul li{
+	padding: 20px 5px 30px 5px;
+	text-align: left;
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+.investmessageLeft ul li h4{
+	color: #292929;
+	font-size: 24px;
+}
+.investmessageLeft ul li p{
+	margin: 15px 5px 15px 5px;
+}
+.investmessageLeft ul li div img{
+	margin:0px 5px 0px 5px;
+}
+.investmessageLeft ul li div span,.InMeDeLeft h5 span,.InMeDeLeft h5 a{
+	color: #666666;
+	padding: 0px 5px 0px 5px;
+}
+.investmessageRight ul{
+	margin-top: 20px;
+}
+.investmessageRight ul li{
+	width: 250px;
+	font-size: 14px;
+	color: #292929;
+	line-height: 35px;
+	text-align: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.investmessageRight ul li img{
+	margin: 0px 10px 0px 10px
+}
+.InMeDeLeft h6,.InMeDeLeft h5{
+	color: #666666;
+	font-size: 14px;
+}
+.InMeDeLeft h6{
+	text-align: left;
+}
+.InMeDeLeft h5,.InMeDeLeft img{
+	margin: 15px 0px 15px 0px;
+}
+.InMeDeLeft img{
+	border: 1px solid #ccc6c6;
+}
+.InMeDeLeft h2{
+	color: #ff5200;
+	font-size: 28px;
+	line-height: 80px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+.InMeDeLeft p ,.InMeDeLeft div{
+	line-height: 30px;
+	font-size: 14px;
+	color: #292929;
+	padding:10px 0px 10px 0px;
+	margin: 0px 30px 0px 30px;
+}
+.InMeDeLeft div{
+	text-align: left;
+	margin: 15px 30px 15px 30px;
+}
+.InMeDeLeft{
+	padding-bottom: 50px;
+}
+.InMeDeLeft .AfinIframe{
+	text-align: center;
+	font-size: 16px;
+	color: #ff5200;
+}
+.AfinIframe em{
+	font-size: 14px;
+	color: #141414;
+}
+.AfinIframe span{
+	cursor: pointer;
+	margin: 0px 15px 0px 5px;
+	color: #fff;
+	background: #8ec017;
+	padding: 3px 5px 3px 5px;
+	font-size: 14px;
+}

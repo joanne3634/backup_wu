@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+
+<mapper namespace="com.deelon.crowdfunding.model.backstage.TcprojectAfter">
+
+	<resultMap id="TcprojectAfter" type="com.deelon.crowdfunding.model.backstage.TcprojectAfter">	
+        <id property="afterId" column="After_id" />
+        <result property="projectId" column="Project_id"/>
+        <result property="paTypeId" column="PA_TypeID"/>
+        <result property="paTitle" column="PA_Title"/>
+        <result property="paContent" column="PA_Content"/>
+        <result property="creator" column="Creator"/>
+        <result property="createTime" column="CreateTime"/>
+        <result property="fileId" column="FileID"/>
+        <result property="viewCount" column="ViewCount"/>
+        <result property="isDel" column="IsDel"/>
+        <result property="userId" column="user_id"/>
+
+		<result property="creatorName" column="creatorName"/>
+        <result property="projectName" column="projectName"/>
+        <result property="fileName" column="PA_FileName"/>
+        <result property="filePath" column="PA_Path"/>
+	</resultMap>
+	
+	<sql id="columns">
+		After_id,Project_id,PA_TypeID,PA_Title,PA_Content,Creator,CreateTime,FileID,viewCount,IsDel
+	</sql>
+	<sql id="dynamicWhere">			
+	       <if test="@Ognl@isNotEmpty(afterId)">AND After_id = #{afterId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(paTypeId)">AND PA_TypeID = #{paTypeId}</if>
+	       <if test="@Ognl@isNotEmpty(paTitle)">AND PA_Title = #{paTitle}</if>
+	       <if test="@Ognl@isNotEmpty(paContent)">AND PA_Content = #{paContent}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTime)">AND CreateTime = #{createTime}</if>
+	       <if test="@Ognl@isNotEmpty(fileId)">AND FileID = #{fileId}</if>
+	       <if test="@Ognl@isNotEmpty(viewCount)">AND ViewCount = #{viewCount}</if>
+	      
+	</sql>
+	<insert id="add" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectAfter">
+		INSERT INTO t_c_project_after
+		(<include refid="columns"/>)
+		VALUES
+		(#{afterId},#{projectId},#{paTypeId},#{paTitle},#{paContent},
+		#{creator},#{createTime},#{fileId},#{viewCount},#{isDel} )
+    </insert>
+
+    <delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM t_c_project_after 
+		WHERE
+        After_id = #{afterId} 
+	</delete>
+	
+	<update id="update" parameterType="com.deelon.crowdfunding.model.backstage.TcprojectAfter">
+		UPDATE t_c_project_after SET
+	        Project_id = #{projectId} ,
+	        PA_TypeID = #{paTypeId} ,
+	        PA_Title = #{paTitle} ,
+	        PA_Content = #{paContent} ,
+	        Creator = #{creator} ,
+	        CreateTime = #{createTime} ,
+	        FileID = #{fileId} ,
+	        ViewCount = #{viewCount} ,
+	        IsDel = #{isDel}
+        WHERE 
+	        After_id = #{afterId} 
+	</update>
+    
+    <select id="getById" parameterType="java.lang.Long" resultMap="TcprojectAfter">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_after 
+		where 1=1 and IsDel = 0 and 
+		After_id = #{afterId} 
+	</select>
+	
+	<select id="getAll" resultMap="TcprojectAfter">
+		SELECT <include refid="columns"/>
+		FROM t_c_project_after  p 
+		where 1=1 and IsDel = 0 
+		<include refid="dynamicWhere" />
+		order by After_id  desc
+	</select>
+	
+	<select id="getProjectAfter" resultMap="TcprojectAfter">
+		SELECT p.*
+		FROM t_c_project_after  p  left join t_c_project tp on p.Project_id = tp.Project_id
+		where 1=1 and p.IsDel = 0 
+       <if test="@Ognl@isNotEmpty(paTypeId)">AND p.PA_TypeID = #{paTypeId}</if>
+       <if test="@Ognl@isNotEmpty(paTitle)">AND p.PA_Title like '%${paTitle}%'</if>
+       <if test="@Ognl@isNotEmpty(paContent)">AND p.PA_Content like '%${paContent}%'</if>
+       <if test="@Ognl@isNotEmpty(creator)">AND p.Creator = #{creator}</if>
+       <if test="@Ognl@isNotEmpty(createTimeBegin)">AND p.CreateTime >= #{createTimeBegin}</if>
+	   <if test="@Ognl@isNotEmpty(createTimeEnd)">AND p.CreateTime &lt;= #{createTimeEnd}</if>
+	   <if test="@Ognl@isNotEmpty(projectName)">AND tp.P_Name like '%${projectName}%'</if>
+		order by  p.CreateTime DESC
+	</select>
+		
+    <select id="count" resultType="long">
+        SELECT count(*) FROM t_c_project_after
+        where 1=1 and IsDel = 0 
+		<include refid="dynamicWhere" />  
+    </select>   
+    
+    <select id="getAllPname" resultMap="TcprojectAfter">
+    	SELECT p.*,tu.RealName creatorName,tp.P_Name projectName,a.PA_FileName,a.PA_Path
+		FROM t_c_project_after p
+		left join T_User tu on p.creator=tu.user_id
+		left join t_c_project tp on p.Project_id=tp.Project_id
+		left join t_c_project_attachment a  on p.FileID=a.Attachment_id 
+		where 1=1 and p.IsDel = 0 
+		   <if test="@Ognl@isNotEmpty(afterId)">AND p.After_id = #{afterId}</if>
+	       <if test="@Ognl@isNotEmpty(projectId)">AND p.Project_id = #{projectId}</if>
+	       <if test="@Ognl@isNotEmpty(paTypeId)">AND p.PA_TypeID = #{paTypeId}</if>
+	       <if test="@Ognl@isNotEmpty(paTitle)">AND p.PA_Title LIKE '%${paTitle}%'</if>
+	       <if test="@Ognl@isNotEmpty(paContent)">AND p.PA_Content = #{paContent}</if>
+	       <if test="@Ognl@isNotEmpty(creator)">AND p.Creator = #{creator}</if>
+	       <if test="@Ognl@isNotEmpty(createTime)">AND p.CreateTime = #{createTime}</if>
+	       <if test="@Ognl@isNotEmpty(fileId)">AND p.FileID = #{fileId}</if>
+	       <if test="@Ognl@isNotEmpty(viewCount)">AND p.ViewCount = #{viewCount}</if>
+	       <if test="@Ognl@isNotEmpty(isDel)">AND p.IsDel = #{isDel}</if>
+	       <if test="@Ognl@isNotEmpty(creatorName)">AND tu.RealName LIKE '%${creatorName}%'</if>
+	       <if test="@Ognl@isNotEmpty(projectName)">AND tp.P_Name LIKE '%${projectName}%'</if>
+	    ORDER BY p.After_id desc
+    </select>
+    
+    <!--根据项目id查询关联的附件-->
+    <select id="getAfterDeail" resultMap="TcprojectAfter">
+    	SELECT ta.*
+		FROM t_c_project_after ta
+		where 1=1 and IsDel = 0 
+		and ta.After_id=#{afterId}
+    </select>
+     
+    
+    <!--根据投资人项目id获得投资人投后管理列表-->
+    <select id="getAllAfter" resultMap="TcprojectAfter">
+    	SELECT pa.*,tp.P_Name projectName
+		FROM  t_c_project_after pa
+        left join t_c_project tp on pa.Project_id=tp.Project_id
+		left join t_c_project_invest ti on pa.Project_id=ti.Project_id
+		where 1=1 and pa.IsDel = 0 and tp.P_IsFull = 1 and ti.PI_IsCheck = 1 and ti.PI_IsCancel = 0
+		and ti.user_id = #{userId}
+		ORDER BY pa.CreateTime DESC
+	</select>
+</mapper>
+

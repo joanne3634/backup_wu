@@ -1,0 +1,104 @@
+#findPwd {
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+
+#findWays {
+    text-align: center;
+}
+#findWays a {
+    display: inline-block;
+    line-height: 43px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    padding: 0px 60px;
+    text-decoration: none;
+}
+#findWays a:hover {
+    background: #f2f2f2;
+    border: 1px solid #cbcbcb;
+    color: #555;
+    text-decoration: none;
+}
+#findWays a:active,
+#findWays a.active{
+    border: 1px solid #01A0E9;
+    background-color:#01A0E9;
+    color: #ffffff;
+}
+
+
+
+#findPwd .zhmm-inputlist {
+    margin-bottom: 20px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 34px;
+    font-size: 14px;
+}
+#findPwd .zhmm-inputlist .formContainer{
+    border: 1px solid #F4F4F4;
+    border-radius: 35px;
+    padding: 50px 0px 30px 0px;
+
+}
+#findPwd .zhmm-inputlist .formContainer input {
+    width: 20em;
+}
+
+#findPwd .zhmm-inputlist .formContainer .code {
+    width: 6em;
+}
+
+#findPwd .zhmm-inputlist .formContainer .validImg {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#findPwd .zhmm-inputlist .formContainer .refreshCode {
+    color: #333;
+}
+
+#findPwd .zhmm-inputlist .formContainer .refreshCode:hover,
+#findPwd .zhmm-inputlist .formContainer .refreshCode:active {
+    color: #444;
+}
+
+
+
+#findPwd .zhmm-buzhouzhiyin {
+     height: 64px;
+     margin-top: 30px;
+     margin-bottom: 30px;
+ }
+
+#findPwd .zhmm-buzhouzhiyin>div {
+    display: inline-block;
+}
+#findPwd .zhmm-buzhouzhiyin .zhmm-buzounum {
+    width: 100px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #bcbcbc;
+}
+#findPwd .zhmm-buzounum.one{
+    color:#01A0E9;
+}
+#findPwd .zhmm-buzhouzhiyin .zhmm-buzounum>div {
+    height: 50px;
+    line-height: 50px;
+    font-size: 40px;
+}
+#findPwd .zhmm-buzhouzhiyin .zhmm-fengexian {
+    width: 80px;
+    height: 29px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-top: 6px solid #dcdcdc;
+}
+
+
